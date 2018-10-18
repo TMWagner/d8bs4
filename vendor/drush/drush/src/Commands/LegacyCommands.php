@@ -126,16 +126,4 @@ class LegacyCommands extends DrushCommands
     public function download()
     {
     }
-
-    /**
-     * field-create has been deprecated. Please try `generate field` command.
-     *
-     * @command field:create
-     * @aliases field-create
-     * @hidden
-     * @obsolete
-     */
-    public function field()
-    {
-    }
 }

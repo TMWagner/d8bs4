@@ -146,7 +146,10 @@ class Field extends BaseGenerator {
     $vars = &$this->collectVars($input, $output, $questions);
 
     $type_choices = array_column($this->subTypes, 'label');
-    $type_choices = Utils::prepareChoices($type_choices);
+
+    // Make options start from 1 instead of 0.
+    array_unshift($type_choices, NULL);
+    unset($type_choices[0]);
 
     // Indicates that at least one of sub-fields needs Random component.
     $vars['random'] = FALSE;
@@ -182,9 +185,9 @@ class Field extends BaseGenerator {
       $subfield_questions['type_' . $i] = new ChoiceQuestion("Type of sub-field #$i", $type_choices, 'Text');
       $this->collectVars($input, $output, $subfield_questions);
 
-      $vars['type_class'] = Utils::camelize($vars['field_label']) . 'Item';
-      $vars['widget_class'] = Utils::camelize($vars['field_label']) . 'Widget';
-      $vars['formatter_class'] = Utils::camelize($vars['field_label']) . 'DefaultFormatter';
+      $vars['type_class'] = Utils::camelize($vars['field_label'] . 'Item');
+      $vars['widget_class'] = Utils::camelize($vars['field_label'] . 'Widget');
+      $vars['formatter_class'] = Utils::camelize($vars['field_label'] . 'DefaultFormatter');
 
       // Reset previous questions since we already collected their answers.
       $subfield_questions = [];
@@ -197,11 +200,12 @@ class Field extends BaseGenerator {
       }
 
       if ($type == 'datetime') {
-        $subfield_questions['date_type_' . $i] = new ChoiceQuestion(
-          "Date type for sub-field #$i",
-           Utils::prepareChoices($this->dateTypes),
-          'Date only'
-        );
+        $date_type_choices = array_values($this->dateTypes);
+        // Make options start from 1 instead of 0.
+        array_unshift($date_type_choices, NULL);
+        unset($date_type_choices[0]);
+
+        $subfield_questions['date_type_' . $i] = new ChoiceQuestion("Date type for sub-field #$i", $date_type_choices, 'Date only');
       }
 
       if ($definition['list']) {
@@ -302,14 +306,14 @@ class Field extends BaseGenerator {
       ->template('d8/_field/widget-css.twig');
 
     if ($vars['table_formatter']) {
-      $vars['table_formatter_class'] = Utils::camelize($vars['field_label']) . 'TableFormatter';
+      $vars['table_formatter_class'] = Utils::camelize($vars['field_label'] . 'TableFormatter');
       $this->addFile()
         ->path('src/Plugin/Field/FieldFormatter/{table_formatter_class}.php')
         ->template('d8/_field/table-formatter.twig');
     }
 
     if ($vars['key_value_formatter']) {
-      $vars['key_value_formatter_class'] = Utils::camelize($vars['field_label']) . 'KeyValueFormatter';
+      $vars['key_value_formatter_class'] = Utils::camelize($vars['field_label'] . 'KeyValueFormatter');
       $this->addFile()
         ->path('src/Plugin/Field/FieldFormatter/{key_value_formatter_class}.php')
         ->template('d8/_field/key-value-formatter.twig');

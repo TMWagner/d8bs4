@@ -49,8 +49,8 @@ For example:
 namespace Drupal\my_module\Commands;
 
 use Drush\Commands\DrushCommands;
-use Consolidation\SiteAlias\SiteAliasManagerAwareInterface;
-use Consolidation\SiteAlias\SiteSliasManagerAwareTrait;
+use Drush\SiteAlias\SiteAliasManagerAwareInterface;
+use Drush\SiteAlias\SiteSliasManagerAwareTrait;
 
 class MyModuleiCommands extends DrushCommands implements SiteAliasManagerAwareInterface
 {

@@ -1,31 +1,34 @@
-{% import 'lib/di.twig' as di %}
 <?php
 
 namespace Drupal\{{ machine_name }}\Controller;
 
-{% sort %}
 use Drupal\Core\Controller\ControllerBase;
-  {% if services %}
+{% if di %}
+use Drupal\example\ExampleInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-{{ di.use(services) }}
-  {% endif %}
-{% endsort %}
+{% endif %}
 
 /**
  * Returns responses for {{ name }} routes.
  */
 class {{ class }} extends ControllerBase {
 
-{% if services %}
-{{ di.properties(services) }}
+{% if di %}
+  /**
+   * The example service.
+   *
+   * @var \Drupal\example\ExampleInterface
+   */
+  protected $example;
 
   /**
-   * The controller constructor.
+   * Constructs the controller object.
    *
-{{ di.annotation(services) }}
+   * @param \Drupal\example\ExampleInterface $example
+   *   The example service.
    */
-  public function __construct({{ di.signature(services) }}) {
-{{ di.assignment(services) }}
+  public function __construct(ExampleInterface $example) {
+    $this->example = $example;
   }
 
   /**
@@ -33,7 +36,7 @@ class {{ class }} extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-{{ di.container(services) }}
+      $container->get('example')
     );
   }
 
