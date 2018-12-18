@@ -1,0 +1,71 @@
+#
+# Working prototype
+# (tmw)10/27/2018
+###
+langcode: en
+status: true
+dependencies: {  }
+id: idmod_d7_node_publications
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: idmod_migrate
+label: 'Nodes (Publications)'
+source:
+  plugin: d7_node
+  node_type: publications
+process:
+# nid and vid commented out will allow autoincrement. 
+#  nid: tnid
+#  vid: vid
+# Added type
+#	type:
+#		plugin: default_value
+#		default_value: publications
+# End add type
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid:
+    plugin: default_value
+    default_value: 1
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_migrate/0/status: comment
+  body:
+    plugin: get
+    source: field_publications_abstract
+  #field_publication_abstract:
+  #  plugin: get
+  #  source: body
+  field_publication_link:
+    plugin: field_link
+    source: field_publications_link
+  field_publication_authors:
+    plugin: get
+    source: field_publication_authors
+  field_publication_date:
+    plugin: iterator
+    source: field_publications_date
+    process:
+      value:
+        plugin: substr
+        source: value
+        start: 0
+        length: 10
+destination:
+  plugin: 'entity:node'
+  default_bundle: publications
+
+migration_dependencies: {}
