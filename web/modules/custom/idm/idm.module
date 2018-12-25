@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * @file
+ * Contains idm.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function idm_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the idm module.
+    case 'help.page.idm':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function idm_theme() {
+  return [
+    'idm' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_view()
+ */
+function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+
+  // Only do the extra work if the component is configured to be displayed.
+  // This assumes a 'mymodule_addition' extra field has been defined for the
+  // entity bundle in hook_entity_extra_field_info().
+  
+  $temp = $build;
+  
+  if ($entity->getEntityType()->id() === 'node') {
+    $build['awesome'] =  [
+      '#markup' => '<marquee>This is awesome</marquee>',
+      '#allowed_tags' => ['marquee'],
+    ];
+  }
+  
+  //if ($display
+  //  ->getComponent('mymodule_addition')) {
+  //  $build['mymodule_addition'] = [
+  //    '#markup' => mymodule_addition($entity),
+  //    '#theme' => 'mymodule_my_additional_field',
+  //  ];
+  //}
+}
+/**
+ * Implementation of hook_element_info_alter()
+ */
+function idm_element_info_alter(array &$info) {
+
+  // Decrease the default size of textfields.
+  if (isset($info['textfield']['#size'])) {
+    $info['textfield']['#size'] = 40;
+  }
+  
+  $temp = $info;
+  
+  //if (isset($info['table'])) {
+  //  $types['table']['#attached']['library'][] = 'idm/colorbox_library';
+  //  $temp2 = $types['table'];
+  //  
+  //}
+}
+
+/**
+* Implements hook_page_attachments_alter
+*/
+//function idm_page_attachments_alter(array &$page) {
+//  // Get the current path.
+//  $path = $current_path = \Drupal::service('path.current')->getPath();
+//  // If we're on the node listing page, add our retro library.
+//  //if ($path == '/node/165') {
+//  //  $temp = $page;
+//  //  $page['#attached']['library'][] = 'idm/colorbox_library';
+//  //}
+//  // Load the libaray anyway
+//  $page['#attached']['library'][] = 'idm/idm';
+//}
+
+
+/** 
+ * Implements hook_page_attachements()
+ */
+function idm_page_attachments(array &$attachments) {
+
+  // Unconditionally attach an asset to the page.
+  $attachments['#attached']['library'][] = 'core/domready';
+  $attachments['#attached']['library'][] = 'core/jquery';
+  $attachments['#attached']['library'][] = 'idm/idm';
+  
+  $temp = $attachments;
+
+  // Conditionally attach an asset to the page.
+  //if (!\Drupal::currentUser()
+  //  ->hasPermission('may pet kittens')) {
+  //  $attachments['#attached']['library'][] = 'core/jquery';
+  //}
+}
+
+

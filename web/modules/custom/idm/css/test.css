@@ -1,0 +1,13 @@
+.testclass {
+  color: #e2671a;
+}
+/*Bootstrap 4 fix*/
+.navbar-inverse {
+  background-color: grey;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #9d9d9d;
+}
+.navbar-inverse .navbar-brand {
+    color: #9d9d9d;
+}
