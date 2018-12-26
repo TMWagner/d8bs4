@@ -58,6 +58,12 @@
     {{ page.navigation_idm}}
   {% endblock %}
 {% endif %}
+{# banner_idm #}
+{% if page.banner_idm %}
+  {% block banner_idm %}
+    {{ page.banner_idm}}
+  {% endblock %}
+{% endif %}
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
