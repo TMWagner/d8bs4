@@ -15,6 +15,7 @@
 @import "component/tabs";
 @import "component/toolbar";
 
+
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";
 
@@ -24,6 +25,30 @@ ol, ul {
     margin-bottom: 0;
   }
 }
+// Main Navbar
+.divider-right {
+  border-right: thin solid #bdbbbb;
+}
+// Navbar
+.navbar {
+  border-radius: 0px;
+}
+.navbar-brand.navbar-brand-logo {
+  padding-top: 0px;
+}
+.dropdown-menu {
+  border: none;
+}
+.dropdown-menu.mega-dropdown-menu.row {
+  background-color: #2A2427;
+}
+body {
+    margin-top: 0px;
+}
+a {
+  text-transform: uppercase;
+}
+
 
 // Page header.
 .page-header {

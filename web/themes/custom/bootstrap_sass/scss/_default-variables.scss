@@ -40,6 +40,9 @@ $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
+$idm-orange:            #F09B57;
+$idm-blue:              #0073A3;
+
 
 //== Scaffolding
 //
@@ -382,22 +385,29 @@ $container-lg:                 $container-large-desktop !default;
 
 // Basics of a navbar
 $navbar-height:                    50px !default;
-$navbar-margin-bottom:             $line-height-computed !default;
-$navbar-border-radius:             $border-radius-base !default;
+//$navbar-margin-bottom:             $line-height-computed !default;
+$navbar-margin-bottom:              0px !default;
+$navbar-border-radius:             0px !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-bg:                #222 !default;
+$navbar-default-padding:            .5em 0px .5em 0px;
+
+// Color of Navbar
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+//$navbar-default-border:            none;
 
 // Navbar links
-$navbar-default-link-color:                #777 !default;
-$navbar-default-link-hover-color:          #333 !default;
+$navbar-default-link-color:                #FFFFFF !default;
+$navbar-default-link-hover-color:          #F1815E !default;
 $navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         #555 !default;
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-active-color:         #F1815E !default;
+$navbar-default-link-active-bg:            #222 !default;
+$navbar-dropdown-menu-link:                blue !default;
+
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
@@ -416,7 +426,7 @@ $navbar-default-toggle-border-color:       #ddd !default;
 // Reset inverted navbar basics
 $navbar-inverse-color:                      lighten($gray-light, 15%) !default;
 $navbar-inverse-bg:                         #222 !default;
-$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
+$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default; /*Remove*/
 
 // Inverted navbar links
 $navbar-inverse-link-color:                 lighten($gray-light, 15%) !default;
