@@ -15,3 +15,13 @@ idm:
     js/mega.js: {}
   dependencies:
     - core/jquery
+    
+navtab:
+  version: 1.x
+  css:
+    base:
+      css/navtab.css: {}
+  js:
+    js/navtab.js: {}
+  dependencies:
+  - core/jquery

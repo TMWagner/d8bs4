@@ -1,0 +1,151 @@
+// IDM Custom
+
+// Color
+$navbar-dropdown-menu-link: blue;
+
+
+.container-fluid.full-width {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+}
+.row.row-no-gutter {
+    margin: 0
+}
+.row.row-no-gutter [class*="col-"] {
+    padding: 0
+}
+.img-full-width {
+    width: 100.5%;
+    height: auto;
+}
+.has-inner .row.row-no-gutter {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.row.row-no-gutter .inner {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+//Banner
+p.banner-left {
+  color: white;
+  font-size: 1.4rem;
+}
+.highlight {
+  font-size: 2.5rem;
+  color: #EFB750;
+}
+.idm-banner {
+  color: white;
+}
+
+.center-content {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+.banner-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+// Add a little margin at the bottom of the dropdown
+.dropdown-menu > .col-md-6 {
+  padding-bottom: 1em;
+}
+//Test Code / Separator bar
+.left-column-seperator {
+  border-right: thin solid #F09B57;
+}
+
+// Underline on focus link
+.mega-dropdown a:focus::after {	
+  background: none repeat scroll 0 0 #F1815E;
+  bottom: 0px;
+  content: "";
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 10px;	
+}
+
+.mega-dropdown-menu a {
+  color: $navbar-dropdown-menu-link;
+}
+
+/*
+ * Hero/Carosel image
+ */
+.hero {
+  background-color: darkviolet;
+  width: 100vw;
+  height: 28vw;
+  position: relative;
+} 
+.bg {
+  /* The image used */
+  background-image: url("http://idmod.org/sites/default/files/seattle_1920.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* bottom left navbar */
+
+.bg-gold {
+  background-color: #EFB750CC;
+  border-radius: 0px 10px 0px 0px;
+}
+
+#nav-gold > li > a {
+  color: white;
+}
+#nav-gold > li > a:hover {
+  color: black;
+  background-color: #EFB750CC;
+}
+
+/* How we work panel
+ */
+.nav-tabs-dropdown.how-panel {
+  display: none;
+  border-bottom-left-radius: 0;
+}
+hr {
+  width: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#337ab7;
+  opacity: 0.9;
+  height: 5px;
+}
+
+hr.how-panel {
+  color: $idm-grey;
+  width: 2em;
+  margin-right: 2em;
+  margin-top: 10px    
+}
+h2.how-panel {
+  color: $idm-grey;
+}
+h3.how-panel {
+  margin-top: 0px;
+  color: $idm-blue;
+}
+
+
+element {
+
+}
+.how-panel > .well {
+  background: none;
+  border: 0px;
+  box-shadow: none;
+}

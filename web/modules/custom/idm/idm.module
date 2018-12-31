@@ -10,18 +10,18 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * Implements hook_help().
  */
-function idm_help($route_name, RouteMatchInterface $route_match) {
-  switch ($route_name) {
-    // Main module help for the idm module.
-    case 'help.page.idm':
-      $output = '';
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('My Awesome Module') . '</p>';
-      return $output;
-
-    default:
-  }
-}
+//function idm_help($route_name, RouteMatchInterface $route_match) {
+//  switch ($route_name) {
+//    // Main module help for the idm module.
+//    case 'help.page.idm':
+//      $output = '';
+//      $output .= '<h3>' . t('About') . '</h3>';
+//      $output .= '<p>' . t('My Awesome Module') . '</p>';
+//      return $output;
+//
+//    default:
+//  }
+//}
 
 /**
  * Implements hook_theme().
@@ -34,32 +34,33 @@ function idm_theme() {
   ];
 }
 
+
 /**
  * Implements hook_entity_view()
  */
-function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-
-  // Only do the extra work if the component is configured to be displayed.
-  // This assumes a 'mymodule_addition' extra field has been defined for the
-  // entity bundle in hook_entity_extra_field_info().
-  
-  $temp = $build;
-  
-  if ($entity->getEntityType()->id() === 'node') {
-    $build['awesome'] =  [
-      '#markup' => '<marquee>This is awesome</marquee>',
-      '#allowed_tags' => ['marquee'],
-    ];
-  }
-  
-  //if ($display
-  //  ->getComponent('mymodule_addition')) {
-  //  $build['mymodule_addition'] = [
-  //    '#markup' => mymodule_addition($entity),
-  //    '#theme' => 'mymodule_my_additional_field',
-  //  ];
-  //}
-}
+//function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+//
+//  // Only do the extra work if the component is configured to be displayed.
+//  // This assumes a 'mymodule_addition' extra field has been defined for the
+//  // entity bundle in hook_entity_extra_field_info().
+//  
+//  $temp = $build;
+//  
+//  if ($entity->getEntityType()->id() === 'node') {
+//    $build['awesome'] =  [
+//      '#markup' => '<marquee>IDM V4 Dev content</marquee>',
+//      '#allowed_tags' => ['marquee'],
+//    ];
+//  }
+//  
+//  //if ($display
+//  //  ->getComponent('mymodule_addition')) {
+//  //  $build['mymodule_addition'] = [
+//  //    '#markup' => mymodule_addition($entity),
+//  //    '#theme' => 'mymodule_my_additional_field',
+//  //  ];
+//  //}
+//}
 /**
  * Implementation of hook_element_info_alter()
  */
@@ -104,8 +105,21 @@ function idm_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'core/domready';
   $attachments['#attached']['library'][] = 'core/jquery';
   $attachments['#attached']['library'][] = 'idm/idm';
+  //$attachments['#attached']['library'][] = 'idm/navtab';
   
+  
+  
+    // Get the current path.
+  $path = $current_path = \Drupal::service('path.current')->getPath();
+  // If we're on the node listing page, add our retro library.
+  //
   $temp = $attachments;
+   //We need to define a library specific to the page functionality we want.
+  if ($path == '/node/168') {
+    $attachments['#attached']['library'][] = 'idm/navtab';
+    $temp = $attachments;
+  };
+  
 
   // Conditionally attach an asset to the page.
   //if (!\Drupal::currentUser()
