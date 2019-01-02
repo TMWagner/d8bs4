@@ -10309,59 +10309,65 @@ p:last-child,
   color: #444;
 }
 
-/* line 7, ../scss/_custom.scss */
+@media (max-width: 767px) {
+  /* line 7, ../scss/_custom.scss */
+  .container.how-panel {
+    padding-top: 2em;
+  }
+}
+/* line 17, ../scss/_custom.scss */
 .container-fluid.full-width {
   padding-left: 0;
   padding-right: 0;
   overflow-x: hidden;
 }
 
-/* line 12, ../scss/_custom.scss */
+/* line 22, ../scss/_custom.scss */
 .row.row-no-gutter {
   margin: 0;
 }
 
-/* line 15, ../scss/_custom.scss */
+/* line 25, ../scss/_custom.scss */
 .row.row-no-gutter [class*="col-"] {
   padding: 0;
 }
 
-/* line 18, ../scss/_custom.scss */
+/* line 28, ../scss/_custom.scss */
 .img-full-width {
   width: 100.5%;
   height: auto;
 }
 
-/* line 22, ../scss/_custom.scss */
+/* line 32, ../scss/_custom.scss */
 .has-inner .row.row-no-gutter {
   margin-left: -10px;
   margin-right: -10px;
 }
 
-/* line 26, ../scss/_custom.scss */
+/* line 36, ../scss/_custom.scss */
 .row.row-no-gutter .inner {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-/* line 31, ../scss/_custom.scss */
+/* line 41, ../scss/_custom.scss */
 p.banner-left {
   color: white;
   font-size: 1.4rem;
 }
 
-/* line 35, ../scss/_custom.scss */
+/* line 45, ../scss/_custom.scss */
 .highlight {
   font-size: 2.5rem;
   color: #EFB750;
 }
 
-/* line 39, ../scss/_custom.scss */
+/* line 49, ../scss/_custom.scss */
 .idm-banner {
   color: white;
 }
 
-/* line 43, ../scss/_custom.scss */
+/* line 53, ../scss/_custom.scss */
 .center-content {
   display: block;
   margin-right: auto;
@@ -10369,24 +10375,24 @@ p.banner-left {
   text-align: center;
 }
 
-/* line 49, ../scss/_custom.scss */
+/* line 59, ../scss/_custom.scss */
 .banner-bottom-left {
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-/* line 55, ../scss/_custom.scss */
+/* line 65, ../scss/_custom.scss */
 .dropdown-menu > .col-md-6 {
   padding-bottom: 1em;
 }
 
-/* line 59, ../scss/_custom.scss */
+/* line 69, ../scss/_custom.scss */
 .left-column-seperator {
   border-right: thin solid #F09B57;
 }
 
-/* line 64, ../scss/_custom.scss */
+/* line 74, ../scss/_custom.scss */
 .mega-dropdown a:focus::after {
   background: none repeat scroll 0 0 #F1815E;
   bottom: 0px;
@@ -10397,7 +10403,7 @@ p.banner-left {
   width: 10px;
 }
 
-/* line 74, ../scss/_custom.scss */
+/* line 84, ../scss/_custom.scss */
 .mega-dropdown-menu a {
   color: blue;
 }
@@ -10405,15 +10411,15 @@ p.banner-left {
 /*
  * Hero/Carosel image
  */
-/* line 81, ../scss/_custom.scss */
+/* line 91, ../scss/_custom.scss */
 .hero {
-  background-color: darkviolet;
+  background-color: #c0bdc2;
   width: 100vw;
   height: 28vw;
   position: relative;
 }
 
-/* line 87, ../scss/_custom.scss */
+/* line 97, ../scss/_custom.scss */
 .bg {
   /* The image used */
   background-image: url("http://idmod.org/sites/default/files/seattle_1920.jpg");
@@ -10426,32 +10432,54 @@ p.banner-left {
 }
 
 /* bottom left navbar */
-/* line 101, ../scss/_custom.scss */
+/* line 111, ../scss/_custom.scss */
 .bg-gold {
   background-color: #EFB750CC;
   border-radius: 0px 10px 0px 0px;
 }
 
-/* line 106, ../scss/_custom.scss */
+/* line 116, ../scss/_custom.scss */
 #nav-gold > li > a {
   color: white;
 }
 
-/* line 109, ../scss/_custom.scss */
+/* line 119, ../scss/_custom.scss */
 #nav-gold > li > a:hover {
   color: black;
   background-color: #EFB750CC;
 }
 
+/* line 124, ../scss/_custom.scss */
+.navbar.navbar-default.visible-xs.quicklinks {
+  background-color: #EFB750CC;
+}
+
+/* line 127, ../scss/_custom.scss */
+.quicklinks-bar > li > a {
+  color: white;
+}
+
+/* line 130, ../scss/_custom.scss */
+.quicklinks-bar > li > a:hover {
+  color: black;
+  background-color: #EFB750CC;
+}
+
+/* line 135, ../scss/_custom.scss */
+.mobile-quicklinks .navbar-brand {
+  font-size: 14px;
+  text-transform: none;
+}
+
 /* How we work panel
  */
-/* line 116, ../scss/_custom.scss */
+/* line 143, ../scss/_custom.scss */
 .nav-tabs-dropdown.how-panel {
   display: none;
   border-bottom-left-radius: 0;
 }
 
-/* line 120, ../scss/_custom.scss */
+/* line 147, ../scss/_custom.scss */
 hr {
   width: 4em;
   margin-left: auto;
@@ -10461,7 +10489,7 @@ hr {
   height: 5px;
 }
 
-/* line 129, ../scss/_custom.scss */
+/* line 156, ../scss/_custom.scss */
 hr.how-panel {
   color: #847F81;
   width: 2em;
@@ -10469,18 +10497,18 @@ hr.how-panel {
   margin-top: 10px;
 }
 
-/* line 135, ../scss/_custom.scss */
+/* line 162, ../scss/_custom.scss */
 h2.how-panel {
   color: #847F81;
 }
 
-/* line 138, ../scss/_custom.scss */
+/* line 165, ../scss/_custom.scss */
 h3.how-panel {
   margin-top: 0px;
   color: #0073A3;
 }
 
-/* line 147, ../scss/_custom.scss */
+/* line 171, ../scss/_custom.scss */
 .how-panel > .well {
   background: none;
   border: 0px;
