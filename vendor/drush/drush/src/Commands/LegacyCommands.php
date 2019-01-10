@@ -1,8 +1,6 @@
 <?php
 namespace Drush\Commands;
 
-use Drush\Drush;
-
 class LegacyCommands extends DrushCommands
 {
 
@@ -124,6 +122,30 @@ class LegacyCommands extends DrushCommands
      * @obsolete
      */
     public function download()
+    {
+    }
+
+    /**
+     * field-create has been deprecated. Please try `generate field` command.
+     *
+     * @command field:create
+     * @aliases field-create
+     * @hidden
+     * @obsolete
+     */
+    public function field()
+    {
+    }
+
+    /**
+     * core:execute has been deprecated. Please try `site:ssh` command.
+     *
+     * @command core:execute
+     * @aliases core-execute
+     * @hidden
+     * @obsolete
+     */
+    public function execute()
     {
     }
 }
