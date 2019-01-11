@@ -56,13 +56,13 @@ class Preflight
     /**
      * Preflight constructor
      */
-    public function __construct(Environment $environment, $verify = null, $configLocator = null, $preflightLog = null)
+    public function __construct(Environment $environment, $verify = null, $configLocator = null)
     {
         $this->environment = $environment;
         $this->verify = $verify ?: new PreflightVerify();
         $this->configLocator = $configLocator ?: new ConfigLocator('DRUSH_', $environment->getConfigFileVariant());
         $this->drupalFinder = new DrupalFinder();
-        $this->logger = $preflightLog ?: new PreflightLog();
+        $this->logger = new PreflightLog();
     }
 
     /**
@@ -266,7 +266,7 @@ class Preflight
         // If we did not find a local site, then we are destined to fail
         // UNLESS RedispatchToSiteLocal::redispatchIfSiteLocalDrush takes over.
         // Before we try to redispatch to the site-local Drush, though, we must
-        // initialize the alias manager & c. based on any alias record we did find.
+        // initiaze the alias manager & c. based on any alias record we did find.
         if ($selfAliasRecord) {
             $this->aliasManager->setSelf($selfAliasRecord);
             $this->configLocator->addAliasConfig($selfAliasRecord->exportConfig());

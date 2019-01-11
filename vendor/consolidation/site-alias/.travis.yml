@@ -21,7 +21,7 @@ cache:
   directories:
   - "$HOME/.composer/cache"
 install:
-- .scenarios.lock/install "${SCENARIO}" "${DEPENDENCIES}"
+- composer scenario "${SCENARIO}" "${DEPENDENCIES}"
 script:
 - composer test
 after_success:

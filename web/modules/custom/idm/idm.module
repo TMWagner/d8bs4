@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use \Drupal\views\ViewExecutable;
 
 
 
@@ -39,6 +40,52 @@ function idm_theme() {
 
 
 /**
+ * Implements hook_user_format_name_alter
+ *
+ * @param $name
+ * @param AccountInterface $account
+ *
+ * This works beautifully - but too well..
+ */
+//function idm_user_format_name_alter(&$name, AccountInterface $account) {
+//
+//  $temp = 1;
+//  $temp2 = $name;
+//
+//  // Display the user's uid instead of name.
+//  if ($account
+//    ->id()) {
+//    $name = t('User @uid', [
+//      '@uid' => $account
+//        ->id(),
+//    ]);
+//  }
+//}
+
+/**
+ * @param ViewExecutable $view
+ */
+//function idm_views_post_execute(ViewExecutable $view) {
+//
+//  // If there are more than 100 results, show a message that encourages the user
+//  // to change the filter settings.
+//  // (This action could be performed later in the execution process, but not
+//  // earlier.)
+//
+//  $temp = $view;
+//
+//  if ($view->total_rows > 11) {
+//    \Drupal::messenger()
+//      ->addStatus(t('You have more than 11 hits.'));
+//  }
+//}
+
+
+
+
+
+
+/**
  * Implements hook_entity_view()
  */
 function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
@@ -47,23 +94,23 @@ function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $ent
   // This assumes a 'mymodule_addition' extra field has been defined for the
   // entity bundle in hook_entity_extra_field_info().
 
-  $temp = $build;
+  $testvar = 1;
 
   if ($entity->getEntityType()->id() === 'node') {
+
     $build['awesome'] =  [
-      '#markup' => '<marquee>IDM V4 Dev content</marquee>',
+      '#markup' => '<marquee>IDM V4 amazing content</marquee>',
       '#allowed_tags' => ['marquee'],
     ];
-  }
+    $build['moretext'] = [
+      '#markup' => '<h2>IDM V4 amazing content</h2>'
+    ];
 
-  //if ($display
-  //  ->getComponent('mymodule_addition')) {
-  //  $build['mymodule_addition'] = [
-  //    '#markup' => mymodule_addition($entity),
-  //    '#theme' => 'mymodule_my_additional_field',
-  //  ];
-  //}
+  }
 }
+
+
+
 /**
  * Implementation of hook_element_info_alter()
  */
@@ -76,20 +123,6 @@ function idm_element_info_alter(array &$info) {
 
 }
 
-/**
-* Implements hook_page_attachments_alter
-*/
-//function idm_page_attachments_alter(array &$page) {
-//  // Get the current path.
-//  $path = $current_path = \Drupal::service('path.current')->getPath();
-//  // If we're on the node listing page, add our retro library.
-//  //if ($path == '/node/165') {
-//  //  $temp = $page;
-//  //  $page['#attached']['library'][] = 'idm/colorbox_library';
-//  //}
-//  // Load the libaray anyway
-//  $page['#attached']['library'][] = 'idm/idm';
-//}
 
 
 /** 

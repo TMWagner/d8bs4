@@ -13,18 +13,16 @@ use Drupal\Core\Site\Settings;
 use Drupal\Core\Cache\Cache;
 use Drush\Drush;
 use Drush\Utils\StringUtils;
-use Consolidation\AnnotatedCommand\Input\StdinAwareInterface;
-use Consolidation\AnnotatedCommand\Input\StdinAwareTrait;
+use Symfony\Component\HttpFoundation\Request;
 
 /*
  * Interact with Drupal's Cache API.
  */
-class CacheCommands extends DrushCommands implements CustomEventAwareInterface, AutoloaderAwareInterface, StdinAwareInterface
+class CacheCommands extends DrushCommands implements CustomEventAwareInterface, AutoloaderAwareInterface
 {
 
     use CustomEventAwareTrait;
     use AutoloaderAwareTrait;
-    use StdinAwareTrait;
 
     /**
      * Fetch a cached object and display it.
@@ -118,10 +116,15 @@ class CacheCommands extends DrushCommands implements CustomEventAwareInterface, 
      */
     public function set($cid, $data, $bin = 'default', $expire = null, $tags = null, $options = ['input-format' => 'string', 'cache-get' => false])
     {
-        $tags = is_string($tags) ? StringUtils::csvToArray($tags) : [];
+        $tags = is_string($tags) ? _convert_csv_to_array($tags) : [];
+
         // In addition to prepare, this also validates. Can't easily be in own validate callback as
         // reading once from STDIN empties it.
         $data = $this->setPrepareData($data, $options);
+        if ($data === false && drush_get_error()) {
+            // An error was logged above.
+            return;
+        }
 
         if (!isset($expire) || $expire == 'CACHE_PERMANENT') {
             $expire = Cache::PERMANENT;
@@ -133,16 +136,13 @@ class CacheCommands extends DrushCommands implements CustomEventAwareInterface, 
     protected function setPrepareData($data, $options)
     {
         if ($data == '-') {
-            $data = $this->stdin()->contents();
+            $data = file_get_contents("php://stdin");
         }
 
         // Now, we parse the object.
         switch ($options['input-format']) {
             case 'json':
                 $data = json_decode($data, true);
-                if ($data === false) {
-                    throw new \Exception('Unable to parse JSON.');
-                }
                 break;
         }
 

@@ -4,14 +4,12 @@ namespace Drush\Drupal\Commands\config;
 use Consolidation\AnnotatedCommand\CommandError;
 use Consolidation\AnnotatedCommand\CommandData;
 use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
-use Consolidation\SiteProcess\Util\Escape;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\StorageComparer;
 use Drupal\Core\Config\StorageInterface;
 use Drush\Commands\DrushCommands;
 use Drush\Drush;
-use Drush\Exec\ExecTrait;
 use Drush\Utils\FsUtils;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -22,7 +20,6 @@ use Webmozart\PathUtil\Path;
 
 class ConfigCommands extends DrushCommands
 {
-    use ExecTrait;
 
     /**
      * @var ConfigFactoryInterface
@@ -155,7 +152,7 @@ class ConfigCommands extends DrushCommands
      * @aliases cedit,config-edit
      * @validate-module-enabled config
      */
-    public function edit($config_name, $options = [])
+    public function edit($config_name)
     {
         $config = $this->getConfigFactory()->get($config_name);
         $active_storage = $config->getStorage();
@@ -166,18 +163,14 @@ class ConfigCommands extends DrushCommands
         $temp_storage = new FileStorage($temp_dir);
         $temp_storage->write($config_name, $contents);
 
-        //
         $exec = drush_get_editor();
-        $cmd = sprintf($exec, Escape::shellArg($temp_storage->getFilePath($config_name)));
-        $process = Drush::process($cmd);
-        $process->setTty(true);
-        $process->mustRun();
+        drush_shell_exec_interactive($exec, $temp_storage->getFilePath($config_name));
 
         // Perform import operation if user did not immediately exit editor.
         if (!$options['bg']) {
-            $redispatch_options = Drush::redispatchOptions()   + ['partial' => true, 'source' => $temp_dir];
-            $process = Drush::drush(Drush::aliasManager()->getSelf(), 'config-import', [], $redispatch_options);
-            $process->mustRun($process->showRealtime());
+            $options = Drush::redispatchOptions()   + ['partial' => true, 'source' => $temp_dir];
+            $backend_options = ['interactive' => true];
+            return (bool) drush_invoke_process('@self', 'config-import', [], $options, $backend_options);
         }
     }
 
@@ -228,7 +221,6 @@ class ConfigCommands extends DrushCommands
      *   state: State
      * @default-fields name,state
      * @aliases cst,config-status
-     * @filter-default-field name
      * @return \Consolidation\OutputFormatters\StructuredData\RowsOfFields
      */
     public function status($options = ['state' => 'Only in DB,Only in sync dir,Different', 'prefix' => self::REQ, 'label' => self::REQ])
@@ -427,7 +419,7 @@ class ConfigCommands extends DrushCommands
             $choices = drush_map_assoc(array_keys($config_directories));
             unset($choices[CONFIG_ACTIVE_DIRECTORY]);
             if (count($choices) >= 2) {
-                $label = $this->io()->choice('Choose a '. $option_name, $choices);
+                $label = $this->io()->choice('Choose a '. $option_name. '.', $choices);
                 $input->setArgument('label', $label);
             }
         }
@@ -509,13 +501,11 @@ class ConfigCommands extends DrushCommands
         $temp_source_storage = new FileStorage($temp_source_dir);
         self::copyConfig($source_storage, $temp_source_storage);
 
-        $prefix = ['diff'];
-        if (self::programExists('git') && $output->isDecorated()) {
-            $prefix = ['git', 'diff', '--color=always'];
+        $prefix = 'diff';
+        if (drush_program_exists('git') && $output->isDecorated()) {
+            $prefix = 'git diff --color=always';
         }
-        $args = array_merge($prefix, ['-u', $temp_destination_dir, $temp_source_dir]);
-        $process = Drush::process($args);
-        $process->run();
-        return $process->getOutput();
+        drush_shell_exec($prefix . ' -u %s %s', $temp_destination_dir, $temp_source_dir);
+        return drush_shell_exec_output();
     }
 }

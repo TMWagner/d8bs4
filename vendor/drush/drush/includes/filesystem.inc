@@ -212,9 +212,6 @@ function drush_mkdir($path) {
  * Determine if program exists on user's PATH.
  *
  * @return bool|null
- *
- * @deprecated
- *   See \Drush\Exec\ExecTrait::programExists.
  */
 function drush_program_exists($program) {
   if (drush_has_bash()) {
@@ -223,7 +220,7 @@ function drush_program_exists($program) {
     // Remove environment variables (eg. PGPASSFILE=) before testing program.
     $program = preg_replace('#^([A-Z0-9]+=.+? )+#', '', $program);
 
-    // Don't use drush_op_system() since we don't want output during tests.
+    // Dont't use drush_op_system() since we don't want output during tests.
     system("command -v $program > $bucket 2>&1", $result_code);
     return $result_code === 0 ? TRUE : FALSE;
   }

@@ -1,7 +1,6 @@
 <?php
 namespace Drush\Commands;
 
-use Drush\Drush;
 use Drush\Style\DrushStyle;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -17,10 +16,6 @@ abstract class DrushCommands implements IOAwareInterface, LoggerAwareInterface, 
     // This is more readable.
     const REQ=InputOption::VALUE_REQUIRED;
     const OPT=InputOption::VALUE_OPTIONAL;
-
-    // Common exit codes.
-    const EXIT_SUCCESS = 0;
-    const EXIT_FAILURE = 1;
 
     use LoggerAwareTrait;
     use ConfigAwareTrait {
@@ -85,17 +80,12 @@ abstract class DrushCommands implements IOAwareInterface, LoggerAwareInterface, 
         }
 
         if (self::input()->isInteractive()) {
-            ;
-            $process = Drush::process(['less', $file])->setTty(true);
-            if ($process->run() === 0) {
+            if (drush_shell_exec_interactive("less %s", $file)) {
+                return;
+            } elseif (drush_shell_exec_interactive("more %s", $file)) {
                 return;
             } else {
-                $process = Drush::process(['more', $file]);
-                if ($process->run() === 0) {
-                    return;
-                } else {
-                    $this->output()->writeln(file_get_contents($file));
-                }
+                $this->output()->writeln(file_get_contents($file));
             }
         }
     }

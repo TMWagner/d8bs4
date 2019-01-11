@@ -2,8 +2,6 @@
 
 namespace Drush\Sql;
 
-use Drush\Drush;
-
 define('PSQL_SHOW_TABLES', "SELECT tablename FROM pg_tables WHERE schemaname='public';");
 
 class SqlPgsql extends SqlBase
@@ -43,15 +41,12 @@ class SqlPgsql extends SqlBase
 
     public function command()
     {
-        return 'psql -q';
-    }
-
-    public function getEnv()
-    {
+        $environment = drush_is_windows() ? "SET " : "";
         $pw_file = $this->createPasswordFile();
         if (isset($pw_file)) {
-            return ['PGPASSFILE' => $pw_file];
+            $environment .= "PGPASSFILE={$pw_file} ";
         }
+        return "{$environment}psql -q";
     }
 
     /*
@@ -97,10 +92,9 @@ class SqlPgsql extends SqlBase
         unset($db_spec_no_db['database']);
         $sql_no_db = new SqlPgsql($db_spec_no_db, $this->getOptions());
         $query = "SELECT 1 AS result FROM pg_database WHERE datname='$database'";
-        $process = Drush::process($sql_no_db->connect() . ' -t -c ' . $query, null, $this->getEnv());
-        $process->setSimulated(false);
-        $process->run();
-        return $process->isSuccessful();
+        drush_always_exec($sql_no_db->connect() . ' -t -c %s', $query);
+        $output = drush_shell_exec_output();
+        return (bool)$output[0];
     }
 
     public function queryFormat($query)
@@ -114,8 +108,11 @@ class SqlPgsql extends SqlBase
     public function listTables()
     {
         $return = $this->alwaysQuery(PSQL_SHOW_TABLES);
-        $tables = explode(PHP_EOL, trim($this->getProcess()->getOutput()));
-        return array_filter($tables);
+        $tables = drush_shell_exec_output();
+        if (!empty($tables)) {
+            return $tables;
+        }
+        return [];
     }
 
     public function dumpCmd($table_selection)

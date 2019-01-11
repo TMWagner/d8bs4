@@ -4,7 +4,6 @@ use Drush\Drush;
 use Drush\Config\Environment;
 use Drush\Preflight\Preflight;
 use Drush\Runtime\Runtime;
-use Drush\Runtime\DependencyInjection;
 use Webmozart\PathUtil\Path;
 
 /**
@@ -63,9 +62,7 @@ $environment->applyEnvironment();
 
 // Preflight and run
 $preflight = new Preflight($environment);
-$di = new DependencyInjection();
-$di->desiredHandlers(['errorHandler', 'shutdownHandler']);
-$runtime = new Runtime($preflight, $di);
+$runtime = new Runtime($preflight);
 $status_code = $runtime->run($_SERVER['argv']);
 
 exit($status_code);

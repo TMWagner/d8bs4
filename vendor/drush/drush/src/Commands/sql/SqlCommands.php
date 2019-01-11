@@ -1,21 +1,17 @@
 <?php
 namespace Drush\Commands\sql;
 
-use Consolidation\AnnotatedCommand\CommandData;
 use Drupal\Core\Database\Database;
 use Drush\Commands\DrushCommands;
 use Drush\Drush;
 use Drush\Exceptions\UserAbortException;
-use Drush\Exec\ExecTrait;
 use Drush\Sql\SqlBase;
-use Consolidation\OutputFormatters\StructuredData\PropertyList;
 
 class SqlCommands extends DrushCommands
 {
-    use ExecTrait;
 
     /**
-     * Print database connection details.
+     * Print database connection details using print_r().
      *
      * @command sql:conf
      * @aliases sql-conf
@@ -140,9 +136,9 @@ class SqlCommands extends DrushCommands
     public function cli($options = ['extra' => self::REQ])
     {
         $sql = SqlBase::create($options);
-        $process = Drush::process($sql->connect(), null, $sql->getEnv());
-        $process->setTty(true);
-        $process->mustRun();
+        if (drush_shell_proc_open($sql->connect())) {
+            throw new \Exception('Unable to open database shell. Rerun with --debug to see any error message.');
+        }
     }
 
     /**
@@ -153,7 +149,6 @@ class SqlCommands extends DrushCommands
      * @optionset_sql
      * @option result-file Save to a file. The file should be relative to Drupal root.
      * @option file Path to a file containing the SQL to be run. Gzip files are accepted.
-     * @option file-delete Delete the --file after running it.
      * @option extra Add custom options to the connect string (e.g. --extra=--skip-column-names)
      * @option db-prefix Enable replacement of braces in your query.
      * @validate-file-exists file
@@ -169,7 +164,7 @@ class SqlCommands extends DrushCommands
      * @bootstrap max configuration
      *
      */
-    public function query($query = '', $options = ['result-file' => null, 'file' => self::REQ, 'file-delete' => false, 'extra' => self::REQ, 'db-prefix' => false])
+    public function query($query = '', $options = ['result-file' => null, 'file' => self::REQ, 'extra' => self::REQ, 'db-prefix' => false])
     {
         $filename = $options['file'];
         // Enable prefix processing when db-prefix option is used.
@@ -178,9 +173,9 @@ class SqlCommands extends DrushCommands
         }
         if (Drush::simulate()) {
             if ($query) {
-                $this->output()->writeln(dt('Simulating sql:query: !q', ['!q' => $query]));
+                $this->output()->writeln(dt('Simulating sql-query: !q', ['!q' => $query]));
             } else {
-                $this->output()->writeln(dt('Simulating sql:query from file !f', ['!f' => $options['file']]));
+                $this->output()->writeln(dt('Simulating sql-import from !f', ['!f' => $options['file']]));
             }
         } else {
             $sql = SqlBase::create($options);
@@ -188,7 +183,7 @@ class SqlCommands extends DrushCommands
             if (!$result) {
                 throw new \Exception(dt('Query failed.'));
             }
-            $this->output()->writeln($sql->getProcess()->getOutput());
+            $this->output()->writeln(implode("\n", drush_shell_exec_output()));
         }
         return true;
     }
@@ -215,47 +210,15 @@ class SqlCommands extends DrushCommands
      *   Pass extra option to mysqldump command.
      * @hidden-options create-db
      * @bootstrap max configuration
-     * @field-labels
-     *   path: Path
-     *
-     * @return \Consolidation\OutputFormatters\StructuredData\PropertyList
      *
      * @notes
      *   createdb is used by sql-sync, since including the DROP TABLE statements interfere with the import when the database is created.
      */
-    public function dump($options = ['result-file' => self::REQ, 'create-db' => false, 'data-only' => false, 'ordered-dump' => false, 'gzip' => false, 'extra' => self::REQ, 'extra-dump' => self::REQ, 'format' => 'null'])
+    public function dump($options = ['result-file' => self::REQ, 'create-db' => false, 'data-only' => false, 'ordered-dump' => false, 'gzip' => false, 'extra' => self::REQ, 'extra-dump' => self::REQ])
     {
         $sql = SqlBase::create($options);
-        $return = $sql->dump();
-        if ($return === false) {
+        if ($sql->dump() === false) {
             throw new \Exception('Unable to dump database. Rerun with --debug to see any error message.');
-        }
-
-        $this->logger()->success(dt('Database dump saved to !path', ['!path' => $return]));
-        return new PropertyList(['path' => $return]);
-    }
-
-    /**
-     * Assert that `mysql` or similar are on the user's PATH.
-     *
-     * @hook validate
-     * @param CommandData $commandData
-     * @return bool
-     * @throws \Exception
-     */
-    public function validate(CommandData $commandData)
-    {
-        if (in_array($commandData->annotationData()->get('command'), ['sql:connect', 'sql:conf'])) {
-            // These commands don't require a program.
-            return;
-        }
-
-        $sql = SqlBase::create($commandData->options());
-        $program = $sql->command();
-
-        if (!$this->programExists($program)) {
-            $this->logger->warning(dt('The shell command \'!command\' is required but cannot be found. Please install it and retry.', ['!command' => $program]));
-            return false;
         }
     }
 }
