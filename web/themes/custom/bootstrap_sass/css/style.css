@@ -10514,3 +10514,8 @@ h3.how-panel {
   border: 0px;
   box-shadow: none;
 }
+
+/* line 179, ../scss/_custom.scss */
+.clearfix, .filter-wrapper {
+  clear: both;
+}
