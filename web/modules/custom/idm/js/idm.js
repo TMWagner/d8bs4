@@ -3,14 +3,20 @@
  * Coding Standards: https://www.drupal.org/node/172169
  */
 
-(() => {
+// JavaScript Document
 
-  (function ($) {
-  //your code, now you can use "$" with no problems
-  $('#link').css("background-color", "yellow");
-  })(jQuery);
-  
+(function ($, Drupal) {
 
-  // All the JavaScript for this file.
+  'use strict';
+  /* CODE GOES HERE  - Code Wrap*/
 
-})();
+  $(document).ready(function(){
+
+    $("fieldset.collapsible").collapsible({
+      collapsed:true
+    });
+  });
+
+
+  /* END Code Wrap */
+})(jQuery, Drupal);

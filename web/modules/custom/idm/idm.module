@@ -123,8 +123,6 @@ function idm_element_info_alter(array &$info) {
 
 }
 
-
-
 /** 
  * Implements hook_page_attachements()
  */
@@ -134,11 +132,9 @@ function idm_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'core/domready';
   $attachments['#attached']['library'][] = 'core/jquery';
   $attachments['#attached']['library'][] = 'idm/idm';
-  //$attachments['#attached']['library'][] = 'idm/navtab';
-  
-  
-  
-    // Get the current path.
+
+
+  // Get the current path.
   $path = $current_path = \Drupal::service('path.current')->getPath();
   // If we're on the node listing page, add our retro library.
   //
@@ -148,13 +144,22 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/navtab';
     $temp = $attachments;
   };
+
+  /**
+   * This is temp code:  adding jquery collapse
+   * tmw: 2019/01/12
+   */
+  if ($path == '/node/169') {
+    $attachments['#attached']['library'][] = 'idm/jqcollapse';
+    $temp = $attachments;
+  };
+
+  $temp = $attachments;
+
+  $temp = 10;
   
 
-  // Conditionally attach an asset to the page.
-  //if (!\Drupal::currentUser()
-  //  ->hasPermission('may pet kittens')) {
-  //  $attachments['#attached']['library'][] = 'core/jquery';
-  //}
+
 }
 
 

@@ -24,4 +24,14 @@ navtab:
   js:
     js/navtab.js: {}
   dependencies:
-  - core/jquery
+    - core/jquery
+
+jqcollapse:
+  version: 1.x
+  css:
+    base:
+      css/jquery-collapsible-fieldset.css: {}
+  js:
+    js/jquery-collapsible-fieldset.js: {}
+  dependencies:
+    - core/jquery
