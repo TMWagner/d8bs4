@@ -137,8 +137,9 @@ function idm_page_attachments(array &$attachments) {
   $path = $current_path = \Drupal::service('path.current')->getPath();
   // If we're on the node listing page, add our retro library.
   //
-  $temp = $attachments;
-   //We need to define a library specific to the page functionality we want.
+
+  //We need to define a library specific to the page functionality we want.
+  // NavTab is being used for the "How we work" block"
   if ($path == '/node/168') {
     $attachments['#attached']['library'][] = 'idm/navtab';
     $temp = $attachments;
@@ -150,13 +151,7 @@ function idm_page_attachments(array &$attachments) {
    */
   if ($path == '/node/169') {
     $attachments['#attached']['library'][] = 'idm/jqcollapse';
-    $temp = $attachments;
   };
-
-  $temp = $attachments;
-
-  $temp = 10;
-  
 
 
 }
