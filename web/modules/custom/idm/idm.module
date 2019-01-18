@@ -146,7 +146,7 @@ function idm_page_attachments(array &$attachments) {
   };
 
   /**
-   * This is temp code:  adding jquery collapse
+   * This is temp code: adding jquery collapse
    * tmw: 2019/01/12
    */
   if ($path == '/node/169') {

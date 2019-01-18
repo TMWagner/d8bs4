@@ -11,3 +11,42 @@
 .navbar-inverse .navbar-brand {
     color: #9d9d9d;
 }
+
+
+
+/*** Specific for FP Quicklinks ***/
+
+.nav.quicklinks > li > a {
+    color: whitesmoke;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+
+}
+
+/*Should we change the icon or the whole a tag???*/
+/*We are dealing with the mobile view...*/
+.nav.quicklinks > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #EFB750CC;
+}
+
+.nav.quicklinks > .col-xs-3 {
+    padding: 1px;
+}
+
+#mobile-menu-doc {
+    background: url("/sites/default/files/2019-01/pubs_normal.png") no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    height: 28px;
+}
+
+.nav.quicklinks > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    text-align: center;
+}
+/*End Quicklinks code*/

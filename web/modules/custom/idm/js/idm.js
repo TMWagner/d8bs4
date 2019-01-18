@@ -11,7 +11,6 @@
   /* CODE GOES HERE  - Code Wrap*/
 
   $(document).ready(function(){
-
     $("fieldset.collapsible").collapsible({
       collapsed:true
     });
