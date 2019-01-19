@@ -2,10 +2,13 @@
 
 /*CSS strictly for Quicklinks bar on the Front page*/
 
-.nav.quicklinks > li > a:hover,
-.nav > li > a:focus {
+.nav.quicklinks > li > a:hover {
     text-decoration: none;
     background-color: #EFB750CC;
+}
+.nav.quicklinks > li > a:focus {
+    text-decoration: none;
+    background-color: #222;
 }
 
 .nav.quicklinks > .col-xs-3 {
@@ -18,7 +21,7 @@
 
 li.quicklink-item  > a {
     color: whitesmoke;
-    padding: .5em 0 1em 0 !important;
+    padding: .5em 0 .5em 0 !important;
 }
 
 #mobile-menu-pubs {
