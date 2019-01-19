@@ -1,0 +1,52 @@
+
+
+/*CSS strictly for Quicklinks bar on the Front page*/
+
+.nav.quicklinks > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: #EFB750CC;
+}
+
+.nav.quicklinks > .col-xs-3 {
+    padding: 1px;
+}
+
+.quicklinks > li {
+    text-align: center;
+}
+
+li.quicklink-item  > a {
+    color: whitesmoke;
+    padding: .5em 0 1em 0 !important;
+}
+
+#mobile-menu-pubs {
+    background: url("/sites/default/files/2019-01/pubs.png") no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    height: 35px;
+}
+
+#mobile-menu-docs {
+    background: url("/sites/default/files/2019-01/docs.png") no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    height: 35px;
+
+}
+
+#mobile-menu-careers {
+    background: url("/sites/default/files/2019-01/careers.png") no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    height: 35px;
+}
+
+#mobile-menu-projects {
+    background: url("/sites/default/files/2019-01/projects.png") no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    height: 35px;
+}
+/*End Quicklinks code*/
