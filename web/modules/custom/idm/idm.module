@@ -138,7 +138,7 @@ function idm_page_attachments(array &$attachments) {
   // If we're on the node listing page, add our retro library.
   //
 
-  //We need to define a library specific to the page functionality we want.
+  //We need to define a library specific to the home page (node 168)
   // NavTab is being used for the "How we work" block"
   if ($path == '/node/168') {
     $attachments['#attached']['library'][] = 'idm/navtab';
