@@ -82,20 +82,29 @@ h1,
   list-style: none;
 }
 
-.mega-dropdown-menu > li > ul > li > a {
+.mega-dropdown-menu > li > ul > li > a,
+.mega-dropdown-menu li > a {
   display: block;
-  padding: 3px 20px;
+  padding: .2em 0;
   clear: both;
   font-weight: normal;
   line-height: 1.428571429;
   color: #47C8F5;
   white-space: normal;
   text-transform: uppercase;
+  list-style-type: none;
 }
-.mega-dropdown-menu > li > ul > li > a:hover {
+
+.mega-dropdown-menu li {
+  list-style-type: none;
+}
+
+.mega-dropdown-menu > li > ul > li > a:hover,
+.mega-dropdown-menu  li > a:hover {
   color: #F1815E;
   text-decoration: none;
 }
+
 
 .mega-dropdown-menu > li ul > li > a:focus {
   text-decoration: none;
