@@ -28,11 +28,11 @@
   padding: 0px
 }
 
-.dropdown-menu.mega-dropdown-menu.row {
-  //background-color: $navbar-default-bg;
-  background-color: #2A2427;
-  padding-bottom: 1em;
-}
+//.dropdown-menu.mega-dropdown-menu.row {
+//  //background-color: $navbar-default-bg;
+//  background-color: #2A2427;
+//  padding-bottom: 1em;
+//}
 
 
 // Navbar heading
@@ -455,6 +455,20 @@
       }
     }
   }
+
+  //debug
+  .navbar-default .navbar-nav > li > a {
+    color: #FFFFFF;
+    background-color: blue !important;
+  }
+
+  //.navbar-nav > .open > a:focus {
+  //  background-color: #8c8787e6 !important;
+  //  border-top-left-radius: 10% 10px;
+  //  border-top-right-radius: 10% 10px;
+  //  //background-position: top;
+  //  //top: 10px;
+  //}
 
   .navbar-toggle {
     border-color: $navbar-default-toggle-border-color;

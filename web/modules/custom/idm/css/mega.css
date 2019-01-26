@@ -39,7 +39,7 @@ h1,
 }
 
 .dropdown.mega-dropdown.mega-dropdown-button {
-/* 	width: 100px;*/
+  width: 8em;
 }
 
 .mega-dropdown-menu {
@@ -124,4 +124,20 @@ h1,
 
 .mega-dropdown-menu .form-group {
   margin-bottom: 3px;
+}
+
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #3c3939 !important;
+  /*border-top-left-radius: 10% 10px;*/
+  /*border-top-right-radius: 10% 10px;*/
+}
+
+.dropdown-menu.mega-dropdown-menu.row {
+  background-color: #3c3939;
+  padding-bottom: 1em;
+}
+
+.idm-main-menu > .mega-dropdown-menu {
+  position: absolute;
+  top: 85%;
 }
