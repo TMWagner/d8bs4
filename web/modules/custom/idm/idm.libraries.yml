@@ -30,12 +30,14 @@ navtab:
 # This is really test code for the fieldset UI
 jqcollapse:
   version: 1.x
-  css:
-    base:
-      css/jquery-collapsible-fieldset.css: {}
-    theme:
-      css/quicklinks.css: {}
+#  css:
+#    base:
+#      css/jquery-collapsible-fieldset.css: {}
+#    theme:
+#      css/quicklinks.css: {}
   js:
-    js/jquery-collapsible-fieldset.js: {}
+#    js/jquery-collapsible-fieldset.js: {}
+    js/tab.js: {}
   dependencies:
     - core/jquery
+    - core/jquery.once

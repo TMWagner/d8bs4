@@ -10,11 +10,11 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-  $(document).ready(function(){
-    $("fieldset.collapsible").collapsible({
-      collapsed:true
-    });
-  });
+  // $(document).ready(function(){
+  //   $("fieldset.collapsible").collapsible({
+  //     collapsed:true
+  //   });
+  // });
 
 
   /* END Code Wrap */

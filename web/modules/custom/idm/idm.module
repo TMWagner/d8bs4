@@ -38,29 +38,42 @@ function idm_theme() {
 }
 
 
-
 /**
- * Implements hook_user_format_name_alter
+ * Implements hook_views_pre_render().
+ * Inspiration: https://drupalium.com/articles/insert-replace-delete-rows-from-view-results
  *
- * @param $name
- * @param AccountInterface $account
+ * Purpose: insert/change/delete row inside views
  *
- * This works beautifully - but too well..
  */
-//function idm_user_format_name_alter(&$name, AccountInterface $account) {
+//function idm_views_pre_render(ViewExecutable $view) {
 //
-//  $temp = 1;
-//  $temp2 = $name;
+//  $debug = $view;
+//  $debug2 = $view->id();
+//  $k = 0;
+//  $counter = 0;
+//  $temp = [];
 //
-//  // Display the user's uid instead of name.
-//  if ($account
-//    ->id()) {
-//    $name = t('User @uid', [
-//      '@uid' => $account
-//        ->id(),
-//    ]);
+//  $nth_row = 4; // insert after nth row
+//  foreach ($view->result as $key => $value) {
+//    $debug_stop = $key;
+//    $temp = 'here we are';
+//    $test_index = $view->result;
+//    if ($k == $nth_row) {
+//
+//      $counter = $k;
+//      $tValue = new $value();
+//      $tValue->index = $k; // it is important to handle index properly
+//
+//      $temp = 'we are inside the loop';
+//
+//    }
+//    $k++;
 //  }
+//
+//
 //}
+
+
 
 /**
  * @param ViewExecutable $view

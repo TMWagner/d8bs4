@@ -49,7 +49,7 @@
 		});
 
 		function showHeading(buttonClicked) {
-			// console.log (" >> parameter is: " + buttonClicked);
+			console.log (" >> parameter is: " + buttonClicked);
 			switch(buttonClicked) {
 				case "tab1":
 					$("#heading1").removeClass("hidden");
