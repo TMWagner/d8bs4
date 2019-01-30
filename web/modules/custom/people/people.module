@@ -19,6 +19,7 @@ function people_help($route_name, RouteMatchInterface $route_match) {
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('IDM People/Team functions') . '</p>';
+      $output .= '<p>' . t('... first goal is to create a dynamic profile page');
       return $output;
 
     default:

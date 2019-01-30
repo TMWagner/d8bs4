@@ -1,0 +1,18 @@
+#Comments
+#
+
+people.content:
+  path: '/profile'
+  defaults:
+    _controller: 'Drupal\people\Controller\PeopleController::content'
+    -title: 'Hello big world'
+  requirements:
+    _permission: 'access content'
+
+
+people.arguments:
+  path: '/profile/{arg1}'
+  defaults:
+    _controller: '\Drupal\people\Controller\PeopleController::arguments'
+  requirements:
+    _permission: 'access content'

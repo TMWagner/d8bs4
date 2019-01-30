@@ -42,26 +42,17 @@ class PeopleController extends ControllerBase {
 
   public function arguments($arg1) {
 
-    $idmuser = \Drupal\user\Entity\User::load($arg1);
-    $display_username = $idmuser->getAccountName();
-
-    $current_user = user_load($user_id);
-
-//    $activeProfile = \Drupal::getContainer()
-//      ->get('entity_type.manager')
-//      ->getStorage('profile')
-//      ->loadByUser(User::load([$arg1]), '[profile_machine_name]');
-//
+    // Load the user profile
+    $userProfile = \Drupal\user\Entity\User::load($arg1);
 
 
+    //Get the values
+    $lastname = $userProfile->values["field_user_last_name"]["x-default"][0]["value"];  // Just comes up NULL
 
 
-//    $testval::values["field_user_first_name"]["x-default"][0]["value"];
+    // Get field data from that user.
+    $lastname = $userProfile->get('field_user_last_name')->value;
 
-    $firstname = $user->field_r_user_first_name->value;
-
-    $arrayFoo = (array) $idmuser;
-    $firstname_works = $arrayFoo["\0*\0values"]["field_user_first_name"]["x-default"][0]["value"];
 
 
 
@@ -82,7 +73,7 @@ class PeopleController extends ControllerBase {
 
     $render_array['page_example_arguments_firstname'] = [
       '#type' => 'markup',
-      '#markup' => $firstname_works,
+      '#markup' => $lastname,
       '#prefix' => '<div><h1>',
       '#suffix' => '</h1></div>',
     ];
