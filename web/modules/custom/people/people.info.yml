@@ -1,0 +1,5 @@
+name: 'People'
+type: module
+description: 'IDM People/Team functions'
+core: 8.x
+package: 'Custom'

@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains people.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+
+/**
+ * Implements hook_help().
+ */
+function people_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the people module.
+    case 'help.page.people':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('IDM People/Team functions') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function people_theme() {
+  return [
+    'people' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+
