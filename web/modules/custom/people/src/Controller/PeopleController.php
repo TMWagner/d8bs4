@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: thomaswagner
  * Date: 2019-01-27
- * Time: 10:10
+ * Time: 10:10.
  *
  * Render properties:
  * https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21RenderElement.php/class/RenderElement/8.6.x
@@ -12,6 +12,8 @@
 namespace Drupal\people\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Url;
+//use \Symfony\Component\HttpFoundation\Response;
 
 
 /**
@@ -28,40 +30,28 @@ class PeopleController extends ControllerBase {
    */
   public function content() {
 
-    $current_user = \Drupal::currentUser();
-
-    $current_user_name = $current_user->getDisplayName();
-
-    return [
+    $render_array['page'] = [
       '#type' => 'markup',
-      '#markup' => $this->t($current_user_name),
+      '#markup' => 'Profile page',
       '#prefix' => '<div><h1>',
       '#suffix' => '</h1></div>',
     ];
+    return $render_array;
   }
 
   public function arguments($arg1) {
-
-    // Load the user profile
+    // Load profile
     $userProfile = \Drupal\user\Entity\User::load($arg1);
 
-
-    //Get the values
-    $lastname = $userProfile->values["field_user_last_name"]["x-default"][0]["value"];  // Just comes up NULL
-
-
     // Get field data from that user.
+    $firstname = $userProfile->get('field_user_first_name')->value;
     $lastname = $userProfile->get('field_user_last_name')->value;
-
-
+    $title = $userProfile->get('field_user_title')->value;
+    $userpicture = $userProfile->get('user_picture')->value;
+    $videolink = $userProfile->get('field_user_video_link')->value;
 
 
     $list[] = $this->t("First number was @number.", ['@number' => $arg1]);
-//    $list[] = $this->t("Second number was @number.", ['@number' => $arg2]);
-//    $list[] = $this->t('The total was @number.', ['@number' => $arg1 + $arg2]);
-
-
-
 
     $render_array['page_example_arguments'] = [
       // The theme function to apply to the #items.
@@ -73,16 +63,23 @@ class PeopleController extends ControllerBase {
 
     $render_array['page_example_arguments_firstname'] = [
       '#type' => 'markup',
-      '#markup' => $lastname,
+      '#markup' => $firstname . ' ' . $lastname,
       '#prefix' => '<div><h1>',
       '#suffix' => '</h1></div>',
     ];
 
+    //Got this with drupal debug:router | grep 'publications'
+    $url = Url::fromRoute('view.publications_listings.publications_listing');
+    $render_array['page_link_test'] = [
+      '#title' => $this->t('Publications'),
+      '#type' => 'link',
+      '#url' => $url,
+      '#attributes' => array('class' => array('use-ajax', 'profile-button-bio')),
+    ];
+
 
     return $render_array;
+    //This strips out all the Drupal ish stuff and spits out only HTML
+//    return new Response(render($render_array));
   }
-
-
-
 }
-
