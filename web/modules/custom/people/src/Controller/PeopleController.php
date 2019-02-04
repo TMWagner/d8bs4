@@ -13,6 +13,7 @@ namespace Drupal\people\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
+
 //use \Symfony\Component\HttpFoundation\Response;
 
 
@@ -51,6 +52,17 @@ class PeopleController extends ControllerBase {
     $videolink = $userProfile->get('field_user_video_link')->value;
 
 
+    // Staff snippet.
+
+    $view = \Drupal\views\Views::getView('profile_basic_content');
+    $view->setDisplay('user_profile_desktop');
+//    $view->preExecute();
+    $view->setArguments(array($arg1));
+    $view->execute();
+
+    $variables['content'] = $view->buildRenderable('user_profile_desktop');
+
+
     $list[] = $this->t("First number was @number.", ['@number' => $arg1]);
 
     $render_array['page_example_arguments'] = [
@@ -59,6 +71,11 @@ class PeopleController extends ControllerBase {
       // The list itself.
       '#items' => $list,
       '#title' => $this->t('Argument Information'),
+    ];
+
+    $render_array['page_test'] = [
+      '#theme' => 'people_profile',
+      '#content' => $variables,
     ];
 
     $render_array['page_example_arguments_firstname'] = [

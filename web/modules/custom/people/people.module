@@ -31,10 +31,22 @@ function people_help($route_name, RouteMatchInterface $route_match) {
  */
 function people_theme() {
   return [
-    'people' => [
-      'render element' => 'children',
+    'people_profile' => [
+      'variables' => [
+        'content' => ''
+      ],
     ],
   ];
 }
+//  Old theme
+//  2019/02/03
+//
+//function people_theme() {
+//  return [
+//    'people' => [
+//      'render element' => 'children',
+//    ],
+//  ];
+//}
 
 
