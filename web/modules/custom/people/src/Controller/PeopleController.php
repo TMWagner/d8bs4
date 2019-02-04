@@ -73,6 +73,7 @@ class PeopleController extends ControllerBase {
       '#title' => $this->t('Argument Information'),
     ];
 
+
     $render_array['page_test'] = [
       '#theme' => 'people_profile',
       '#content' => $variables,

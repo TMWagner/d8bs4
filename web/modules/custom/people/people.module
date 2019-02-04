@@ -26,6 +26,9 @@ function people_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
+
+
+
 /**
  * Implements hook_theme().
  */
@@ -38,15 +41,6 @@ function people_theme() {
     ],
   ];
 }
-//  Old theme
-//  2019/02/03
-//
-//function people_theme() {
-//  return [
-//    'people' => [
-//      'render element' => 'children',
-//    ],
-//  ];
-//}
+
 
 
