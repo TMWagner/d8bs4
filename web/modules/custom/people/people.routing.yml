@@ -4,7 +4,7 @@
 people.content:
   path: '/profile'
   defaults:
-    _controller: 'Drupal\people\Controller\PeopleController::content'
+    _controller: 'Drupal\people\Controller\PeopleController::noargs'
     _title: 'Hello big world'
   requirements:
     _permission: 'access content'
@@ -13,6 +13,6 @@ people.content:
 people.arguments:
   path: '/profile/{arg1}'
   defaults:
-    _controller: '\Drupal\people\Controller\PeopleController::arguments'
+    _controller: '\Drupal\people\Controller\PeopleController::profile'
   requirements:
     _permission: 'access content'

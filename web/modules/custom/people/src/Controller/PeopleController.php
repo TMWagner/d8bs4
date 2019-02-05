@@ -24,13 +24,14 @@ class PeopleController extends ControllerBase {
 
 
   /**
-   * Display the markup.
+   * Display the markup (This should not be called in production)
    *
    * @return array
    *   Return markup array.
    */
-  public function content() {
+  public function noargs() {
 
+    // Just dev/test content 
     $uid = '133';
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
@@ -57,12 +58,16 @@ class PeopleController extends ControllerBase {
     return $page;
   }
 
-  public function arguments($arg1) {
+  /**
+   * @param $arg1
+   *
+   * @return mixed
+   */
+  public function profile($arg1) {
 
     // Set view arguments
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
-
 
     // Load view object
     $view = \Drupal\views\Views::getView($profile_id);
@@ -102,6 +107,11 @@ class PeopleController extends ControllerBase {
 
   }
 
+  /**
+   * @param $uid
+   *
+   * @return mixed
+   */
   protected function people_bio($uid) {
     // Load profile
     $userProfile = \Drupal\user\Entity\User::load($uid);
@@ -110,8 +120,15 @@ class PeopleController extends ControllerBase {
     return $bio;
   }
 
+  /**
+   * @param $uid
+   *
+   * @return mixed
+   */
   private function people_publications($uid) {
-    // Set view arguments
+
+    //  http://d8/admin/structure/views/view/publications_listings
+    //  Set view arguments
     $profile_id = 'publications_listings';
     $display_id = 'publications_uid';
 
@@ -122,11 +139,6 @@ class PeopleController extends ControllerBase {
     $view->setArguments(array($uid));
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
-
-
-
-//    // Fetch publications tagged with $uid
-//    $variables['content'] = $this->t('list of publications');
 
     return $variables;
 

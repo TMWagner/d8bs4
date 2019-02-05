@@ -33,6 +33,8 @@ function people_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_theme().
  */
 function people_theme() {
+
+  // No idea if this really does anything
   return [
     'people_profile' => [
       'variables' => [
