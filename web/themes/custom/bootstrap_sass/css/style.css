@@ -10513,3 +10513,11 @@ h3.how-panel {
 .clearfix, .filter-wrapper {
   clear: both;
 }
+
+/* People/Team page
+ */
+/* line 186, ../scss/_custom.scss */
+.profile-video-container {
+  height: 250px;
+  width: 250px;
+}

@@ -58,8 +58,6 @@ class PeopleController extends ControllerBase {
   }
 
   public function arguments($arg1) {
-//    // Load profile
-//    $userProfile = \Drupal\user\Entity\User::load($arg1);
 
     // Set view arguments
     $profile_id = 'profile_basic_content';
@@ -74,20 +72,22 @@ class PeopleController extends ControllerBase {
     $variables['content'] = $view->buildRenderable($display_id);
 
 
-
-
-
-    $render_array['page_test'] = [
+    $render_array['page_basic'] = [
       '#theme' => 'people_profile',
       '#content' => $variables,
     ];
 
-//    $render_array['page_example_arguments_firstname'] = [
-//      '#type' => 'markup',
-//      '#markup' => $firstname . ' ' . $lastname,
-//      '#prefix' => '<div><h1>',
-//      '#suffix' => '</h1></div>',
-//    ];
+    $render_array['people']['bio'] = [
+      '#type' => 'markup',
+      '#markup' => $this->people_bio($arg1),
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    ];
+
+    $render_array['people']['publications'] = [
+      '#theme' => 'people_profile',
+      '#content' => $this->people_publications($arg1),
+    ];
 
     //Got this with drupal debug:router | grep 'publications'
     $url = Url::fromRoute('view.publications_listings.publications_listing');
@@ -98,9 +98,38 @@ class PeopleController extends ControllerBase {
       '#attributes' => array('class' => array('use-ajax', 'profile-button-bio')),
     ];
 
-
     return $render_array;
-    //This strips out all the Drupal ish stuff and spits out only HTML
-//    return new Response(render($render_array));
+
   }
+
+  protected function people_bio($uid) {
+    // Load profile
+    $userProfile = \Drupal\user\Entity\User::load($uid);
+    // Get field data from that user.
+    $bio = $userProfile->get('field_user_bio')->value;
+    return $bio;
+  }
+
+  private function people_publications($uid) {
+    // Set view arguments
+    $profile_id = 'publications_listings';
+    $display_id = 'publications_uid';
+
+    $uid = '152';
+    // Load view object
+    $view = \Drupal\views\Views::getView($profile_id);
+    $view->setDisplay('user_profile_desktop');
+    $view->setArguments(array($uid));
+    $view->execute();
+    $variables['content'] = $view->buildRenderable($display_id);
+
+
+
+//    // Fetch publications tagged with $uid
+//    $variables['content'] = $this->t('list of publications');
+
+    return $variables;
+
+  }
+
 }
