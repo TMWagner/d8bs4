@@ -30,8 +30,7 @@ class PeopleController extends ControllerBase {
    *   Return markup array.
    */
   public function noargs() {
-
-    // Just dev/test content 
+    // Just dev/test content
     $uid = '133';
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
@@ -59,11 +58,11 @@ class PeopleController extends ControllerBase {
   }
 
   /**
-   * @param $arg1
+   * @param $uid
    *
    * @return mixed
    */
-  public function profile($arg1) {
+  public function profile($uid) {
 
     // Set view arguments
     $profile_id = 'profile_basic_content';
@@ -72,7 +71,7 @@ class PeopleController extends ControllerBase {
     // Load view object
     $view = \Drupal\views\Views::getView($profile_id);
     $view->setDisplay('user_profile_desktop');
-    $view->setArguments(array($arg1));
+    $view->setArguments(array($uid));
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
 
@@ -84,27 +83,55 @@ class PeopleController extends ControllerBase {
 
     $render_array['people']['bio'] = [
       '#type' => 'markup',
-      '#markup' => $this->people_bio($arg1),
+      '#markup' => $this->people_bio($uid),
       '#prefix' => '<div>',
       '#suffix' => '</div>',
     ];
 
-    $render_array['people']['publications'] = [
-      '#theme' => 'people_profile',
-      '#content' => $this->people_publications($arg1),
-    ];
 
-    //Got this with drupal debug:router | grep 'publications'
-    $url = Url::fromRoute('view.publications_listings.publications_listing');
-    $render_array['page_link_test'] = [
-      '#title' => $this->t('Publications'),
+    //  Test Code (working): Renders profile filtered with $uid
+//    $render_array['profile']['basic'] = [
+//      '#theme' => 'people_profile',
+//      '#content' => $this->people_publications($uid),
+//    ];
+
+    //  Test Code
+    //  **** Got this with drupal debug:router | grep 'publications'
+    //  *** https://drupal.stackexchange.com/questions/144992/how-do-i-create-a-link
+//    $url = Url::fromRoute('view.publications_listings.publications_listing');
+
+    $url = Url::fromUri('internal:/profile/publications/' . $uid . '/nojs');
+
+    $render_array['people']['bio'] = [
+      '#title' => $this->t('Publications link'),
       '#type' => 'link',
       '#url' => $url,
       '#attributes' => array('class' => array('use-ajax', 'profile-button-bio')),
     ];
 
-    return $render_array;
 
+    //  Build \profile\bio\$uid\nojs
+
+    //  Build \profile\publications\$uid\nojs
+    $render_array['profile']['links']['publications'] = [
+      '#title' => $this->t('Publications'),
+      '#type' => 'link',
+//
+      '#url' => 'profile/publications/' . $uid . '/nojs',
+      '#attributes' => array('class' => array('use-ajax', 'profile-button-bio')),
+    ];
+
+    //  Build \profile\videos\$uid\nojs
+    $render_array['footer'] = [
+      '#type' => 'markup',
+      '#markup' => $this->t('footer'),
+      '#prefix' => '<div><h2>',
+      '#suffix' => '</h2></div>',
+    ];
+
+    //  Build \profile\contact\$uid\nojs
+
+    return $render_array;
   }
 
   /**

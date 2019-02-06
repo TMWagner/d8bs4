@@ -1,7 +1,7 @@
 #Comments
 #
 
-people.content:
+people.noargs:
   path: '/profile'
   defaults:
     _controller: 'Drupal\people\Controller\PeopleController::noargs'
@@ -10,9 +10,15 @@ people.content:
     _permission: 'access content'
 
 
-people.arguments:
-  path: '/profile/{arg1}'
+people.profile:
+  path: '/profile/{uid}'
   defaults:
     _controller: '\Drupal\people\Controller\PeopleController::profile'
   requirements:
     _permission: 'access content'
+
+#people.publications:
+      ##  path: '/profile/publications{uid}'
+      ##  defaults:
+    ##    _controller: 'Drupal\people\Controller\PeopleController::publications'
+    ##    _permission: 'access content'
