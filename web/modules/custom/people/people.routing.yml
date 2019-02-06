@@ -17,8 +17,16 @@ people.profile:
   requirements:
     _permission: 'access content'
 
-#people.publications:
-      ##  path: '/profile/publications{uid}'
-      ##  defaults:
-    ##    _controller: 'Drupal\people\Controller\PeopleController::publications'
-    ##    _permission: 'access content'
+# This route is for an AJAX callback. It is used by the AJAX system on
+# ajax_example.ajax_link_render. It has a {nojs} parameter, which gives us
+# a way to know whether the request is an AJAX request or is from some other
+# source.
+people.profile_ajax_link_callback:
+  path: '/profile/{option}/{uid}/{nojs}'
+  defaults:
+    _controller: '\Drupal\people\Controller\PeopleController::peopleAjaxLinkCallback'
+    # We provide a default value for {nojs}, so that it can be an optional
+    # parameter.
+    nojs: 'nojs'
+  requirements:
+    _permission: 'access content'

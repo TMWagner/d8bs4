@@ -13,21 +13,26 @@ namespace Drupal\people\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Symfony\Component\HttpFoundation\Response;
 
-//use \Symfony\Component\HttpFoundation\Response;
 
 
 /**
- * Defines HelloController class.
+ * Class PeopleController
+ *
+ * @package Drupal\people\Controller
  */
 class PeopleController extends ControllerBase {
-
 
   /**
    * Display the markup (This should not be called in production)
    *
    * @return array
    *   Return markup array.
+   *
+   * Note: This functions is probably not needed - delete?
    */
   public function noargs() {
     // Just dev/test content
@@ -75,51 +80,52 @@ class PeopleController extends ControllerBase {
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
 
-
+    //  Build the basic profile display
     $render_array['page_basic'] = [
       '#theme' => 'people_profile',
       '#content' => $variables,
     ];
-
-    $render_array['people']['bio'] = [
+    //  Build the initial bio - This will be replaced
+    $render_array['bio']['content'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
-      '#prefix' => '<div>',
+      '#prefix' => '<div id="people-bio-dynamic">',
       '#suffix' => '</div>',
     ];
 
+    //  Test for alternate bio elements
+    //    - Publications
+    //    - Video
 
-    //  Test Code (working): Renders profile filtered with $uid
-//    $render_array['profile']['basic'] = [
-//      '#theme' => 'people_profile',
-//      '#content' => $this->people_publications($uid),
-//    ];
-
-    //  Test Code
-    //  **** Got this with drupal debug:router | grep 'publications'
-    //  *** https://drupal.stackexchange.com/questions/144992/how-do-i-create-a-link
-//    $url = Url::fromRoute('view.publications_listings.publications_listing');
-
-    $url = Url::fromUri('internal:/profile/publications/' . $uid . '/nojs');
-
-    $render_array['people']['bio'] = [
-      '#title' => $this->t('Publications link'),
+    //  Build links as needed
+    // We build the AJAX link.
+    $render_array['ajax_link']['link'] = [
       '#type' => 'link',
-      '#url' => $url,
-      '#attributes' => array('class' => array('use-ajax', 'profile-button-bio')),
+      '#title' => $this->t('Click me - bozo'),
+      // We have to ensure that Drupal's Ajax system is loaded.
+      '#attached' => ['library' => ['core/drupal.ajax']],
+      // We add the 'use-ajax' class so that Drupal's AJAX system can spring
+      // into action.
+      '#attributes' => ['class' => ['use-ajax']],
+      // The URL for this link element is the callback. In our case, it's route
+      // ajax_example.ajax_link_callback, which maps to ajaxLinkCallback()
+      // below. The route has a /{nojs} section, which is how the callback can
+      // know whether the request was made by AJAX or some other means where
+      // JavaScript won't be able to handle the result. If the {nojs} part of
+      // the path is replaced with 'ajax', then the request was made by AJAX.
+      //
+      // Path comes from:
+      // //  **** Got this with drupal debug:router | grep 'publications'
+      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+        'option' => 'bio',
+        'uid' => '133',
+        'nojs' => 'ajax'
+      ]),
     ];
 
 
-    //  Build \profile\bio\$uid\nojs
 
-    //  Build \profile\publications\$uid\nojs
-    $render_array['profile']['links']['publications'] = [
-      '#title' => $this->t('Publications'),
-      '#type' => 'link',
-//
-      '#url' => 'profile/publications/' . $uid . '/nojs',
-      '#attributes' => array('class' => array('use-ajax', 'profile-button-bio')),
-    ];
+
 
     //  Build \profile\videos\$uid\nojs
     $render_array['footer'] = [
@@ -135,6 +141,7 @@ class PeopleController extends ControllerBase {
   }
 
   /**
+   * This function pulls the user bio from the user profile object
    * @param $uid
    *
    * @return mixed
@@ -148,6 +155,7 @@ class PeopleController extends ControllerBase {
   }
 
   /**
+   * This function loads the a view containing the publications filtered by user
    * @param $uid
    *
    * @return mixed
@@ -159,6 +167,7 @@ class PeopleController extends ControllerBase {
     $profile_id = 'publications_listings';
     $display_id = 'publications_uid';
 
+    //**** DEBUG / hardcoding uid to make sure we get publications ****
     $uid = '152';
     // Load view object
     $view = \Drupal\views\Views::getView($profile_id);
@@ -170,5 +179,37 @@ class PeopleController extends ControllerBase {
     return $variables;
 
   }
+
+  /**
+   * Callback for link example.
+   *
+   * Takes different logic paths based on whether Javascript was enabled.
+   * If $type == 'ajax', it tells this function that ajax.js has rewritten
+   * the URL and thus we are doing an AJAX and can return an array of commands.
+   *
+   * @param string $nojs
+   *   Either 'ajax' or 'nojs. Type is simply the normal URL argument to this
+   *   URL.
+   *
+   * @return string|array
+   *   If $type == 'ajax', returns an array of AJAX Commands.
+   *   Otherwise, just returns the content, which will end up being a page.
+   */
+  public function peopleAjaxLinkCallback($option, $uid, $nojs = 'ajax') {
+    // Determine whether the request is coming from AJAX or not.
+    if ($nojs == 'ajax') {
+      $output = $this->t("This is some content delivered via AJAX!");
+      $response = new AjaxResponse();
+      $response->addCommand(new ReplaceCommand('#people-bio-dynamic', $output));
+      return $response;
+    }
+    // no-ajax response
+    $response = new Response($this->t("This is some content delivered via a page load."));
+    return $response;
+  }
+
+
+
+
 
 }
