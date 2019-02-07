@@ -97,11 +97,22 @@ class PeopleController extends ControllerBase {
     //    - Publications
     //    - Video
 
-    //  Build links as needed
-    // We build the AJAX link.
+    // Publications test
+    $name = 'publications_listings';
+    $display_id = 'publications_uid';
+    $publications = TRUE;
+    $test_for_publications = views_get_view_result($name, $display_id, $uid);
+    if (empty($test_for_publications)) {
+      $publications = FALSE;
+    }
+    //  Test two
+    $result = $this->people_publications($uid);
+
+
+    //  Build AJAX links as needed
     $render_array['ajax_link']['link'] = [
       '#type' => 'link',
-      '#title' => $this->t('Click me - bozo'),
+      '#title' => $this->t('Click me to load the publications'),
       // We have to ensure that Drupal's Ajax system is loaded.
       '#attached' => ['library' => ['core/drupal.ajax']],
       // We add the 'use-ajax' class so that Drupal's AJAX system can spring
@@ -114,20 +125,35 @@ class PeopleController extends ControllerBase {
       // JavaScript won't be able to handle the result. If the {nojs} part of
       // the path is replaced with 'ajax', then the request was made by AJAX.
       //
-      // Path comes from:
-      // //  **** Got this with drupal debug:router | grep 'publications'
+      // Path source from: drupal debug:router | grep 'publications'
       '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
-        'option' => 'bio',
-        'uid' => '133',
+        'option' => 'publications',
+        'uid' => $uid,
         'nojs' => 'ajax'
       ]),
     ];
 
 
+    /**
+     * Build temporary publications
+     */
+    $view_name = 'publications_listings';
+
+    $display_id = 'publications_uid';
+
+    // Load view object
+    $view = \Drupal\views\Views::getView($view_name);
+    $view->setDisplay($display_id);
+    $view->setArguments(array($uid));
+    $view->execute();
+    $variables['content'] = $view->buildRenderable($display_id);
+    $render_array['publications_dev'] = [
+      '#theme' => 'people_profile',
+      '#content' => $variables,
+    ];
 
 
 
-    //  Build \profile\videos\$uid\nojs
     $render_array['footer'] = [
       '#type' => 'markup',
       '#markup' => $this->t('footer'),
@@ -167,8 +193,6 @@ class PeopleController extends ControllerBase {
     $profile_id = 'publications_listings';
     $display_id = 'publications_uid';
 
-    //**** DEBUG / hardcoding uid to make sure we get publications ****
-    $uid = '152';
     // Load view object
     $view = \Drupal\views\Views::getView($profile_id);
     $view->setDisplay('user_profile_desktop');
@@ -177,7 +201,6 @@ class PeopleController extends ControllerBase {
     $variables['content'] = $view->buildRenderable($display_id);
 
     return $variables;
-
   }
 
   /**
@@ -198,6 +221,12 @@ class PeopleController extends ControllerBase {
   public function peopleAjaxLinkCallback($option, $uid, $nojs = 'ajax') {
     // Determine whether the request is coming from AJAX or not.
     if ($nojs == 'ajax') {
+
+      //Decide which bio option we are going to load
+
+//      $output = $this->people_publications($uid);
+
+
       $output = $this->t("This is some content delivered via AJAX!");
       $response = new AjaxResponse();
       $response->addCommand(new ReplaceCommand('#people-bio-dynamic', $output));
@@ -207,9 +236,5 @@ class PeopleController extends ControllerBase {
     $response = new Response($this->t("This is some content delivered via a page load."));
     return $response;
   }
-
-
-
-
 
 }
