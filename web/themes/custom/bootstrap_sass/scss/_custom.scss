@@ -187,3 +187,31 @@ h3.how-panel {
   height: 250px;
   width: 250px;
 }
+
+
+//Some temporary formatting
+//2019/2/7
+.profile_bio_static {
+  float: left;
+}
+.profile-bio-link-wrap.not-mobile-display {
+  margin-top: 2em;
+}
+.profile_bio_static {
+  margin-right: 1em;
+}
+
+
+.people_bio_dynamic {
+  overflow-y: scroll;
+  height: 300px;
+}
+.people_bio_link {
+  margin-top: 2em;
+}
+
+.profile-swap {
+  background-color: lightblue;
+}
+
+// End temp formatting

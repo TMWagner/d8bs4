@@ -81,16 +81,28 @@ class PeopleController extends ControllerBase {
     $variables['content'] = $view->buildRenderable($display_id);
 
     //  Build the basic profile display
-    $render_array['page_basic'] = [
+    $render_array['basic_profile'] = array (
+      '#type' => 'container',
+//      '#attributes' => array(
+//        'class' => 'accommodation',
+//      ),
+      '#prefix' => '<div class="profile-bio-link-wrap not-mobile-display">',
+      '#suffix' => '</div>',
+
+    );
+
+    $render_array['basic_profile']['basic_profile_static'] = [
       '#theme' => 'people_profile',
       '#content' => $variables,
+      '#prefix' => '<div class="profile_bio_static">',
+      '#suffix' => '</div>',
     ];
     //  Build the initial bio - This will be replaced
-    $render_array['bio']['content'] = [
+    $render_array['basic_profile']['basic_profile_dynamic'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
-      '#prefix' => '<div id="people-bio-dynamic">',
-      '#suffix' => '</div>',
+      '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+      '#suffix' => '</div></div>',
     ];
 
     //  Test for alternate bio elements
@@ -100,23 +112,29 @@ class PeopleController extends ControllerBase {
     // Publications test
     $name = 'publications_listings';
     $display_id = 'publications_uid';
+
+    //  Test one
     $publications = TRUE;
     $test_for_publications = views_get_view_result($name, $display_id, $uid);
     if (empty($test_for_publications)) {
       $publications = FALSE;
     }
-    //  Test two
+    //  Test two  (this will return null if no publications
     $result = $this->people_publications($uid);
 
 
-    //  Build AJAX links as needed
+    /**
+     * Build conditional AJAX links as needed
+     */
+
+    //Check for Publications
+
+    // Make this a service?  and pass single parameter?
     $render_array['ajax_link']['link'] = [
       '#type' => 'link',
       '#title' => $this->t('Click me to load the publications'),
       // We have to ensure that Drupal's Ajax system is loaded.
-      '#attached' => ['library' => ['core/drupal.ajax']],
-      // We add the 'use-ajax' class so that Drupal's AJAX system can spring
-      // into action.
+      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
       '#attributes' => ['class' => ['use-ajax']],
       // The URL for this link element is the callback. In our case, it's route
       // ajax_example.ajax_link_callback, which maps to ajaxLinkCallback()
@@ -131,37 +149,21 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
+      '#prefix' => '<div class="people-bio-links">',
+      '#suffix' => '</div>',
     ];
+
 
 
     /**
-     * Build temporary publications
+     * Dev: Temporary Footer
      */
-    $view_name = 'publications_listings';
-
-    $display_id = 'publications_uid';
-
-    // Load view object
-    $view = \Drupal\views\Views::getView($view_name);
-    $view->setDisplay($display_id);
-    $view->setArguments(array($uid));
-    $view->execute();
-    $variables['content'] = $view->buildRenderable($display_id);
-    $render_array['publications_dev'] = [
-      '#theme' => 'people_profile',
-      '#content' => $variables,
-    ];
-
-
-
-    $render_array['footer'] = [
+    $render_array['dev_footer'] = [
       '#type' => 'markup',
       '#markup' => $this->t('footer'),
       '#prefix' => '<div><h2>',
       '#suffix' => '</h2></div>',
     ];
-
-    //  Build \profile\contact\$uid\nojs
 
     return $render_array;
   }
@@ -190,12 +192,12 @@ class PeopleController extends ControllerBase {
 
     //  http://d8/admin/structure/views/view/publications_listings
     //  Set view arguments
-    $profile_id = 'publications_listings';
+    $view_name = 'publications_listings';
     $display_id = 'publications_uid';
 
     // Load view object
-    $view = \Drupal\views\Views::getView($profile_id);
-    $view->setDisplay('user_profile_desktop');
+    $view = \Drupal\views\Views::getView($view_name);
+    $view->setDisplay($display_id);
     $view->setArguments(array($uid));
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
@@ -224,12 +226,12 @@ class PeopleController extends ControllerBase {
 
       //Decide which bio option we are going to load
 
-//      $output = $this->people_publications($uid);
+      $output = $this->people_publications($uid);
 
-
-      $output = $this->t("This is some content delivered via AJAX!");
+      
       $response = new AjaxResponse();
-      $response->addCommand(new ReplaceCommand('#people-bio-dynamic', $output));
+      $response->addCommand(new ReplaceCommand('.profile-swap', $output));
+
       return $response;
     }
     // no-ajax response

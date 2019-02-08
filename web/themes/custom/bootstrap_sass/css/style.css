@@ -10521,3 +10521,34 @@ h3.how-panel {
   height: 250px;
   width: 250px;
 }
+
+/* line 194, ../scss/_custom.scss */
+.profile_bio_static {
+  float: left;
+}
+
+/* line 197, ../scss/_custom.scss */
+.profile-bio-link-wrap.not-mobile-display {
+  margin-top: 2em;
+}
+
+/* line 200, ../scss/_custom.scss */
+.profile_bio_static {
+  margin-right: 1em;
+}
+
+/* line 205, ../scss/_custom.scss */
+.people_bio_dynamic {
+  overflow-y: scroll;
+  height: 300px;
+}
+
+/* line 209, ../scss/_custom.scss */
+.people_bio_link {
+  margin-top: 2em;
+}
+
+/* line 213, ../scss/_custom.scss */
+.profile-swap {
+  background-color: lightblue;
+}

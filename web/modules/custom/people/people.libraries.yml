@@ -1,0 +1,6 @@
+profile:
+  version: 1.x
+  js:
+    js/people.js: {}
+  dependencies:
+    - core/jquery
