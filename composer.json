@@ -33,6 +33,7 @@
         "drupal/migrate_tools": "^4.0",
         "drupal/paragraphs": "^1.5",
         "drupal/token": "^1.5",
+        "drupal/views_contact_form": "^1.0",
         "drush/drush": "^9.5",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",

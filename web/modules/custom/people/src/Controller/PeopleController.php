@@ -27,12 +27,9 @@ use Symfony\Component\HttpFoundation\Response;
 class PeopleController extends ControllerBase {
 
   /**
-   * Display the markup (This should not be called in production)
-   *
-   * @return array
-   *   Return markup array.
-   *
-   * Note: This functions is probably not needed - delete?
+   * @return mixed
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function noargs() {
     // Just dev/test content
@@ -52,10 +49,19 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     );
 
+    $nid = 169;
+    $entity_type = 'node';
+    $view_mode = 'teaser';
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
+    $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
+    $node = $storage->load($nid);
+    $build = $view_builder->view($node, $view_mode);
+    $output = render($build);
 
-    $render_array['page'] = [
+
+    $page['page'] = [
       '#type' => 'markup',
-      '#markup' => 'Profile page',
+      '#markup' => $output,
       '#prefix' => '<div><h1>',
       '#suffix' => '</h1></div>',
     ];
