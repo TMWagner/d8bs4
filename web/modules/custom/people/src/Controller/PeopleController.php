@@ -58,6 +58,21 @@ class PeopleController extends ControllerBase {
     $build = $view_builder->view($node, $view_mode);
     $output = render($build);
 
+    $block_id = 'bootstrap_sass_powered';
+    $entity_type = 'block';
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
+    $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
+    $node = $storage->load($block_id);
+    $build = $view_builder->view($node);
+    $output = render($build);
+
+
+//    $block = \Drupal::entityTypeManager()->getStorage('block')->load('myblock');
+//    $build['myblock'] =  \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
+//
+//    $block = \Drupal::entityTypeManager()->getStorage('block');
+//    $block->load('bootstrap_sass_powered');
+//    $build['bootstrap_sass_powered'] = \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
 
     $page['page'] = [
       '#type' => 'markup',
