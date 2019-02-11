@@ -70,6 +70,20 @@
 #}
 
 {% block head %}
+        {#Begin Custom#}
+        {# navigation_idm #}
+        {% if page.navigation_idm %}
+            {% block navigation_idm %}
+                {{ page.navigation_idm}}
+            {% endblock %}
+        {% endif %}
+        {# banner_idm #}
+        {% if page.banner_idm %}
+            {% block banner_idm %}
+                {{ page.banner_idm}}
+            {% endblock %}
+        {% endif %}
+        {#End custom#}
         {% if page.secondary_menu or page.top_header or page.top_header_form %}
           <nav{{ navbar_top_attributes }}>
           {% if container_navbar %}
