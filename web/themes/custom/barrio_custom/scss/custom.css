@@ -1,0 +1,183 @@
+.test_scss {
+  background-color: hotpink; }
+
+.navbar-default {
+  background-color: #898989; }
+
+.navbar-default {
+  background-color: #222;
+  border-color: #111111;
+  padding: 0.5em 0 0.5em 0; }
+
+.container-fluid.full-width {
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden; }
+
+.row.row-no-gutter {
+  margin: 0; }
+
+.row.row-no-gutter [class*="col-"] {
+  padding: 0; }
+
+.img-full-width {
+  width: 100.5%;
+  height: auto; }
+
+.has-inner .row.row-no-gutter {
+  margin-left: -10px;
+  margin-right: -10px; }
+
+.row.row-no-gutter .inner {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.jumbotron {
+  padding: 0; }
+
+p.banner-left {
+  color: white;
+  font-size: 1.4rem; }
+
+.highlight {
+  font-size: 2.5rem;
+  color: #EFB750; }
+
+.idm-banner {
+  color: white; }
+
+.center-content {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center; }
+
+.banner-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+
+.dropdown-menu > .col-md-6 {
+  padding-bottom: 1em; }
+
+.left-column-seperator {
+  border-right: thin solid #F09B57; }
+
+.mega-dropdown a:focus::after {
+  background: none repeat scroll 0 0 #F1815E;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 10px; }
+
+.mega-dropdown-menu a {
+  color: red; }
+
+/*
+ * Hero/Carosel image
+ */
+.hero {
+  background-color: #c0bdc2;
+  width: 100vw;
+  height: 28vw;
+  position: relative; }
+
+.bg {
+  /* The image used */
+  background-image: url("http://idmod.org/sites/default/files/seattle_1920.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+/* bottom left navbar */
+.bg-gold {
+  background-color: #EFB750CC;
+  border-radius: 0px 10px 0px 0px; }
+
+#nav-gold > li > a {
+  color: white; }
+
+#nav-gold > li > a:hover {
+  color: black;
+  background-color: #EFB750CC; }
+
+.navbar.navbar-default.visible-xs.quicklinks {
+  background-color: #EFB750CC; }
+
+.quicklinks-bar > li > a {
+  color: white; }
+
+.quicklinks-bar > li > a:hover {
+  color: black;
+  background-color: #EFB750CC; }
+
+.mobile-quicklinks .navbar-brand {
+  font-size: 14px;
+  text-transform: none; }
+
+/* How we work panel
+ */
+.nav-tabs-dropdown.how-panel {
+  display: none;
+  border-bottom-left-radius: 0; }
+
+hr {
+  width: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #337ab7;
+  opacity: 0.9;
+  height: 5px; }
+
+hr.how-panel {
+  color: grey;
+  width: 2em;
+  margin-right: 2em;
+  margin-top: 10px; }
+
+h2.how-panel {
+  color: grey; }
+
+h3.how-panel {
+  margin-top: 0px;
+  color: #19c5ff; }
+
+.how-panel > .well {
+  background: none;
+  border: 0px;
+  box-shadow: none; }
+
+.clearfix {
+  clear: both; }
+
+/* People/Team page
+ */
+.profile-video-container {
+  height: 250px;
+  width: 250px; }
+
+.profile_bio_static {
+  float: left; }
+
+.profile-bio-link-wrap.not-mobile-display {
+  margin-top: 2em; }
+
+.profile_bio_static {
+  margin-right: 1em; }
+
+.people_bio_dynamic {
+  overflow-y: scroll;
+  height: 300px; }
+
+.people_bio_link {
+  margin-top: 2em; }
+
+.profile-swap {
+  background-color: lightblue; }
+
+/*# sourceMappingURL=custom.css.map */

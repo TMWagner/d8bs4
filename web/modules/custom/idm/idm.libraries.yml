@@ -4,13 +4,17 @@ idm:
     layout:
       css/colorbox.css: {}
       css/mega.css: {}
+      css/mega_style.css: {}
     theme:
       css/colorbox.css: {}
       css/mega.css: {}
+      css/mega_style.css: {}
   js:
     js/jquery.colorbox-min.js: {minified: true}
     js/idm.js: {}
     js/mega.js: {}
+    js/megamenu.js: {}
+
   dependencies:
     - core/jquery
 

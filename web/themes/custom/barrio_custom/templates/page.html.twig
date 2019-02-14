@@ -73,15 +73,19 @@
         {#Begin Custom#}
         {# navigation_idm #}
         {% if page.navigation_idm %}
-            {% block navigation_idm %}
-                {{ page.navigation_idm}}
-            {% endblock %}
+            <div class="container-fluid p-0">
+                {% block navigation_idm %}
+                    {{ page.navigation_idm}}
+                {% endblock %}
+            </div>
         {% endif %}
         {# banner_idm #}
         {% if page.banner_idm %}
-            {% block banner_idm %}
-                {{ page.banner_idm}}
-            {% endblock %}
+            <div class="jumbotron">
+                {% block banner_idm %}
+                    {{ page.banner_idm}}
+                {% endblock %}
+            </div>
         {% endif %}
         {#End custom#}
         {% if page.secondary_menu or page.top_header or page.top_header_form %}

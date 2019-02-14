@@ -1,5 +1,0 @@
-# Schema for the theme setting configuration file of the IDM Bootstrap3 SASS theme.
-
-bootstrap_sass.settings:
-  type: theme_settings
-  label: 'IDM Bootstrap SASS settings'

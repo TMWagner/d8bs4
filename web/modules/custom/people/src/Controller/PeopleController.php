@@ -94,6 +94,7 @@ class PeopleController extends ControllerBase {
     $display_id = 'user_profile_desktop';
 
     // Load view object
+    // Need gracefull recovery if View doesn't exist
     $view = \Drupal\views\Views::getView($profile_id);
     $view->setDisplay('user_profile_desktop');
     $view->setArguments(array($uid));

@@ -1,0 +1,265 @@
+/* line 23, ../scss/custom.scss */
+.test_scss {
+  background-color: hotpink;
+}
+
+/* line 29, ../scss/custom.scss */
+.navbar-default {
+  background-color: #898989;
+}
+
+/* line 32, ../scss/custom.scss */
+.navbar-default {
+  background-color: #222;
+  border-color: #111111;
+  padding: 0.5em 0 0.5em 0;
+}
+
+/* line 39, ../scss/custom.scss */
+.container-fluid.full-width {
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
+}
+
+/* line 44, ../scss/custom.scss */
+.row.row-no-gutter {
+  margin: 0;
+}
+
+/* line 47, ../scss/custom.scss */
+.row.row-no-gutter [class*="col-"] {
+  padding: 0;
+}
+
+/* line 50, ../scss/custom.scss */
+.img-full-width {
+  width: 100.5%;
+  height: auto;
+}
+
+/* line 54, ../scss/custom.scss */
+.has-inner .row.row-no-gutter {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/* line 58, ../scss/custom.scss */
+.row.row-no-gutter .inner {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* line 63, ../scss/custom.scss */
+.jumbotron {
+  padding: 0;
+}
+
+/* line 66, ../scss/custom.scss */
+p.banner-left {
+  color: white;
+  font-size: 1.4rem;
+}
+
+/* line 70, ../scss/custom.scss */
+.highlight {
+  font-size: 2.5rem;
+  color: #EFB750;
+}
+
+/* line 74, ../scss/custom.scss */
+.idm-banner {
+  color: white;
+}
+
+/* line 78, ../scss/custom.scss */
+.center-content {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+/* line 84, ../scss/custom.scss */
+.banner-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* line 90, ../scss/custom.scss */
+.dropdown-menu > .col-md-6 {
+  padding-bottom: 1em;
+}
+
+/* line 94, ../scss/custom.scss */
+.left-column-seperator {
+  border-right: thin solid #F09B57;
+}
+
+/* line 99, ../scss/custom.scss */
+.mega-dropdown a:focus::after {
+  background: none repeat scroll 0 0 #F1815E;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 10px;
+}
+
+/* line 109, ../scss/custom.scss */
+.mega-dropdown-menu a {
+  color: red;
+}
+
+/*
+ * Hero/Carosel image
+ */
+/* line 116, ../scss/custom.scss */
+.hero {
+  background-color: #c0bdc2;
+  width: 100vw;
+  height: 28vw;
+  position: relative;
+}
+
+/* line 122, ../scss/custom.scss */
+.bg {
+  /* The image used */
+  background-image: url("http://idmod.org/sites/default/files/seattle_1920.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* bottom left navbar */
+/* line 136, ../scss/custom.scss */
+.bg-gold {
+  background-color: #EFB750CC;
+  border-radius: 0px 10px 0px 0px;
+}
+
+/* line 141, ../scss/custom.scss */
+#nav-gold > li > a {
+  color: white;
+}
+
+/* line 144, ../scss/custom.scss */
+#nav-gold > li > a:hover {
+  color: black;
+  background-color: #EFB750CC;
+}
+
+/* line 149, ../scss/custom.scss */
+.navbar.navbar-default.visible-xs.quicklinks {
+  background-color: #EFB750CC;
+}
+
+/* line 152, ../scss/custom.scss */
+.quicklinks-bar > li > a {
+  color: white;
+}
+
+/* line 155, ../scss/custom.scss */
+.quicklinks-bar > li > a:hover {
+  color: black;
+  background-color: #EFB750CC;
+}
+
+/* line 160, ../scss/custom.scss */
+.mobile-quicklinks .navbar-brand {
+  font-size: 14px;
+  text-transform: none;
+}
+
+/* How we work panel
+ */
+/* line 168, ../scss/custom.scss */
+.nav-tabs-dropdown.how-panel {
+  display: none;
+  border-bottom-left-radius: 0;
+}
+
+/* line 172, ../scss/custom.scss */
+hr {
+  width: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #337ab7;
+  opacity: 0.9;
+  height: 5px;
+}
+
+/* line 181, ../scss/custom.scss */
+hr.how-panel {
+  color: grey;
+  width: 2em;
+  margin-right: 2em;
+  margin-top: 10px;
+}
+
+/* line 187, ../scss/custom.scss */
+h2.how-panel {
+  color: grey;
+}
+
+/* line 190, ../scss/custom.scss */
+h3.how-panel {
+  margin-top: 0px;
+  color: #19c5ff;
+}
+
+/* line 196, ../scss/custom.scss */
+.how-panel > .well {
+  background: none;
+  border: 0px;
+  box-shadow: none;
+}
+
+/* line 204, ../scss/custom.scss */
+.clearfix {
+  clear: both;
+}
+
+/* People/Team page
+ */
+/* line 211, ../scss/custom.scss */
+.profile-video-container {
+  height: 250px;
+  width: 250px;
+}
+
+/* line 219, ../scss/custom.scss */
+.profile_bio_static {
+  float: left;
+}
+
+/* line 222, ../scss/custom.scss */
+.profile-bio-link-wrap.not-mobile-display {
+  margin-top: 2em;
+}
+
+/* line 225, ../scss/custom.scss */
+.profile_bio_static {
+  margin-right: 1em;
+}
+
+/* line 230, ../scss/custom.scss */
+.people_bio_dynamic {
+  overflow-y: scroll;
+  height: 300px;
+}
+
+/* line 234, ../scss/custom.scss */
+.people_bio_link {
+  margin-top: 2em;
+}
+
+/* line 238, ../scss/custom.scss */
+.profile-swap {
+  background-color: lightblue;
+}
