@@ -14,15 +14,13 @@
 // Color
 
 // Variables
-$primary-color: #ffd942;
 
-$navbar-dropdown-menu-link:  hotpink;
-
+@import "variables";
 
 
 //Navbar
 .navbar-default {
-  background-color: #898989;
+  background-color: $navbar_background;
 }
 .navbar-default {
   background-color: #222;
@@ -104,9 +102,6 @@ p.banner-left {
   width: 10px;
 }
 
-.mega-dropdown-menu a {
-  color: $navbar-dropdown-menu-link;
-}
 
 /*
  * Hero/Carosel image

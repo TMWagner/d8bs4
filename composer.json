@@ -36,7 +36,6 @@
         "drupal/token": "^1.5",
         "drupal/views_contact_form": "^1.0",
         "drush/drush": "^9.5",
-        "fortawesome/font-awesome": "^5.7",
         "twbs/bootstrap": "4.2.1",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
