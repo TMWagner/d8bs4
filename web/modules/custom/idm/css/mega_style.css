@@ -20,7 +20,18 @@ body {
 }
 
 a {
-    color: #333;
+    color: greenyellow;
+}
+
+.idm-main-menu-item {
+    text-decoration: none;
+    padding: 1.5em 3em;
+    display: block;
+
+}
+
+li.idm-main-menu-item {
+    padding: 1.5em 3em !important;
 }
 
 .description {
@@ -48,13 +59,47 @@ Screen style's
 .menu-container {
     width: 100%;
     margin: 0 auto;
-    background: #111111;;
+    background: #030303;
 }
 
 .menu-mobile {
     display: none;
     padding: 20px;
 }
+
+
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––
+Temporary main menu style
+
+@todo Remove / move to scss
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#main-nav-logo > a {
+    padding: 0;
+}
+
+/*This overrides another element... kind of sloppy
+/*@todo cleanup*/
+/**!*/
+li#main-nav-logo {
+    padding: 0 !important;
+}
+
+.navbar-brand > img {
+    margin-top: .75em;
+    margin-left: .5em;
+}
+
+li.menu-dropdown-icon > a {
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+.menu-dropdown-icon > a:hover, a:focus, .link:hover, .link:focus {
+    color: orange;
+}
+/* >>>> End Temp <<<<< */
+
+
 
 .menu-mobile:after {
     content: "\f394";
@@ -100,9 +145,10 @@ Screen style's
     clear: both;
 }
 
+/*Dropdown Menu color*/
 .menu > ul > li {
     float: left;
-    background: #111111;;
+    background: #030303;
     padding: 0;
     margin: 0;
 }
@@ -114,13 +160,13 @@ Screen style's
 }
 
 .menu > ul > li:hover {
-    background: #f0f0f0;
+    background: #272525;
 }
 
 .menu > ul > li > ul {
     display: none;
     width: 100%;
-    background: #f0f0f0;
+    background: #272525;
     padding: 20px;
     position: absolute;
     z-index: 99;
