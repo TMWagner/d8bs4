@@ -155,7 +155,7 @@ function idm_page_attachments(array &$attachments) {
   // NavTab is being used for the "How we work" block"
   if ($path == '/node/168') {
     $attachments['#attached']['library'][] = 'idm/navtab';
-    $temp = $attachments;
+    $attachments['#attached']['library'][] = 'idm/rvtab';
   };
 
   /**

@@ -29,6 +29,16 @@ navtab:
     js/navtab.js: {}
   dependencies:
     - core/jquery
+# RVtab  (for how we work)
+rvtab:
+  version: 1.x
+  css:
+    base:
+      css/rvtab.css: {}
+  js:
+    js/rvtab.js: {}
+  dependencies:
+    - core/jquery
 
 
 # This is really test code for the fieldset UI
