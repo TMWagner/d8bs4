@@ -60,10 +60,11 @@ class PeopleController extends ControllerBase {
 
     /**
      * Dev block: Creates a renderable object from a block
+     * Notes: Get the name of the profile by opening "configure block"
      * @todo Remove before production.
      */
 
-    $block_id = 'bootstrap_sass_powered';
+    $block_id = 'barrio_custom_powered';
     $entity_type = 'block';
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
     $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
