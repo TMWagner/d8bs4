@@ -131,6 +131,7 @@ p.banner-left {
 
 .bg-gold {
   background-color: #EFB750CC;
+  background-image: linear-gradient(to right, #F27A60,  #EFBD4F);
   border-radius: 0px 10px 0px 0px;
 }
 
@@ -156,6 +157,13 @@ p.banner-left {
 .mobile-quicklinks .navbar-brand {
   font-size: 14px;
   text-transform: none;
+}
+
+//Nav-main
+// @todo This this should not be showing up. Hiding for now
+
+#navbar-main {
+  display: none !important;
 }
 
 

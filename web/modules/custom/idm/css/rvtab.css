@@ -3,12 +3,6 @@
 body {
   background: #ccc;
   background: #fefefe;
-  background: -moz-radial-gradient(center, ellipse cover, #fefefe 0%, #e0e0e0 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #fefefe), color-stop(100%, #e0e0e0));
-  background: -webkit-radial-gradient(center, ellipse cover, #fefefe 0%, #e0e0e0 100%);
-  background: -o-radial-gradient(center, ellipse cover, #fefefe 0%, #e0e0e0 100%);
-  background: -ms-radial-gradient(center, ellipse cover, #fefefe 0%, #e0e0e0 100%);
-  background: radial-gradient(ellipse at center, #fefefe 0%, #e0e0e0 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e0e0e0',GradientType=1 ); }
 
 .tabs_wrapper {
@@ -43,17 +37,16 @@ ul.tabs {
     text-align: left;
     font-weight: bold;
     background-color: #666;
-    background-color: #d9d9d9; }
+    background-color: #d9d9d9;
+    color: #898989; }
     ul.tabs li:hover {
       background-color: #0a6eb4;
-      color: white;
-      -ms-transition: all .3s ease;
-      -webkit-transition: all .3s ease;
-      transition: all .3s ease; }
+      color: white; }
     ul.tabs li.active {
       background: rgba(9, 170, 211, 0.29);
       background: lightgrey;
-      color: #898989;
+      color: #00A000;
+      color: #0073A3;
       -ms-transition: all .3s ease;
       -webkit-transition: all .3s ease;
       transition: all .3s ease; }
@@ -93,6 +86,7 @@ ul.tabs {
   .tab_drawer_heading {
     background-color: #ccc;
     background-color: #d9d9d9;
+    color: #898989;
     color: #fff;
     margin: 0;
     padding: 5px 20px;

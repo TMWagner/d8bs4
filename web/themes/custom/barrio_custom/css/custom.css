@@ -94,6 +94,7 @@ p.banner-left {
 /* bottom left navbar */
 .bg-gold {
   background-color: #EFB750CC;
+  background-image: linear-gradient(to right, #F27A60, #EFBD4F);
   border-radius: 0px 10px 0px 0px; }
 
 #nav-gold > li > a {
@@ -116,6 +117,9 @@ p.banner-left {
 .mobile-quicklinks .navbar-brand {
   font-size: 14px;
   text-transform: none; }
+
+#navbar-main {
+  display: none !important; }
 
 /* How we work panel
  */

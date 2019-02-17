@@ -1,12 +1,7 @@
 /* Mixins */
 @mixin bg-gradient() {
   background: rgb(254,254,254);
-  background: -moz-radial-gradient(center, ellipse cover,  rgba(254,254,254,1) 0%, rgba(224,224,224,1) 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(254,254,254,1)), color-stop(100%,rgba(224,224,224,1)));
-  background: -webkit-radial-gradient(center, ellipse cover,  rgba(254,254,254,1) 0%,rgba(224,224,224,1) 100%);
-  background: -o-radial-gradient(center, ellipse cover,  rgba(254,254,254,1) 0%,rgba(224,224,224,1) 100%);
-  background: -ms-radial-gradient(center, ellipse cover,  rgba(254,254,254,1) 0%,rgba(224,224,224,1) 100%);
-  background: radial-gradient(ellipse at center,  rgba(254,254,254,1) 0%,rgba(224,224,224,1) 100%);
+
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e0e0e0',GradientType=1 );
 }
 @mixin tab-bg-gradient() {
@@ -22,7 +17,7 @@
 
 @mixin tab-bg-color() {
   background-color: #d9d9d9;
-  color: blue;
+  color: #898989;
 }
 
 
@@ -41,7 +36,7 @@
 @mixin tab-bg-active() {
   background: rgba(9, 170, 211, 0.29);
   background: lightgrey;
-  color:
+  color: #00A000;
 }
 
 @mixin tab-bg-gradient-hover() {
@@ -57,6 +52,7 @@
 
 @mixin tab-bg-hover() {
   background-color: #0a6eb4;
+  color: white;
 }
 
 @mixin tabs-transition() {
@@ -123,8 +119,6 @@ ul.tabs {
       //@include tab-bg-gradient-hover;
       @include tab-bg-hover();
 
-      color: $tab_text_color_hover;
-      //@include tabs-transition;
     }
     &.active {
       //@include tab-bg-gradient-active;
