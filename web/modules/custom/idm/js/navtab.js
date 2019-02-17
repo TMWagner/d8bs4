@@ -42,7 +42,6 @@
 		});
 
 		$('#nav-tabs-wrapper a[data-toggle="tab"]').on('click', function (e) {
-
 			showHeading(e.target.id);
 			e.preventDefault();
 			$(e.target).closest('ul').hide().prev('a').removeClass('open').text($(this).text());

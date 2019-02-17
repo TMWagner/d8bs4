@@ -220,6 +220,11 @@ h3.how-panel {
 
 //Some temporary formatting
 //2019/2/7
+
+.people-card {
+  width: 15rem;
+}
+
 .profile_bio_static {
   float: left;
 }
@@ -231,13 +236,7 @@ h3.how-panel {
 }
 
 
-.people_bio_dynamic {
-  overflow-y: scroll;
-  height: 300px;
-}
-.people_bio_link {
-  margin-top: 2em;
-}
+
 
 .profile-swap {
   background-color: lightblue;

@@ -162,6 +162,9 @@ h3.how-panel {
   height: 250px;
   width: 250px; }
 
+.people-card {
+  width: 15rem; }
+
 .profile_bio_static {
   float: left; }
 
@@ -170,13 +173,6 @@ h3.how-panel {
 
 .profile_bio_static {
   margin-right: 1em; }
-
-.people_bio_dynamic {
-  overflow-y: scroll;
-  height: 300px; }
-
-.people_bio_link {
-  margin-top: 2em; }
 
 .profile-swap {
   background-color: lightblue; }
