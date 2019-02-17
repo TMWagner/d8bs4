@@ -10,11 +10,10 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-  // $(document).ready(function(){
-  //   $("fieldset.collapsible").collapsible({
-  //     collapsed:true
-  //   });
-  // });
+  // Add Class for bootstrap 4 image processing
+  // Remove height and width (screws up the bootstrap functionality)
+  $(".people-photo > img").addClass("card-img-top").removeAttr("width height");
+
 
 
   /* END Code Wrap */

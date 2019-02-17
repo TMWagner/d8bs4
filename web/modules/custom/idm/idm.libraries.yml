@@ -2,15 +2,15 @@ idm:
   version: 1.x
   css:
     layout:
-      css/colorbox.css: {}
+#      css/colorbox.css: {}
 #      css/mega.css: {}
       css/mega_style.css: {}
     theme:
-      css/colorbox.css: {}
+#      css/colorbox.css: {}
 #      css/mega.css: {}
       css/mega_style.css: {}
   js:
-    js/jquery.colorbox-min.js: {minified: true}
+#    js/jquery.colorbox-min.js: {minified: true}
     js/idm.js: {}
 #    js/mega.js: {}
     js/megamenu.js: {}
@@ -39,6 +39,12 @@ rvtab:
     js/rvtab.js: {}
   dependencies:
     - core/jquery
+
+# IDM Utility
+utility:
+  version: 1.x
+  js:
+    js:
 
 
 # This is really test code for the fieldset UI

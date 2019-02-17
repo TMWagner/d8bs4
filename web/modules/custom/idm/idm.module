@@ -38,62 +38,6 @@ function idm_theme() {
 }
 
 
-/**
- * Implements hook_views_pre_render().
- * Inspiration: https://drupalium.com/articles/insert-replace-delete-rows-from-view-results
- *
- * Purpose: insert/change/delete row inside views
- *
- */
-//function idm_views_pre_render(ViewExecutable $view) {
-//
-//  $debug = $view;
-//  $debug2 = $view->id();
-//  $k = 0;
-//  $counter = 0;
-//  $temp = [];
-//
-//  $nth_row = 4; // insert after nth row
-//  foreach ($view->result as $key => $value) {
-//    $debug_stop = $key;
-//    $temp = 'here we are';
-//    $test_index = $view->result;
-//    if ($k == $nth_row) {
-//
-//      $counter = $k;
-//      $tValue = new $value();
-//      $tValue->index = $k; // it is important to handle index properly
-//
-//      $temp = 'we are inside the loop';
-//
-//    }
-//    $k++;
-//  }
-//
-//
-//}
-
-
-
-/**
- * @param ViewExecutable $view
- */
-//function idm_views_post_execute(ViewExecutable $view) {
-//
-//  // If there are more than 100 results, show a message that encourages the user
-//  // to change the filter settings.
-//  // (This action could be performed later in the execution process, but not
-//  // earlier.)
-//
-//  $temp = $view;
-//
-//  if ($view->total_rows > 11) {
-//    \Drupal::messenger()
-//      ->addStatus(t('You have more than 11 hits.'));
-//  }
-//}
-
-
 
 
 
@@ -165,7 +109,6 @@ function idm_page_attachments(array &$attachments) {
   if ($path == '/node/169') {
     $attachments['#attached']['library'][] = 'idm/jqcollapse';
   };
-
 
 }
 

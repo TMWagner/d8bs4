@@ -35,4 +35,13 @@ function barrio_custom_form_system_theme_settings_alter(&$form, FormStateInterfa
 }
 
 
-
+//function barrio_custom_preprocess_image(&$variables) {
+//
+//  $temp = $variables;
+//
+//  // Set class.
+//  //@todo A little heavy handed... I don't want to do this to all of the images
+//  $variables['attributes']['class'][] = 'card-img-top';
+//}
+//
+//
