@@ -273,8 +273,8 @@ class PeopleController extends ControllerBase {
 
           $output = $render_array['profile']['basic_profile_dynamic'] = [
             '#type' => 'markup',
-//            '#markup' => $this->people_bio($uid),
-            '#markup' => $this->t('Replaced content'),
+            '#markup' => $this->people_bio($uid),
+//            '#markup' => $this->t('Replaced content'),
             '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
             '#suffix' => '</div></div>',
           ];
