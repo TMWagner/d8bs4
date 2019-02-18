@@ -90,8 +90,6 @@ class PeopleController extends ControllerBase {
    */
   public function profile($uid) {
 
-
-
     // Set view arguments
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
@@ -105,27 +103,24 @@ class PeopleController extends ControllerBase {
     $variables['content'] = $view->buildRenderable($display_id);
 
     //  Build the basic profile display
-    $render_array['basic_profile'] = array (
+    //  Added "Row" to sibling DIV with "container.html.twig"
+    $render_array['profile'] = array (
       '#type' => 'container',
-//      '#attributes' => array(
-//        'class' => 'accommodation',
-//      ),
-      '#prefix' => '<div class="profile-bio-link-wrap not-mobile-display">',
+      '#prefix' => '<div class="profile-bio-link-wrap not-mobile-display container">',
       '#suffix' => '</div>',
-
     );
 
-    $render_array['basic_profile']['basic_profile_static'] = [
+    $render_array['profile']['profile_static'] = [
       '#theme' => 'people_profile',
       '#content' => $variables,
-      '#prefix' => '<div class="profile_bio_static">',
+      '#prefix' => '<div class="profile_bio_static col">',
       '#suffix' => '</div>',
     ];
     //  Build the initial bio - This will be replaced
-    $render_array['basic_profile']['basic_profile_dynamic'] = [
+    $render_array['profile']['profile_dynamic'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
-      '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+      '#prefix' => '<div class="people_bio_dynamic col"><div class="profile-swap">',
       '#suffix' => '</div></div>',
     ];
 
@@ -276,7 +271,7 @@ class PeopleController extends ControllerBase {
           //get the bio here
           //@todo Build out content and remember to add the div with class
 
-          $output = $render_array['basic_profile']['basic_profile_dynamic'] = [
+          $output = $render_array['profile']['basic_profile_dynamic'] = [
             '#type' => 'markup',
 //            '#markup' => $this->people_bio($uid),
             '#markup' => $this->t('Replaced content'),
@@ -289,14 +284,6 @@ class PeopleController extends ControllerBase {
           //Get publications
           //@todo Build out content and remember to add the div with class
           $output = $this->people_publications($uid);
-
-//          $output = $render_array['basic_profile']['basic_profile_dynamic'] = [
-//            '#type' => 'markup',
-//            '#markup' => $publications_view,
-//            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
-//            '#suffix' => '</div></div>',
-//          ];
-
 
           break;
         default:

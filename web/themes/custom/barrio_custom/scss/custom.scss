@@ -220,26 +220,29 @@ h3.how-panel {
 
 //Some temporary formatting
 //2019/2/7
+//@todo remove/move
+
+.profile-bio-link-wrap.not-mobile-display {
+  margin-top: 2em;
+  overflow: hidden;
+  max-width: 50rem;
+}
+
+.profile_bio_static.col {
+  background-color: beige;
+}
+.people_bio_dynamic {
+  background-color: lightblue;
+  overflow-y: scroll;
+  max-height: 25em;
+}
+
 
 .people-card {
   width: 15rem;
 }
 
-.profile_bio_static {
-  float: left;
-}
-.profile-bio-link-wrap.not-mobile-display {
-  margin-top: 2em;
-}
-.profile_bio_static {
-  margin-right: 1em;
-}
 
 
-
-
-.profile-swap {
-  background-color: lightblue;
-}
 
 // End temp formatting

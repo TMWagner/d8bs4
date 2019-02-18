@@ -162,19 +162,20 @@ h3.how-panel {
   height: 250px;
   width: 250px; }
 
+.profile-bio-link-wrap.not-mobile-display {
+  margin-top: 2em;
+  overflow: hidden;
+  max-width: 50rem; }
+
+.profile_bio_static.col {
+  background-color: beige; }
+
+.people_bio_dynamic {
+  background-color: lightblue;
+  overflow-y: scroll;
+  max-height: 25em; }
+
 .people-card {
   width: 15rem; }
-
-.profile_bio_static {
-  float: left; }
-
-.profile-bio-link-wrap.not-mobile-display {
-  margin-top: 2em; }
-
-.profile_bio_static {
-  margin-right: 1em; }
-
-.profile-swap {
-  background-color: lightblue; }
 
 /*# sourceMappingURL=custom.css.map */
