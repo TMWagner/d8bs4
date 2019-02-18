@@ -61,7 +61,7 @@ class PeopleController extends ControllerBase {
     /**
      * Dev block: Creates a renderable object from a block
      * Notes: Get the name of the profile by opening "configure block"
-     * @todo Remove before production.
+     * @todo Remove before production.  Also;  Should check to make sure block exists.
      */
 
     $block_id = 'barrio_custom_powered';
@@ -90,12 +90,14 @@ class PeopleController extends ControllerBase {
    */
   public function profile($uid) {
 
+
+
     // Set view arguments
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
 
     // Load view object
-    // Need gracefull recovery if View doesn't exist
+    // Need graceful recovery if View doesn't exist
     $view = \Drupal\views\Views::getView($profile_id);
     $view->setDisplay('user_profile_desktop');
     $view->setArguments(array($uid));
@@ -127,34 +129,48 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div></div>',
     ];
 
-    //  Test for alternate bio elements
-    //    - Publications
-    //    - Video
 
     // Publications test
     $name = 'publications_listings';
     $display_id = 'publications_uid';
 
-    //  Test one
+
+    //Test for publications
     $publications = TRUE;
     $test_for_publications = views_get_view_result($name, $display_id, $uid);
     if (empty($test_for_publications)) {
+      // Build publications link here...
+      //@todo We don't need the publications var: just do it or not.
       $publications = FALSE;
     }
-    //  Test two  (this will return null if no publications
-    $result = $this->people_publications($uid);
 
 
     /**
      * Build conditional AJAX links as needed
      */
 
-    //Check for Publications
-
-    // Make this a service?  and pass single parameter?
-    $render_array['ajax_link']['link'] = [
+    // Bio
+    $render_array['ajax_link']['link']['bio'] = [
       '#type' => 'link',
-      '#title' => $this->t('Click me to load the publications'),
+      '#title' => $this->t('Bio'),
+      // We have to ensure that Drupal's Ajax system is loaded.
+      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
+      '#attributes' => ['class' => ['use-ajax']],
+      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+        'option' => 'bio',
+        'uid' => $uid,
+        'nojs' => 'ajax'
+      ]),
+      '#prefix' => '<div class="people-bio-links">',
+      '#suffix' => '</div>',
+    ];
+
+
+
+    // Publications
+    $render_array['ajax_link']['link']['publications'] = [
+      '#type' => 'link',
+      '#title' => $this->t('Publications'),
       // We have to ensure that Drupal's Ajax system is loaded.
       '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
       '#attributes' => ['class' => ['use-ajax']],
@@ -166,6 +182,8 @@ class PeopleController extends ControllerBase {
       // the path is replaced with 'ajax', then the request was made by AJAX.
       //
       // Path source from: drupal debug:router | grep 'publications'
+      // @todo No idea where the above came from... the route is actually the
+      // callback in "people.routing.yml"
       '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
         'option' => 'publications',
         'uid' => $uid,
@@ -179,6 +197,7 @@ class PeopleController extends ControllerBase {
 
     /**
      * Dev: Temporary Footer
+     * @todo Remove before production
      */
     $render_array['dev_footer'] = [
       '#type' => 'markup',
@@ -223,6 +242,8 @@ class PeopleController extends ControllerBase {
     $view->setArguments(array($uid));
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
+//    $variables = $view->executeDisplay($display_id);
+
 
     return $variables;
   }
@@ -241,6 +262,7 @@ class PeopleController extends ControllerBase {
    * @return string|array
    *   If $type == 'ajax', returns an array of AJAX Commands.
    *   Otherwise, just returns the content, which will end up being a page.
+   *
    */
   public function peopleAjaxLinkCallback($option, $uid, $nojs = 'ajax') {
     // Determine whether the request is coming from AJAX or not.
@@ -248,7 +270,41 @@ class PeopleController extends ControllerBase {
 
       //Decide which bio option we are going to load
 
-      $output = $this->people_publications($uid);
+      switch ($option) {
+
+        case "bio":
+          //get the bio here
+          //@todo Build out content and remember to add the div with class
+
+          $output = $render_array['basic_profile']['basic_profile_dynamic'] = [
+            '#type' => 'markup',
+//            '#markup' => $this->people_bio($uid),
+            '#markup' => $this->t('Replaced content'),
+            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+            '#suffix' => '</div></div>',
+          ];
+          break;
+
+        case "publications";
+          //Get publications
+          //@todo Build out content and remember to add the div with class
+          $output = $this->people_publications($uid);
+
+//          $output = $render_array['basic_profile']['basic_profile_dynamic'] = [
+//            '#type' => 'markup',
+//            '#markup' => $publications_view,
+//            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+//            '#suffix' => '</div></div>',
+//          ];
+
+
+          break;
+        default:
+          // Do the default for bad parm
+          $output = $this->t('bad parm in ajax string');
+
+      }
+
 
       
       $response = new AjaxResponse();

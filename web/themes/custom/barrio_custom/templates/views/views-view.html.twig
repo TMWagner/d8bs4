@@ -27,11 +27,16 @@
  * - dom_id: Unique id for every view being printed to give unique class for
  *   Javascript.
  *
+ * 2019/02/17: tmw
+ * added "profile-swap" for Ajax call on publications_listings
+ * @todo This really should be made specific to the specific view.
+ *
  * @see template_preprocess_views_view()
  */
 #}
 {%
   set classes = [
+    'profile-swap',
     'view',
     'view-' ~ id|clean_class,
     'view-id-' ~ id,
