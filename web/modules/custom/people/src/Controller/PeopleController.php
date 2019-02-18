@@ -237,7 +237,7 @@ class PeopleController extends ControllerBase {
     $view->setArguments(array($uid));
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
-//    $variables = $view->executeDisplay($display_id);
+
 
 
     return $variables;

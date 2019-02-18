@@ -14,7 +14,8 @@
   // Remove height and width (screws up the bootstrap functionality)
   $(".people-photo > img").addClass("card-img-top").removeAttr("width height");
 
-
+  // Add "Row to individual profile listing page"
+  $(".profile-bio-link-wrap > .col-auto").addClass("row");
 
   /* END Code Wrap */
 })(jQuery, Drupal);
