@@ -215,8 +215,12 @@ h3.how-panel {
   max-width: 50rem;
 }
 
-.profile_bio_static.col {
-  background-color: beige;
+.profile_bio_static.col-4 {
+  background-color: #00000080;
+}
+
+.view-profile-basic-content {
+  color: white;
 }
 .people_bio_dynamic {
   background-color: lightblue;

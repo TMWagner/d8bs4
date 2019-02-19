@@ -114,14 +114,14 @@ class PeopleController extends ControllerBase {
     $render_array['profile']['profile_static'] = [
       '#theme' => 'people_profile',
       '#content' => $variables,
-      '#prefix' => '<div class="profile_bio_static col">',
+      '#prefix' => '<div class="profile_bio_static col-4">',
       '#suffix' => '</div>',
     ];
     //  Build the initial bio - This will be replaced
     $render_array['profile']['profile_dynamic'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
-      '#prefix' => '<div class="people_bio_dynamic col"><div class="profile-swap">',
+      '#prefix' => '<div class="people_bio_dynamic col-8"><div class="profile-swap">',
       '#suffix' => '</div></div>',
     ];
 
@@ -275,7 +275,7 @@ class PeopleController extends ControllerBase {
     $node = $storage->load($block_id);
     $build = $view_builder->view($node);
     $variables = render($build);
-    
+
     return $variables;
   }
 
