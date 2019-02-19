@@ -75,8 +75,6 @@ class PeopleController extends ControllerBase {
     $build = $view_builder->view($node);
     $output = render($build);
 
-
-
     $page['page'] = [
       '#type' => 'markup',
       '#markup' => $output,
@@ -260,31 +258,36 @@ class PeopleController extends ControllerBase {
     return $variables;
   }
 
+
   /**
    * @param $uid
    *
-   * @return string
+   * @return mixed|null
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   private function people_contact($uid) {
-    $variables = 'output from contact function for.' . $uid;
+
+    $block_id = 'searchform';
+    $entity_type = 'block';
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
+    $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
+    $node = $storage->load($block_id);
+    $build = $view_builder->view($node);
+    $variables = render($build);
+    
     return $variables;
   }
 
+
   /**
-   * Callback for link example.
-   *
-   * Takes different logic paths based on whether Javascript was enabled.
-   * If $type == 'ajax', it tells this function that ajax.js has rewritten
-   * the URL and thus we are doing an AJAX and can return an array of commands.
-   *
+   * @param $option
+   * @param $uid
    * @param string $nojs
-   *   Either 'ajax' or 'nojs. Type is simply the normal URL argument to this
-   *   URL.
    *
-   * @return string|array
-   *   If $type == 'ajax', returns an array of AJAX Commands.
-   *   Otherwise, just returns the content, which will end up being a page.
-   *
+   * @return \Drupal\Core\Ajax\AjaxResponse|\Symfony\Component\HttpFoundation\Response
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function peopleAjaxLinkCallback($option, $uid, $nojs = 'ajax') {
     // Determine whether the request is coming from AJAX or not.
