@@ -62,9 +62,12 @@ class PeopleController extends ControllerBase {
      * Dev block: Creates a renderable object from a block
      * Notes: Get the name of the profile by opening "configure block"
      * @todo Remove before production.  Also;  Should check to make sure block exists.
+     *
+     * Would like to be able to do this with a View!!!!!!
+     *
      */
 
-    $block_id = 'barrio_custom_powered';
+    $block_id = 'searchform';
     $entity_type = 'block';
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
     $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
