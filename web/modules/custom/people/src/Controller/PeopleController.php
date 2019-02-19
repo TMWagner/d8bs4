@@ -147,7 +147,7 @@ class PeopleController extends ControllerBase {
      * Build conditional AJAX links as needed
      */
 
-    // Bio
+    // -> Bio LINK
     $render_array['ajax_link']['link']['bio'] = [
       '#type' => 'link',
       '#title' => $this->t('Bio'),
@@ -165,7 +165,7 @@ class PeopleController extends ControllerBase {
 
 
 
-    // Publications
+    // -> Publications LINK
     $render_array['ajax_link']['link']['publications'] = [
       '#type' => 'link',
       '#title' => $this->t('Publications'),
@@ -184,6 +184,22 @@ class PeopleController extends ControllerBase {
       // callback in "people.routing.yml"
       '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
         'option' => 'publications',
+        'uid' => $uid,
+        'nojs' => 'ajax'
+      ]),
+      '#prefix' => '<div class="people-bio-links">',
+      '#suffix' => '</div>',
+    ];
+
+    // -> Contact link
+    $render_array['ajax_link']['link']['contact'] = [
+      '#type' => 'link',
+      '#title' => $this->t('Contact'),
+      // We have to ensure that Drupal's Ajax system is loaded.
+      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
+      '#attributes' => ['class' => ['use-ajax']],
+      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+        'option' => 'contact',
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
@@ -241,8 +257,16 @@ class PeopleController extends ControllerBase {
     $view->execute();
     $variables['content'] = $view->buildRenderable($display_id);
 
+    return $variables;
+  }
 
-
+  /**
+   * @param $uid
+   *
+   * @return string
+   */
+  private function people_contact($uid) {
+    $variables = 'output from contact function for.' . $uid;
     return $variables;
   }
 
@@ -277,7 +301,6 @@ class PeopleController extends ControllerBase {
           $output = $render_array['profile']['basic_profile_dynamic'] = [
             '#type' => 'markup',
             '#markup' => $this->people_bio($uid),
-//            '#markup' => $this->t('Replaced content'),
             '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
             '#suffix' => '</div></div>',
           ];
@@ -287,7 +310,17 @@ class PeopleController extends ControllerBase {
           //Get publications
           //@todo Build out content and remember to add the div with class
           $output = $this->people_publications($uid);
+          break;
 
+        case "contact";
+          //Get contact form
+          //@todo Build out content and remember to add the div with class
+          $output = $render_array['profile']['basic_profile_contact'] = [
+            '#type' => 'markup',
+            '#markup' => $this->people_contact($uid),
+            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+            '#suffix' => '</div></div>',
+          ];
           break;
         default:
           // Do the default for bad parm
@@ -295,8 +328,6 @@ class PeopleController extends ControllerBase {
 
       }
 
-
-      
       $response = new AjaxResponse();
       $response->addCommand(new ReplaceCommand('.profile-swap', $output));
 
