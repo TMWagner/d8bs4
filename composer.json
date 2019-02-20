@@ -37,6 +37,7 @@
         "drupal/token": "^1.5",
         "drupal/twigsuggest": "^1.0",
         "drupal/views_contact_form": "^1.0",
+        "drupal/webform": "^5.1",
         "drush/drush": "^9.5",
         "twbs/bootstrap": "4.2.1",
         "vlucas/phpdotenv": "^2.4",

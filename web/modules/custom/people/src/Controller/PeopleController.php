@@ -268,7 +268,7 @@ class PeopleController extends ControllerBase {
    */
   private function people_contact($uid) {
 
-    $block_id = 'searchform';
+    $block_id = 'webform';
     $entity_type = 'block';
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
     $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
@@ -321,7 +321,7 @@ class PeopleController extends ControllerBase {
           $output = $render_array['profile']['basic_profile_contact'] = [
             '#type' => 'markup',
             '#markup' => $this->people_contact($uid),
-            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+            '#prefix' => '<div class="people_bio_dynamic profile-contact"><div class="profile-swap">',
             '#suffix' => '</div></div>',
           ];
           break;

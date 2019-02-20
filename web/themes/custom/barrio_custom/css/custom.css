@@ -167,14 +167,28 @@ h3.how-panel {
   overflow: hidden;
   max-width: 50rem; }
 
+.profile-contact {
+  background-color: #6f6f6f; }
+
+.profile-contact label {
+  margin-bottom: 0;
+  color: white; }
+
+.profile-contact .form-group {
+  margin-bottom: .1rem;
+  background-color: #6f6f6f; }
+
+.profile-contact body {
+  color: hotpink; }
+
 .profile_bio_static.col-4 {
-  background-color: #00000080; }
+  background-color: #6f6f6f; }
 
 .view-profile-basic-content {
   color: white; }
 
 .people_bio_dynamic {
-  background-color: lightblue;
+  background-color: #6f6f6f;
   overflow-y: scroll;
   max-height: 25em; }
 

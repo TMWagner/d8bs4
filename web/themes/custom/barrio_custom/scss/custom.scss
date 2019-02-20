@@ -208,26 +208,45 @@ h3.how-panel {
 //Some temporary formatting
 //2019/2/7
 //@todo remove/move
-
+//
+//All profile stuff
 .profile-bio-link-wrap.not-mobile-display {
   margin-top: 2em;
   overflow: hidden;
   max-width: 50rem;
 }
 
+.profile-contact {
+  background-color: $background_grey;
+}
+.profile-contact label {
+  margin-bottom: 0;
+  color: white;
+}
+
+.profile-contact .form-group {
+  margin-bottom: .1rem;
+  background-color: $background_grey;
+}
+
+
+
+
+.profile-contact body {
+  color: hotpink;
+}
 .profile_bio_static.col-4 {
-  background-color: #00000080;
+  background-color: $background_grey;
 }
 
 .view-profile-basic-content {
   color: white;
 }
 .people_bio_dynamic {
-  background-color: lightblue;
+  background-color: $background_grey;
   overflow-y: scroll;
   max-height: 25em;
 }
-
 
 .people-card {
   width: 15rem;
