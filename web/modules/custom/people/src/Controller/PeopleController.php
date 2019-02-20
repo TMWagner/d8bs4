@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 
+
 /**
  * Class PeopleController
  *
@@ -275,6 +276,13 @@ class PeopleController extends ControllerBase {
     $node = $storage->load($block_id);
     $build = $view_builder->view($node);
     $variables = render($build);
+
+
+//    $variables['your_form_id'] = [
+//      '#type' => 'webform',
+//      '#webform' => 'your_form_id',
+//      '#default_data' => ['name' => 'Custom Name'],
+//    ];
 
     return $variables;
   }
