@@ -25,4 +25,4 @@
   });
 
   /* END Code Wrap */
-})(jQuery, D`rupal);
+})(jQuery, Drupal);
