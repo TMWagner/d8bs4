@@ -9,7 +9,6 @@ people.noargs:
   requirements:
     _permission: 'access content'
 
-
 people.profile:
   path: '/profile/{uid}'
   defaults:

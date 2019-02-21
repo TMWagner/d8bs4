@@ -17,5 +17,12 @@
   // Add "Row to individual profile listing page"
   $(".profile-bio-link-wrap > .col-auto").addClass("row");
 
+
+
+  //@todo Testing
+  $('.buttonopen').on('click', '[data-toggle="modal"]', function(){
+    $($(this).data("target")+' .modal-body').load($(this).data("remote"));
+  });
+
   /* END Code Wrap */
-})(jQuery, Drupal);
+})(jQuery, D`rupal);
