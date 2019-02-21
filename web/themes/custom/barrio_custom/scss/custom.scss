@@ -250,9 +250,19 @@ h3.how-panel {
 
 .people-card {
   width: 15rem;
+  margin: .2rem;
+  background-color: $background_dark_grey;
+}
+//@todo This HAS to be more specific
+.people-photo .card-body {
+  color: white;
 }
 
-
-
+.people-photo h5 {
+  font-size: 1rem;
+}
+.people-photo p {
+  font-size: small;
+}
 
 // End temp formatting

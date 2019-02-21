@@ -193,6 +193,17 @@ h3.how-panel {
   max-height: 25em; }
 
 .people-card {
-  width: 15rem; }
+  width: 15rem;
+  margin: .2rem;
+  background-color: #292929; }
+
+.people-photo .card-body {
+  color: white; }
+
+.people-photo h5 {
+  font-size: 1rem; }
+
+.people-photo p {
+  font-size: small; }
 
 /*# sourceMappingURL=custom.css.map */

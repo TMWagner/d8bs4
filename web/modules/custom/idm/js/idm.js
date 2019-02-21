@@ -19,9 +19,21 @@
 
 
 
-  //@todo Testing
-  $('.buttonopen').on('click', '[data-toggle="modal"]', function(){
-    $($(this).data("target")+' .modal-body').load($(this).data("remote"));
+  // //@todo Testing
+  // $('.buttonopen').on('click', '[data-toggle="modal"]', function(){
+  //   $($(this).data("target")+' .modal-body').load($(this).data("remote"));
+  // });
+
+
+  $('#modellink').click(function() {
+
+    //  URL passed from the click universal object
+    var url = $(this).attr('href');
+
+    // @todo See http://api.jquery.com/load/: We can specify what part of the doc we want...
+    $('.modal-container').load(url,function(result){
+      $('#myModal').modal({show:true});
+    });
   });
 
   /* END Code Wrap */
