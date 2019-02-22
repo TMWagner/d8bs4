@@ -11,7 +11,9 @@ global-styling:
       css/style.css: {}
 bootstrap:
   js:
-#    /libraries/popper/popper.min.js: {}
+#   Not loading popper because it is included in bundle
+#   /libraries/popper/popper.min.js: {}
+#   /libraries/bootstrap.js: {}  (also included in bundle)
     /libraries/bootstrap/js/bootstrap.bundle.js: {}
   css:
     component:
