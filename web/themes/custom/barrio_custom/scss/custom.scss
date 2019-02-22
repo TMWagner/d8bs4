@@ -237,7 +237,10 @@ h3.how-panel {
 }
 .profile_bio_static.col-4 {
   background-color: $background_grey;
+  //$todo Why do we have to do this????
+  float: left;
 }
+
 
 .view-profile-basic-content {
   color: white;
