@@ -1,3 +1,4 @@
+# idm/idm
 idm:
   version: 1.x
   css:
@@ -19,6 +20,7 @@ idm:
     - core/jquery
 
 # Navigation menu
+# idm/navtab
 navtab:
   version: 1.x
   css:
