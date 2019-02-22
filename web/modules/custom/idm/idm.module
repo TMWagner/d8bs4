@@ -89,6 +89,10 @@ function idm_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'core/jquery';
   $attachments['#attached']['library'][] = 'idm/idm';
 
+  //@todo Not sure we want this on ALL pages...
+  //20190222:tmw put this in to get modal working on non-admin pages
+  $attachments['#attached']['library'][] = 'core/drupal.dialog.ajax';
+
 
   // Get the current path.
   $path = $current_path = \Drupal::service('path.current')->getPath();
