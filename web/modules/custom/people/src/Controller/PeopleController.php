@@ -41,6 +41,36 @@ class PeopleController extends ControllerBase {
 
     $view_output = views_embed_view($profile_id, $display_id, $uid);
 
+    $page['profile']['group1'] = array (
+      '#type' => 'markup',
+      '#markup' => '<p>div 1</p>',
+
+
+    );
+    $page['profile']['group1']['subgroup'] = array(
+      '#type' => 'markup',
+      '#markup' => '<p>subgroup?</p>',
+
+
+    );
+
+    $page['profile']['group2'] = array(
+      '#type' => 'markup',
+      '#markup' => '<p>div 2</p>',
+
+    );
+
+
+
+
+    $page['profile']['group3'] = array(
+      '#type' => 'markup',
+      '#markup' => '<p>div 3</p>',
+
+    );
+
+
+
     $page['profile']['bio_mobile'] = array(
       '#type' => 'block',
       'content' => [
@@ -118,31 +148,43 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div class="profile_bio_static col-4">',
       '#suffix' => '</div>',
     ];
-    //  Build the initial bio - This will be replaced
+    //  Build dynamic wrapper
     $render_array['profile']['profile_dynamic'] = [
+      '#type' => 'container',
+      '#prefix' => '<div class="people_bio_dynamic col-8">',
+      '#suffix' => '</div>',
+    ];
+    //  Build the initial bio - This will be replaced
+    $render_array['profile']['profile_dynamic']['content'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
-      '#prefix' => '<div class="people_bio_dynamic col-8"><div class="profile-swap">',
-      '#suffix' => '</div></div>',
+      '#prefix' => '<div class="profile-swap">',
+      '#suffix' => '</div>',
     ];
+
+
+
+
+
     //  Build link set
     //  @todo Move below logic
     $render_array['profile']['profile_dynamic']['link_wrap'] = [
       '#type' => 'container',
-      '#prefix' => '<div class="profile-dynamic-wrap row">',
+      // @todo just a note: Normally would have to add class of "row",
+      // but it is coming from the theme instead. That is a little funky...
+      '#prefix' => '<div class="profile-dynamic-wrap-links">',
       '#suffix' => '</div>',
-
     ];
     $render_array['profile']['profile_dynamic']['link_wrap']['link1'] = [
       '#type' => 'markup',
       '#markup' => '<p>Link1</p>',
-      '#prefix' => '<div class="col">',
+      '#prefix' => '<div class="col profile-link-item ">',
       '#suffix' => '</div>',
     ];
     $render_array['profile']['profile_dynamic']['link_wrap']['link2'] = [
       '#type' => 'markup',
       '#markup' => '<p>Link2</p>',
-      '#prefix' => '<div class="col">',
+      '#prefix' => '<div class="col profile-link-item">',
       '#suffix' => '</div>',
     ];
 

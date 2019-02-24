@@ -162,8 +162,34 @@ h3.how-panel {
   height: 250px;
   width: 250px; }
 
+/**
+* Format People Model
+*/
+.path-people .ui-dialog {
+  background-color: #6f6f6f; }
+
+.path-people .ui-widget-header {
+  background: none;
+  border: none; }
+
+.profile-dynamic-wrap-links {
+  width: 100%; }
+
+.profile-dynamic-wrap-links .container-html-twig {
+  margin: 0; }
+
+.profile-dynamic-wrap-links {
+  position: absolute;
+  bottom: 0; }
+
+.col.profile-link-item {
+  border-color: white;
+  border-style: solid;
+  border-width: 1px 1px 0 1px;
+  width: 6em !important;
+  flex-grow: 0; }
+
 .profile-bio-link-wrap.not-mobile-display {
-  margin-top: 2em;
   overflow: hidden;
   max-width: 50rem; }
 
@@ -178,9 +204,6 @@ h3.how-panel {
   margin-bottom: .1rem;
   background-color: #6f6f6f; }
 
-.profile-contact body {
-  color: hotpink; }
-
 .profile_bio_static.col-4 {
   background-color: #6f6f6f;
   float: left; }
@@ -191,7 +214,7 @@ h3.how-panel {
 .people_bio_dynamic {
   background-color: #6f6f6f;
   overflow-y: scroll;
-  max-height: 25em; }
+  max-height: 30em; }
 
 .people-card {
   width: 15rem;
