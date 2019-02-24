@@ -125,6 +125,26 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div class="people_bio_dynamic col-8"><div class="profile-swap">',
       '#suffix' => '</div></div>',
     ];
+    //  Build link set
+    //  @todo Move below logic
+    $render_array['profile']['profile_dynamic']['link_wrap'] = [
+      '#type' => 'container',
+      '#prefix' => '<div class="profile-dynamic-wrap row">',
+      '#suffix' => '</div>',
+
+    ];
+    $render_array['profile']['profile_dynamic']['link_wrap']['link1'] = [
+      '#type' => 'markup',
+      '#markup' => '<p>Link1</p>',
+      '#prefix' => '<div class="col">',
+      '#suffix' => '</div>',
+    ];
+    $render_array['profile']['profile_dynamic']['link_wrap']['link2'] = [
+      '#type' => 'markup',
+      '#markup' => '<p>Link2</p>',
+      '#prefix' => '<div class="col">',
+      '#suffix' => '</div>',
+    ];
 
 
     // Publications test
