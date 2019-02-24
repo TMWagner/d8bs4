@@ -164,6 +164,16 @@ class PeopleController extends ControllerBase {
 
 
 
+    // Publications test
+    $name = 'publications_listings';
+    $display_id = 'publications_uid';
+    $publications  = TRUE;
+    $test_for_publications = views_get_view_result($name, $display_id, $uid);
+    if (empty($test_for_publications)) {
+      // Build publications link here...
+      //@todo We don't need the publications var: just do it or not.
+      $publications = FALSE;
+    }
 
 
     //  Build link set
@@ -175,41 +185,9 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div class="profile-dynamic-wrap-links">',
       '#suffix' => '</div>',
     ];
+
+    // *** Bio Link
     $render_array['profile']['profile_dynamic']['link_wrap']['link1'] = [
-      '#type' => 'markup',
-      '#markup' => '<p>Link1</p>',
-      '#prefix' => '<div class="col profile-link-item ">',
-      '#suffix' => '</div>',
-    ];
-    $render_array['profile']['profile_dynamic']['link_wrap']['link2'] = [
-      '#type' => 'markup',
-      '#markup' => '<p>Link2</p>',
-      '#prefix' => '<div class="col profile-link-item">',
-      '#suffix' => '</div>',
-    ];
-
-
-    // Publications test
-    $name = 'publications_listings';
-    $display_id = 'publications_uid';
-
-
-    //Test for publications
-    $publications = TRUE;
-    $test_for_publications = views_get_view_result($name, $display_id, $uid);
-    if (empty($test_for_publications)) {
-      // Build publications link here...
-      //@todo We don't need the publications var: just do it or not.
-      $publications = FALSE;
-    }
-
-
-    /**
-     * Build conditional AJAX links as needed
-     */
-
-    // -> Bio LINK
-    $render_array['ajax_link']['link']['bio'] = [
       '#type' => 'link',
       '#title' => $this->t('Bio'),
       // We have to ensure that Drupal's Ajax system is loaded.
@@ -220,40 +198,44 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="people-bio-links">',
+      '#prefix' => '<div class="col profile-link-item">',
       '#suffix' => '</div>',
     ];
 
+    // *** CONDITIONAL Publications link
+    if ($publications) {
+      $render_array['profile']['profile_dynamic']['link_wrap']['link2'] = [
+        '#type' => 'link',
+        '#title' => $this->t('Publications'),
+        // We have to ensure that Drupal's Ajax system is loaded.
+        '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
+        '#attributes' => ['class' => ['use-ajax']],
+        // The URL for this link element is the callback. In our case, it's route
+        // ajax_example.ajax_link_callback, which maps to ajaxLinkCallback()
+        // below. The route has a /{nojs} section, which is how the callback can
+        // know whether the request was made by AJAX or some other means where
+        // JavaScript won't be able to handle the result. If the {nojs} part of
+        // the path is replaced with 'ajax', then the request was made by AJAX.
+        //
+        // Path source from: drupal debug:router | grep 'publications'
+        // @todo No idea where the above came from... the route is actually the
+        // callback in "people.routing.yml"
+        '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+          'option' => 'publications',
+          'uid' => $uid,
+          'nojs' => 'ajax'
+        ]),
+        '#prefix' => '<div class="col profile-link-item">',
+        '#suffix' => '</div>',
+      ];
+    }
+    // *** CONDITIONAL Video link
+    // @todo Conditional VIDIO
+    // End Video
 
 
-    // -> Publications LINK
-    $render_array['ajax_link']['link']['publications'] = [
-      '#type' => 'link',
-      '#title' => $this->t('Publications'),
-      // We have to ensure that Drupal's Ajax system is loaded.
-      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
-      '#attributes' => ['class' => ['use-ajax']],
-      // The URL for this link element is the callback. In our case, it's route
-      // ajax_example.ajax_link_callback, which maps to ajaxLinkCallback()
-      // below. The route has a /{nojs} section, which is how the callback can
-      // know whether the request was made by AJAX or some other means where
-      // JavaScript won't be able to handle the result. If the {nojs} part of
-      // the path is replaced with 'ajax', then the request was made by AJAX.
-      //
-      // Path source from: drupal debug:router | grep 'publications'
-      // @todo No idea where the above came from... the route is actually the
-      // callback in "people.routing.yml"
-      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
-        'option' => 'publications',
-        'uid' => $uid,
-        'nojs' => 'ajax'
-      ]),
-      '#prefix' => '<div class="people-bio-links">',
-      '#suffix' => '</div>',
-    ];
-
-    // -> Contact link
-    $render_array['ajax_link']['link']['contact'] = [
+    // *** Contact link
+    $render_array['profile']['profile_dynamic']['link_wrap']['link3'] = [
       '#type' => 'link',
       '#title' => $this->t('Contact'),
       // We have to ensure that Drupal's Ajax system is loaded.
@@ -264,22 +246,21 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="people-bio-links">',
+      '#prefix' => '<div class="col profile-link-item">',
       '#suffix' => '</div>',
     ];
 
 
-
-    /**
-     * Dev: Temporary Footer
-     * @todo Remove before production
-     */
-    $render_array['dev_footer'] = [
-      '#type' => 'markup',
-      '#markup' => $this->t('footer'),
-      '#prefix' => '<div><h2>',
-      '#suffix' => '</h2></div>',
-    ];
+//    /**
+//     * Dev: Temporary Footer
+//     * @todo Remove before production
+//     */
+//    $render_array['dev_footer'] = [
+//      '#type' => 'markup',
+//      '#markup' => $this->t('footer'),
+//      '#prefix' => '<div><h2>',
+//      '#suffix' => '</h2></div>',
+//    ];
 
     return $render_array;
   }
@@ -340,11 +321,7 @@ class PeopleController extends ControllerBase {
     $variables = render($build);
 
 
-//    $variables['your_form_id'] = [
-//      '#type' => 'webform',
-//      '#webform' => 'your_form_id',
-//      '#default_data' => ['name' => 'Custom Name'],
-//    ];
+
 
     return $variables;
   }

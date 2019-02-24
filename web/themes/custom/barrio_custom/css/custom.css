@@ -212,9 +212,12 @@ h3.how-panel {
   color: white; }
 
 .people_bio_dynamic {
-  background-color: #6f6f6f;
+  background-color: #6f6f6f; }
+
+.profile-swap {
   overflow-y: scroll;
-  max-height: 30em; }
+  max-height: 20em;
+  margin-bottom: 2em; }
 
 .people-card {
   width: 15rem;
