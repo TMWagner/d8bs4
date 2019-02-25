@@ -119,8 +119,7 @@ p.banner-left {
 .bg-gold {
   background-color: #EFB750CC;
   background-image: linear-gradient(to right, #F27A60,  #EFBD4F);
-  border-radius: 0px 10px 0px 0px;
-}
+  border-radius: 0 10px 0 0}
 
 #nav-gold > li > a {
   color: white;
@@ -179,14 +178,14 @@ h2.how-panel {
   color: grey;
 }
 h3.how-panel {
-  margin-top: 0px;
+  margin-top: 0;
   color: #19c5ff;
 }
 
 
 .how-panel > .well {
   background: none;
-  border: 0px;
+  border: 0;
   box-shadow: none;
 }
 
@@ -194,6 +193,24 @@ h3.how-panel {
 
 .clearfix {
   clear: both;
+}
+
+a.publication-link-external {
+  color: white;
+}
+a.publication-link-external:hover {
+  color: #0c97ed;
+  text-decoration: none;
+  text-align: center;
+}
+
+.profile-link-item a {
+  color: white;
+  font-size: smaller;
+}
+.profile-link-item a:hover {
+  color: $hover-orange;
+  text-decoration: none;
 }
 
 /* People/Team page
@@ -235,8 +252,8 @@ h3.how-panel {
   border-color: white;
   border-style: solid;
   border-width: 1px 1px 0 1px;
-  width: 6em !important;
   flex-grow: 0;
+  text-align: center;
 }
 
 //------------------
