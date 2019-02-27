@@ -14,7 +14,8 @@
  * - has_parent: A flag to indicate that the container has one or more parent
      containers.
  *
- *  2019/2/18:tmw: added "row" to classes.
+ *  2019/02/18:tmw: added "row" to classes.
+ *  2019/02/26: Row should be conditional...
  *
  * @see template_preprocess_container()
  */
@@ -24,8 +25,9 @@
     has_parent ? 'js-form-wrapper',
     has_parent ? 'form-group',
     has_parent ? 'has-parent-class',
-    'row',
+    profile_swap ?: 'row',
     'container-html-twig',
   ]
 %}
+{#{{ dump(_context|keys) }}#}
 <div{{ attributes.addClass(classes) }}>{{ children }}</div>

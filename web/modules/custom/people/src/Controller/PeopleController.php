@@ -155,7 +155,7 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     ];
     //  Build the initial bio - This will be replaced
-    $render_array['profile']['profile_dynamic']['content'] = [
+    $render_array['profile']['profile_dynamic']['swap_content'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
       '#prefix' => '<div class="profile-swap">',
@@ -232,7 +232,6 @@ class PeopleController extends ControllerBase {
     // *** CONDITIONAL Video link
     // @todo Conditional VIDIO
     // End Video
-
 
     // *** Contact link
     $render_array['profile']['profile_dynamic']['link_wrap']['link3'] = [
