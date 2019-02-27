@@ -58,14 +58,12 @@ function people_preprocess_container(&$variables) {
         // Adding the preprocess var "profile_swap" is redundant;
         $variables['attributes']['class'][0]  = 'auto-col';
         $variables['attributes']['class'][] = 'profile-swap';
+        //@todo This item (I think) is showing up in the list of classes as "1"
         $variables['profile_swap'] = TRUE;
       }
     }
   }
 
 }
-
-
-
 
 

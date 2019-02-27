@@ -35,7 +35,6 @@
         "drupal/migrate_tools": "^4.0",
         "drupal/paragraphs": "^1.5",
         "drupal/token": "^1.5",
-        "drupal/twigsuggest": "^1.0",
         "drupal/views_contact_form": "^1.0",
         "drupal/webform": "^5.1",
         "drush/drush": "^9.5",
