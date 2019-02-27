@@ -31,6 +31,7 @@
  * added for Ajax call on publications_listings
  *
  * @see template_preprocess_views_view()
+ *
  */
 #}
 {%
@@ -66,7 +67,7 @@
   {% endif %}
 
   {% if rows %}
-    <div class="view-content row">
+    <div class="view-content publications-list-content">
       {{ rows }}
     </div>
   {% elseif empty %}

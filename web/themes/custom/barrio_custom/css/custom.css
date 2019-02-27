@@ -172,6 +172,14 @@ a.publication-link-external:hover {
   color: #F1815E;
   text-decoration: none; }
 
+.profile-link-item a:active {
+  color: white;
+  text-decoration: none; }
+
+.profile-link-item a:focus {
+  color: white;
+  text-decoration: none; }
+
 /* People/Team page
  */
 .profile-video-container {

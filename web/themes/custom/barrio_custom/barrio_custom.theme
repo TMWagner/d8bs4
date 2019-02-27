@@ -35,13 +35,39 @@ function barrio_custom_form_system_theme_settings_alter(&$form, FormStateInterfa
 }
 
 
-//function barrio_custom_preprocess_image(&$variables) {
+/**
+ * Implementation of hook_preprocess_HOOK
+ * @param $variables
+ *
+ * Cute little php test site
+ * https://www.w3resource.com/php/function-reference/array_key_exists.php
+ *
+ */
+//function barrio_custom_preprocess_(&$variables) {
 //
-//  $temp = $variables;
+//  $test = $variables;
+//  $variables['publications_listings'] = TRUE;
 //
-//  // Set class.
-//  //@todo A little heavy handed... I don't want to do this to all of the images
-//  $variables['attributes']['class'][] = 'card-img-top';
+//  $debug1 = FALSE;
+//
+////  //Test the key first
+//  if (array_key_exists('first', $variables)) {
+//    $debug1 = true;
+//  }
+//
+//  if (array_key_exists('element', $variables)) {
+//    $debug1 = true;
+//  }
+////
+////  if (array_key_exists("story", $arr) && array_key_exists("message", $arr)) {
+////    // Both keys exist.
+////  }
+//
+//  //  $test2 = $variables["element"]["#name"];
+////  if ($variables["element"]["#name"] == 'profile_basic_content') {
+////    // Create a new variable for Class and set it to "profile-swap"
+////    $test3 = $test2;
+////  }
+//  $debug1 = true;
+//
 //}
-//
-//
