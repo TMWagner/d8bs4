@@ -28,7 +28,7 @@
   font-size: smaller;
   color: #0076A9;
 }
-.close {
+.tool.close {
   color:#FF6315;
   font-size: 2rem;
   font-weight: 50;
@@ -57,9 +57,9 @@ div.tool-highlight footer {
 .tool-card .card-body {
   padding: 0 0 1rem;
 }
-.btn-outline-primary {
-  color: #FF6315;
-  border-color: #61B4E4;
+span.button-filter .btn-outline-primary {
+  color: $idm_orange;
+  border-color: $idm_light_blue;
 }
 
 span.button-filter .btn {
@@ -69,7 +69,7 @@ span.button-filter .btn {
 
 
 .tool-card {
-  color: #61B4E4;
+  color: $idm_light_blue;
 }
 
 .tool-card p {
@@ -82,12 +82,12 @@ span.button-filter .btn {
 
 .tool-card:hover {
   color: white;
-  background-color: #6f6f6f;
+  background-color: $navbar_background;
 }
-.tool-card-selected,
+.card.tool-card-selected,
 .tool-card-selected:hover {
-  color:#FF6315;
-  background-color: #0B1F2C;
+  color: $idm_orange;
+  background-color: $idm_deep_blue;
 }
 
 .tool-highlight {
