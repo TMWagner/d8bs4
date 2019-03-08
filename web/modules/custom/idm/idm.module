@@ -114,6 +114,14 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/jqcollapse';
   };
 
+  /**
+   * Attach library for Tools page(s)
+   * tmw: 2019/03/8
+   */
+  if ($path == '/node/170') {
+    $attachments['#attached']['library'][] = 'idm/tools';
+  };
+
 }
 
 

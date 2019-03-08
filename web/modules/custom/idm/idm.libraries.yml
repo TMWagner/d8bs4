@@ -19,6 +19,18 @@ idm:
   dependencies:
     - core/jquery
 
+# Tools page(s)
+# idm/tools
+tools:
+  version: 1.x
+  css:
+    base:
+      css/tools.css: {}
+  js:
+    js/tools.js: {}
+  dependencies:
+    - core/jquery
+
 # Navigation menu
 # idm/navtab
 navtab:

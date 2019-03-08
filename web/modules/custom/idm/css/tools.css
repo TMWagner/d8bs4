@@ -1,0 +1,19 @@
+.orange {
+  color: #FF6315; }
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px; }
+
+/*Style leading dash on banner*/
+.leading-dash {
+  width: 4em;
+  border: none;
+  height: 1px;
+  background-color: #898989;
+  float: left;
+  position: relative;
+  bottom: .2em;
+  margin-right: .2em; }
+
+/*# sourceMappingURL=tools.css.map */

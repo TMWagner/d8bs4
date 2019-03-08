@@ -1,0 +1,147 @@
+// Custom css for Tools
+
+@import "../../../../themes/custom/barrio_custom/scss/variables";
+
+
+.orange {
+  color: #FF6315;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/*Style leading dash on banner*/
+.leading-dash {
+  width: 4em;
+  border: none;
+  height: 1px;
+  background-color: #bfc3c6;
+  float: left;
+  position: relative;
+  bottom: .2em;
+  margin-right: .2em;
+}
+
+#tool-filter-footer p {
+  font-weight: 200;
+  font-size: smaller;
+  color: #0076A9;
+}
+.close {
+  color:#FF6315;
+  font-size: 2rem;
+  font-weight: 50;
+  opacity: 1;
+  text-shadow: none;
+}
+
+.tools-banner-l2 h5 {
+  font-weight: lighter;
+}
+.card-filter {
+  clear: both;
+}
+
+.card-filter .btn.btn-outline-primary {
+  margin: 0 .5em;
+}
+.tools-banner-l2 {
+  color: #bfc3c6;
+}
+
+div.tool-highlight footer {
+  padding-bottom: 3rem;
+}
+
+.tool-card .card-body {
+  padding: 0 0 1rem;
+}
+.btn-outline-primary {
+  color: #FF6315;
+  border-color: #61B4E4;
+}
+
+span.button-filter .btn {
+  font-weight: 200;
+  font-size: .8rem;
+}
+
+
+.tool-card {
+  color: #61B4E4;
+}
+
+.tool-card p {
+  color: black;
+  font-size: smaller;
+}
+.tool-card-selected p {
+  color: white;
+}
+
+.tool-card:hover {
+  color: white;
+  background-color: #6f6f6f;
+}
+.tool-card-selected,
+.tool-card-selected:hover {
+  color:#FF6315;
+  background-color: #0B1F2C;
+}
+
+.tool-highlight {
+  color:#FF6315;
+  background-color: #0B1F2C;
+}
+.tool-card .card-title {
+  padding-top: 1rem;
+  margin-bottom: 0;
+}
+.tool-card > .card-title h4 {
+  font-weight: 300;
+}
+#tool-display p {
+  color: white;
+  font-size: smaller;
+}
+section.tool-card-text {
+  clear: both;
+
+}
+
+#tool-display {
+  position: relative;
+  top: -10px;
+}
+
+.card.tool-card {
+  margin: .5em;
+}
+
+/*Put buttons in a row*/
+.btn.btn-outline-primary {
+  float: left;
+}
+.card-filter {
+  margin-bottom: 2em;
+}
+footer .btn {
+  margin: 0 .5em;
+}
+span.button-filter {
+  width: 7em;
+  margin: 0 .2em;
+}
+
+
+/*Filter decoration*/
+.tool-card-filtered::after {
+  content: '';
+  width: 10%;
+  height: 4px;
+  background: #FF6315;
+  position: absolute;
+  left: 45%;
+  display: block;
+}
