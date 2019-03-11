@@ -18,9 +18,25 @@
 
 
 
-  //Click handler
+  //Card click handler
   function fnClickCard() {
     // Set button Active
+
+    // code to figure out where the click happened
+    // @todo Fire event for screen resize!
+
+
+    // var positionClick = $(this).position().top;
+    // var positionClick = $(this).offset().top;
+    var positionClick1 = $(this).position().top;
+    var objHeight = $(this).height();
+    var rePosition = positionClick1 + objHeight;
+
+    // console.log ("Click OFFSET: " + positionClick);
+    // console.log("Click POSITION: " + positionClick2);
+    // console.log("height of object: " + objHeight);
+    // console.log("New offset: " + positionClick-objHeight);
+    // console.log("New Position: " + positionClick2-objHeight);
 
 
     if ($(this).hasClass('tool-card-selected')) {
@@ -30,8 +46,7 @@
 
       // Turn off the "content"
       $('#tool-display').remove();
-    }
-    else {
+    } else {
       // Turn off all other active cards
       $(".card.tool-card-selected").toggleClass("tool-card-selected");
       $("#tool-display").remove();
@@ -41,42 +56,46 @@
       // Toggle selected on this card.
       $(this).toggleClass('tool-card-selected');
 
-      // Load appropriate content
-      $( "#hiv-content" ).clone().toggleClass("invisible")
-          .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
-
 
       var cardType = $(this).data("card-type");
       switch (cardType) {
         case 'emod':
-          $( "#emod-content" ).clone().toggleClass("invisible")
+          $("#emod-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
+          $("#tool-display").css({top: rePosition, position: 'absolute'});
           break;
         case 'cms':
-          $( "#cms-content" ).clone().toggleClass("invisible")
+          $("#cms-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
+          $("#tool-display").css({top: rePosition, position: 'absolute'});
           break;
         case 'dtk':
-          $( "#dtk-content" ).clone().toggleClass("invisible")
+          $("#dtk-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
+          $("#tool-display").css({top: rePosition, position: 'absolute'});
           break;
         case 'comps':
-          $( "#comps-content" ).clone().toggleClass("invisible")
+          $("#comps-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
+          $("#tool-display").css({top: rePosition, position: 'absolute'});
           break;
         case 'risk':
-          $( "#risk-content" ).clone().toggleClass("invisible")
+          $("#risk-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
+          $("#tool-display").css({top: rePosition, position: 'absolute'});
           break;
         case 'vis':
-          $( "#vis-content" ).clone().toggleClass("invisible")
+          $("#vis-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
+          $("#tool-display").css({top: rePosition, position: 'absolute'});
           break;
         default:
           console.log('>>> not a valid card type <<<<');
       }
     }
   }
+
+
 
   function fnClickFilter() {
     //turn on active on currant button - turn off on all others.
