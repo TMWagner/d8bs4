@@ -122,6 +122,16 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
 
+  /**
+   * Attach library for Tools page(s)
+   * tmw: 2019/03/11
+   * @todo This is test code for node 171
+   */
+  if ($path == '/node/171') {
+    $attachments['#attached']['library'][] = 'idm/tools';
+  };
+
+
 }
 
 

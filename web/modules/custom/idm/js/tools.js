@@ -11,32 +11,70 @@
   /* CODE GOES HERE  - Code Wrap*/
   //Begin paste/functions
 
+  //Begin paste/functions
+
   // Attach the handlers
-  $('.card').click(fnClickCard);
+  // $('.card').click(fnClickCard);
+
+
 
   $('.btn-filter-selector').click(fnClickFilter);
 
+  var doMobile = false;
+
+  if (isMobile()) {
+    $(".card").click(fnClickCardMobile);
+
+  } else {
+    $('.card').click(fnClickCard);
+  }
+
+
+
+  function fnClickCardMobile() {
+    // Which card was clicked
+    var cardType = $(this).data("card-type");
+    switch (cardType) {
+      case 'emod':
+        $("#toolsModalTitle").text(cardType);
+        $("#modal-body-template").html($("#tool-card-text-emod").html());
+        break;
+      case 'cms':
+        $("#toolsModalTitle").text(cardType);
+        $("#modal-body-template").html($("#tool-card-text-cms").html());
+        break;
+      case 'dtk':
+        $("#toolsModalTitle").text(cardType);
+        $("#modal-body-template").html($("#tool-card-text-dtk").html());
+        break;
+      case 'comps':
+        $("#toolsModalTitle").text(cardType);
+        $("#modal-body-template").html($("#tool-card-text-comps").html());
+        break;
+      case 'risk':
+        $("#toolsModalTitle").text(cardType);
+        $("#modal-body-template").html($("#tool-card-text-risk").html());
+        break;
+      case 'vis':
+        $("#toolsModalTitle").text(cardType);
+        $("#modal-body-template").html($("#tool-card-text-vis").html());
+        break;
+      default:
+        console.log('>>> not a valid card type <<<<');
+    }
+
+
+
+    // $("#toolsModalTitle").text('bla');
+    // $("#modal-body-template").text('exciting text');
+    $("#toolsModal").modal();
+
+  }
+  // End Function
 
 
   //Card click handler
   function fnClickCard() {
-    // Set button Active
-
-    // code to figure out where the click happened
-    // @todo Fire event for screen resize!
-
-
-    // var positionClick = $(this).position().top;
-    // var positionClick = $(this).offset().top;
-    var positionClick1 = $(this).position().top;
-    var objHeight = $(this).height();
-    var rePosition = positionClick1 + objHeight;
-
-    // console.log ("Click OFFSET: " + positionClick);
-    // console.log("Click POSITION: " + positionClick2);
-    // console.log("height of object: " + objHeight);
-    // console.log("New offset: " + positionClick-objHeight);
-    // console.log("New Position: " + positionClick2-objHeight);
 
 
     if ($(this).hasClass('tool-card-selected')) {
@@ -47,12 +85,23 @@
       // Turn off the "content"
       $('#tool-display').remove();
     } else {
+
+
+      //Calculate position for detail content
+      var positionClick = $(this).position().top;
+      var objHeight = $(this).height();
+      var rePosition = positionClick + objHeight;
+
+      console.log("Click OFFSET: " + positionClick);
+      console.log("height of object: " + objHeight);
+
+
       // Turn off all other active cards
       $(".card.tool-card-selected").toggleClass("tool-card-selected");
       $("#tool-display").remove();
 
-      // Turn off any "display content"
 
+      // Turn off any "display content"
       // Toggle selected on this card.
       $(this).toggleClass('tool-card-selected');
 
@@ -93,15 +142,29 @@
           console.log('>>> not a valid card type <<<<');
       }
     }
+    // End of Desktop/tablet
+
+
   }
 
 
+  // Is mobile test code
+  //@todo Verify this code - What screen size should it be
+  function isMobile() {
+    var isMobile = window.matchMedia("only screen and (max-width: 760px)");
+    return isMobile.matches ? true : false;
 
+  }
+
+
+  // Filter handler
   function fnClickFilter() {
     //turn on active on currant button - turn off on all others.
     // @todo Do we leave ALL selected if clicked?
 
+
     var selectorBtn = $(this).attr('id');
+    //@todo: Replace for production
     var selectorBtnFooter = $('<p>Any little thing can be your friend if you let it be</p>');
 
 
@@ -161,6 +224,7 @@
   }
 
   // End paste
+
 
 
   /* END Code Wrap */
