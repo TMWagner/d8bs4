@@ -55,10 +55,26 @@ p.banner-left {
 }
 .highlight {
   font-size: 2.5rem;
-  color: #EFB750;
+  color: $gold_accent;
 }
 .idm-banner {
   color: white;
+}
+
+
+.quicklink-item + div {
+  margin-top: .5em;
+}
+.quicklink-item p {
+  margin: 0;
+}
+
+.quicklink-item a {
+  color: white;
+}
+.quicklink-item a:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .center-content {
@@ -78,12 +94,12 @@ p.banner-left {
 }
 //Test Code / Separator bar
 .left-column-seperator {
-  border-right: thin solid #F09B57;
+  border-right: thin solid $idm_orange;
 }
 
 // Underline on focus link
 .mega-dropdown a:focus::after {
-  background: none repeat scroll 0 0 #F1815E;
+  background: none repeat scroll 0 0 $idm_orange;
   bottom: 0;
   content: "";
   display: block;
@@ -121,24 +137,6 @@ p.banner-left {
   background-image: linear-gradient(to right, #F27A60,  #EFBD4F);
   border-radius: 0 10px 0 0}
 
-#nav-gold > li > a {
-  color: white;
-}
-#nav-gold > li > a:hover {
-  color: black;
-  background-color: #EFB750CC;
-}
-
-.navbar.navbar-default.visible-xs.quicklinks {
-  background-color: #EFB750CC;
-}
-.quicklinks-bar > li > a {
-  color: white;
-}
-.quicklinks-bar > li > a:hover {
-  color: black;
-  background-color: #EFB750CC;
-}
 
 .mobile-quicklinks .navbar-brand {
   font-size: 14px;
@@ -163,7 +161,7 @@ hr {
   width: 4em;
   margin-left: auto;
   margin-right: auto;
-  background-color:#337ab7;
+  background-color: $idm_base_blue;
   opacity: 0.9;
   height: 5px;
 }
@@ -179,7 +177,7 @@ h2.how-panel {
 }
 h3.how-panel {
   margin-top: 0;
-  color: #19c5ff;
+  color: $idm_light_blue;
 }
 
 
@@ -199,7 +197,7 @@ a.publication-link-external {
   color: white;
 }
 a.publication-link-external:hover {
-  color: #0c97ed;
+  color: $idm_base_blue;
   text-decoration: none;
   text-align: center;
 }
