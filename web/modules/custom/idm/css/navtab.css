@@ -1,8 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
-.stupid {
-  color: red;
-}
+
 .nav-tabs-dropdown {
   display: none;
   border-bottom-left-radius: 0;

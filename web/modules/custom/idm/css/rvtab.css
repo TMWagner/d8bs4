@@ -1,4 +1,5 @@
 /* Mixins */
+/* @todo import real _variables.scss */
 /* Vars */
 body {
   background: #ccc;
@@ -6,7 +7,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e0e0e0',GradientType=1 ); }
 
 .tabs_wrapper {
-  width: 85%;
+  width: 95%;
   text-align: center;
   margin: 0 auto;
   background: transparent; }

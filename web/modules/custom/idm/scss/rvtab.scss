@@ -62,6 +62,7 @@
 }
 
 
+/* @todo import real _variables.scss */
 /* Vars */
 $tab_text_color: white;
 $tab_text_color_active: #898989;
@@ -80,7 +81,7 @@ body {
   @include bg-gradient;
 }
 .tabs_wrapper {
-  width: 85%;
+  width: 95%;
   text-align: center;
   margin: 0 auto;
   background: transparent;
