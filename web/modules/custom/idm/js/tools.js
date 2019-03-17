@@ -11,62 +11,99 @@
   /* CODE GOES HERE  - Code Wrap*/
   //Begin paste/functions
 
-  //Begin paste/functions
-
-  // Attach the handlers
-  // $('.card').click(fnClickCard);
-
-
-
+  // Attach the handler for filter
   $('.btn-filter-selector').click(fnClickFilter);
 
-  var doMobile = false;
-
   if (isMobile()) {
+    console.log("Processing mobile...");
     $(".card").click(fnClickCardMobile);
 
   } else {
+    console.log("Processing non-mobile...");
     $('.card').click(fnClickCard);
   }
-
 
 
   function fnClickCardMobile() {
     // Which card was clicked
     var cardType = $(this).data("card-type");
+
+
+    // @todo OK - now lets do that using $this
+    //
+    // card-sublink-buttons
+
+    // todo cleanup. Remove multiple IDs;  (e.g., ID the source content just once.
+
     switch (cardType) {
       case 'emod':
+
+        var footer = $('#tool-card-footer-emod').html();
+
         $("#toolsModalTitle").text(cardType);
         $("#modal-body-template").html($("#tool-card-text-emod").html());
+
+        //@todo wrap this mess before attaching... then make sure to remove it before adding
+        $(".card-sublink-buttons-dynamic.row.temp").remove();
+        $("#modal-footer-template button").before(footer);
+        $("#modal-footer-template ").children('div').first().addClass('temp');
         break;
       case 'cms':
+        var footer = $('#tool-card-footer-cms').html();
         $("#toolsModalTitle").text(cardType);
         $("#modal-body-template").html($("#tool-card-text-cms").html());
+
+        //@todo wrap this mess before attaching... then make sure to remove it before adding
+        $(".card-sublink-buttons-dynamic.row.temp").remove();
+        $("#modal-footer-template button").before(footer);
+        $("#modal-footer-template ").children('div').first().addClass('temp');
+
         break;
       case 'dtk':
+        var footer = $('#tool-card-footer-dtk').html();
         $("#toolsModalTitle").text(cardType);
         $("#modal-body-template").html($("#tool-card-text-dtk").html());
+
+        //@todo wrap this mess before attaching... then make sure to remove it before adding
+        $(".card-sublink-buttons-dynamic.row.temp").remove();
+        $("#modal-footer-template button").before(footer);
+        $("#modal-footer-template ").children('div').first().addClass('temp');
         break;
       case 'comps':
+        var footer = $('#tool-card-footer-comps').html();
         $("#toolsModalTitle").text(cardType);
         $("#modal-body-template").html($("#tool-card-text-comps").html());
+
+        //@todo wrap this mess before attaching... then make sure to remove it before adding
+        $(".card-sublink-buttons-dynamic.row.temp").remove();
+        $("#modal-footer-template button").before(footer);
+        $("#modal-footer-template ").children('div').first().addClass('temp');
         break;
       case 'risk':
+        var footer = $('#tool-card-footer-risk').html();
         $("#toolsModalTitle").text(cardType);
         $("#modal-body-template").html($("#tool-card-text-risk").html());
+
+        //@todo wrap this mess before attaching... then make sure to remove it before adding
+        $(".card-sublink-buttons-dynamic.row.temp").remove();
+        $("#modal-footer-template button").before(footer);
+        $("#modal-footer-template ").children('div').first().addClass('temp');
         break;
       case 'vis':
+        var footer = $('#tool-card-footer-vis').html();
         $("#toolsModalTitle").text(cardType);
         $("#modal-body-template").html($("#tool-card-text-vis").html());
+
+        //@todo wrap this mess before attaching... then make sure to remove it before adding
+        $(".card-sublink-buttons-dynamic.row.temp").remove();
+        $("#modal-footer-template button").before(footer);
+        $("#modal-footer-template ").children('div').first().addClass('temp');
         break;
       default:
         console.log('>>> not a valid card type <<<<');
     }
 
 
-
-    // $("#toolsModalTitle").text('bla');
-    // $("#modal-body-template").text('exciting text');
     $("#toolsModal").modal();
 
   }
@@ -224,7 +261,6 @@
   }
 
   // End paste
-
 
 
   /* END Code Wrap */
