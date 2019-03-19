@@ -122,4 +122,16 @@ span.button-filter {
   left: 45%;
   display: block; }
 
+.tools.close {
+  color: #FF6315;
+  font-size: 2rem;
+  font-weight: lighter;
+  opacity: 1;
+  text-shadow: none; }
+
+.card-sublink-buttons-dynamic .btn-outline-primary {
+  color: #FF6315;
+  border-color: #61B4E4;
+  margin-right: .5em; }
+
 /*# sourceMappingURL=tools.css.map */
