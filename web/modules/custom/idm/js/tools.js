@@ -9,32 +9,71 @@
 
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
+
   //Begin paste/functions
+
+
+  //Begin paste/functions
+  var windowType = checkMod();
+  console.log("window type set at: " + windowType);
+
+  $(window).resize(function() {
+    var oldWindowType = windowType;
+    windowType = checkMod();
+
+    console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
+
+    if (windowType !== oldWindowType) {
+      console.log("resetting window type - now is: " + windowType);
+      // location.reload(true);
+
+      //@todo Reload not working
+      window.location.reload(true);
+
+      //small to medium
+      if ((oldWindowType === "small") && (windowType === "medium")) {
+        $(".card").off("click");
+        $('.card').click(fnClickCard);
+
+        // Remove any left over modals
+        $("#toolsModal").modal("hide");
+      }
+      //medium to small
+      if ((oldWindowType === 'medium') && (windowType === "small")) {
+        $(".card").off("click");
+        $(".card").click(fnClickCardMobile);
+        //@todo Reload not working
+        location.reload(true);
+
+        // Turn off Card selected
+        $(".tool-card").removeClass('tool-card-selected');
+
+        // Turn off the "content"
+        $('#tool-display').remove();
+      }
+
+      //medium to large - nothing to do
+      //large to medium - nothing to do
+    }
+  });
+
+
 
   // Attach the handler for filter
   $('.btn-filter-selector').click(fnClickFilter);
 
-  if (isMobile()) {
-    console.log("Processing mobile...");
+  if (windowType === 'small') {
     $(".card").click(fnClickCardMobile);
 
   } else {
-    console.log("Processing non-mobile...");
     $('.card').click(fnClickCard);
   }
-
 
   function fnClickCardMobile() {
     // Which card was clicked
     var cardType = $(this).data("card-type");
 
-
-    // @todo OK - now lets do that using $this
-    //
-    // card-sublink-buttons
-
     // todo cleanup. Remove multiple IDs;  (e.g., ID the source content just once.
-
     switch (cardType) {
       case 'emod':
 
@@ -104,6 +143,9 @@
     }
 
 
+
+    // $("#toolsModalTitle").text('bla');
+    // $("#modal-body-template").text('exciting text');
     $("#toolsModal").modal();
 
   }
@@ -187,10 +229,27 @@
 
   // Is mobile test code
   //@todo Verify this code - What screen size should it be
-  function isMobile() {
-    var isMobile = window.matchMedia("only screen and (max-width: 760px)");
-    return isMobile.matches ? true : false;
+  //@todo We could use modernizr here... but why?
+  //	XS < 576
+  //	SM >= 576
+  //	MD >= 768
+  //	LG >= 992
+  function checkMod(initial) {
 
+
+    var windowWidth = $( window ).width();
+
+    if (windowWidth <= 768)
+      windowType = 'small';
+
+    else if (windowWidth <= 992)
+      windowType = 'medium';
+
+    else {
+      windowType = "large";
+    }
+
+    return windowType;
   }
 
 
