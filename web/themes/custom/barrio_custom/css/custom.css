@@ -74,10 +74,10 @@ p.banner-left {
   padding-bottom: 1em; }
 
 .left-column-seperator {
-  border-right: thin solid #FF6315; }
+  border-right: thin solid #FF8900; }
 
 .mega-dropdown a:focus::after {
-  background: none repeat scroll 0 0 #FF6315;
+  background: none repeat scroll 0 0 #FF8900;
   bottom: 0;
   content: "";
   display: block;
@@ -89,7 +89,7 @@ p.banner-left {
  * Hero/Carosel image
  */
 .hero {
-  background-color: #c0bdc2;
+  background-color: #6f6f6f;
   width: 100vw;
   height: 28vw;
   position: relative; }
@@ -142,7 +142,7 @@ h2.how-panel {
 
 h3.how-panel {
   margin-top: 0;
-  color: #61B4E4; }
+  color: #19BAFF; }
 
 .how-panel > .well {
   background: none;
@@ -165,7 +165,7 @@ a.publication-link-external:hover {
   font-size: smaller; }
 
 .profile-link-item a:hover {
-  color: #FF6315;
+  color: #FF8900;
   text-decoration: none; }
 
 .profile-link-item a:active {

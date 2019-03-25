@@ -3,8 +3,6 @@ idm:
   version: 1.x
   css:
     layout:
-#      css/colorbox.css: {}
-#      css/mega.css: {}
       css/mega_style.css: {}
       css/ionicons.min.css: {}
     theme:
@@ -22,6 +20,17 @@ idm:
 
 # Tools page(s)
 # idm/tools
+
+fontawesome:
+  version: 1.x
+  css:
+      base:
+        fontawesome/css/all.css: {}
+  dependencies:
+    - core/jquery
+
+
+
 tools:
   version: 1.x
   css:

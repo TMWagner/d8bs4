@@ -24,7 +24,7 @@
 .tool.close {
   color: #FF6315;
   font-size: 2rem;
-  font-weight: 50;
+  font-weight: lighter;
   opacity: 1;
   text-shadow: none; }
 
@@ -47,15 +47,15 @@ div.tool-highlight footer {
   padding: 0 0 1rem; }
 
 span.button-filter .btn-outline-primary {
-  color: #FF6315;
-  border-color: #61B4E4; }
+  color: #FF8900;
+  border-color: #19BAFF; }
 
 span.button-filter .btn {
   font-weight: 200;
   font-size: .8rem; }
 
 .tool-card {
-  color: #61B4E4; }
+  color: #19BAFF; }
 
 .tool-card p {
   color: black;
@@ -70,7 +70,7 @@ span.button-filter .btn {
 
 .card.tool-card-selected,
 .tool-card-selected:hover {
-  color: #FF6315;
+  color: #FF8900;
   background-color: #0B1F2C; }
 
 .tool-highlight {
@@ -109,7 +109,7 @@ footer .btn {
   margin: 0 .5em; }
 
 span.button-filter {
-  width: 7em;
+  width: 6.5em;
   margin: 0 .2em; }
 
 /*Filter decoration*/
@@ -117,21 +117,63 @@ span.button-filter {
   content: '';
   width: 10%;
   height: 4px;
-  background: #FF6315;
+  background: #FF8900;
   position: absolute;
   left: 45%;
   display: block; }
 
 .tools.close {
-  color: #FF6315;
+  color: #FF8900;
   font-size: 2rem;
   font-weight: lighter;
   opacity: 1;
   text-shadow: none; }
 
 .card-sublink-buttons-dynamic .btn-outline-primary {
-  color: #FF6315;
+  color: #FF8900;
   border-color: #61B4E4;
   margin-right: .5em; }
+
+#tools-filter .carousel-indicators li {
+  background-color: #19BAFF; }
+
+#tools-filter .carousel-indicators {
+  position: relative; }
+
+#tools-filter .carousel-indicators .active {
+  opacity: 1;
+  height: 4px;
+  width: 40px;
+  background-color: #19BAFF; }
+
+#tools-filter .carousel-caption {
+  position: absolute;
+  bottom: 0px;
+  left: 10%;
+  right: 10%;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+  background-image: linear-gradient(#d9d9d9, rgba(217, 217, 217, 0.6)); }
+
+#tools-filter .carousel-control-next,
+#tools-filter .carousel-control-prev {
+  width: 5%; }
+
+.carousel-caption h4 {
+  color: black;
+  font-weight: lighter;
+  text-transform: uppercase; }
+
+.carousel-caption p {
+  color: #000000;
+  font-size: smaller; }
+
+.fa-angle-left, .fa-angle-right {
+  font-size: 30px;
+  color: #FF8900; }
+
+.slide-body {
+  height: 5em; }
 
 /*# sourceMappingURL=tools.css.map */

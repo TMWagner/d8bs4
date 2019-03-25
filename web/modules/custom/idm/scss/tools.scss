@@ -31,7 +31,7 @@
 .tool.close {
   color:#FF6315;
   font-size: 2rem;
-  font-weight: 50;
+  font-weight: lighter;
   opacity: 1;
   text-shadow: none;
 }
@@ -129,8 +129,9 @@ section.tool-card-text {
 footer .btn {
   margin: 0 .5em;
 }
+//@todo Set width to 6.5... not a great option. perhaps stack?
 span.button-filter {
-  width: 7em;
+  width: 6.5em;
   margin: 0 .2em;
 }
 
@@ -140,23 +141,79 @@ span.button-filter {
   content: '';
   width: 10%;
   height: 4px;
-  background: #FF6315;
+  background: $idm_orange;
   position: absolute;
   left: 45%;
   display: block;
 }
 
 .tools.close {
-  color: #FF6315;
+  color: $idm_orange;
   font-size: 2rem;
   font-weight: lighter;
   opacity: 1;
   text-shadow: none;
 }
 .card-sublink-buttons-dynamic .btn-outline-primary {
-  color: #FF6315;
+  color: $idm_orange;
   border-color: #61B4E4;
   margin-right: .5em;
 }
+
+//////////////////////
+//Tools Mobile
+
+#tools-filter .carousel-indicators li {
+  background-color: $idm_light_blue
+}
+#tools-filter .carousel-indicators {
+  position: relative;
+}
+#tools-filter .carousel-indicators .active {
+  opacity: 1;
+  height: 4px;
+  width: 40px;
+  background-color: $idm_light_blue;
+}
+
+#tools-filter .carousel-caption {
+  position: absolute;
+  bottom: 0px;
+  left: 10%;
+  right: 10%;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+  //background-color: #c3c6c9;
+  background-image: linear-gradient(#d9d9d9, rgba(217, 217, 217, 0.6));
+}
+
+#tools-filter .carousel-control-next,
+#tools-filter .carousel-control-prev {
+  width: 5%;
+}
+
+.carousel-caption h4 {
+  color: black;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+.carousel-caption p {
+  color: #000000;
+  font-size: smaller;
+}
+.fa-angle-left, .fa-angle-right {
+  font-size: 30px;
+  color: $idm_orange
+}
+
+.slide-body {
+  height: 5em;
+}
+
+//.End Tools Mobile
+////////////////////
+
+
 
 
