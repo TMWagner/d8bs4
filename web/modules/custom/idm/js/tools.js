@@ -155,6 +155,10 @@
   //Card click handler
   function fnClickCard() {
 
+    // Restore main-wrapper natural height
+    $( "#main-wrapper").css({height: 'auto'});
+
+
 
     if ($(this).hasClass('tool-card-selected')) {
 
@@ -170,9 +174,16 @@
       var positionClick = $(this).position().top;
       var objHeight = $(this).height();
       var rePosition = positionClick + objHeight;
+      var wrapperHeight = $('#main-wrapper').height();
+      var wrapperPosition = $('#main-wrapper').position().top;
+      var wrapperTempH = objHeight + wrapperHeight + wrapperPosition;
+
 
       console.log("Click OFFSET: " + positionClick);
-      console.log("height of object: " + objHeight);
+      console.log("height of tool-display: " + objHeight);
+      console.log("height of wrapper" + wrapperHeight);
+      console.log("wrapper position" + wrapperPosition);
+      console.log("new height: " + wrapperTempH);
 
 
       // Turn off all other active cards
@@ -191,39 +202,53 @@
           $("#emod-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
           $("#tool-display").css({top: rePosition, position: 'absolute'});
+          setWrapper(rePosition);
           break;
         case 'cms':
           $("#cms-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
           $("#tool-display").css({top: rePosition, position: 'absolute'});
+          setWrapper(rePosition);
           break;
         case 'dtk':
           $("#dtk-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
           $("#tool-display").css({top: rePosition, position: 'absolute'});
+          setWrapper(rePosition);
           break;
         case 'comps':
           $("#comps-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
           $("#tool-display").css({top: rePosition, position: 'absolute'});
+          setWrapper(rePosition);
           break;
         case 'risk':
           $("#risk-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
           $("#tool-display").css({top: rePosition, position: 'absolute'});
+          setWrapper(rePosition);
           break;
         case 'vis':
           $("#vis-content").clone().toggleClass("invisible")
               .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
           $("#tool-display").css({top: rePosition, position: 'absolute'});
+          setWrapper(rePosition);
           break;
         default:
           console.log('>>> not a valid card type <<<<');
       }
     }
     // End of Desktop/tablet
+  }
 
+  function setWrapper(toolPosition) {
+    //@todo Should pass height too... we have it(I think)
 
+    var toolHeight = $("#tool-display").height();
+    var wrapperHeight = toolPosition + toolHeight;
+    console.log("...inside function. position of tool: " + toolPosition)
+    console.log("... inside function. Height: " + toolHeight);
+    $("#main-wrapper").css({height: wrapperHeight});
   }
 
 
