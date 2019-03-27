@@ -4,7 +4,10 @@
 
 
 .orange {
-  color: #FF6315;
+  color: $idm_orange;
+}
+#tool-display {
+  z-index: 1;
 }
 .container {
   padding-left: 15px;
@@ -29,7 +32,7 @@
   color: #0076A9;
 }
 .tool.close {
-  color:#FF6315;
+  color: $idm_orange;
   font-size: 2rem;
   font-weight: lighter;
   opacity: 1;

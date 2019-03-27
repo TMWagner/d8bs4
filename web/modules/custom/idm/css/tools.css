@@ -1,5 +1,8 @@
 .orange {
-  color: #FF6315; }
+  color: #FF8900; }
+
+#tool-display {
+  z-index: 1; }
 
 .container {
   padding-left: 15px;
@@ -22,7 +25,7 @@
   color: #0076A9; }
 
 .tool.close {
-  color: #FF6315;
+  color: #FF8900;
   font-size: 2rem;
   font-weight: lighter;
   opacity: 1;
