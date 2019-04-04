@@ -4,7 +4,7 @@
 
 
 .research-card {
-  border: $background_dark_grey thin solid;
+  border: $idm_light_grey thin solid;
 }
 
 
@@ -20,6 +20,13 @@
 }
 .research-card  p {
   margin-bottom: 0;
+  color: $idm_base_blue;
+}
+
+.research-card div h4 {
+  font-size: 1.3em;
+  font-weight: 300;
+  text-transform: uppercase;
   color: $idm_base_blue;
 }
 
