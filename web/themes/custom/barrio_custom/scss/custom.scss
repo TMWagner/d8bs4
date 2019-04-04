@@ -330,3 +330,30 @@ a.publication-link-external:hover {
   font-size: small;
 }
 
+
+//------------------
+//Common Card page formatting
+//
+//2019/2/7
+//
+//------------------
+
+.orange {
+  color: $idm_orange;
+}
+
+/*Style leading dash on banner*/
+.leading-dash {
+  width: 4em;
+  border: none;
+  height: 1px;
+  background-color: #bfc3c6;
+  float: left;
+  position: relative;
+  bottom: .2em;
+  margin-right: .2em;
+}
+
+.tools-banner-l2 h5 {
+  font-weight: lighter;
+}

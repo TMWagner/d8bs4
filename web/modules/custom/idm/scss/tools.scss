@@ -3,9 +3,9 @@
 @import "../../../../themes/custom/barrio_custom/scss/variables";
 
 
-.orange {
-  color: $idm_orange;
-}
+//.orange {
+//  color: $idm_orange;
+//}
 #tool-display {
   z-index: 1;
 }
@@ -14,17 +14,17 @@
   padding-right: 15px;
 }
 
-/*Style leading dash on banner*/
-.leading-dash {
-  width: 4em;
-  border: none;
-  height: 1px;
-  background-color: #bfc3c6;
-  float: left;
-  position: relative;
-  bottom: .2em;
-  margin-right: .2em;
-}
+///*Style leading dash on banner*/
+//.leading-dash {
+//  width: 4em;
+//  border: none;
+//  height: 1px;
+//  background-color: #bfc3c6;
+//  float: left;
+//  position: relative;
+//  bottom: .2em;
+//  margin-right: .2em;
+//}
 
 #tool-filter-footer p {
   font-weight: 200;
@@ -39,9 +39,9 @@
   text-shadow: none;
 }
 
-.tools-banner-l2 h5 {
-  font-weight: lighter;
-}
+//.tools-banner-l2 h5 {
+//  font-weight: lighter;
+//}
 .card-filter {
   clear: both;
 }
