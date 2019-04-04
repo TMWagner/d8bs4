@@ -107,6 +107,11 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/rvtab';
   };
 
+  // Define library for RLP
+  if ($path == '/rlp') {
+    $attachments['#attached']['library'][] = 'idm/research';
+  };
+
   /**
    * This is temp code: adding jquery collapse
    * tmw: 2019/01/12

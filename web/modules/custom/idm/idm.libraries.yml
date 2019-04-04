@@ -41,6 +41,18 @@ tools:
   dependencies:
     - core/jquery
 
+# Research page(s)
+research:
+  version: 1.x
+  css:
+    base:
+      css/research.css: {}
+#  js:
+#    js/tools.js: {}
+#  dependencies:
+#    - core/jquery
+
+
 # Navigation menu
 # idm/navtab
 navtab:

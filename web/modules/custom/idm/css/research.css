@@ -1,0 +1,17 @@
+.research-card {
+  border: #292929 thin solid; }
+
+.research-card {
+  display: flex;
+  height: 5em;
+  align-items: center; }
+
+.research-card div {
+  margin: auto;
+  text-align: center; }
+
+.research-card p {
+  margin-bottom: 0;
+  color: #0076A9; }
+
+/*# sourceMappingURL=research.css.map */

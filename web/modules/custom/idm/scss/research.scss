@@ -1,0 +1,35 @@
+// Custom css for Tools
+
+@import "../../../../themes/custom/barrio_custom/scss/variables";
+
+
+.research-card {
+  border: $background_dark_grey thin solid;
+}
+
+
+.research-card {
+  display: flex;
+  height: 5em;
+  align-items: center;
+}
+
+.research-card div {
+  margin: auto;
+  text-align: center;
+}
+.research-card  p {
+  margin-bottom: 0;
+  color: $idm_base_blue;
+}
+
+//.test {
+//  background-color: #0a6eb4;
+//  border: thin solid grey;
+//  height: 3em;
+//}
+
+
+
+
+
