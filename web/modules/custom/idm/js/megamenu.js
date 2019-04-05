@@ -31,8 +31,9 @@
     // $("#box").append($div);
 
 
-    $(".menu > ul").before("<a href=\"#\" class=\"menu-mobile col-12\">IDM</a>");
-    // $(".menu > ul").before("<a href=\"#\" class=\"menu-mobile col-12 \"><div class=\"idm-logo-mobile\">IDM</div>"</a>");
+    // @todo moving this to code
+    // $(".menu > ul").before("<a href=\"#\" class=\"menu-mobile col-12\">IDM</a>");
+
 
 
 
