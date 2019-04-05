@@ -47,6 +47,10 @@ research:
   css:
     base:
       css/research.css: {}
+  js:
+    js/research.js: {}
+  dependencies:
+    - core/jquery
 #  js:
 #    js/tools.js: {}
 #  dependencies:
