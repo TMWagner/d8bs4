@@ -10,8 +10,6 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-  //Begin paste/functions
-
 
   //Begin paste/functions
   var windowType = checkMod();
@@ -62,6 +60,7 @@
   // Attach the handler for filter
   $('.btn-filter-selector').click(fnClickFilter);
 
+  // Attach handler contingent on mobile v.s., desktop
   if (windowType === 'small') {
     $(".card").click(fnClickCardMobile);
 
