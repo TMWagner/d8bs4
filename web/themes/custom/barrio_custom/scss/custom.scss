@@ -360,3 +360,22 @@ a.publication-link-external:hover {
 .view-content {
   clear: both;
 }
+
+.research-content {
+  color: white;
+  background-color: $idm_deep_blue;
+}
+
+.card-selected,
+.card-selected:hover {
+  color: $idm_orange;
+  background-color: $idm_deep_blue;
+}
+
+//@todo nudge the content up... is there a better way?
+//This may not be the best way to move the content up
+.insert.col-12 {
+  position: relative;
+  bottom: 6px;
+}
+

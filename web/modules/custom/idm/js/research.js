@@ -13,7 +13,7 @@
   //Begin paste/functions
 
 
-  //Begin paste/functions
+
   var windowType = checkMod();
   console.log("window type set at: " + windowType);
 
@@ -169,13 +169,9 @@
     var positionNext;
     var data;
 
-    //@todo debug code
-    console.log('>>> fnclick... card was clicked');
-
-
-    //@todo test code to load external data...
-    $( "#test-swap").load( "/malaria ");
-
+    // //@todo test code to load external data...
+    // $( "#test-swap").load( "/malaria ");
+    //
 
     // var curCard = $(this);
     // var data = $(this).find('h4').data();
@@ -188,7 +184,7 @@
       // Turn off Card selected
       $(this).toggleClass('card-selected');
       // Turn off the "content"
-      $('#tool-display').remove();
+      $('.insert').remove();
     } else {
 
       // First find the end of the row
@@ -199,15 +195,15 @@
       // Check for last element
       if ( nextCard.length == 0 ) {
         // We hit the end - currentCard is the last element
-        data = currentCard.find('h4').data("node-url");
-        console.log( 'We clicked the last one: ' + data);
+        // data = currentCard.find('h4').data("node-url");
+        // console.log( 'We clicked the last one: ' + data);
       }
       else {
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        console.log( "position - currant: " + positionCurrant);
-        console.log( "position - next: " + positionNext);
+        // console.log( "position - currant: " + positionCurrant);
+        // console.log( "position - next: " + positionNext);
 
         while ( positionCurrant === positionNext) {
           // Loop till we hit the end of the row

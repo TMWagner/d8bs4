@@ -273,4 +273,17 @@ a.publication-link-external:hover {
 .view-content {
   clear: both; }
 
+.research-content {
+  color: white;
+  background-color: #0B1F2C; }
+
+.card-selected,
+.card-selected:hover {
+  color: #FF8900;
+  background-color: #0B1F2C; }
+
+.insert.col-12 {
+  position: relative;
+  bottom: 6px; }
+
 /*# sourceMappingURL=custom.css.map */
