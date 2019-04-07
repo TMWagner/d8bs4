@@ -19,7 +19,9 @@
 
   $(window).resize(function() {
     var oldWindowType = windowType;
+    var cardClicked = $( ".research-card" );
     windowType = checkMod();
+
 
     console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
 
@@ -32,28 +34,46 @@
 
       //small to medium
       if ((oldWindowType === "small") && (windowType === "medium")) {
-        $(".research-card").off("click");
-        $('.research-card').click(fnClickCard);
+        cardClicked.off("click");
+        cardClicked.click(fnClickCard);
 
         // Remove any left over modals
         $("#toolsModal").modal("hide");
       }
       //medium to small
       if ((oldWindowType === 'medium') && (windowType === "small")) {
-        $(".research-card").off("click");
-        $(".research-card").click(fnClickCardMobile);
+        cardClicked.off("click");
+        cardClicked.click(fnClickCardMobile);
         //@todo Reload not working
         location.reload(true);
 
         // Turn off Card selected
-        $(".tool-card").removeClass('card-selected');
+        cardClicked.removeClass('card-selected');
 
         // Turn off the "content"
-        $('#tool-display').remove();
+        $('.insert').remove();
       }
 
       //medium to large - nothing to do
+      if ((oldWindowType === 'medium') && (windowType === "large")) {
+        cardClicked.off("click");
+
+        // Turn off Card selected
+        cardClicked.removeClass('card-selected');
+
+        // Turn off the "content"
+        $('.insert').remove();
+      }
       //large to medium - nothing to do
+      if ((oldWindowType === 'large') && (windowType === "medium")) {
+        cardClicked.off("click");
+
+        // Turn off Card selected
+        cardClicked.removeClass('card-selected');
+
+        // Turn off the "content"
+        $('.insert').remove();
+      }
     }
   });
 
@@ -177,14 +197,14 @@
     // var data = $(this).find('h4').data();
     // console.log("card is: " + curCard.text);
 
-
+    // One of the cards was clicked - we need to turn off inserted content regardless
+    $('.insert').remove();
 
     if ($(this).hasClass('card-selected')) {
 
       // Turn off Card selected
       $(this).toggleClass('card-selected');
-      // Turn off the "content"
-      $('.insert').remove();
+
     } else {
 
       // First find the end of the row
@@ -193,7 +213,7 @@
       var nextCard = $(this).next();
 
       // Check for last element
-      if ( nextCard.length == 0 ) {
+      if ( nextCard.length === 0 ) {
         // We hit the end - currentCard is the last element
         // data = currentCard.find('h4').data("node-url");
         // console.log( 'We clicked the last one: ' + data);
