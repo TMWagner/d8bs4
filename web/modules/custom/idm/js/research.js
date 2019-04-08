@@ -45,7 +45,7 @@
         cardClicked.off("click");
         cardClicked.click(fnClickCardMobile);
         //@todo Reload not working
-        location.reload(true);
+
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -84,103 +84,40 @@
   // Attach the handler for filter
   $('.btn-filter-selector').click(fnClickFilter);
 
+  var cardClicked = $('.research-card');
 
   // Attach handler for mobile or Desktop
   if (windowType === 'small') {
-    // $(".card").click(fnClickCardMobile);
+    cardClicked.click(fnClickCardMobile);
 
   } else {
-    $('.research-card').click(fnClickCard);
-
-
+    cardClicked.click(fnClickCard);
   }
 
 
-
+  /**
+   * fnClickCardMobile
+   */
   function fnClickCardMobile() {
-    // Which card was clicked
-    var cardType = $(this).data("card-type");
 
-    // todo cleanup. Remove multiple IDs;  (e.g., ID the source content just once.
-    switch (cardType) {
-      case 'emod':
+    var cardClicked = $(this);
+    var data = cardClicked.find('h4').data("node-url");
 
-        var footer = $('#tool-card-footer-emod').html();
-
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-emod").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".research-card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'cms':
-        var footer = $('#tool-card-footer-cms').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-cms").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".research-card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-
-        break;
-      case 'dtk':
-        var footer = $('#tool-card-footer-dtk').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-dtk").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".research-card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'comps':
-        var footer = $('#tool-card-footer-comps').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-comps").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".research-card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'risk':
-        var footer = $('#tool-card-footer-risk').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-risk").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".research-card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'vis':
-        var footer = $('#tool-card-footer-vis').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-vis").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".research-card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      default:
-        console.log('>>> not a valid card type <<<<');
-    }
+    console.log(">>> firing fnClickCardMobile..." + data);
 
 
 
     // $("#toolsModalTitle").text('bla');
     // $("#modal-body-template").text('exciting text');
-    $("#toolsModal").modal();
+    $("#test-modal").html("this is a test...");
 
   }
   // End Function
 
 
-  //Card click handler
+  /**
+   * fnClickCard
+   */
   function fnClickCard() {
 
     var positionCurrant;
