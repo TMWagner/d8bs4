@@ -56,7 +56,8 @@
 
       //medium to large - nothing to do
       if ((oldWindowType === 'medium') && (windowType === "large")) {
-        cardClicked.off("click");
+        // cardClicked.off("click");
+        // cardClicked.click(fnClickCard);
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -66,7 +67,8 @@
       }
       //large to medium - nothing to do
       if ((oldWindowType === 'large') && (windowType === "medium")) {
-        cardClicked.off("click");
+        // cardClicked.off("click");
+        // cardClicked.click(fnClickCard);
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -88,10 +90,6 @@
     // $(".card").click(fnClickCardMobile);
 
   } else {
-    // @todo test code for code import
-    // $('.view-footer').click(fnClickCard);
-
-
     $('.research-card').click(fnClickCard);
 
 

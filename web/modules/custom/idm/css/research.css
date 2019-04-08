@@ -14,10 +14,16 @@
   margin-bottom: 0;
   color: #0076A9; }
 
+.research-card div h4:hover {
+  color: #FF8900; }
+
 .research-card div h4 {
   font-size: 1.3em;
   font-weight: 300;
   text-transform: uppercase;
   color: #0076A9; }
+
+.research-card.card-selected div h4 {
+  color: #FF8900; }
 
 /*# sourceMappingURL=research.css.map */

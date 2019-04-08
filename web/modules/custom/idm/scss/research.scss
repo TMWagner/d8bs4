@@ -23,6 +23,9 @@
   color: $idm_base_blue;
 }
 
+.research-card div h4:hover {
+  color: $idm_orange;
+}
 .research-card div h4 {
   font-size: 1.3em;
   font-weight: 300;
@@ -30,6 +33,9 @@
   color: $idm_base_blue;
 }
 
+.research-card.card-selected div h4 {
+  color: $idm_orange;
+}
 //.test {
 //  background-color: #0a6eb4;
 //  border: thin solid grey;
