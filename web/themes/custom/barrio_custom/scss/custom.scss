@@ -9,6 +9,8 @@
 @import "variables";
 
 
+
+
 //Navbar
 .navbar-default {
   background-color: $navbar_background;
@@ -88,14 +90,39 @@ p.banner-left {
   bottom: 0;
   left: 0;
 }
+
+/**********
+* Main menu
+**/
+.menu-left-col,
+.menu-right-col {
+  // @todo override mega_style
+  width: 50% !important;
+}
+.menu-right-col {
+  padding-left: 5%;
+}
+
 // Add a little margin at the bottom of the dropdown
 .dropdown-menu > .col-md-6 {
   padding-bottom: 1em;
 }
 //Test Code / Separator bar
-.left-column-seperator {
+.left-column-separator {
   border-right: thin solid $idm_orange;
+  padding-right: 2em;
 }
+.menu-body p {
+  color: white;
+}
+.menu-body-link a {
+  color: $idm_light_blue !important;
+}
+.menu-body-link a:hover {
+  color: $idm_orange !important;
+}
+
+
 
 // Underline on focus link
 .mega-dropdown a:focus::after {

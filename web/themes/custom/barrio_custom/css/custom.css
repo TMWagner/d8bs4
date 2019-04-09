@@ -70,11 +70,31 @@ p.banner-left {
   bottom: 0;
   left: 0; }
 
+/**********
+* Main menu
+**/
+.menu-left-col,
+.menu-right-col {
+  width: 50% !important; }
+
+.menu-right-col {
+  padding-left: 5%; }
+
 .dropdown-menu > .col-md-6 {
   padding-bottom: 1em; }
 
-.left-column-seperator {
-  border-right: thin solid #FF8900; }
+.left-column-separator {
+  border-right: thin solid #FF8900;
+  padding-right: 2em; }
+
+.menu-body p {
+  color: white; }
+
+.menu-body-link a {
+  color: #19BAFF !important; }
+
+.menu-body-link a:hover {
+  color: #FF8900 !important; }
 
 .mega-dropdown a:focus::after {
   background: none repeat scroll 0 0 #FF8900;
