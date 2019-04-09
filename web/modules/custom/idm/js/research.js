@@ -103,13 +103,21 @@
     var cardClicked = $(this);
     var data = cardClicked.find('h4').data("node-url");
 
-    console.log(">>> firing fnClickCardMobile..." + data);
+    console.log("title is: " + cardClicked.find('h4').html());
 
+    //build out the template.
 
+    //title
+    // var nodeContent = $.get(data + " .research-content");
+    $("#ModalTitle").text(cardClicked.find('h4').html());
 
+    // Grab just the body text
+    $( ".insert" ).load(data + " #research-body-text");
+
+    
     // $("#toolsModalTitle").text('bla');
     // $("#modal-body-template").text('exciting text');
-    $("#test-modal").html("this is a test...");
+    $("#rlpModal").modal();
 
   }
   // End Function
@@ -209,20 +217,8 @@
       $(this).toggleClass('card-selected');
 
 
-
-
     }
     // End of Desktop/tablet
-  }
-
-  function setWrapper(toolPosition) {
-    //@todo Should pass height too... we have it(I think)
-
-    var toolHeight = $("#tool-display").height();
-    var wrapperHeight = toolPosition + toolHeight + 10;
-    console.log("...inside function. position of tool: " + toolPosition)
-    console.log("... inside function. Height: " + toolHeight);
-    $("#main-wrapper").css({height: wrapperHeight});
   }
 
 
