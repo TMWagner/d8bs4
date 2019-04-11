@@ -36,6 +36,7 @@
 #}
 {%
   set classes = [
+    'container',
     'view',
     'view-' ~ id|clean_class,
     'view-id-' ~ id,
@@ -66,8 +67,10 @@
   {% endif %}
 
   {% if rows %}
-    <div class="view-content row justify-content-center">
-      {{ rows }}
+    <div class="rlp-content-wrapper">
+      <div class="view-content row justify-content-between">
+        {{ rows }}
+      </div>
     </div>
   {% elseif empty %}
     <div class="view-empty">

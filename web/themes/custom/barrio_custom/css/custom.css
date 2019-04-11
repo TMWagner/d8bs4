@@ -302,8 +302,11 @@ a.publication-link-external:hover {
   color: #FF8900;
   background-color: #0B1F2C; }
 
-.insert.col-12 {
+.insert.research-content-wrapper {
   position: relative;
   bottom: 6px; }
+
+#research-modal {
+  padding: 1em 0 1em 1em; }
 
 /*# sourceMappingURL=custom.css.map */

@@ -114,7 +114,7 @@
     // Grab just the body text
     $( ".insert" ).load(data + " #research-body-text");
 
-    
+
     // $("#toolsModalTitle").text('bla');
     // $("#modal-body-template").text('exciting text');
     $("#rlpModal").modal();
@@ -182,7 +182,7 @@
         var cardText = currentCard.find("h4").text();
         data = cardClicked.find('h4').data("node-url");
         console.log( "is this it? " + cardText);
-        currentCard.after("<div class='insert col-12'> </div>");
+        currentCard.after("<div class='insert research-content-wrapper mx-sm-1'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
         console.log(data);
         $( ".insert" ).load(data + " .research-content");

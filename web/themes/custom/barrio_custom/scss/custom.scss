@@ -400,9 +400,15 @@ a.publication-link-external:hover {
 }
 
 //@todo nudge the content up... is there a better way?
+//@todo move this to the research css?
 //This may not be the best way to move the content up
-.insert.col-12 {
+
+.insert.research-content-wrapper {
   position: relative;
   bottom: 6px;
+}
+
+#research-modal {
+  padding: 1em 0 1em 1em;
 }
 

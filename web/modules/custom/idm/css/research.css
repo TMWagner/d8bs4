@@ -26,4 +26,15 @@
 .research-card.card-selected div h4 {
   color: #FF8900; }
 
+.rlp-content-wrapper {
+  max-width: 80%;
+  margin: auto; }
+
+@media (min-width: 576px) {
+  .research-card {
+    min-width: 12rem; } }
+@media (min-width: 768px) {
+  .research-card {
+    min-width: 15rem; } }
+
 /*# sourceMappingURL=research.css.map */

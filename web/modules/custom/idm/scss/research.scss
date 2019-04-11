@@ -36,13 +36,22 @@
 .research-card.card-selected div h4 {
   color: $idm_orange;
 }
-//.test {
-//  background-color: #0a6eb4;
-//  border: thin solid grey;
-//  height: 3em;
-//}
 
+.rlp-content-wrapper {
+  max-width: 80%;
+  margin: auto;
 
+}
+@media (min-width: 576px) {
+  .research-card {
+    min-width: 12rem;
+  }
+}
 
+@media (min-width: 768px) {
+  .research-card {
+    min-width: 15rem;
+  }
 
+}
 
