@@ -159,6 +159,15 @@ li.menu-dropdown-icon > a {
     padding: 1.5em 3em;
     display: block;
 }
+/*//make content full width when column 1 goes away*/
+@media (max-width: 992px) {
+    .menu > ul > li a {
+        text-decoration: none;
+        padding: 1.5em 1.5em;
+        display: block;
+    }
+}
+
 
 .menu > ul > li:hover {
     background: #272525;
