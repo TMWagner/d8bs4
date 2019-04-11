@@ -43,12 +43,12 @@
 
 
         function (e) {
-          if ($(window).width() > 943) {
+          if ($(window).width() > 768) {
             $(this).children("ul").fadeIn(150);
             e.preventDefault();
           }
         }, function (e) {
-          if ($(window).width() > 943) {
+          if ($(window).width() > 768) {
             $(this).children("ul").fadeOut(150);
             e.preventDefault();
           }
@@ -69,7 +69,7 @@
       var thisMenu = $(this).children("ul");
       var prevState = thisMenu.css('display');
       $(".menu > ul > li > ul").fadeOut();
-      if ($(window).width() < 943) {
+      if ($(window).width() < 768) {
         if(prevState !== 'block')
           thisMenu.fadeIn(150);
       }
