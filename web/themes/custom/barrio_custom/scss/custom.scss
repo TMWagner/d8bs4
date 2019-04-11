@@ -94,11 +94,23 @@ p.banner-left {
 /**********
 * Main menu
 **/
-.menu-left-col,
-.menu-right-col {
-  // @todo override mega_style
-  width: 50% !important;
+
+.menu-left-col {
+  width: 40% !important;
 }
+.menu-right-col {
+  width: 60% !important;
+}
+//make content full width when column 1 goes away
+@media (max-width: 990px) {
+  .menu-right-col {
+    width: 100% !important;
+  }
+}
+
+
+
+
 .menu-right-col {
   padding-left: 5%;
 }
