@@ -14,17 +14,91 @@
   padding-right: 15px;
 }
 
-///*Style leading dash on banner*/
-//.leading-dash {
-//  width: 4em;
-//  border: none;
-//  height: 1px;
-//  background-color: #bfc3c6;
-//  float: left;
-//  position: relative;
-//  bottom: .2em;
-//  margin-right: .2em;
-//}
+
+.tools-card {
+  border: $idm_light_grey thin solid;
+}
+
+
+.tools-card {
+  display: flex;
+  height: 5em;
+  align-items: center;
+}
+
+.tools-card div {
+  margin: auto;
+  text-align: center;
+}
+.tools-card  p {
+  margin-bottom: 0;
+  color: $background_grey;
+}
+
+.tools-card div h4:hover {
+  color: $idm_orange;
+}
+.tools-card div h4 {
+  font-size: 1.3em;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $idm_base_blue;
+}
+
+.tools-card.card-selected div h4 {
+  color: $idm_orange;
+}
+
+
+@media (min-width: 300px) {
+  .tools-card div h4 {
+    font-size: .9em;
+    font-weight: 400;
+  }
+  .view-content-tools-wrapper {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .tools-card {
+    min-width: 12rem;
+  }
+  .tools-card div h4 {
+    font-size: 1.1em;
+  }
+}
+
+@media (min-width: 768px) {
+  .tools-card {
+    min-width: 15rem;
+  }
+  .tools-card div h4 {
+    font-size: 1.3em;
+    font-weight: 300;
+  }
+  .view-content-tools-wrapper {
+    width: 80%;
+    margin: auto;
+  }
+
+}
+
+.insert.tools-content-wrapper {
+  position: relative;
+  bottom: 6px;
+}
+
+
+
+
+
+
+
+/**
+ * Old Code below this line
+ */
 
 #tool-filter-footer p {
   font-weight: 200;

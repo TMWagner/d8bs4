@@ -5,6 +5,66 @@
   padding-left: 15px;
   padding-right: 15px; }
 
+.tools-card {
+  border: rgba(0, 0, 0, 0.125) thin solid; }
+
+.tools-card {
+  display: flex;
+  height: 5em;
+  align-items: center; }
+
+.tools-card div {
+  margin: auto;
+  text-align: center; }
+
+.tools-card p {
+  margin-bottom: 0;
+  color: #6f6f6f; }
+
+.tools-card div h4:hover {
+  color: #FF8900; }
+
+.tools-card div h4 {
+  font-size: 1.3em;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #0076A9; }
+
+.tools-card.card-selected div h4 {
+  color: #FF8900; }
+
+@media (min-width: 300px) {
+  .tools-card div h4 {
+    font-size: .9em;
+    font-weight: 400; }
+
+  .view-content-tools-wrapper {
+    width: 100%;
+    margin: auto; } }
+@media (min-width: 576px) {
+  .tools-card {
+    min-width: 12rem; }
+
+  .tools-card div h4 {
+    font-size: 1.1em; } }
+@media (min-width: 768px) {
+  .tools-card {
+    min-width: 15rem; }
+
+  .tools-card div h4 {
+    font-size: 1.3em;
+    font-weight: 300; }
+
+  .view-content-tools-wrapper {
+    width: 80%;
+    margin: auto; } }
+.insert.tools-content-wrapper {
+  position: relative;
+  bottom: 6px; }
+
+/**
+ * Old Code below this line
+ */
 #tool-filter-footer p {
   font-weight: 200;
   font-size: smaller;

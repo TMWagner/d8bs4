@@ -66,9 +66,8 @@ function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $ent
 }
 
 
-
 /**
- * Implementation of hook_element_info_alter()
+ * @param array $info
  */
 function idm_element_info_alter(array &$info) {
 
@@ -76,11 +75,12 @@ function idm_element_info_alter(array &$info) {
   if (isset($info['textfield']['#size'])) {
     $info['textfield']['#size'] = 40;
   }
-
 }
 
-/** 
- * Implements hook_page_attachements()
+/**
+ * @param array $attachments
+ * Hook_page_attachements
+ * Attach libraries
  */
 function idm_page_attachments(array &$attachments) {
 
@@ -127,15 +127,18 @@ function idm_page_attachments(array &$attachments) {
   if ($path == '/node/170') {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
-
-  /**
-   * Attach library for Tools page(s)
-   * tmw: 2019/03/11
-   * @todo This is test code for node 171
-   */
-  if ($path == '/node/171') {
+  if ($path == '/tools') {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
+
+//  /**
+//   * Attach library for Tools page(s)
+//   * tmw: 2019/03/11
+//   * @todo This is test code for node 171
+//   */
+//  if ($path == '/node/171') {
+//    $attachments['#attached']['library'][] = 'idm/tools';
+//  };
 
 
 }

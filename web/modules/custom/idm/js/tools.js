@@ -10,14 +10,16 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-
   //Begin paste/functions
+
   var windowType = checkMod();
   console.log("window type set at: " + windowType);
 
   $(window).resize(function() {
     var oldWindowType = windowType;
+    var cardClicked = $( ".tools-card" );
     windowType = checkMod();
+
 
     console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
 
@@ -26,32 +28,52 @@
       // location.reload(true);
 
       //@todo Reload not working
-      window.location.reload(true);
+      // window.location.reload(true);
 
       //small to medium
       if ((oldWindowType === "small") && (windowType === "medium")) {
-        $(".card").off("click");
-        $('.card').click(fnClickCard);
+        cardClicked.off("click");
+        cardClicked.click(fnClickCard);
 
         // Remove any left over modals
         $("#toolsModal").modal("hide");
       }
       //medium to small
       if ((oldWindowType === 'medium') && (windowType === "small")) {
-        $(".card").off("click");
-        $(".card").click(fnClickCardMobile);
+        cardClicked.off("click");
+        cardClicked.click(fnClickCardMobile);
         //@todo Reload not working
-        location.reload(true);
+
 
         // Turn off Card selected
-        $(".tool-card").removeClass('tool-card-selected');
+        cardClicked.removeClass('card-selected');
 
         // Turn off the "content"
-        $('#tool-display').remove();
+        $('.insert').remove();
       }
 
       //medium to large - nothing to do
+      if ((oldWindowType === 'medium') && (windowType === "large")) {
+        // cardClicked.off("click");
+        // cardClicked.click(fnClickCard);
+
+        // Turn off Card selected
+        cardClicked.removeClass('card-selected');
+
+        // Turn off the "content"
+        $('.insert').remove();
+      }
       //large to medium - nothing to do
+      if ((oldWindowType === 'large') && (windowType === "medium")) {
+        // cardClicked.off("click");
+        // cardClicked.click(fnClickCard);
+
+        // Turn off Card selected
+        cardClicked.removeClass('card-selected');
+
+        // Turn off the "content"
+        $('.insert').remove();
+      }
     }
   });
 
@@ -59,179 +81,144 @@
 
   // Attach the handler for filter
   $('.btn-filter-selector').click(fnClickFilter);
+  var cardClicked = $('.tools-card');
 
-  // Attach handler contingent on mobile v.s., desktop
+  // Attach handler for mobile or Desktop
   if (windowType === 'small') {
-    $(".card").click(fnClickCardMobile);
+    cardClicked.click(fnClickCardMobile);
 
   } else {
-    $('.card').click(fnClickCard);
+    cardClicked.click(fnClickCard);
   }
 
+
+  /**
+   * fnClickCardMobile
+   */
   function fnClickCardMobile() {
-    // Which card was clicked
-    var cardType = $(this).data("card-type");
 
-    // todo cleanup. Remove multiple IDs;  (e.g., ID the source content just once.
-    switch (cardType) {
-      case 'emod':
+    var cardClicked = $(this);
+    var data = cardClicked.find('h4').data("node-url");
 
-        var footer = $('#tool-card-footer-emod').html();
+    console.log("title is: " + cardClicked.find('h4').html());
 
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-emod").html());
+    //build out the template.
 
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'cms':
-        var footer = $('#tool-card-footer-cms').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-cms").html());
+    //title
+    // var nodeContent = $.get(data + " .research-content");
+    $("#ModalTitle").text(cardClicked.find('h4').html());
 
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-
-        break;
-      case 'dtk':
-        var footer = $('#tool-card-footer-dtk').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-dtk").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'comps':
-        var footer = $('#tool-card-footer-comps').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-comps").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'risk':
-        var footer = $('#tool-card-footer-risk').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-risk").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      case 'vis':
-        var footer = $('#tool-card-footer-vis').html();
-        $("#toolsModalTitle").text(cardType);
-        $("#modal-body-template").html($("#tool-card-text-vis").html());
-
-        //@todo wrap this mess before attaching... then make sure to remove it before adding
-        $(".card-sublink-buttons-dynamic.row.temp").remove();
-        $("#modal-footer-template button").before(footer);
-        $("#modal-footer-template ").children('div').first().addClass('temp');
-        break;
-      default:
-        console.log('>>> not a valid card type <<<<');
-    }
-
+    // Grab just the body text
+    $( ".insert" ).load(data + " #research-body-text");
 
 
     // $("#toolsModalTitle").text('bla');
     // $("#modal-body-template").text('exciting text');
-    $("#toolsModal").modal();
+    $("#rlpModal").modal();
 
   }
   // End Function
 
 
-  //Card click handler
+  /**
+   * fnClickCard
+   */
   function fnClickCard() {
 
-    // Restore main-wrapper natural height
-    $( "#main-wrapper").css({height: 'auto'});
+    var positionCurrant;
+    var positionNext;
+    var data;
 
+    console.log(">>> debug... we clicked the card");
 
+    // //@todo test code to load external data...
+    // $( "#test-swap").load( "/malaria ");
+    //
 
-    if ($(this).hasClass('tool-card-selected')) {
+    // var curCard = $(this);
+    // var data = $(this).find('h4').data();
+    // console.log("card is: " + curCard.text);
+
+    // One of the cards was clicked - we need to turn off inserted content regardless
+    $('.insert').remove();
+
+    if ($(this).hasClass('card-selected')) {
 
       // Turn off Card selected
-      $(this).toggleClass('tool-card-selected');
+      $(this).toggleClass('card-selected');
 
-      // Turn off the "content"
-      $('#tool-display').remove();
     } else {
+
+      // First find the end of the row
+      var cardClicked = $(this);
+      var currentCard = cardClicked;
+      var nextCard = $(this).next();
+
+      // Check for last element
+      if ( nextCard.length === 0 ) {
+        // We hit the end - currentCard is the last element
+        // data = currentCard.find('h4').data("node-url");
+        // console.log( 'We clicked the last one: ' + data);
+      }
+      else {
+        positionCurrant = currentCard.position().top;
+        positionNext = nextCard.position().top;
+
+        // console.log( "position - currant: " + positionCurrant);
+        // console.log( "position - next: " + positionNext);
+
+        while ( positionCurrant === positionNext) {
+          // Loop till we hit the end of the row
+          // data = data + ".research-content';
+          currentCard = nextCard;
+          nextCard = currentCard.next();
+          positionCurrant = currentCard.position().top;
+          positionNext = nextCard.position().top;
+          console.log( "position(loop) - currant: " + positionCurrant);
+          console.log( "position(loop) - next: " + positionNext);
+        }
+        // @todo Lets see which card we landed on
+        var cardText = currentCard.find("h4").text();
+        data = cardClicked.find('h4').data("node-url");
+        console.log( "is this it? " + cardText);
+        // @todo add class d-none... then swap display property AFTER load
+        currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
+        // $( ".insert" ).load( "/malaria .research-content");
+        console.log("data is: " + data);
+        $( ".insert" ).load(data + " .research-content").toggleClass("d-none");
+
+      }
+
+
+      // var data = $(this).find('h4').data("node-url");
+      //
+      // console.log( "card is: " + data);
+      //@todo grab this next div.
+      // $(this).next().css( "background-color", "red" );
+
+
+
 
 
       //Calculate position for detail content
       var positionClick = $(this).position().top;
-      var objHeight = $(this).height();
-      var rePosition = positionClick + objHeight;
+      // var objHeight = $(this).height();
+      // var rePosition = positionClick + objHeight;
 
 
 
       // Turn off all other active cards
-      $(".card.tool-card-selected").toggleClass("tool-card-selected");
+      $(".tools-card.card-selected").toggleClass("card-selected");
       $("#tool-display").remove();
 
 
       // Turn off any "display content"
       // Toggle selected on this card.
-      $(this).toggleClass('tool-card-selected');
+      $(this).toggleClass('card-selected');
 
-
-      var cardType = $(this).data("card-type");
-      switch (cardType) {
-        case 'emod':
-          $("#emod-content").clone().toggleClass("invisible")
-              .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
-          break;
-        case 'cms':
-          $("#cms-content").clone().toggleClass("invisible")
-              .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
-          break;
-        case 'dtk':
-          $("#dtk-content").clone().toggleClass("invisible")
-              .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
-          break;
-        case 'comps':
-          $("#comps-content").clone().toggleClass("invisible")
-              .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
-          break;
-        case 'risk':
-          $("#risk-content").clone().toggleClass("invisible")
-              .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent());
-          break;
-        case 'vis':
-          $("#vis-content").clone().toggleClass("invisible")
-              .removeAttr("id").attr("id", "tool-display").insertAfter($(this).parent())
-          break;
-        default:
-          console.log('>>> not a valid card type <<<<');
-      }
-
-      // Position the tool content / set wrapper height to accommodate.
-      $("#tool-display").css({top: rePosition, position: 'absolute'});
-      setWrapper(rePosition);
 
     }
     // End of Desktop/tablet
-  }
-
-  function setWrapper(toolPosition) {
-    //@todo Should pass height too... we have it(I think)
-
-    var toolHeight = $("#tool-display").height();
-    var wrapperHeight = toolPosition + toolHeight + 10;
-    console.log("...inside function. position of tool: " + toolPosition)
-    console.log("... inside function. Height: " + toolHeight);
-    $("#main-wrapper").css({height: wrapperHeight});
   }
 
 
@@ -276,50 +263,7 @@
     $('.tool-card').removeClass('tool-card-filtered');
 
 
-    switch (selectorBtn) {
-      case 'all':
-        selectorBtnFooter = $('<p>Any little thing can be your friend if you let it be.</p>');
-        break;
-      case 'input':
-        $('div[data-card-type="dtk"]').addClass('tool-card-filtered');
-        $('div[data-card-type="comps"]').addClass('tool-card-filtered');
-        selectorBtnFooter = $('<p>Create the input files used in disease simulations</p>');
-        break;
-      case 'model':
-        //@todo remove cl
-        console.log('do model');
-        $('div[data-card-type="emod"]').addClass('tool-card-filtered');
-        $('div[data-card-type="cms"]').addClass('tool-card-filtered');
-        $('div[data-card-type="risk"]').addClass('tool-card-filtered');
-        selectorBtnFooter = $('<p>Simulate disease transmission using a variety of models</p>');
-        break;
-      case 'manage':
-        //@todo remove cl
-        console.log('Do manage...');
-        $('div[data-card-type="dtk"]').addClass('tool-card-filtered');
-        $('div[data-card-type="comps"]').addClass('tool-card-filtered');
-        selectorBtnFooter = $('<p>Control how simulations run on computing resources</p>');
 
-        break;
-      case 'analyze':
-        //@todo remove cl
-        console.log('Do Analyze');
-        $('div[data-card-type="dtk"]').addClass('tool-card-filtered');
-        $('div[data-card-type="comps"]').addClass('tool-card-filtered');
-        selectorBtnFooter = $('<p>Run data analysis on the output of simulations</p>');
-        break;
-      case 'visualize':
-        //@todo remove cl
-        console.log('Do Visualize');
-        $('div[data-card-type="dtk"]').addClass('tool-card-filtered');
-        $('div[data-card-type="comps"]').addClass('tool-card-filtered');
-        $('div[data-card-type="vis"]').addClass('tool-card-filtered');
-        selectorBtnFooter = $('<p>Create visualizations of model output</p>');
-        break;
-      default:
-        console.log('>>> Not a valid filter <<<');
-    }
-    $(selectorBtnFooter).replaceAll('#tool-filter-footer p');
 
 
 
