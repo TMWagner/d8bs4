@@ -45,8 +45,33 @@
   color: $idm_base_blue;
 }
 
-.tools-card.card-selected div h4 {
+.tools-card.card-selected div h4,
+.tools-content h5 {
   color: $idm_orange;
+}
+
+.tools-card.card-selected div p {
+  color: white;
+}
+
+
+.close.tool-content-close {
+  color: $idm_orange;
+  opacity: 1;
+  font-weight: lighter;
+  font-size: 2em;
+  text-shadow: none;
+}
+
+.close.tool-content-close:hover {
+  color: white;
+}
+
+//@todo This could be done dynamically... or with a media query
+.tools-content {
+  color: white;
+  background-color: $idm_deep_blue;
+  padding: 1em;
 }
 
 

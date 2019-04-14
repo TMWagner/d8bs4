@@ -109,12 +109,9 @@
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
     // Grab just the body text
-    $( ".insert" ).load(data + " #research-body-text");
+    $( ".insert" ).load(data + " .tools-card-text");
 
-
-    // $("#toolsModalTitle").text('bla');
-    // $("#modal-body-template").text('exciting text');
-    $("#rlpModal").modal();
+    $("#toolsModal").modal();
 
   }
   // End Function
@@ -129,11 +126,7 @@
     var positionNext;
     var data;
 
-    console.log(">>> debug... we clicked the card");
 
-    // //@todo test code to load external data...
-    // $( "#test-swap").load( "/malaria ");
-    //
 
     // var curCard = $(this);
     // var data = $(this).find('h4').data();
@@ -185,25 +178,9 @@
         currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
         console.log("data is: " + data);
-        $( ".insert" ).load(data + " .research-content").toggleClass("d-none");
+        $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
 
       }
-
-
-      // var data = $(this).find('h4').data("node-url");
-      //
-      // console.log( "card is: " + data);
-      //@todo grab this next div.
-      // $(this).next().css( "background-color", "red" );
-
-
-
-
-
-      //Calculate position for detail content
-      var positionClick = $(this).position().top;
-      // var objHeight = $(this).height();
-      // var rePosition = positionClick + objHeight;
 
 
 
@@ -261,13 +238,6 @@
 
     //first, remove all filters
     $('.tool-card').removeClass('tool-card-filtered');
-
-
-
-
-
-
-    //Turn on highlight class on appropriate cards / turn off others.
 
   }
 
