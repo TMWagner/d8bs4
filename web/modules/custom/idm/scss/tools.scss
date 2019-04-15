@@ -14,6 +14,33 @@
   padding-right: 15px;
 }
 
+.view-tools-filter {
+  width: 100%;
+}
+.tools-wrapper.container {
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+
+}
+@media (max-width: 992px) {
+  .tools-wrapper.container {
+    width: 100%;
+  }
+}
+
+////@todo temp code
+//.col-2.text-center {
+//  border: thin dashed;
+//}
+
+
+p.tool-filter-name {
+  font-size: .7rem;
+  text-transform: uppercase;
+}
+
 
 .tools-card {
   border: $idm_light_grey thin solid;
