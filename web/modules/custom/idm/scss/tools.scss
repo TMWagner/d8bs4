@@ -3,9 +3,6 @@
 @import "../../../../themes/custom/barrio_custom/scss/variables";
 
 
-//.orange {
-//  color: $idm_orange;
-//}
 #tool-display {
   z-index: 1;
 }
@@ -36,11 +33,17 @@
 //}
 
 
-p.tool-filter-name {
+.tools-filter-title > p {
   font-size: .7rem;
   text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
+#filter-intro {
+  color: $idm_orange;
+  font-size: .7rem;
+  padding-bottom: 1rem;
+}
 
 .tools-card {
   border: $idm_light_grey thin solid;
@@ -51,6 +54,20 @@ p.tool-filter-name {
   display: flex;
   height: 5em;
   align-items: center;
+}
+
+
+#status-bar {
+  height: 5px;
+  background-color: lightgray;
+  margin: 0 .6em;
+}
+// @todo width and position to be determined by jquery
+#status-bar-indicator {
+  height: inherit;
+  background-color: $idm_light_blue;
+  width: 5em;
+  position: relative;
 }
 
 .tools-card div {
@@ -80,6 +97,7 @@ p.tool-filter-name {
 .tools-card.card-selected div p {
   color: white;
 }
+
 
 
 .close.tool-content-close {

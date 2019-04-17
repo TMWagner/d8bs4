@@ -14,9 +14,15 @@
 @media (max-width: 992px) {
   .tools-wrapper.container {
     width: 100%; } }
-p.tool-filter-name {
+.tools-filter-title > p {
   font-size: .7rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin-bottom: 5px; }
+
+#filter-intro {
+  color: #FF8900;
+  font-size: .7rem;
+  padding-bottom: 1rem; }
 
 .tools-card {
   border: rgba(0, 0, 0, 0.125) thin solid; }
@@ -25,6 +31,17 @@ p.tool-filter-name {
   display: flex;
   height: 5em;
   align-items: center; }
+
+#status-bar {
+  height: 5px;
+  background-color: lightgray;
+  margin: 0 .6em; }
+
+#status-bar-indicator {
+  height: inherit;
+  background-color: #19BAFF;
+  width: 5em;
+  position: relative; }
 
 .tools-card div {
   margin: auto;
