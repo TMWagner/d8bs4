@@ -21,8 +21,8 @@
 
 #filter-intro {
   color: #FF8900;
-  font-size: .7rem;
-  padding-bottom: 1rem; }
+  font-size: .9rem;
+  padding: 5px 0 20px; }
 
 .tools-card {
   border: rgba(0, 0, 0, 0.125) thin solid; }
@@ -84,12 +84,18 @@
 
 @media (min-width: 300px) {
   .tools-card div h4 {
-    font-size: .9em;
+    font-size: 1.2em;
     font-weight: 400; }
 
   .view-content-tools-wrapper {
     width: 100%;
-    margin: auto; } }
+    margin: auto; }
+
+  .tools-card {
+    height: 8rem; }
+
+  .tools-card p {
+    font-size: .9rem; } }
 @media (min-width: 576px) {
   .tools-card {
     min-width: 12rem; }

@@ -41,8 +41,8 @@
 
 #filter-intro {
   color: $idm_orange;
-  font-size: .7rem;
-  padding-bottom: 1rem;
+  font-size: .9rem;
+  padding: 5px 0 20px;
 }
 
 .tools-card {
@@ -120,14 +120,22 @@
 }
 
 
+
+
 @media (min-width: 300px) {
   .tools-card div h4 {
-    font-size: .9em;
+    font-size: 1.2em;
     font-weight: 400;
   }
   .view-content-tools-wrapper {
     width: 100%;
     margin: auto;
+  }
+  .tools-card {
+    height: 8rem;
+  }
+  .tools-card p {
+    font-size: .9rem;
   }
 }
 
