@@ -15,6 +15,24 @@
   var windowType = checkMod();
   console.log("window type set at: " + windowType);
 
+  /**
+   * Initialize tablet/Desktop windows
+   */
+  if ( windowType !== "small" ) {
+    $( "<div id='status-bar'><div id='status-bar-indicator'></div></div>")
+        .insertAfter( ".tools-wrapper > .view-content");
+
+    $("<div class='text-center'  id='filter-intro'><p>placeholder</p></div> ")
+        .insertAfter("#status-bar");
+
+    $("#filter-intro").html($(".filter-description:first").html());
+  }
+
+
+
+  /**
+   * Resize function
+   */
   $(window).resize(function() {
     var oldWindowType = windowType;
     var cardClicked = $( ".tools-card" );
@@ -80,7 +98,8 @@
 
 
   // Attach the handler for filter
-  $('.btn-filter-selector').click(fnClickFilter);
+  $('.tools-filter-title').click(fnClickFilter);
+
   var cardClicked = $('.tools-card');
 
   // Attach handler for mobile or Desktop
@@ -89,7 +108,38 @@
 
   } else {
     cardClicked.click(fnClickCard);
+
   }
+
+
+  /**
+   * fnClickFilter
+   */
+  function fnClickFilter () {
+    var filterClicked = $(this);
+    var positionStart = $('.tools-filter-title:first').offset().left;
+    var position = filterClicked.offset().left;
+
+
+    var functionTitle = filterClicked.find('p:first').html();
+    var filterDescription = filterClicked.find('.filter-description').html();
+
+    $("#filter-intro").html(filterDescription);
+
+
+    //Calculate position (to be able to move indicator
+    console.log("Filter clicked: " + functionTitle + ' ' + position + ' ' + positionStart);
+    $("#status-bar-indicator").animate({left: position-positionStart});
+
+    //Replace text with correct intro
+    $("#filter-intro").html(filterDescription);
+
+
+    // Light up the correct cards based on taxonomy
+
+
+  }
+
 
 
   /**
@@ -225,23 +275,23 @@
   }
 
 
-  // Filter handler
-  function fnClickFilter() {
-    //turn on active on currant button - turn off on all others.
-    // @todo Do we leave ALL selected if clicked?
-
-
-    var selectorBtn = $(this).attr('id');
-    //@todo: Replace for production
-    var selectorBtnFooter = $('<p>Any little thing can be your friend if you let it be</p>');
-
-
-    //first, remove all filters
-    $('.tool-card').removeClass('tool-card-filtered');
-
-  }
-
-  // End paste
+  // // Filter handler
+  // function fnClickFilter() {
+  //   //turn on active on currant button - turn off on all others.
+  //   // @todo Do we leave ALL selected if clicked?
+  //
+  //
+  //   var selectorBtn = $(this).attr('id');
+  //   //@todo: Replace for production
+  //   var selectorBtnFooter = $('<p>Any little thing can be your friend if you let it be</p>');
+  //
+  //
+  //   //first, remove all filters
+  //   $('.tool-card').removeClass('tool-card-filtered');
+  //
+  // }
+  //
+  // // End paste
 
 
   /* END Code Wrap */
