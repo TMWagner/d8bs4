@@ -12,21 +12,167 @@
 
   //Begin paste/functions
 
+
+  //Determine Window size and set global var.
   var windowType = checkMod();
   console.log("window type set at: " + windowType);
 
+
+  // Shorthand for $( document ).ready()
+  $(function() {
+    console.log( "ready!" );
+
+
+    /**
+     * Initialize tablet/Desktop windows
+     */
+    if ( windowType !== "small" ) {
+      $( "<div id='status-bar'><div id='status-bar-indicator'></div></div>")
+          .insertAfter( ".tools-wrapper > .view-content");
+
+      $("<div class='text-center'  id='filter-intro'><p>placeholder</p></div>")
+          .insertAfter("#status-bar");
+
+      $("#filter-intro").html($(".filter-description:first").html());
+    }
+
+    /**
+     * Attach click handlers
+     */
+    var cardClicked = $('.tools-card');
+
+    // Attach handler for mobile or Desktop
+    if (windowType === 'small') {
+      console.log('attach Handler for small');
+      cardClicked.click(fnClickCardMobile);
+
+    } else {
+      console.log("attach handler for standard window...");
+
+      //we are loading both the desktop filter and the card handler
+      $('.tools-filter-title').click(fnClickFilter);
+      cardClicked.click(fnClickCard);
+    }
+
+
+
+
+    /**
+     * If we are called with a specific parameter, display that desktop card
+     */
+    // Figure out what the calling URL is
+    var urlString = $(location).attr('pathname').split("/");
+    // Test for the 3rd item in the URL (should be the tool parameter)
+
+
+    //Check for parameter
+    //If the length is not four (4)... it isn't correct... we will assume
+    //  that it is /tools
+    //  if it is 4, then we will assume it is /tools/xxx/cardname
+    if (urlString.length == 3) {
+      var toolParamter = urlString[2];
+      // console.log("**** array is: " + urlString.length);
+      console.log(">>> Incoming parameter is: " + toolParamter);
+
+      // Find the "tool-card" that contains an h4 with text equal to parameter;
+      // var cardParm = $(".tools-card:contains('CMS')").find('h4').html();
+
+
+      // var cardParm = $(".tools-card:contains(" + targetCard + ")");
+
+      //@todo call function to display page with correct overlay
+      // This will depend on whether it is mobile or Desktop
+
+      //
+      //
+      // var tempvar = "cms";
+      // $('h4[data-tool=' + tempvar +']').closest('.tools-card').addClass('bogus2');
+
+      fnShowCard(toolParamter);
+    }
+
+  });
+  // End Document ready
+
+
+
   /**
-   * Initialize tablet/Desktop windows
+   * fnShowCard
+   * This function is called directly from a url. For example:
+   * Expected parameter is a text string with the title of the research node
+   * (2019/04/17: tmw)
    */
-  if ( windowType !== "small" ) {
-    $( "<div id='status-bar'><div id='status-bar-indicator'></div></div>")
-        .insertAfter( ".tools-wrapper > .view-content");
+  function fnShowCard(toolParameter) {
+    console.log(">>> Begin fnShowCard: ");
+    console.log("Did we get the parm?? Should be: " + toolParameter);
 
-    $("<div class='text-center'  id='filter-intro'><p>placeholder</p></div> ")
-        .insertAfter("#status-bar");
+    var positionCurrant;
+    var positionNext;
+    var data;
 
-    $("#filter-intro").html($(".filter-description:first").html());
+    // $('h4[data-tool=' + toolParameter +']').closest('.tools-card').addClass('bogus2');
+    // @todo carried cardClicked over from last function - should refactor it.
+    var cardClicked = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
+
+
+
+    // First find the end of the row
+    // @todo the match has to be againt the KEY not the title.
+
+
+    cardText = cardClicked.find('h4').html();
+    console.log("cardClicked is: " + cardText);
+    //@todo verify that we received a valid parameter (how?)
+
+    var currentCard = cardClicked;
+    // var nextCard = $(this).next();
+    var nextCard = currentCard.next();
+
+    var cardTextNext = nextCard.find('h4').html();
+    console.log("cardTextNext  is: " + cardTextNext);
+
+    // Check for last element
+    if ( nextCard.length === 0 ) {
+
+      console.log("**** We hit the end of the row (apparently)...");
+
+      // We hit the end - currentCard is the last element
+      // data = currentCard.find('h4').data("node-url");
+      // console.log( 'We clicked the last one: ' + data);
+    }
+    else {
+      positionCurrant = currentCard.position().top;
+      positionNext = nextCard.position().top;
+
+      console.log( "position - currant: " + positionCurrant);
+      console.log( "position - next: " + positionNext);
+
+      while ( positionCurrant === positionNext) {
+        // Loop till we hit the end of the row
+        // data = data + ".research-content';
+        currentCard = nextCard;
+        nextCard = currentCard.next();
+        //
+        positionCurrant = currentCard.position().top;
+        positionNext = nextCard.position().top;
+        console.log( "position(loop) - currant: " + positionCurrant);
+        console.log( "position(loop) - next: " + positionNext);
+      }
+      // @todo Lets see which card we landed on
+      var cardText = currentCard.find("h4").text();
+      data = cardClicked.find('h4').data("node-url");
+      // console.log( "is this it? " + cardText);
+      // @todo add class d-none... then swap display property AFTER load
+      currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
+      // $( ".insert" ).load( "/malaria .research-content");
+      console.log("data is: " + data);
+      $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
+
+    }
+
+
   }
+  // End of fnShowCard
 
 
 
@@ -97,23 +243,10 @@
 
 
 
-  // Attach the handler for filter
-  $('.tools-filter-title').click(fnClickFilter);
-
-  var cardClicked = $('.tools-card');
-
-  // Attach handler for mobile or Desktop
-  if (windowType === 'small') {
-    cardClicked.click(fnClickCardMobile);
-
-  } else {
-    cardClicked.click(fnClickCard);
-
-  }
-
 
   /**
    * fnClickFilter
+   * Handler for the Desktop Filter UI
    */
   function fnClickFilter () {
     var filterClicked = $(this);
@@ -124,6 +257,7 @@
     var functionTitle = filterClicked.find('p:first').html();
     var filterDescription = filterClicked.find('.filter-description').html();
 
+    //@todo duplicated????
     $("#filter-intro").html(filterDescription);
 
 
@@ -136,7 +270,6 @@
 
 
     // Light up the correct cards based on taxonomy
-
 
   }
 
@@ -155,7 +288,6 @@
     //build out the template.
 
     //title
-    // var nodeContent = $.get(data + " .research-content");
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
     // Grab just the body text
@@ -164,19 +296,21 @@
     $("#toolsModal").modal();
 
   }
-  // End Function
+
 
 
   /**
    * fnClickCard
+   * Handler for the Desktop card handler
    */
   function fnClickCard() {
+
+    //@todo Debug console.log
+    console.log('>>> fnClickCard has fired...');
 
     var positionCurrant;
     var positionNext;
     var data;
-
-
 
     // var curCard = $(this);
     // var data = $(this).find('h4').data();
@@ -223,7 +357,7 @@
         // @todo Lets see which card we landed on
         var cardText = currentCard.find("h4").text();
         data = cardClicked.find('h4').data("node-url");
-        console.log( "is this it? " + cardText);
+        // console.log( "is this it? " + cardText);
         // @todo add class d-none... then swap display property AFTER load
         currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
@@ -273,6 +407,9 @@
 
     return windowType;
   }
+
+
+
 
 
   // // Filter handler

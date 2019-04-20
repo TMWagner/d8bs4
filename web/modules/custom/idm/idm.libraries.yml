@@ -29,8 +29,6 @@ fontawesome:
   dependencies:
     - core/jquery
 
-
-
 tools:
   version: 1.x
   css:

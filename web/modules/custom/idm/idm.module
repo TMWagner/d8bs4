@@ -127,9 +127,15 @@ function idm_page_attachments(array &$attachments) {
   if ($path == '/node/170') {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
+
+  //@todo drop this check and just use the fnmatch case?
   if ($path == '/tools') {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
+
+  if (fnmatch("/tools/*", $path)) {
+    $attachments['#attached']['library'][] = 'idm/tools';
+  }
 
 //  /**
 //   * Attach library for Tools page(s)
