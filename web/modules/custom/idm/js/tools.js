@@ -26,6 +26,8 @@
     /**
      * Initialize tablet/Desktop windows
      */
+
+    //@todo Clean this up... should only check window size once...
     if ( windowType !== "small" ) {
       $( "<div id='status-bar'><div id='status-bar-indicator'></div></div>")
           .insertAfter( ".tools-wrapper > .view-content");
@@ -38,13 +40,24 @@
 
     /**
      * Attach click handlers
+     * And call display card (if needed)
      */
     var cardClicked = $('.tools-card');
+
+    // Figure out what the calling URL is
+    var toolParameter = null;
+    var urlString = $(location).attr('pathname').split("/");
+    if (urlString.length == 3) {
+      toolParameter = urlString[2];
+      console.log(">>> Incoming parameter is: " + toolParameter);
+    }
+
 
     // Attach handler for mobile or Desktop
     if (windowType === 'small') {
       console.log('attach Handler for small');
       cardClicked.click(fnClickCardMobile);
+      if (toolParameter) fnShowCardMobile(toolParameter);
 
     } else {
       console.log("attach handler for standard window...");
@@ -52,29 +65,27 @@
       //we are loading both the desktop filter and the card handler
       $('.tools-filter-title').click(fnClickFilter);
       cardClicked.click(fnClickCard);
+      if (toolParameter) fnShowCard(toolParameter);
+
     }
 
 
 
 
-    /**
-     * If we are called with a specific parameter, display that desktop card
-     */
-    // Figure out what the calling URL is
-    var urlString = $(location).attr('pathname').split("/");
+    // /**
+    //  * If we are called with a specific parameter, display that desktop card
+    //  */
+    //
+    // //Check for parameter
+    // //If the length is not four (4)... it isn't correct... we will assume
+    // //  that it is /tools
+    // //  if it is 3, then we will assume it is /tools/cardname
+    // if (urlString.length == 3) {
+    //   toolParameter = urlString[2];
+    //   console.log(">>> Incoming parameter is: " + toolParameter);
+    //   fnShowCard(toolParameter);
+    // }
 
-
-    //Check for parameter
-    //If the length is not four (4)... it isn't correct... we will assume
-    //  that it is /tools
-    //  if it is 3, then we will assume it is /tools/cardname
-    if (urlString.length == 3) {
-      var toolParameter = urlString[2];
-
-      console.log(">>> Incoming parameter is: " + toolParameter);
-
-      fnShowCard(toolParameter);
-    }
 
   });
   // End Document ready
@@ -167,6 +178,43 @@
 
   }
   // End of fnShowCard
+
+
+
+  /**
+   * fnShowCardMobile
+   */
+  function fnShowCardMobile(toolParameter) {
+
+    console.log(">>> Begin fnShowCardMobile: ");
+    console.log("Did we get the parm?? Should be: " + toolParameter);
+
+
+
+    // $('h4[data-tool=' + toolParameter +']').closest('.tools-card').addClass('bogus2');
+    // @todo carried cardClicked over from last function - should refactor it.
+    var cardClicked = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
+    var data = cardClicked.find('h4').data("node-url");
+
+    console.log("title is: " + cardClicked.find('h4').html());
+
+    //build out the template.
+
+    //title
+    $("#ModalTitle").text(cardClicked.find('h4').html());
+
+    // Grab just the body text
+    $( ".insert" ).load(data + " .tools-card-text");
+
+    $("#toolsModal").modal();
+
+  }
+
+
+
+
+
+
 
 
 
@@ -385,7 +433,6 @@
   //	MD >= 768
   //	LG >= 992
   function checkMod(initial) {
-
 
     var windowWidth = $( window ).width();
 
