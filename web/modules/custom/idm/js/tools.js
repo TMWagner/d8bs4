@@ -69,11 +69,11 @@
     //  that it is /tools
     //  if it is 3, then we will assume it is /tools/cardname
     if (urlString.length == 3) {
-      var toolParamter = urlString[2];
+      var toolParameter = urlString[2];
 
-      console.log(">>> Incoming parameter is: " + toolParamter);
+      console.log(">>> Incoming parameter is: " + toolParameter);
 
-      fnShowCard(toolParamter);
+      fnShowCard(toolParameter);
     }
 
   });
