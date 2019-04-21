@@ -62,31 +62,16 @@
      */
     // Figure out what the calling URL is
     var urlString = $(location).attr('pathname').split("/");
-    // Test for the 3rd item in the URL (should be the tool parameter)
 
 
     //Check for parameter
     //If the length is not four (4)... it isn't correct... we will assume
     //  that it is /tools
-    //  if it is 4, then we will assume it is /tools/xxx/cardname
+    //  if it is 3, then we will assume it is /tools/cardname
     if (urlString.length == 3) {
       var toolParamter = urlString[2];
-      // console.log("**** array is: " + urlString.length);
+
       console.log(">>> Incoming parameter is: " + toolParamter);
-
-      // Find the "tool-card" that contains an h4 with text equal to parameter;
-      // var cardParm = $(".tools-card:contains('CMS')").find('h4').html();
-
-
-      // var cardParm = $(".tools-card:contains(" + targetCard + ")");
-
-      //@todo call function to display page with correct overlay
-      // This will depend on whether it is mobile or Desktop
-
-      //
-      //
-      // var tempvar = "cms";
-      // $('h4[data-tool=' + tempvar +']').closest('.tools-card').addClass('bogus2');
 
       fnShowCard(toolParamter);
     }
@@ -169,6 +154,15 @@
       $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
 
     }
+
+    // Turn off all other active cards (shouldn't matter but... )
+    $(".tools-card.card-selected").toggleClass("card-selected");
+    $("#tool-display").remove();
+
+
+    // Turn off any "display content"
+    // Toggle selected on this card.
+    cardClicked.toggleClass('card-selected');
 
 
   }
