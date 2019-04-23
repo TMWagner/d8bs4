@@ -70,23 +70,6 @@
     }
 
 
-
-
-    // /**
-    //  * If we are called with a specific parameter, display that desktop card
-    //  */
-    //
-    // //Check for parameter
-    // //If the length is not four (4)... it isn't correct... we will assume
-    // //  that it is /tools
-    // //  if it is 3, then we will assume it is /tools/cardname
-    // if (urlString.length == 3) {
-    //   toolParameter = urlString[2];
-    //   console.log(">>> Incoming parameter is: " + toolParameter);
-    //   fnShowCard(toolParameter);
-    // }
-
-
   });
   // End Document ready
 
@@ -384,11 +367,9 @@
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-
-
+        //@todo remove before flight
         console.log( "position - currant: " + positionCurrant);
         console.log( "position - next: " + positionNext);
-
 
         while ( positionCurrant === positionNext) {
           // Loop till we hit the end of the row
@@ -396,16 +377,26 @@
           console.log(">>> loop and get next card <<<");
           var textCurrant = currentCard.find("h4").text();
           var textNext = nextCard.find("h4").text();
+
+          //@todo Remove before flight
           console.log( "Currant card is: " + textCurrant);
           console.log( "Next Card is: " + textNext);
 
+
           currentCard = nextCard;
-          //@todo what does .next return if there isn't a next?
           nextCard = currentCard.next();
+
+          // Break out of the loop if we run past the end. If we don't
+          // then trying to access the empty array will force an error.
+          if (nextCard.length === 0) {
+            break;
+          }
           positionCurrant = currentCard.position().top;
           positionNext = nextCard.position().top;
-          console.log( "position(loop) - currant: " + positionCurrant);
-          console.log( "position(loop) - next: " + positionNext);
+
+          //@todo remove before flight
+          // console.log( "position(loop) - currant: " + positionCurrant);
+          // console.log( "position(loop) - next: " + positionNext);
         }
         // @todo Lets see which card we landed on
         var cardText = currentCard.find("h4").text();
