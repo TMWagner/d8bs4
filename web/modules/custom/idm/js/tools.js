@@ -121,7 +121,7 @@
     //@todo verify that we received a valid parameter (how?)
 
     var currentCard = cardClicked;
-    // var nextCard = $(this).next();
+    var nextCard = $(this).next();
     var nextCard = currentCard.next();
 
     var cardTextNext = nextCard.find('h4').html();
@@ -189,24 +189,25 @@
     console.log(">>> Begin fnShowCardMobile: ");
     console.log("Did we get the parm?? Should be: " + toolParameter);
 
+    if (toolParameter !== 'all') {
 
+      // $('h4[data-tool=' + toolParameter +']').closest('.tools-card').addClass('bogus2');
+      // @todo carried cardClicked over from last function - should refactor it.
+      var cardClicked = $('h4[data-tool=' + toolParameter + ']').closest('.tools-card');
+      var data = cardClicked.find('h4').data("node-url");
 
-    // $('h4[data-tool=' + toolParameter +']').closest('.tools-card').addClass('bogus2');
-    // @todo carried cardClicked over from last function - should refactor it.
-    var cardClicked = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
-    var data = cardClicked.find('h4').data("node-url");
+      console.log("title is: " + cardClicked.find('h4').html());
 
-    console.log("title is: " + cardClicked.find('h4').html());
+      //build out the template.
 
-    //build out the template.
+      //title
+      $("#ModalTitle").text(cardClicked.find('h4').html());
 
-    //title
-    $("#ModalTitle").text(cardClicked.find('h4').html());
+      // Grab just the body text
+      $(".insert").load(data + " .tools-card-text");
 
-    // Grab just the body text
-    $( ".insert" ).load(data + " .tools-card-text");
-
-    $("#toolsModal").modal();
+      $("#toolsModal").modal()
+    }
 
   }
 
@@ -383,13 +384,23 @@
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        // console.log( "position - currant: " + positionCurrant);
-        // console.log( "position - next: " + positionNext);
+
+
+        console.log( "position - currant: " + positionCurrant);
+        console.log( "position - next: " + positionNext);
+
 
         while ( positionCurrant === positionNext) {
           // Loop till we hit the end of the row
           // data = data + ".research-content';
+          console.log(">>> loop and get next card <<<");
+          var textCurrant = currentCard.find("h4").text();
+          var textNext = nextCard.find("h4").text();
+          console.log( "Currant card is: " + textCurrant);
+          console.log( "Next Card is: " + textNext);
+
           currentCard = nextCard;
+          //@todo what does .next return if there isn't a next?
           nextCard = currentCard.next();
           positionCurrant = currentCard.position().top;
           positionNext = nextCard.position().top;
@@ -398,8 +409,9 @@
         }
         // @todo Lets see which card we landed on
         var cardText = currentCard.find("h4").text();
+
         data = cardClicked.find('h4').data("node-url");
-        // console.log( "is this it? " + cardText);
+        console.log( "is this it? " + cardText);
         // @todo add class d-none... then swap display property AFTER load
         currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
@@ -451,25 +463,6 @@
 
 
 
-
-
-  // // Filter handler
-  // function fnClickFilter() {
-  //   //turn on active on currant button - turn off on all others.
-  //   // @todo Do we leave ALL selected if clicked?
-  //
-  //
-  //   var selectorBtn = $(this).attr('id');
-  //   //@todo: Replace for production
-  //   var selectorBtnFooter = $('<p>Any little thing can be your friend if you let it be</p>');
-  //
-  //
-  //   //first, remove all filters
-  //   $('.tool-card').removeClass('tool-card-filtered');
-  //
-  // }
-  //
-  // // End paste
 
 
   /* END Code Wrap */
