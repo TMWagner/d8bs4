@@ -120,6 +120,21 @@
 }
 
 
+// CSS for tool highlight bar
+
+.tools-card .tool-highlight-topbar {
+  margin-top: 0px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  height: .5em;
+  background-color: #FF8900;
+  width: 2em;
+  position: absolute;
+  bottom: 95%;
+  left: 45%;
+}
+
+
 
 
 @media (min-width: 300px) {

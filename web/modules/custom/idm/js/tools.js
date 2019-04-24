@@ -67,6 +67,9 @@
       cardClicked.click(fnClickCard);
       if (toolParameter) fnShowCard(toolParameter);
 
+      // Add div(s) for tool highlight
+      $( "<div class='tool-highlight-topbar'></div>")
+          .prependTo( ".views-field.views-field-nothing");
     }
 
 
@@ -324,15 +327,11 @@
   }
 
 
-
   /**
    * fnClickCard
    * Handler for the Desktop card handler
    */
   function fnClickCard() {
-
-    //@todo Debug console.log
-    console.log('>>> fnClickCard has fired...');
 
     var positionCurrant;
     var positionNext;
@@ -368,20 +367,19 @@
         positionNext = nextCard.position().top;
 
         //@todo remove before flight
-        console.log( "position - currant: " + positionCurrant);
-        console.log( "position - next: " + positionNext);
+        // console.log( "position - currant: " + positionCurrant);
+        // console.log( "position - next: " + positionNext);
 
         while ( positionCurrant === positionNext) {
           // Loop till we hit the end of the row
           // data = data + ".research-content';
-          console.log(">>> loop and get next card <<<");
+          // console.log(">>> loop and get next card <<<");
           var textCurrant = currentCard.find("h4").text();
           var textNext = nextCard.find("h4").text();
 
           //@todo Remove before flight
-          console.log( "Currant card is: " + textCurrant);
-          console.log( "Next Card is: " + textNext);
-
+          // console.log( "Currant card is: " + textCurrant);
+          // console.log( "Next Card is: " + textNext);
 
           currentCard = nextCard;
           nextCard = currentCard.next();
@@ -406,22 +404,18 @@
         // @todo add class d-none... then swap display property AFTER load
         currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
-        console.log("data is: " + data);
+        // console.log("data is: " + data);
         $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
 
       }
-
-
 
       // Turn off all other active cards
       $(".tools-card.card-selected").toggleClass("card-selected");
       $("#tool-display").remove();
 
-
       // Turn off any "display content"
       // Toggle selected on this card.
       $(this).toggleClass('card-selected');
-
 
     }
     // End of Desktop/tablet
@@ -451,8 +445,6 @@
 
     return windowType;
   }
-
-
 
 
 
