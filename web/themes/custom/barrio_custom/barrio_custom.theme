@@ -70,11 +70,19 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
     // Process each of the tools cards
 
     $debug_index = $item;
-    $result_array = $item->_entity->get('field_tools_filter_category')->getValue();
+    $taxonomy_array = $item->_entity->get('field_tools_filter_category')->getValue();
 
     //@todo make sure there is something in the result array (check for empty array)
+    //loop through result_array to get each taxonomy "class". if array is not empty
 
-    //loop through result_array to get each taxonomy "class".
+    if (!empty($taxonomy_array)) {
+      $debug_string = TRUE;
+      $class_string = null;
+
+    }
+
+
+    //End inner loop
 
   }
 
@@ -102,7 +110,8 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
      *
      * See: https://www.frobiovox.com/posts/2016/03/28/simplify-drupal-8-field-value-calls.html
      */
-    $taxo = term::load(33);
+
+//    $taxo = term::load(33);
     $taxo = term::load($target_id);
 
     $field_title  = $taxo->get("field_tool_class");
