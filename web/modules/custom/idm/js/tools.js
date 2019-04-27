@@ -286,8 +286,8 @@
     var functionTitle = filterClicked.find('p:first').html();
     var filterDescription = filterClicked.find('.filter-description').html();
 
-    //@todo duplicated????
-    $("#filter-intro").html(filterDescription);
+    // //@todo duplicated????
+    // $("#filter-intro").html(filterDescription);
 
 
     //Calculate position (to be able to move indicator
@@ -299,6 +299,10 @@
 
 
     // Light up the correct cards based on taxonomy
+    // @todo We need a key other than title (it is mixed case and can contain spaces
+
+
+
 
   }
 

@@ -7,6 +7,18 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use \Drupal\views\ViewExecutable;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\views\Form\ViewsForm;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Plugin\views\query\Sql;
+
 
 
 
@@ -28,6 +40,8 @@ function idm_help($route_name, RouteMatchInterface $route_match) {
 
 /**
  * Implements hook_theme().
+ * Ref:
+ *
  */
 function idm_theme() {
   return [
@@ -38,7 +52,67 @@ function idm_theme() {
 }
 
 
+/**
+ * Implements hook_views_post_render
+ * @param \Drupal\views\ViewExecutable $view
+ * @param $output
+ * @param \CachePluginBase $cache
+ *
+ */
+//function idm_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+//
+//  $temp1 = 'bogus';
+//  $temp1 = $view;
+//
+//  $toutput = $output;
+//
+//  $temp2 = 'stop here';
+//
+//}
 
+
+/**
+ * @param \Drupal\views\ViewExecutable $view
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function idm_views_pre_render(ViewExecutable $view) {
+
+  $testvar = null;
+  // "tools_filter"
+//  tools_landing_page
+
+//  $temp1 = $result->values["field_tools_filter_category"]["x-default"][1]["target_id"]
+  $testvar = $view->id();
+
+  $view->result[0]->_entity->save('field_tool_name', array(0 => 'dynamic'));
+
+
+
+  if ($view->id() == 'tools_landing_page') {
+
+    $view->result[0]->_entity->save('field_tool_name', array(0 => 'dynamic'));
+    $args = $view->args[0];
+    $result =  $view->result[0]->_entity;
+    $viewid = $view->id();
+  }
+//  $result =  $view->result[0]->_entity;
+//
+//  $result2 = $view->result[0]->_entity->referencedEntities();
+//
+//   $result2 = $view->result[0]->_entity->save();
+
+
+
+//  $values = $view->result[0]->values;
+//  $class = $result->values["field_tool_class"]["x-default"][0]["value"];
+//  $deeper1 = $view->result[0]->_entity->values;
+//  $deeper1 = $view->result[0]->_entity->values["name"];
+//
+
+
+
+}
 
 
 

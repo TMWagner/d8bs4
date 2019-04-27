@@ -1,5 +1,13 @@
 <?php
 
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\views\Views;
+use Drupal\taxonomy\Entity\Term;
+
+
 /**
  * @file
  * Functions to support theming in the SASS Starterkit subtheme.
@@ -33,6 +41,94 @@ function barrio_custom_form_system_theme_settings_alter(&$form, FormStateInterfa
       'bg-transparent' => t('Transparent'),
   );
 }
+
+
+/**
+ * @param $variables
+ *
+ * If this is for the Tools landing page view, we are going add two variables
+ * - tools-category is a true/false flag to indicate whether there are new classes to add
+ * - tools-category-classes is the string of classes
+ *
+ */
+function barrio_custom_preprocess_views_view_unformatted(&$variables) {
+
+  // Deterimine which view this is from
+  $tempvar = $variables;
+
+
+  $view = $variables['view'];
+  $id = $view->storage->id();
+
+
+  //@todo interate through this list of "field_tools_filter_category'
+  // machine name from Tools = field_tools_filter_category
+
+  $tools_array = $view->result;
+
+  foreach ($tools_array as $item) {
+    // Process each of the tools cards
+
+    $debug_index = $item;
+    $result_array = $item->_entity->get('field_tools_filter_category')->getValue();
+
+    //@todo make sure there is something in the result array (check for empty array)
+
+    //loop through result_array to get each taxonomy "class".
+
+  }
+
+  //
+  $result = $view->result[0]->_entity->get('field_tools_filter_category');
+
+//  //@todo loop through this array too
+//  // This is the catergory - don't need it here.
+//  $result_array = $result->list[1];
+
+  // Bingo!
+  // @todo now loop through the array and build the string of classes.
+  $result_array2 = $result->getValue();
+
+  //  @todo not needed, just interesting :)
+  $result_count = $result->count();
+
+  $class_string = null;
+  foreach($result_array as $key=>$value) {
+    // do stuff
+    $target_id = $value['target_id'];
+
+    /**
+     * Fetch the new class for given taxonomy term
+     *
+     * See: https://www.frobiovox.com/posts/2016/03/28/simplify-drupal-8-field-value-calls.html
+     */
+    $taxo = term::load(33);
+    $taxo = term::load($target_id);
+
+    $field_title  = $taxo->get("field_tool_class");
+    $class_value = $field_title->value;
+
+    $class_string = $class_string . ' ' . $class_value;
+
+  }
+
+  $debug_string = $class_string;
+
+
+
+  /** Set the flag  */
+  $variables[ 'tools-category'] = FALSE;
+  if ($class_string) {
+    $variables['tools-category'] = TRUE;
+    $variables['tools-category-classes'] = $class_string;
+  }
+  $tempvar = $variables;
+
+}
+
+
+
+
 
 
 /**
