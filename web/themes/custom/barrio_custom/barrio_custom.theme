@@ -48,6 +48,8 @@ function barrio_custom_form_system_theme_settings_alter(&$form, FormStateInterfa
 /**
  * @param $variables
  *
+ * Implement hook_preprocess_views_view_unformatted
+ *
  * If this is for the Tools landing page view, we are going add two variables
  * - tools-category is a true/false flag to indicate whether there are new
  *   classes to add
@@ -56,44 +58,17 @@ function barrio_custom_form_system_theme_settings_alter(&$form, FormStateInterfa
  */
 function barrio_custom_preprocess_views_view_unformatted(&$variables) {
 
-  // Deterimine which view this is from
-  $tempvar = $variables;
-
-
+  // Determine which view this is from
   $view = $variables['view'];
   $id = $view->storage->id();
 
 
 
-
-
   // We are only going execute the following if we are looking at the right view. (tools_landing_page)
-
-
-
   if ($id === 'tools_landing_page') {
 
-
-
-    //    $tools_array = $view->getValue('result');
-
-
-//
-//    // Array of Tools Rows
-//    $rows = $variables["rows"];
-
-//    // Array of taxonomy classes (per row)
-//    $debug_row_array = $rows[0]["content"]["#row"]->_entity->get('field_tools_filter_category')->getValue();
-//
-//    // Get the target
-//    $taxonomy_target = $debug_row_array[0]['target_id'];
-
-
-    //  OLD CODE
-
-
     // @todo This blew up the website
-//    $tools_array = $view->result;
+    //$tools_array = $view->result;
 
     // Initialize class flag
     $variables['tools_category'] = FALSE;
@@ -124,8 +99,6 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
            * See: https://www.frobiovox.com/posts/2016/03/28/simplify-drupal-8-field-value-calls.html
            */
 
-
-          //    $taxo = term::load(33);
           $taxo = term::load($target_id);
 
           $field_title = $taxo->get("field_tool_class");
@@ -137,47 +110,14 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
 
       // Send string of new classes - if there are any.
       /** Set the flag  and initialize array item */
-//      $variables['tools_category_classes'] = NULL;
       if ($class_string) {
         $variables['tools_category'] = TRUE;
-//        $variables['tools_category_classes'] = $class_string;
         $variables['tools_category_classes'][] = $class_string;
       }
 
     } // end of the outer loop
 
-
-
   }
-
-  //
-//  $result = $view->result[0]->_entity->get('field_tools_filter_category');
-
-//  //@todo loop through this array too
-//  // This is the catergory - don't need it here.
-//  $result_array = $result->list[1];
-//
-//  // Bingo!
-//  // @todo now loop through the array and build the string of classes.
-//  $result_array2 = $result->getValue();
-//
-//  //  @todo not needed, just interesting :)
-//  $result_count = $result->count();
-//
-//  $class_string = null;
-
-
-//  $debug_string = $class_string;
-//
-//
-//
-//  /** Set the flag  */
-//  $variables[ 'tools-category'] = FALSE;
-//  if ($class_string) {
-//    $variables['tools-category'] = TRUE;
-//    $variables['tools-category-classes'] = $class_string;
-//  }
-//  $tempvar = $variables;
 
 }
 
