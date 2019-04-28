@@ -146,7 +146,7 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
 
     } // end of the outer loop
 
-    $debug = 'lets see...';
+
 
   }
 
