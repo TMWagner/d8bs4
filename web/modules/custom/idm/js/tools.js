@@ -70,6 +70,8 @@
       // Add div(s) for tool highlight
       $( "<div class='tool-highlight-topbar'></div>")
           .prependTo( ".views-field.views-field-nothing");
+
+
     }
 
 
@@ -286,9 +288,6 @@
     var functionTitle = filterClicked.find('p:first').html();
     var filterDescription = filterClicked.find('.filter-description').html();
 
-    // //@todo duplicated????
-    // $("#filter-intro").html(filterDescription);
-
 
     //Calculate position (to be able to move indicator
     console.log("Filter clicked: " + functionTitle + ' ' + position + ' ' + positionStart);
@@ -300,6 +299,24 @@
 
     // Light up the correct cards based on taxonomy
     // @todo We need a key other than title (it is mixed case and can contain spaces
+
+    // returns the class we want to search on
+    var filterData = $(this).find(".tool-filter-content").data("tool-class");
+
+    //@todo debug
+    console.log(">>>>filter data is: " + filterData + "<<<<<");
+
+    //Find card(s) with class = filterData
+
+    $('.' + filterData).find('.tool-highlight-topbar').addClass("show-tool");
+
+
+    // AddClass to the div within that set that contains .tool-highlight-topbar
+
+
+
+
+
 
 
 
