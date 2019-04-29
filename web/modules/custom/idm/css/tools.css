@@ -82,7 +82,7 @@
   background-color: #0B1F2C;
   padding: 1em; }
 
-.tools-card .tool-highlight-topbar {
+.tool-highlight-topbar.show-tool {
   margin-top: 0px !important;
   margin-left: auto !important;
   margin-right: auto !important;
