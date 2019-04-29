@@ -288,6 +288,9 @@
     var functionTitle = filterClicked.find('p:first').html();
     var filterDescription = filterClicked.find('.filter-description').html();
 
+    //Reset highlight bar on cards @todo animate this?
+    $('.tool-highlight-topbar').removeClass("show-tool");
+
 
     //Calculate position (to be able to move indicator
     console.log("Filter clicked: " + functionTitle + ' ' + position + ' ' + positionStart);
@@ -306,18 +309,10 @@
     //@todo debug
     console.log(">>>>filter data is: " + filterData + "<<<<<");
 
-    //Find card(s) with class = filterData
-
+    //Find card(s) with class = filterData and add class
     $('.' + filterData).find('.tool-highlight-topbar').addClass("show-tool");
 
-
-    // AddClass to the div within that set that contains .tool-highlight-topbar
-
-
-
-
-
-
+    //@todo animate topbar
 
 
 
