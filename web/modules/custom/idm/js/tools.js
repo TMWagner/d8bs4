@@ -202,11 +202,6 @@
 
 
 
-
-
-
-
-
   /**
    * Resize function
    */
@@ -289,6 +284,13 @@
     var filterDescription = filterClicked.find('.filter-description').html();
 
     //Reset highlight bar on cards @todo animate this?
+    //Reset CSS for show tool
+
+    $('.tool-highlight-topbar.show-tool').animate({
+      left: '50%',
+      width: '.1em'
+    });
+    // @todo chain this with the previous statement...
     $('.tool-highlight-topbar').removeClass("show-tool");
 
 
@@ -313,6 +315,12 @@
     $('.' + filterData).find('.tool-highlight-topbar').addClass("show-tool");
 
     //@todo animate topbar
+
+
+    $('.tool-highlight-topbar.show-tool').animate({
+      left: '40%',
+      width: '3em'
+    });
 
 
 
