@@ -79,14 +79,28 @@
      * Setup Tools Mobile display (if present)
      */
     // Set first card active
+    $('.carousel').carousel();
     $(".carousel-item.text-center.tools-filter-title.tools-filter-mobile:first").addClass("active");
+
+
     // Turn off autoscroll
-    $('.carousel').carousel('pause');
+
+    $('#toolsUIindicators').on('slide.bs.carousel', highlightMobileCard);
+
+
 
 
   });
   // End Document ready
 
+
+  /**
+   * highlightMobileCard
+   */
+  function highlightMobileCard() {
+    console.log('>>> process mobile filter');
+    $(".carousel").carousel('pause');
+  }
 
 
   /**
