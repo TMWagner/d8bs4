@@ -43,15 +43,25 @@
 .tool-filter-content h4 {
   font-weight: lighter;
   text-transform: uppercase;
+  margin-top: .5em;
 }
 
+// @todo Not a fan of this-  Replace with different symbols?
 .carousel-control-next,
 .carousel-control-prev {
 
   filter: invert(100%);
 }
 
+#toolsUIindicators {
+  margin-bottom: 5%;
+}
+
+
 //End Filter UI Mobile
+
+
+
 
 
 

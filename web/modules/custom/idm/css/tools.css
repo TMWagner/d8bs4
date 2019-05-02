@@ -24,11 +24,15 @@
 
 .tool-filter-content h4 {
   font-weight: lighter;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin-top: .5em; }
 
 .carousel-control-next,
 .carousel-control-prev {
   filter: invert(100%); }
+
+#toolsUIindicators {
+  margin-bottom: 5%; }
 
 #filter-intro {
   color: #FF8900;
