@@ -34,6 +34,8 @@
  * @see template_preprocess_views_view()
  */
 #}
+{#{{ dump(_context|keys) }}#}
+
 {%
   set classes = [
     'container',
@@ -69,6 +71,8 @@
   {% if rows %}
 {#    todo check to see if we are looking at tools#}
 {#    This could go away if we don't use views for tool display#}
+{#    ID we are looking for for tools UI Mobile#}
+{#    tool_filter_block_mobile  #}
     {% if display_id == 'tools_content'  %}
       <div class="view-content-tools-wrapper">
         <div class="view-content row tools-content">
@@ -76,11 +80,35 @@
         </div>
       </div>
     {% else %}
-      <div class="view-content-tools-wrapper">
-        <div class="view-content row justify-content-between">
-          {{ rows }}
+
+      {% if display_id == "tool_filter_block_mobile" %}
+
+        <div id="toolsUIindicators" class="view-content-tools-wrapper carousel slide" data-ride="carousel" >
+          <div class="carousel-inner tools-filter-wrapper rounded-sm">
+            {{ rows }}
+          </div>
+{#        Put the control code here#}
+          <a class="carousel-control-prev" href="#toolsUIindicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#toolsUIindicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+{#          End Control Code#}
         </div>
-      </div>
+
+      {% else  %}
+        <div class="view-content-tools-wrapper">
+          <div class="view-content row justify-content-between">
+            {{ rows }}
+          </div>
+        </div>
+      {% endif %}
+
+
+
     {% endif %}
   {% elseif empty %}
     <div class="view-empty">
