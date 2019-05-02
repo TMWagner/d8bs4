@@ -75,6 +75,15 @@
     }
 
 
+    /**
+     * Setup Tools Mobile display (if present)
+     */
+    // Set first card active
+    $(".carousel-item.text-center.tools-filter-title.tools-filter-mobile:first").addClass("active");
+    // Turn off autoscroll
+    $('.carousel').carousel('pause');
+
+
   });
   // End Document ready
 

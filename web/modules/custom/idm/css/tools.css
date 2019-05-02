@@ -19,6 +19,17 @@
   text-transform: uppercase;
   margin-bottom: 5px; }
 
+.carousel-inner.tools-filter-wrapper {
+  background-color: lightgrey; }
+
+.tool-filter-content h4 {
+  font-weight: lighter;
+  text-transform: uppercase; }
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%); }
+
 #filter-intro {
   color: #FF8900;
   font-size: .9rem;

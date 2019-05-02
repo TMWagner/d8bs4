@@ -71,48 +71,6 @@ function idm_theme() {
 //}
 
 
-///**
-// * @param \Drupal\views\ViewExecutable $view
-// *
-// * @throws \Drupal\Core\Entity\EntityStorageException
-// */
-//function idm_views_pre_render(ViewExecutable $view) {
-//
-//  $testvar = null;
-//  // "tools_filter"
-////  tools_landing_page
-//
-////  $temp1 = $result->values["field_tools_filter_category"]["x-default"][1]["target_id"]
-//  $testvar = $view->id();
-//
-//  $view->result[0]->_entity->save('field_tool_name', array(0 => 'dynamic'));
-//
-//
-//
-//  if ($view->id() == 'tools_landing_page') {
-//
-//    $view->result[0]->_entity->save('field_tool_name', array(0 => 'dynamic'));
-//    $args = $view->args[0];
-//    $result =  $view->result[0]->_entity;
-//    $viewid = $view->id();
-//  }
-////  $result =  $view->result[0]->_entity;
-////
-////  $result2 = $view->result[0]->_entity->referencedEntities();
-////
-////   $result2 = $view->result[0]->_entity->save();
-//
-//
-//
-////  $values = $view->result[0]->values;
-////  $class = $result->values["field_tool_class"]["x-default"][0]["value"];
-////  $deeper1 = $view->result[0]->_entity->values;
-////  $deeper1 = $view->result[0]->_entity->values["name"];
-////
-//
-//
-//
-//}
 
 
 
@@ -191,7 +149,8 @@ function idm_page_attachments(array &$attachments) {
    * tmw: 2019/01/12
    */
   if ($path == '/node/169') {
-    $attachments['#attached']['library'][] = 'idm/jqcollapse';
+//    $attachments['#attached']['library'][] = 'idm/jqcollapse';
+    $attachments['#attached']['library'][] = 'idm/tools';
   };
 
   /**

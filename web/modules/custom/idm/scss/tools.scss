@@ -27,10 +27,6 @@
   }
 }
 
-////@todo temp code
-//.col-2.text-center {
-//  border: thin dashed;
-//}
 
 
 .tools-filter-title > p {
@@ -38,6 +34,26 @@
   text-transform: uppercase;
   margin-bottom: 5px;
 }
+
+//Tools Filter UI Mobile
+
+.carousel-inner.tools-filter-wrapper {
+  background-color: lightgrey;
+}
+.tool-filter-content h4 {
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+
+  filter: invert(100%);
+}
+
+//End Filter UI Mobile
+
+
 
 #filter-intro {
   color: $idm_orange;
