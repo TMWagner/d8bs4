@@ -53,11 +53,17 @@
     }
 
 
+    // Add div(s) for tool highlight (both Desktop and Mobile
+    $( "<div class='tool-highlight-topbar'></div>")
+        .prependTo( ".views-field.views-field-nothing");
+
+
     // Attach handler for mobile or Desktop
     if (windowType === 'small') {
       console.log('attach Handler for small');
       cardClicked.click(fnClickCardMobile);
       if (toolParameter) fnShowCardMobile(toolParameter);
+
 
     } else {
       console.log("attach handler for standard window...");
@@ -67,10 +73,9 @@
       cardClicked.click(fnClickCard);
       if (toolParameter) fnShowCard(toolParameter);
 
-      // Add div(s) for tool highlight
-      $( "<div class='tool-highlight-topbar'></div>")
-          .prependTo( ".views-field.views-field-nothing");
-
+      // // Add div(s) for tool highlight
+      // $( "<div class='tool-highlight-topbar'></div>")
+      //     .prependTo( ".views-field.views-field-nothing");
 
     }
 
@@ -84,10 +89,7 @@
 
 
     // Turn off autoscroll
-
-    $('#toolsUIindicators').on('slide.bs.carousel', highlightMobileCard);
-
-
+    $('#toolsUIindicators').on('slid.bs.carousel', highlightMobileCard);
 
 
   });
@@ -100,6 +102,34 @@
   function highlightMobileCard() {
     console.log('>>> process mobile filter');
     $(".carousel").carousel('pause');
+
+    // Get card
+    var activeSlide = $(".carousel-item.active");
+    var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
+    console.log(">>> target is: " + targetClass);
+
+
+    // // Code from Desktop
+    // // returns the class we want to search on
+    // var filterData = $(this).find(".tool-filter-content").data("tool-class");
+    //
+    // //@todo debug
+    // console.log(">>>>filter data is: " + filterData + "<<<<<");
+
+    // Remove highlight from all cards first
+    $('.tool-highlight-topbar').removeClass("show-tool");
+
+    //Find card(s) with class = filterData and add class
+    $('.' + targetClass).find('.tool-highlight-topbar').addClass("show-tool");
+
+    //@todo animate topbar
+    $('.tool-highlight-topbar.show-tool').animate({
+      left: '40%',
+      width: '3em'
+    });
+
+    
+
   }
 
 
@@ -121,11 +151,8 @@
     // @todo carried cardClicked over from last function - should refactor it.
     var cardClicked = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
 
-
-
     // First find the end of the row
     // @todo the match has to be againt the KEY not the title.
-
 
     cardText = cardClicked.find('h4').html();
     console.log("cardClicked is: " + cardText);
