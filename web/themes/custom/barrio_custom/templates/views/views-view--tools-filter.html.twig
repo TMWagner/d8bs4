@@ -34,6 +34,9 @@
  * @see template_preprocess_views_view()
  */
 #}
+
+{#{{ dump(_context|keys) }}#}
+
 {%
   set classes = [
     'view',
@@ -64,6 +67,13 @@
       {{ attachment_before }}
     </div>
   {% endif %}
+
+{#  /**#}
+{#  * Check "View" source#}
+{#  * if "tool_filter_block => Desktop version#}
+{#  * else "tool_filter_block_mobile" => Mobile version#}
+{#  * {{ id }}  {{ display_id }}#}
+{#  */#}
 
   {% if rows %}
     <div class="tools-wrapper container">
