@@ -73,6 +73,7 @@ $tabs_width: 23%;
 $tab_container_width: 70%;
 $tab_container_min_width: 10px;
 $idm_blue: #0073A3;
+$idm_orange: #FF8900;
 
 
 
@@ -154,6 +155,12 @@ ul.tabs {
   display: none;
 }
 
+@media screen and (max-width: 992px) {
+  .tab_container {
+    max-width: 25rem;
+  }
+}
+
 @media screen and (max-width: 781px) {
   ul.tabs {
     display: none;
@@ -165,6 +172,7 @@ ul.tabs {
     border-top: none;
     border-radius: 0;
     box-shadow: 0px 0px 10px black;
+    max-width: 100%;
   }
   .tab_drawer_heading {
     background-color: #ccc;
@@ -183,13 +191,15 @@ ul.tabs {
     text-align: center;
     &:hover {
       background: #ccc;
-      @include tab-bg-gradient-hover();
-      color: $tab_text_color_hover;
+      color: $idm_orange;
+      //@include tab-bg-gradient-hover();
+      //color: $tab_text_color_hover;
     }
   }
   .d_active {
-    background: #fff;
-    @include tab-bg-gradient-active;
-    color: $tab_text_color_active;
+    //background: #fff;
+    //@include tab-bg-gradient-active;
+    //color: $tab_text_color_active;
+    background-color: $idm_blue;
   }
 }
