@@ -108,14 +108,6 @@
     var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
     console.log(">>> target is: " + targetClass);
 
-
-    // // Code from Desktop
-    // // returns the class we want to search on
-    // var filterData = $(this).find(".tool-filter-content").data("tool-class");
-    //
-    // //@todo debug
-    // console.log(">>>>filter data is: " + filterData + "<<<<<");
-
     // Remove highlight from all cards first
     $('.tool-highlight-topbar').removeClass("show-tool");
 
@@ -127,9 +119,6 @@
       left: '40%',
       width: '3em'
     });
-
-
-
   }
 
 
@@ -147,7 +136,6 @@
     var positionNext;
     var data;
 
-    // $('h4[data-tool=' + toolParameter +']').closest('.tools-card').addClass('bogus2');
     // @todo carried cardClicked over from last function - should refactor it.
     var cardClicked = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
 
@@ -201,7 +189,6 @@
       // $( ".insert" ).load( "/malaria .research-content");
       console.log("data is: " + data);
       $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
-
     }
 
     // Turn off all other active cards (shouldn't matter but... )
@@ -212,7 +199,6 @@
     // Turn off any "display content"
     // Toggle selected on this card.
     cardClicked.toggleClass('card-selected');
-
 
   }
   // End of fnShowCard
@@ -246,10 +232,7 @@
 
       $("#toolsModal").modal()
     }
-
   }
-
-
 
 
   /**
