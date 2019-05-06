@@ -21,7 +21,7 @@
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "^1.26",
         "drupal/bootstrap": "^3.17",
-        "drupal/bootstrap_barrio": "^4.21",
+        "drupal/bootstrap_barrio": "^4.22",
         "drupal/colorbox": "^1.4",
         "drupal/console": "^1.0.2",
         "drupal/context": "^4.0",
