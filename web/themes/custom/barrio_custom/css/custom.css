@@ -314,4 +314,8 @@ a.publication-link-external:hover {
 #research-modal {
   padding: 1em 0 1em 1em; }
 
+.footer-container {
+  background-color: greenyellow;
+  height: 4em; }
+
 /*# sourceMappingURL=custom.css.map */

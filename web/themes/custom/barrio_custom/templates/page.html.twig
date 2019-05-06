@@ -1,5 +1,6 @@
 {% extends "@bootstrap_barrio/layout/page.html.twig" %}
 
+
 {#
 /**
  * @file
@@ -158,20 +159,27 @@
         </div>
 {% endblock %}
 
+
+
 {% block footer %}
-        <div class="{{ container }}">
-          {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
-            <div class="site-footer__top clearfix">
-              {{ page.footer_first }}
-              {{ page.footer_second }}
-              {{ page.footer_third }}
-              {{ page.footer_fourth }}
-            </div>
-          {% endif %}
-          {% if page.footer_fifth %}
-            <div class="site-footer__bottom">
-              {{ page.footer_fifth }}
-            </div>
-          {% endif %}
+    {% if page.footer_first %}
+        <div class="idm-footer">
+            {{ page.footer_first }}
         </div>
+    {% endif %}
+
+    {% if page.footer_second or page.footer_third or page.footer_fourth %}
+    <div class="site-footer__top clearfix">
+      {{ page.footer_second }}
+      {{ page.footer_third }}
+      {{ page.footer_fourth }}
+    </div>
+    {% endif %}
+    {% if page.footer_fifth %}
+    <div class="site-footer__bottom">
+      {{ page.footer_fifth }}
+    </div>
+    {% endif %}
+
 {% endblock %}
+
