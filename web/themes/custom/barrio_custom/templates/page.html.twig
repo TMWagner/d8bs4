@@ -1,6 +1,7 @@
 {% extends "@bootstrap_barrio/layout/page.html.twig" %}
 
 
+
 {#
 /**
  * @file
@@ -162,6 +163,7 @@
 
 
 {% block footer %}
+<footer class="idm-footer">
     {% if page.footer_first %}
         <div class="idm-footer">
             {{ page.footer_first }}
@@ -180,6 +182,7 @@
       {{ page.footer_fifth }}
     </div>
     {% endif %}
+</footer>
 
 {% endblock %}
 
