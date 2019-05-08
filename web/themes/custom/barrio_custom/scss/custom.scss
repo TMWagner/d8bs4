@@ -431,8 +431,12 @@ a.publication-link-external:hover {
 //
 //------------------
 
-//Override bootstrap
+.idm-footer {
+  padding-top: .5em;
+}
 
+
+//Override bootstrap
 #col1.col-4 {
   max-width: 25%;
 }
@@ -443,16 +447,13 @@ a.publication-link-external:hover {
   padding-right: 0px;
 }
 
-.footer-container {
-  background-color: greenyellow;
-  height: 4em;
-}
+
 .footer-wrapper {
   padding: .5em 0;
 }
 .footer-wrapper p {
   color: white;
-  font-size: .8em;
+  font-size: .6em;
   margin: 0;
 }
 .footer-logo {
@@ -462,7 +463,6 @@ a.publication-link-external:hover {
 .footer-logo-wrapper {
   text-align: center;
 }
-
 
 
 .footer-links {

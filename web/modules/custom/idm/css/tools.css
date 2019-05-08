@@ -9,7 +9,7 @@
   width: 100%; }
 
 .tools-wrapper.container {
-  width: 80%; }
+  width: 100%; }
 
 @media (max-width: 992px) {
   .tools-wrapper.container {
@@ -18,6 +18,9 @@
   font-size: .7rem;
   text-transform: uppercase;
   margin-bottom: 5px; }
+
+.col-2.text-center.tools-filter-title {
+  max-width: 14.2%; }
 
 .carousel-inner.tools-filter-wrapper {
   background-color: lightgrey; }

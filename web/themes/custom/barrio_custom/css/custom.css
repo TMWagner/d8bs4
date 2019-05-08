@@ -314,6 +314,9 @@ a.publication-link-external:hover {
 #research-modal {
   padding: 1em 0 1em 1em; }
 
+.idm-footer {
+  padding-top: .5em; }
+
 #col1.col-4 {
   max-width: 25%; }
 
@@ -322,16 +325,12 @@ a.publication-link-external:hover {
 #col4 {
   padding-right: 0px; }
 
-.footer-container {
-  background-color: greenyellow;
-  height: 4em; }
-
 .footer-wrapper {
   padding: .5em 0; }
 
 .footer-wrapper p {
   color: white;
-  font-size: .8em;
+  font-size: .6em;
   margin: 0; }
 
 .footer-logo {
