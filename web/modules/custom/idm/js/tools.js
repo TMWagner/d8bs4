@@ -463,22 +463,21 @@
           console.log( "position(loop) - currant: " + positionCurrant);
           console.log( "position(loop) - next: " + positionNext);
         }
-
-
-
-        // @todo This Block needs to be outside the last element check
-        // @todo Lets see which card we landed on
-        var cardText = currentCard.find("h4").text();
-
-        data = cardClicked.find('h4').data("node-url");
-        console.log( "is this it? " + cardText);
-        // @todo add class d-none... then swap display property AFTER load
-        currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
-        // $( ".insert" ).load( "/malaria .research-content");
-        // console.log("data is: " + data);
-        $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
-
+        
       }
+
+
+      var cardText = currentCard.find("h4").text();
+
+      data = cardClicked.find('h4').data("node-url");
+      console.log( "is this it? " + cardText);
+      // @todo add class d-none... then swap display property AFTER load
+      currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
+      // $( ".insert" ).load( "/malaria .research-content");
+      // console.log("data is: " + data);
+      $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
+
+
 
       // Turn off all other active cards
       $(".tools-card.card-selected").toggleClass("card-selected");
