@@ -394,9 +394,6 @@
     var positionNext;
     var data;
 
-    // var curCard = $(this);
-    // var data = $(this).find('h4').data();
-    // console.log("card is: " + curCard.text);
 
     // One of the cards was clicked - we need to turn off inserted content regardless
     $('.insert').remove();
@@ -415,11 +412,11 @@
 
 
       //@todo DEBUG next 4 lines
-      var textCurrant = currentCard.find("h4").text();
-      var textNext = nextCard.find("h4").text();
-      console.log( "Before nextcard check. Currant card is: " + textCurrant);
-      console.log( "Before nextcard check. Next Card is: " + textNext);
-      // END DEbug
+      // var textCurrant = currentCard.find("h4").text();
+      // var textNext = nextCard.find("h4").text();
+      // console.log( "Before nextcard check. Currant card is: " + textCurrant);
+      // console.log( "Before nextcard check. Next Card is: " + textNext);
+      // // END DEbug
 
       // Check for last element
       if ( nextCard.length === 0 ) {
@@ -463,7 +460,7 @@
           console.log( "position(loop) - currant: " + positionCurrant);
           console.log( "position(loop) - next: " + positionNext);
         }
-        
+
       }
 
 

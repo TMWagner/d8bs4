@@ -18,6 +18,19 @@ idm:
   dependencies:
     - core/jquery
 
+# jQuery UI
+# idm/jqueryui
+jqueryui:
+  version: 1.12.1
+  css:
+    base:
+      css/jquery-ui.css: {}
+  js:
+    js/jquery-ui.js: {}
+  dependencies:
+    - core/jquery
+
+
 # Tools page(s)
 # idm/tools
 

@@ -119,8 +119,10 @@ function idm_page_attachments(array &$attachments) {
   // Unconditionally attach an asset to the page.
   $attachments['#attached']['library'][] = 'core/domready';
   $attachments['#attached']['library'][] = 'core/jquery';
+  $attachments['#attached']['library'][] = 'idm/jqueryui';
   $attachments['#attached']['library'][] = 'idm/idm';
   $attachments['#attached']['library'][] = 'idm/fontawesome';
+
 
   //@todo Not sure we want this on ALL pages...
   //20190222:tmw put this in to get modal working on non-admin pages

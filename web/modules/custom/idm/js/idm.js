@@ -19,14 +19,7 @@
 
 
 
-  // //@todo Testing
-  // $('.buttonopen').on('click', '[data-toggle="modal"]', function(){
-  //   $($(this).data("target")+' .modal-body').load($(this).data("remote"));
-  // });
-
-
   //Begin modal trigger
-  //
   $('.modal-link').click(function() {
     //  URL passed from the click universal object
     var url = $(this).attr('href');
@@ -45,6 +38,16 @@
     });
   });
   // End Modal Trigger
+
+
+
+  $( ".idm-footer-mobile" ).accordion({
+    animate: 400,
+    collapsible: true,
+    active: false
+  });
+
+
 
 
 
