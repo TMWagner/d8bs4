@@ -488,15 +488,26 @@ a.publication-link-external:hover {
 }
 .idm-footer-mobile h3 {
   background-color: black;
-  color: #c2bebe;
+  color: whitesmoke;
   border: none;
+  text-transform: uppercase;
   -webkit-backface-visibility: hidden;
 }
 .ui-widget-content a {
   background-color: black;
   color: #d9d9d9;
   outline: none;
+  font-size: smaller;
+  text-transform: uppercase;
 }
+.ui-widget-content a:hover {
+  color: $idm_orange;
+}
+.ui-widget-content a:focus {
+  color: #d9d9d9;
+}
+
+
 .idm-footer-mobile h3:hover {
   color: $idm_orange;
   outline:none;
@@ -508,6 +519,7 @@ a.publication-link-external:hover {
 .idm-footer-mobile h3:focus {
   border: none;
   outline: none;
+  background-color: $background_dark_grey;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
@@ -528,7 +540,7 @@ a.publication-link-external:hover {
 #footer-header-mobile {
   padding: .5em 0;
 }
-.footer-logo > img {
+.footer-logo-mobile > img {
   width: 50%;
 }
 
