@@ -325,6 +325,9 @@ a.publication-link-external:hover {
   .footer-logo img {
     margin-bottom: .5em;
     width: 30%; } }
+.footer-logo-mobile {
+  width: 50%; }
+
 .idm-footer {
   padding-top: .5em; }
 
