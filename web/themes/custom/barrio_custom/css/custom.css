@@ -417,6 +417,10 @@ a.publication-link-external:hover {
   color: white;
   font-size: .6em; }
 
+.footer-links a:hover {
+  color: #FF8900;
+  text-decoration: none; }
+
 .vertical-text {
   transform: rotate(270deg);
   transform-origin: top;
