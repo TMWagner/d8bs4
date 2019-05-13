@@ -434,8 +434,8 @@
 
         while ( positionCurrant === positionNext) {
 
-          textCurrant = currentCard.find("h4").text();
-          textNext = nextCard.find("h4").text();
+          var textCurrant = currentCard.find("h4").text();
+          var textNext = nextCard.find("h4").text();
 
           //@todo Remove before flight
           console.log( "In loop- Currant card is: " + textCurrant);
