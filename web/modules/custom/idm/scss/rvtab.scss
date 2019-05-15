@@ -62,8 +62,10 @@
 }
 
 
-/* @todo import real _variables.scss */
 /* Vars */
+@import "../../../../themes/custom/barrio_custom/scss/variables";
+
+
 $tab_text_color: white;
 $tab_text_color_active: #898989;
 $tab_text_color_hover: white;
@@ -72,8 +74,6 @@ $tabs_min_width: 175px;
 $tabs_width: 23%;
 $tab_container_width: 70%;
 $tab_container_min_width: 10px;
-$idm_blue: #0073A3;
-$idm_orange: #FF8900;
 
 
 
@@ -125,7 +125,7 @@ ul.tabs {
     &.active {
       //@include tab-bg-gradient-active;
       @include tab-bg-active;
-      color: $idm_blue;
+      color: $idm_base_blue;
       @include tabs-transition;
     }
   }
@@ -200,6 +200,6 @@ ul.tabs {
     //background: #fff;
     //@include tab-bg-gradient-active;
     //color: $tab_text_color_active;
-    background-color: $idm_blue;
+    background-color: $idm_base_blue;
   }
 }

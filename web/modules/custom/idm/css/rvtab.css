@@ -1,5 +1,4 @@
 /* Mixins */
-/* @todo import real _variables.scss */
 /* Vars */
 body {
   background: #ccc;
@@ -47,7 +46,7 @@ ul.tabs {
       background: rgba(9, 170, 211, 0.29);
       background: lightgrey;
       color: #00A000;
-      color: #0073A3;
+      color: #0076A9;
       -ms-transition: all .3s ease;
       -webkit-transition: all .3s ease;
       transition: all .3s ease; }
@@ -109,6 +108,6 @@ ul.tabs {
       color: #FF8900; }
 
   .d_active {
-    background-color: #0073A3; } }
+    background-color: #0076A9; } }
 
 /*# sourceMappingURL=rvtab.css.map */

@@ -146,6 +146,10 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/research';
   };
 
+  if (fnmatch("/rlp/*", $path)) {
+    $attachments['#attached']['library'][] = 'idm/research';
+  }
+
   /**
    * This is temp code: adding jquery collapse
    * tmw: 2019/01/12
@@ -172,14 +176,6 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/tools';
   }
 
-//  /**
-//   * Attach library for Tools page(s)
-//   * tmw: 2019/03/11
-//   * @todo This is test code for node 171
-//   */
-//  if ($path == '/node/171') {
-//    $attachments['#attached']['library'][] = 'idm/tools';
-//  };
 
 
 }
