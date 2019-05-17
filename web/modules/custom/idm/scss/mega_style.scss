@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 - Name: megamenu.js - style.css
 - Version: 1.0
@@ -6,26 +5,39 @@
 - Author: Mario Loncarek
 - Author web site: http://marioloncarek.com
 */
+
+
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Body - not related to megamenu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
 /* Vars */
+@import "../../../../themes/custom/barrio_custom/scss/variables";
+
+
 body {
-  font-family: 'Source Sans Pro', sans-serif; }
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 /*a {*/
 /*color: greenyellow;*/
 /*}*/
+
 .idm-main-menu-item {
   text-decoration: none;
   padding: 1.5em 3em;
-  display: block; }
+  display: block;
+
+}
 
 li.idm-main-menu-item {
-  padding: 1.5em 3em !important; }
+  padding: 1.5em 3em !important;
+}
 
 /*.description {*/
 /*position: absolute;*/
@@ -38,47 +50,62 @@ li.idm-main-menu-item {
 /*-ms-transform: translateX(-50%);*/
 /*transform: translateX(-50%);*/
 /*}*/
+
+
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 megamenu.js STYLE STARTS HERE
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Screen style's
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .menu-container {
   width: 100%;
   margin: 0 auto;
-  background: #030303; }
+  background: #030303;
+}
 
 .menu-mobile {
   display: none;
-  padding: 20px; }
+  padding: 20px;
+}
+
 
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Temporary main menu style
 
 @todo Remove / move to scss
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 #main-nav-logo > a {
-  padding: 0; }
+  padding: 0;
+}
 
 /*This overrides another element... kind of sloppy
 /*@todo cleanup*/
 /**!*/
 li#main-nav-logo {
-  padding: 0 !important; }
+  padding: 0 !important;
+}
 
 .navbar-brand > img {
   margin-top: .75em;
-  margin-left: .5em; }
+  margin-left: .5em;
+}
 
 li.menu-dropdown-icon > a {
   color: whitesmoke;
-  text-transform: uppercase; }
-
+  text-transform: uppercase;
+}
 .menu-dropdown-icon > a:hover, a:focus, .link:hover, .link:focus {
-  color: #ff8900; }
-
+  color: $idm_orange
+}
 /* >>>> End Temp <<<<< */
+
+
+
 .menu-mobile:after {
   content: "\f394";
   font-family: "Ionicons";
@@ -90,7 +117,8 @@ li.menu-dropdown-icon > a {
   -webkit-transform: translateY(-25%);
   -ms-transform: translateY(-25%);
   transform: translateY(-25%);
-  line-height: 2rem; }
+  line-height: 2rem;
+}
 
 .menu-dropdown-icon:before {
   content: "\f489";
@@ -100,7 +128,8 @@ li.menu-dropdown-icon > a {
   float: right;
   padding: 1.5em 2em;
   background: #fff;
-  color: #333; }
+  color: #333;
+}
 
 .menu > ul {
   margin: 0 auto;
@@ -109,36 +138,45 @@ li.menu-dropdown-icon > a {
   padding: 0;
   position: relative;
   /* IF .menu position=relative -> ul = container width, ELSE ul = 100% width */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .menu > ul:before,
 .menu > ul:after {
   content: "";
-  display: table; }
+  display: table;
+}
 
 .menu > ul:after {
-  clear: both; }
+  clear: both;
+}
 
 /*Dropdown Menu color*/
 .menu > ul > li {
   float: left;
   background: #030303;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 .menu > ul > li a {
   text-decoration: none;
   padding: 1.5em 3em;
-  display: block; }
-
+  display: block;
+}
 /*//make content full width when column 1 goes away*/
 @media (max-width: 992px) {
   .menu > ul > li a {
     text-decoration: none;
     padding: 1.5em 1.5em;
-    display: block; } }
+    display: block;
+  }
+}
+
+
 .menu > ul > li:hover {
-  background: #272525; }
+  background: #272525;
+}
 
 .menu > ul > li > ul {
   display: none;
@@ -150,15 +188,18 @@ li.menu-dropdown-icon > a {
   left: 0;
   margin: 0;
   list-style: none;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .menu > ul > li > ul:before,
 .menu > ul > li > ul:after {
   content: "";
-  display: table; }
+  display: table;
+}
 
 .menu > ul > li > ul:after {
-  clear: both; }
+  clear: both;
+}
 
 .menu > ul > li > ul > li {
   margin: 0;
@@ -166,99 +207,111 @@ li.menu-dropdown-icon > a {
   list-style: none;
   width: 25%;
   background: none;
-  float: left; }
+  float: left;
+}
 
 .menu > ul > li > ul > li a {
   color: #777;
   padding: .2em 0;
   width: 95%;
   display: block;
-  border-bottom: 1px solid #ccc; }
+  border-bottom: 1px solid #ccc;
+}
 
 .menu > ul > li > ul > li > ul {
   display: block;
   padding: 0;
   margin: 10px 0 0;
   list-style: none;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .menu > ul > li > ul > li > ul:before,
 .menu > ul > li > ul > li > ul:after {
   content: "";
-  display: table; }
+  display: table;
+}
 
 .menu > ul > li > ul > li > ul:after {
-  clear: both; }
+  clear: both;
+}
 
 .menu > ul > li > ul > li > ul > li {
   float: left;
   width: 100%;
   padding: 10px 0;
   margin: 0;
-  font-size: .8em; }
+  font-size: .8em;
+}
 
 .menu > ul > li > ul > li > ul > li a {
-  border: 0; }
+  border: 0;
+}
 
 .menu > ul > li > ul.normal-sub {
   width: 300px;
   left: auto;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+}
 
 .menu > ul > li > ul.normal-sub > li {
-  width: 100%; }
+  width: 100%;
+}
 
 .menu > ul > li > ul.normal-sub > li a {
   border: 0;
-  padding: 1em 0; }
+  padding: 1em 0;
+}
+
 
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Mobile style's
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 @media only screen and (max-width: 768px) {
   .menu-container {
-    width: 100%; }
-
+    width: 100%;
+  }
   .menu-mobile {
-    display: block; }
-
+    display: block;
+  }
   .menu-dropdown-icon:before {
-    display: block; }
-
+    display: block;
+  }
   .menu > ul {
-    display: none; }
-
+    display: none;
+  }
   .menu > ul > li {
     width: 100%;
     float: none;
-    display: block; }
-
+    display: block;
+  }
   .menu > ul > li a {
     padding: 1.5em;
     width: 100%;
-    display: block; }
-
+    display: block;
+  }
   .menu > ul > li > ul {
-    position: relative; }
-
+    position: relative;
+  }
   .menu > ul > li > ul.normal-sub {
-    width: 100%; }
-
+    width: 100%;
+  }
   .menu > ul > li > ul > li {
     float: none;
     width: 100%;
-    margin-top: 20px; }
-
+    margin-top: 20px;
+  }
   .menu > ul > li > ul > li:first-child {
-    margin: 0; }
-
+    margin: 0;
+  }
   .menu > ul > li > ul > li > ul {
-    position: relative; }
-
+    position: relative;
+  }
   .menu > ul > li > ul > li > ul > li {
-    float: none; }
-
+    float: none;
+  }
   .menu .show-on-mobile {
-    display: block; } }
-
-/*# sourceMappingURL=mega_style.css.map */
+    display: block;
+  }
+}

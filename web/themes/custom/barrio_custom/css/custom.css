@@ -89,7 +89,7 @@ p.banner-left {
   padding-bottom: 1em; }
 
 .left-column-separator {
-  border-right: thin solid #FF8900;
+  border-right: thin solid #ff8900;
   padding-right: 2em; }
 
 .menu-body p {
@@ -99,10 +99,10 @@ p.banner-left {
   color: #19BAFF !important; }
 
 .menu-body-link a:hover {
-  color: #FF8900 !important; }
+  color: #ff8900 !important; }
 
 .mega-dropdown a:focus::after {
-  background: none repeat scroll 0 0 #FF8900;
+  background: none repeat scroll 0 0 #ff8900;
   bottom: 0;
   content: "";
   display: block;
@@ -190,7 +190,7 @@ a.publication-link-external:hover {
   font-size: smaller; }
 
 .profile-link-item a:hover {
-  color: #FF8900;
+  color: #ff8900;
   text-decoration: none; }
 
 .profile-link-item a:active {
@@ -279,7 +279,7 @@ a.publication-link-external:hover {
   font-size: small; }
 
 .orange {
-  color: #FF8900; }
+  color: #ff8900; }
 
 /*Style leading dash on banner*/
 .leading-dash {
@@ -304,7 +304,7 @@ a.publication-link-external:hover {
 
 .card-selected,
 .card-selected:hover {
-  color: #FF8900;
+  color: #ff8900;
   background-color: #0B1F2C; }
 
 .insert.research-content-wrapper {
@@ -359,13 +359,13 @@ a.publication-link-external:hover {
   text-transform: uppercase; }
 
 .ui-widget-content a:hover {
-  color: #FF8900; }
+  color: #ff8900; }
 
 .ui-widget-content a:focus {
   color: #d9d9d9; }
 
 .idm-footer-mobile h3:hover {
-  color: #FF8900;
+  color: #ff8900;
   outline: none; }
 
 .idm-footer-mobile h3:active {
@@ -418,7 +418,7 @@ a.publication-link-external:hover {
   font-size: .6em; }
 
 .footer-links a:hover {
-  color: #FF8900;
+  color: #ff8900;
   text-decoration: none; }
 
 .vertical-text {
@@ -431,5 +431,30 @@ p.vertical-text {
   font-size: .8em;
   text-transform: uppercase;
   margin-top: 3em; }
+
+/*
+  Hack to get footer to fit
+*/
+#col2.col-5 {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 38%; }
+
+#col3.col-3 {
+  padding-left: 0;
+  padding-right: 0; }
+
+#footer-footer-mobile {
+  margin-left: 1em; }
+
+.footer-base-links {
+  font-size: .8em;
+  text-transform: uppercase;
+  margin: .5em 0; }
+
+.footer-mobile-logo {
+  width: 10em;
+  display: block;
+  float: left; }
 
 /*# sourceMappingURL=custom.css.map */

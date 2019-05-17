@@ -3,11 +3,8 @@
 //Extend media Query
 
 
-//@media (max-width: 767px) {
-
 // Variables
 @import "variables";
-
 
 
 
@@ -613,3 +610,37 @@ p.vertical-text {
   text-transform: uppercase;
   margin-top: 3em;
 }
+
+/*
+  Hack to get footer to fit
+*/
+
+#col2.col-5 {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: 38%;
+
+}
+#col3.col-3 {
+  padding-left: 0;
+  padding-right: 0;
+
+}
+//End footer hack
+#footer-footer-mobile {
+  margin-left: 1em;
+}
+.footer-base-links {
+  font-size: .8em;
+  text-transform: uppercase;
+  margin: .5em 0;
+}
+
+.footer-mobile-logo {
+  width: 10em;
+  display: block;
+  float: left;
+}
+
+
+
