@@ -635,6 +635,15 @@ p.vertical-text {
   text-transform: uppercase;
   margin: .5em 0;
 }
+.footer-base-links > .col.text-center {
+  padding: 0;
+  font-size: .7em;
+}
+
+.footer-inline {
+  display: inline-block;
+  width: 100%;
+}
 
 .footer-mobile-logo {
   width: 10em;
