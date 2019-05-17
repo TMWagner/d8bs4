@@ -325,9 +325,6 @@ a.publication-link-external:hover {
   .footer-logo img {
     margin-bottom: .5em;
     width: 30%; } }
-.footer-logo-mobile {
-  width: 50%; }
-
 .idm-footer {
   padding-top: .5em; }
 
@@ -392,9 +389,6 @@ a.publication-link-external:hover {
 #footer-header-mobile {
   padding: .5em 0; }
 
-.footer-logo-mobile > img {
-  width: 50%; }
-
 .footer-wrapper {
   padding: .5em 0; }
 
@@ -456,12 +450,17 @@ p.vertical-text {
   padding: 0;
   font-size: .7em; }
 
+.footer-logo-mobile > img {
+  width: 6em; }
+
+.footer-mobile-text {
+  font-size: .8em; }
+
 .footer-inline {
   display: inline-block;
   width: 100%; }
 
 .footer-mobile-logo {
-  width: 10em;
   display: block;
   float: left; }
 
