@@ -15,7 +15,7 @@
   color: #0076A9; }
 
 .research-card div h4:hover {
-  color: #FF8900; }
+  color: #ff6315; }
 
 .research-card div h4 {
   font-size: 1.3em;
@@ -24,7 +24,7 @@
   color: #0076A9; }
 
 .research-card.card-selected div h4 {
-  color: #FF8900; }
+  color: #ff6315; }
 
 .rlp-content-wrapper {
   max-width: 80%;
