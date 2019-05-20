@@ -30,7 +30,6 @@
         "drupal/ds": "^3.3",
         "drupal/entity_browser": "^2.0",
         "drupal/entity_reference_revisions": "^1.6",
-        "drupal/fontawesome": "^2.11",
         "drupal/migrate_plus": "^4.0",
         "drupal/migrate_tools": "^4.0",
         "drupal/token": "^1.5",
