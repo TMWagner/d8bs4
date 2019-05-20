@@ -89,7 +89,7 @@ p.banner-left {
   padding-bottom: 1em; }
 
 .left-column-separator {
-  border-right: thin solid #ff8900;
+  border-right: thin solid #ff6315;
   padding-right: 2em; }
 
 .menu-body p {
@@ -99,10 +99,10 @@ p.banner-left {
   color: #19BAFF !important; }
 
 .menu-body-link a:hover {
-  color: #ff8900 !important; }
+  color: #ff6315 !important; }
 
 .mega-dropdown a:focus::after {
-  background: none repeat scroll 0 0 #ff8900;
+  background: none repeat scroll 0 0 #ff6315;
   bottom: 0;
   content: "";
   display: block;
@@ -190,7 +190,7 @@ a.publication-link-external:hover {
   font-size: smaller; }
 
 .profile-link-item a:hover {
-  color: #ff8900;
+  color: #ff6315;
   text-decoration: none; }
 
 .profile-link-item a:active {
@@ -279,7 +279,7 @@ a.publication-link-external:hover {
   font-size: small; }
 
 .orange {
-  color: #ff8900; }
+  color: #ff6315; }
 
 /*Style leading dash on banner*/
 .leading-dash {
@@ -304,7 +304,7 @@ a.publication-link-external:hover {
 
 .card-selected,
 .card-selected:hover {
-  color: #ff8900;
+  color: #ff6315;
   background-color: #0B1F2C; }
 
 .insert.research-content-wrapper {
@@ -356,13 +356,13 @@ a.publication-link-external:hover {
   text-transform: uppercase; }
 
 .ui-widget-content a:hover {
-  color: #ff8900; }
+  color: #ff6315; }
 
 .ui-widget-content a:focus {
   color: #d9d9d9; }
 
 .idm-footer-mobile h3:hover {
-  color: #ff8900;
+  color: #ff6315;
   outline: none; }
 
 .idm-footer-mobile h3:active {
@@ -412,7 +412,7 @@ a.publication-link-external:hover {
   font-size: .6em; }
 
 .footer-links a:hover {
-  color: #ff8900;
+  color: #ff6315;
   text-decoration: none; }
 
 .vertical-text {

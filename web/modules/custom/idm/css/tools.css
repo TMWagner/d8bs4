@@ -38,7 +38,7 @@
   margin-bottom: 5%; }
 
 #filter-intro {
-  color: #ff8900;
+  color: #ff6315;
   font-size: .9rem;
   padding: 5px 0 20px; }
 
@@ -70,7 +70,7 @@
   color: #6f6f6f; }
 
 .tools-card div h4:hover {
-  color: #ff8900; }
+  color: #ff6315; }
 
 .tools-card div h4 {
   font-size: 1.3em;
@@ -80,13 +80,13 @@
 
 .tools-card.card-selected div h4,
 .tools-content h5 {
-  color: #ff8900; }
+  color: #ff6315; }
 
 .tools-card.card-selected div p {
   color: white; }
 
 .close.tool-content-close {
-  color: #ff8900;
+  color: #ff6315;
   opacity: 1;
   font-weight: lighter;
   font-size: 2em;
@@ -105,7 +105,7 @@
   margin-left: auto !important;
   margin-right: auto !important;
   height: .5em;
-  background-color: #ff8900;
+  background-color: #ff6315;
   width: .1em;
   position: absolute;
   bottom: 95%;
@@ -159,7 +159,7 @@
   color: #0076A9; }
 
 .tool.close {
-  color: #ff8900;
+  color: #ff6315;
   font-size: 2rem;
   font-weight: lighter;
   opacity: 1;
@@ -181,7 +181,7 @@ div.tool-highlight footer {
   padding: 0 0 1rem; }
 
 span.button-filter .btn-outline-primary {
-  color: #ff8900;
+  color: #ff6315;
   border-color: #19BAFF; }
 
 span.button-filter .btn {
@@ -204,7 +204,7 @@ span.button-filter .btn {
 
 .card.tool-card-selected,
 .tool-card-selected:hover {
-  color: #ff8900;
+  color: #ff6315;
   background-color: #0B1F2C; }
 
 .tool-highlight {
@@ -251,20 +251,20 @@ span.button-filter {
   content: '';
   width: 10%;
   height: 4px;
-  background: #ff8900;
+  background: #ff6315;
   position: absolute;
   left: 45%;
   display: block; }
 
 .tools.close {
-  color: #ff8900;
+  color: #ff6315;
   font-size: 2rem;
   font-weight: lighter;
   opacity: 1;
   text-shadow: none; }
 
 .card-sublink-buttons-dynamic .btn-outline-primary {
-  color: #ff8900;
+  color: #ff6315;
   border-color: #61B4E4;
   margin-right: .5em; }
 
@@ -305,7 +305,7 @@ span.button-filter {
 
 .fa-angle-left, .fa-angle-right {
   font-size: 30px;
-  color: #ff8900; }
+  color: #ff6315; }
 
 .slide-body {
   height: 5em; }

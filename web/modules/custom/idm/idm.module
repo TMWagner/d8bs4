@@ -71,6 +71,22 @@ function idm_theme() {
 //}
 
 
+/**
+ * Implemements hook_views_data_alter
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ *
+ * Does not seem to get fired here...5/17/2019
+ */
+//function idm_views_data_alter(array &$data) {
+//
+//  $debug = null;
+//  $debug = $data;
+//
+//
+//}
 
 
 
@@ -82,19 +98,32 @@ function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $ent
   // Only do the extra work if the component is configured to be displayed.
   // This assumes a 'mymodule_addition' extra field has been defined for the
   // entity bundle in hook_entity_extra_field_info().
+  // @todo see https://api.drupal.org/api/drupal/core%21modules%21views%21views.api.php/function/hook_field_views_data_views_data_alter/8.6.x
 
-//
-//  if ($entity->getEntityType()->id() === 'node') {
-//
-//    $build['awesome'] =  [
-//      '#markup' => '<marquee>IDM V4 amazing content</marquee>',
-//      '#allowed_tags' => ['marquee'],
-//    ];
-//    $build['moretext'] = [
-//      '#markup' => '<h2>IDM V4 amazing content</h2>'
-//    ];
-//
-//  }
+
+  $entity_type = $entity->getEntityType()->id();
+  $debug = $entity;
+
+  if ($entity_type === 'node') {
+    //do some processing
+    $debug = "here we are";
+    $node_type = $entity->getType();
+    $debug = $view_mode;
+
+  }
+
+  if ($entity->getEntityType()->id() === 'node') {
+
+    $build['awesome'] =  [
+      '#markup' => '<marquee>IDM V4 amazing content</marquee>',
+      '#allowed_tags' => ['marquee'],
+    ];
+    $build['moretext'] = [
+      '#markup' => '<h2>IDM V4 amazing content</h2>',
+      '#weight' => 99
+    ];
+  }
+
 }
 
 
