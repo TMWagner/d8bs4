@@ -3057,17 +3057,17 @@
     },
     {
         "name": "drupal/core",
-        "version": "8.7.1",
-        "version_normalized": "8.7.1.0",
+        "version": "8.7.2",
+        "version_normalized": "8.7.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/drupal/core.git",
-            "reference": "969f24810fb31eac71dd624de593f551bd6dc2a3"
+            "reference": "31c01fe3b4eb8817e8ef127382a67c9e9d78e1a9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drupal/core/zipball/969f24810fb31eac71dd624de593f551bd6dc2a3",
-            "reference": "969f24810fb31eac71dd624de593f551bd6dc2a3",
+            "url": "https://api.github.com/repos/drupal/core/zipball/31c01fe3b4eb8817e8ef127382a67c9e9d78e1a9",
+            "reference": "31c01fe3b4eb8817e8ef127382a67c9e9d78e1a9",
             "shasum": ""
         },
         "require": {
@@ -3244,7 +3244,7 @@
             "symfony/debug": "^3.4.0",
             "symfony/phpunit-bridge": "^3.4.3"
         },
-        "time": "2019-05-08T16:00:55+00:00",
+        "time": "2019-05-23T07:22:46+00:00",
         "type": "drupal-core",
         "extra": {
             "merge-plugin": {
@@ -4188,17 +4188,17 @@
     },
     {
         "name": "egulias/email-validator",
-        "version": "2.1.7",
-        "version_normalized": "2.1.7.0",
+        "version": "2.1.8",
+        "version_normalized": "2.1.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/egulias/EmailValidator.git",
-            "reference": "709f21f92707308cdf8f9bcfa1af4cb26586521e"
+            "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/709f21f92707308cdf8f9bcfa1af4cb26586521e",
-            "reference": "709f21f92707308cdf8f9bcfa1af4cb26586521e",
+            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c26463ff9241f27907112fbcd0c86fa670cfef98",
+            "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98",
             "shasum": ""
         },
         "require": {
@@ -4213,7 +4213,7 @@
         "suggest": {
             "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
         },
-        "time": "2018-12-04T22:38:24+00:00",
+        "time": "2019-05-16T22:02:54+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -9312,17 +9312,17 @@
     },
     {
         "name": "webflo/drupal-core-require-dev",
-        "version": "8.7.1",
-        "version_normalized": "8.7.1.0",
+        "version": "8.7.2",
+        "version_normalized": "8.7.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/webflo/drupal-core-require-dev.git",
-            "reference": "91acb9e4723e371290b11eff67fbb5884d3c8e6c"
+            "reference": "0f1f36e71d63e05f1bb599e0bfd20f7722b700a2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/91acb9e4723e371290b11eff67fbb5884d3c8e6c",
-            "reference": "91acb9e4723e371290b11eff67fbb5884d3c8e6c",
+            "url": "https://api.github.com/repos/webflo/drupal-core-require-dev/zipball/0f1f36e71d63e05f1bb599e0bfd20f7722b700a2",
+            "reference": "0f1f36e71d63e05f1bb599e0bfd20f7722b700a2",
             "shasum": ""
         },
         "require": {
@@ -9330,7 +9330,7 @@
             "behat/mink-goutte-driver": "^1.2",
             "behat/mink-selenium2-driver": "1.3.x-dev",
             "drupal/coder": "^8.3.1",
-            "drupal/core": "8.7.1",
+            "drupal/core": "8.7.2",
             "jcalderonzumba/gastonjs": "^1.0.2",
             "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
             "justinrainbow/json-schema": "^5.2",
@@ -9341,7 +9341,7 @@
             "symfony/debug": "^3.4.0",
             "symfony/phpunit-bridge": "^3.4.3"
         },
-        "time": "2019-05-08T17:31:44+00:00",
+        "time": "2019-05-23T07:31:39+00:00",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
