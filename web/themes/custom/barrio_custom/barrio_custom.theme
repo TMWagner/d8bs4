@@ -14,6 +14,44 @@ use Drupal\taxonomy\Entity\Term;
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
+
+
+
+function barrio_custom_preprocess_layout__onecol(&$variables) {
+
+  // This example is from rdf_preprocess_image(). It adds an RDF attribute
+  // to the image hook's variables.
+  $viewmode = $variables["content"]["#view_mode"];
+  $debug = 2;
+  $debug = $variables;
+  $test = $debug;
+
+
+//  $variables["content"]["#user"]->values["uid"]["x-default"];
+
+  if ($viewmode == 'user_team_card') {
+    //do some work
+    $debug2 = $debug;
+    // load user object from node @todo Get method
+    $uid = $variables["content"]["#user"]->values["uid"]["x-default"];
+    $user = $variables["content"]["#user"];
+
+    //@todo this just returns null
+    $uid = $user->values["uid"];
+
+
+    $testuid = $uid;
+  }
+
+
+
+//  $taxonomy_array = $item["content"]["#row"]->_entity->get('field_tools_filter_category')->getValue();
+
+//  $variables['attributes']['typeof'] = [
+//    'foaf:Image',
+//  ];
+}
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
