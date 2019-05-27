@@ -18,6 +18,10 @@ use Drupal\user\Entity\User;
 
 
 
+
+/**
+ * @param $variables
+ */
 function barrio_custom_preprocess_layout__onecol(&$variables) {
 
   // This example is from rdf_preprocess_image(). It adds an RDF attribute
@@ -27,15 +31,26 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $debug = $variables;
   $test = $debug;
 
+  // or just
+  //$user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  // or just
+  $user = User::load(\Drupal::currentUser()->id());
+  $uid = $user->get('uid');
 
 //  $variables["content"]["#user"]->values["uid"]["x-default"];
 
   if ($viewmode == 'user_team_card') {
     //do some work
-    $debug2 = $debug;
-    // load user object from node @todo Get method
-    $uid = $variables["content"]["#user"]->values["uid"]["x-default"];
+
+//    // or just
+//    $user = User::load(\Drupal::currentUser()->id());
+//    $uid = $user->get('uid');
+
+    //@todo This works, but is soooo ugly.
     $user = $variables["content"]["#user"];
+    $uid = $user->get('uid')->getValue();
+    $uidValue = $uid[0]["value"];
+
 
     //@todo this just returns null
     $uid = $user->values["uid"];
@@ -138,7 +153,6 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
            */
 
           $taxo = term::load($target_id);
-
           $field_title = $taxo->get("field_tool_class");
           $class_value = $field_title->value;
 
@@ -158,45 +172,3 @@ function barrio_custom_preprocess_views_view_unformatted(&$variables) {
   }
 
 }
-
-
-
-
-
-
-/**
- * Implementation of hook_preprocess_HOOK
- * @param $variables
- *
- * Cute little php test site
- * https://www.w3resource.com/php/function-reference/array_key_exists.php
- *
- */
-//function barrio_custom_preprocess_(&$variables) {
-//
-//  $test = $variables;
-//  $variables['publications_listings'] = TRUE;
-//
-//  $debug1 = FALSE;
-//
-////  //Test the key first
-//  if (array_key_exists('first', $variables)) {
-//    $debug1 = true;
-//  }
-//
-//  if (array_key_exists('element', $variables)) {
-//    $debug1 = true;
-//  }
-////
-////  if (array_key_exists("story", $arr) && array_key_exists("message", $arr)) {
-////    // Both keys exist.
-////  }
-//
-//  //  $test2 = $variables["element"]["#name"];
-////  if ($variables["element"]["#name"] == 'profile_basic_content') {
-////    // Create a new variable for Class and set it to "profile-swap"
-////    $test3 = $test2;
-////  }
-//  $debug1 = true;
-//
-//}
