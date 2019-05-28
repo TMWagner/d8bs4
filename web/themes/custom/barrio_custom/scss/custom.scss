@@ -421,6 +421,26 @@ a.publication-link-external:hover {
   padding: 1em 0 1em 1em;
 }
 
+.team-member-card-thumbnail img {
+  margin-bottom: 0;
+}
+
+.team-card-thumbnail {
+  width: 100px;
+  margin-right: 1em;
+}
+.team-card-thumbnail img {
+  margin-bottom: 0px;
+}
+
+//@todo temp code
+.field.field--name-user-picture.field--type-image.field--label-hidden.field__item {
+  margin-right: 1em;
+}
+
+
+
+
 //------------------
 //IDM Footer
 //
