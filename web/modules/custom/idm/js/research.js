@@ -11,9 +11,12 @@
   /* CODE GOES HERE  - Code Wrap*/
 
   //Wrap thumbnails
-  $(".team-card-thumbnail").wrapAll("<div class='team-card-thumbnail-wrap d-flex'></div>");
+  $(".team-card-thumbnail").wrapAll("<div class='container team-card-thumbnail-wrap d-flex'></div>");
 
-  //@todo This won't work if there are multiple images
+  /**
+   * This add a class to the team lead image on the footer of the Research card
+   * @todo This will add a line on multiple images (I think) Not good
+   */
   $(".field--name-field-team-lead").find(".field--name-user-picture").addClass('team-lead-img');
 
 
