@@ -47,5 +47,8 @@
   .research-card div h4 {
     font-size: 1.3em;
     font-weight: 300; } }
+.team-lead-img {
+  border-right: thin solid #ff6315;
+  padding-right: .5em; }
 
 /*# sourceMappingURL=research.css.map */

@@ -10,7 +10,11 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-  //Begin paste/functions
+  //Wrap thumbnails
+  $(".team-card-thumbnail").wrapAll("<div class='team-card-thumbnail-wrap d-flex'></div>");
+
+  //@todo This won't work if there are multiple images
+  $(".field--name-field-team-lead").find(".field--name-user-picture").addClass('team-lead-img');
 
 
 
