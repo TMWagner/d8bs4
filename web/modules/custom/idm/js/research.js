@@ -264,12 +264,8 @@
 
 
 
-
-
-
-    //Turn on highlight class on appropriate cards / turn off others.
-
   }
+
 
   // End paste
 

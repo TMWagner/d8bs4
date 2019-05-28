@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\Node;
 use \Drupal\views\ViewExecutable;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Component\Serialization\Json;
@@ -114,15 +115,15 @@ function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $ent
 
 //  if ($entity->getEntityType()->id() === 'node') {
 //
-//    $build['awesome'] =  [
-//      '#markup' => '<marquee>IDM V4 amazing content</marquee>',
-//      '#allowed_tags' => ['marquee'],
-//    ];
-//    $build['moretext'] = [
-//      '#markup' => '<h2>IDM V4 amazing content</h2>',
-//      '#weight' => 99
-//    ];
-//  }
+  ////    $build['awesome'] =  [
+  ////      '#markup' => '<marquee>IDM V4 amazing content</marquee>',
+  ////      '#allowed_tags' => ['marquee'],
+  ////    ];
+  ////    $build['moretext'] = [
+  ////      '#markup' => '<h2>IDM V4 amazing content</h2>',
+  ////      '#weight' => 99
+  ////    ];
+  ////  }
 
 }
 
@@ -160,8 +161,19 @@ function idm_page_attachments(array &$attachments) {
 
   // Get the current path.
   $path = $current_path = \Drupal::service('path.current')->getPath();
-  // If we're on the node listing page, add our retro library.
-  //
+
+  $pathpieces = explode("/", $path);
+  if ($pathpieces[1] === 'node') {
+    //load the node and check for bundle
+    $bundle = Drupal\node\Entity\Node::load($pathpieces[2])->bundle();
+
+    if($bundle === 'research') {
+      $attachments['#attached']['library'][] = 'idm/research';
+    }
+  }
+
+
+
 
   //We need to define a library specific to the home page (node 168)
   // NavTab is being used for the "How we work" block"
