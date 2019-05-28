@@ -31,13 +31,17 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $debug = $variables;
   $test = $debug;
 
-  // or just
-  //$user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
-  // or just
+  // Test for research node
+  $bundle = $variables["content"]["#bundle"];
+  $variables['research_content'] = FALSE;
+  if ($bundle === 'research') {
+    $variables['research_content'] = TRUE;
+  }
+
+
   $user = User::load(\Drupal::currentUser()->id());
   $uid = $user->get('uid');
 
-//  $variables["content"]["#user"]->values["uid"]["x-default"];
 
   if ($viewmode == 'user_team_card') {
     //do some work
@@ -55,8 +59,6 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
     //@todo this just returns null
     $uid = $user->values["uid"];
 
-
-    $testuid = $uid;
   }
 
 

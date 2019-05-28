@@ -6,14 +6,18 @@
  * Available variables:
  * - content: The content for this layout.
  * - attributes: HTML attributes for the layout <div>.
+ * - research_content: T/F flag to indicate research node
+ * @todo hard coded research-content for the testing....
  *
  * @ingroup themeable
+ *
  */
 #}
 {%
   set classes = [
     'layout',
     'layout--onecol',
+    'research-content',
   ]
 %}
 {% if content %}
