@@ -11,7 +11,7 @@
   /* CODE GOES HERE  - Code Wrap*/
 
   //Wrap thumbnails
-  $(".team-card-thumbnail").wrapAll("<div class='container team-card-thumbnail-wrap d-flex'></div>");
+  $(".team-card-thumbnail").wrapAll("<div class='container team-card-thumbnail-wrap d-flex bogus'></div>");
 
   /**
    * This add a class to the team lead image on the footer of the Research card
@@ -189,10 +189,11 @@
         var cardText = currentCard.find("h4").text();
         data = cardClicked.find('h4').data("node-url");
         console.log( "is this it? " + cardText);
-        currentCard.after("<div class='insert research-content-wrapper mx-sm-1'> </div>");
+        currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
         console.log(data);
-        $( ".insert" ).load(data + " .research-content");
+        console.log(">>> attempt to insert...");
+        $( ".insert" ).load(data + " .rlp-detail-more");
 
       }
 

@@ -36,6 +36,15 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $variables['research_content'] = FALSE;
   if ($bundle === 'research') {
     $variables['research_content'] = TRUE;
+
+    //if called from rlp
+    // Get the current path.
+    $path = $current_path = \Drupal::service('path.current')->getPath();
+
+    $pathpieces = explode("/", $path);
+    $parm1 = $pathpieces[1];
+    $parm2 = $pathpieces[2];
+
   }
 
 
