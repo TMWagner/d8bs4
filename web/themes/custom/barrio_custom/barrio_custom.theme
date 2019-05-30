@@ -18,7 +18,6 @@ use Drupal\user\Entity\User;
 
 
 
-
 /**
  * @param $variables
  */
@@ -29,7 +28,7 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $viewmode = $variables["content"]["#view_mode"];
   $debug = 2;
   $debug = $variables;
-  $test = $debug;
+
 
   // Test for research node
   $bundle = $variables["content"]["#bundle"];
@@ -51,9 +50,11 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $user = User::load(\Drupal::currentUser()->id());
   $uid = $user->get('uid');
 
-
+  $variables['research_team'] = FALSE;
   if ($viewmode == 'user_team_card') {
+
     //do some work
+    $variables['research_team'] = TRUE;
 
 //    // or just
 //    $user = User::load(\Drupal::currentUser()->id());
