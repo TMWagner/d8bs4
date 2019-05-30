@@ -11,7 +11,7 @@
   /* CODE GOES HERE  - Code Wrap*/
 
   //Wrap thumbnails
-  $(".team-card-thumbnail").wrapAll("<div class='container team-card-thumbnail-wrap d-flex bogus'></div>");
+  $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery'></div>");
 
   /**
    * This add a class to the team lead image on the footer of the Research card
@@ -189,13 +189,16 @@
         var cardText = currentCard.find("h4").text();
         data = cardClicked.find('h4').data("node-url");
         console.log( "is this it? " + cardText);
-        currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1'> </div>");
+        currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
         // $( ".insert" ).load( "/malaria .research-content");
         console.log(data);
         console.log(">>> attempt to insert...");
-        $( ".insert" ).load(data + " .rlp-detail-more");
+        $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
+
 
       }
+
+
 
 
       // var data = $(this).find('h4').data("node-url");
@@ -229,6 +232,11 @@
     // End of Desktop/tablet
   }
 
+  function loadComplete() {
+    console.log("finished with load");
+    $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery2'></div>");
+
+  }
 
   // Is mobile test code
   //@todo Verify this code - What screen size should it be
