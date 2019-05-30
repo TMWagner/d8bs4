@@ -325,7 +325,7 @@ a.publication-link-external:hover {
   margin-bottom: 0px; }
 
 .field.field--name-user-picture.field--type-image.field--label-hidden.field__item {
-  margin-right: 1em; }
+  text-align: center; }
 
 @media (min-width: 768px) {
   .idm-footer {

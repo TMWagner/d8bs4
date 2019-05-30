@@ -12,6 +12,9 @@
 
   //Wrap thumbnails
   $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery'></div>");
+  $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jquery'></div>");
+
+
 
   /**
    * This add a class to the team lead image on the footer of the Research card
@@ -232,9 +235,15 @@
     // End of Desktop/tablet
   }
 
+  /**
+   * Post load function
+   */
   function loadComplete() {
-    console.log("finished with load");
-    $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery2'></div>");
+    // Content loaded:
+    // Wrap the entire group in div for flex
+    // @todo Team lead as well?
+    $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
+    $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jqsource'></div>");
 
   }
 

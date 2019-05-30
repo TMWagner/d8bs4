@@ -35,8 +35,6 @@
  *
  *
  * @see template_preprocess_field()
- * 2019/05/27(tmw): added d-flex to team member thumbnails
- * apparently not called for detail...
  */
 #}
 {%
@@ -45,6 +43,7 @@
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
+    'research-team',
   ]
 %}
 {%
@@ -56,10 +55,9 @@
 
 {% if label_hidden %}
   {% if multiple %}
-    {# added d-flex for team members#}
-    <div{{ attributes.addClass(classes, 'field__items', 'team-card-thumbnail', 'd-flex') }}>
+    <div{{ attributes.addClass(classes, 'field__items') }}>
       {% for item in items %}
-        <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        <div{{ item.attributes.addClass('field__item', 'research-team-member') }}>{{ item.content }}</div>
       {% endfor %}
     </div>
   {% else %}

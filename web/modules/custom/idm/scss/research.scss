@@ -70,7 +70,40 @@
 
 }
 
+//@todo this should be responsive... most likely
+.research-team-member {
+  max-width: 120px;
+  text-align: center;
+}
+
+.research-team a {
+  color: $idm-light_blue;
+}
+.research-team a:hover{
+  color: $idm_orange;
+}
+
+.field--type-image img, .field--name-field-user-picture img {
+  margin: 0 !important;
+}
+
+.field.field--name-dynamic-token-fielduser-user-display-name.field--type-ds.field--label-hidden.field__item > p{
+  margin-bottom: 0px
+
+}
+
+.research-team-lead,
+.research-team-member {
+  font-size: 80%;
+}
+
+//Center username
+.field.field--name-dynamic-token-fielduser-user-display-name.field--type-ds.field--label-hidden.field__item {
+  text-align: center;
+}
+
+
 .team-lead-img {
-  border-right: thin solid $idm_orange;
-  padding-right: .5em;
+  //border-right: thin solid $idm_orange;
+  //padding-right: .5em;
 }

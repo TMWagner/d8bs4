@@ -6,11 +6,10 @@
  * Available variables:
  * - content: The content for this layout.
  * - attributes: HTML attributes for the layout <div>.
- * - research_content: T/F flag to indicate research node
+ * - research_content: true/false flag to indicate research node
  * @todo hard coded research-content for the testing....
  *
  * @ingroup themeable
- * @todo rlp-detail-more needs to be conditional
  *
  */
 #}
@@ -18,9 +17,7 @@
   set classes = [
     'layout',
     'layout--onecol',
-    'rlp-detail-more',
-    'rlp-detail-thumbnail',
-    research_team ? 'research-team',
+    research_content ? 'rlp-detail-more',
   ]
 %}
 {% if content %}
@@ -30,3 +27,4 @@
     </div>
   </div>
 {% endif %}
+

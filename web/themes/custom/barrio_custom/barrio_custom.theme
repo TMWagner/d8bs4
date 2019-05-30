@@ -16,6 +16,16 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
 
+//
+//function barrio_custom_preprocess_field(&$variables) {
+//
+//  $viewmode = $variables["content"]["#view_mode"];
+//  $debug = 2;
+//  $debug = $variables;
+//
+//}
+
+
 
 
 /**
@@ -28,13 +38,15 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $viewmode = $variables["content"]["#view_mode"];
   $debug = 2;
   $debug = $variables;
+  $variables['research_content'] = FALSE;
 
 
   // Test for research node
   $bundle = $variables["content"]["#bundle"];
-  $variables['research_content'] = FALSE;
   if ($bundle === 'research') {
     $variables['research_content'] = TRUE;
+    $entityType = $variables["content"]["#entity_type"];
+
 
     //if called from rlp
     // Get the current path.
@@ -50,7 +62,7 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   $user = User::load(\Drupal::currentUser()->id());
   $uid = $user->get('uid');
 
-  $variables['research_team'] = FALSE;
+
   if ($viewmode == 'user_team_card') {
 
     //do some work
@@ -71,13 +83,6 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
 
   }
 
-
-
-//  $taxonomy_array = $item["content"]["#row"]->_entity->get('field_tools_filter_category')->getValue();
-
-//  $variables['attributes']['typeof'] = [
-//    'foaf:Image',
-//  ];
 }
 
 /**
