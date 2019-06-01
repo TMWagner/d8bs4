@@ -10,6 +10,8 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
+  console.log(">>> starting research.js...");
+
   //Wrap thumbnails
   $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery'></div>");
   $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jquery'></div>");
@@ -244,6 +246,38 @@
     // @todo Team lead as well?
     $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
     $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jqsource'></div>");
+
+    //attach handler for carousel
+    $('.research-team-member-group').slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 700,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+
+
 
   }
 

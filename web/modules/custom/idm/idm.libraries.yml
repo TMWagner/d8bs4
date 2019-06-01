@@ -112,3 +112,16 @@ jqcollapse:
   dependencies:
     - core/jquery
     - core/jquery.once
+
+# SLICK
+slick:
+  version: 1.5
+  css:
+    base:
+      css/slick.css: {}
+      css/slick-theme.css: {}
+  js:
+    js/slick.min.js: {}
+    js/slick-init.js: {}
+  dependencies:
+    - core/jquery

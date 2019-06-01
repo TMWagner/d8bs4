@@ -107,3 +107,15 @@
   //border-right: thin solid $idm_orange;
   //padding-right: .5em;
 }
+
+.research-team-member-group {
+  width: 450px;
+  margin-left: 2em;
+}
+
+@media (max-width: 990px) {
+  .research-team-member-group {
+    margin-left: 5em;
+    width: 300px;
+  }
+}

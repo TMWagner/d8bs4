@@ -70,4 +70,13 @@
 .field.field--name-dynamic-token-fielduser-user-display-name.field--type-ds.field--label-hidden.field__item {
   text-align: center; }
 
+.research-team-member-group {
+  width: 450px;
+  margin-left: 2em; }
+
+@media (max-width: 990px) {
+  .research-team-member-group {
+    margin-left: 5em;
+    width: 300px; } }
+
 /*# sourceMappingURL=research.css.map */

@@ -169,6 +169,7 @@ function idm_page_attachments(array &$attachments) {
 
     if($bundle === 'research') {
       $attachments['#attached']['library'][] = 'idm/research';
+      $attachments['#attached']['library'][] = 'idm/slick';
     }
   }
 
@@ -189,6 +190,7 @@ function idm_page_attachments(array &$attachments) {
 
   if (fnmatch("/rlp/*", $path)) {
     $attachments['#attached']['library'][] = 'idm/research';
+    $attachments['#attached']['library'][] = 'idm/slick';
   }
 
   /**
@@ -197,7 +199,7 @@ function idm_page_attachments(array &$attachments) {
    */
   if ($path == '/node/169') {
 //    $attachments['#attached']['library'][] = 'idm/jqcollapse';
-    $attachments['#attached']['library'][] = 'idm/tools';
+    $attachments['#attached']['library'][] = 'idm/slick';
   };
 
   /**
