@@ -124,7 +124,7 @@
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
     // Grab just the body text
-    $( ".insert" ).load(data + " #research-body-text");
+    $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
 
 
     // $("#toolsModalTitle").text('bla');
@@ -245,37 +245,54 @@
     // Wrap the entire group in div for flex
     // @todo Team lead as well?
     $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
-    $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jqsource'></div>");
+    $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
 
-    //attach handler for carousel
-    $('.research-team-member-group').slick({
-      infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      responsive: [
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
+    // windowType = checkMod();
+    if (windowType === 'small') {
+      console.log(">>> Remove d-flex from research-team-member-group");
+      $(".research-team-member-group").removeClass(".d-flex");
+    }
+
+
+    if (true) {
+      console.log(">>> Load slick from research...");
+      //attach handler for carousel
+      $('.research-team-member-group').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 700,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 650,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
           }
-        },
-        {
-          breakpoint: 700,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
+        ]
+      });
+    }
 
 
 

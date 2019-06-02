@@ -78,5 +78,9 @@
   .research-team-member-group {
     margin-left: 5em;
     width: 300px; } }
+@media (max-width: 700px) {
+  .research-team-member-group {
+    margin-left: 1em;
+    width: 299px; } }
 
 /*# sourceMappingURL=research.css.map */
