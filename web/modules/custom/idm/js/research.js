@@ -214,10 +214,16 @@
       // First find the end of the row
       var cardClicked = $(this);
       var currentCard = cardClicked;
+
+      console.log("@@@ Checking for next card...");
       var nextCard = $(this).next();
+      var endOfLoop = false;
+
+      console.log("@@@ Next Card is: " + nextCard.length);
 
       // Check for last element
       if ( nextCard.length === 0 ) {
+        endOfLoop = true;
         // We hit the end - currentCard is the last element
         // data = currentCard.find('h4').data("node-url");
         // console.log( 'We clicked the last one: ' + data);
@@ -226,31 +232,48 @@
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        // console.log( "position - currant: " + positionCurrant);
-        // console.log( "position - next: " + positionNext);
+        console.log( "position - currant: " + positionCurrant);
+        console.log( "position - next: " + positionNext);
 
-        while ( positionCurrant === positionNext) {
+        while ( positionCurrant === positionNext && !endOfLoop) {
           // Loop till we hit the end of the row
           // data = data + ".research-content';
           currentCard = nextCard;
+          console.log("@@@ Attempt to load next card: ");
           nextCard = currentCard.next();
-          positionCurrant = currentCard.position().top;
-          positionNext = nextCard.position().top;
-          console.log( "position(loop) - currant: " + positionCurrant);
-          console.log( "position(loop) - next: " + positionNext);
-        }
-        // @todo Lets see which card we landed on
-        var cardText = currentCard.find("h4").text();
-        data = cardClicked.find('h4').data("node-url");
-        console.log( "is this it? " + cardText);
-        currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
-        // $( ".insert" ).load( "/malaria .research-content");
-        console.log(data);
-        console.log(">>> attempt to insert...");
-        $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
+          if (nextCard.length === 0 ) {
+            endOfLoop = true;
+            console.log("End of LOOP " + nextCard.length);
+          }
+          else {
+            positionCurrant = currentCard.position().top;
+            positionNext = nextCard.position().top;
+            console.log("position(loop) - currant: " + positionCurrant);
+            console.log("position(loop) - next: " + positionNext);
+          }
 
+        }
+        // Lets see which card we landed on
+        // @todo BUG! The following never gets executed if the last card is hit
+        // var cardText = currentCard.find("h4").text();
+        // data = cardClicked.find('h4').data("node-url");
+        // console.log( "is this it? " + cardText);
+        // currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
+        // // $( ".insert" ).load( "/malaria .research-content");
+        // console.log(data);
+        // console.log(">>> attempt to insert...");
+        // $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
 
       }
+      var cardText = currentCard.find("h4").text();
+      data = cardClicked.find('h4').data("node-url");
+      console.log( "is this it? " + cardText);
+      currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
+      // $( ".insert" ).load( "/malaria .research-content");
+      console.log(data);
+      console.log(">>> attempt to insert...");
+      $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
+
 
 
 
