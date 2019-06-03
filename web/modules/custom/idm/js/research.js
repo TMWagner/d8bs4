@@ -123,13 +123,59 @@
     // var nodeContent = $.get(data + " .research-content");
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
-    // Grab just the body text
-    $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
+    // Load the node and insert...
+    $( ".insert" ).load(data + " .rlp-detail-more");
 
-
-    // $("#toolsModalTitle").text('bla');
-    // $("#modal-body-template").text('exciting text');
+    // @todo Load carousel AFTER modal is fired.
     $("#rlpModal").modal();
+
+    $('#rlpModal').on('shown.bs.modal', function (e) {
+      // do something...
+      console.log("**** Modal has fired and should be visible");
+
+      //Clean up the Dom
+      $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
+      $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
+      $(".research-team-member-group").removeClass(".d-flex");
+
+
+      //init the carousel
+      $('.research-team-member-group').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 700,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 650,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    })
 
   }
   // End Function
@@ -292,6 +338,8 @@
           }
         ]
       });
+
+
     }
 
 
