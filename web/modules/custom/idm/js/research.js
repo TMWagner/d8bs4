@@ -136,7 +136,8 @@
       console.log("**** Modal has fired and should be visible");
 
       //Clean up the Dom
-      $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
+      //@todo removed d-flex from parent wrapper for mobile (to stack two sections)
+      $(".research-team").wrapAll("<div class='container-flex team-card-thumbnail-wrap  jqsource'></div>");
       $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
       $(".research-team-member-group").removeClass(".d-flex");
 
