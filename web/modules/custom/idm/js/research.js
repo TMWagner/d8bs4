@@ -116,6 +116,8 @@
     var data = cardClicked.find('h4').data("node-url");
 
     console.log("title is: " + cardClicked.find('h4').html());
+    //@todo make sure event is not already bound
+    $("#rlpModal").off();
 
     //build out the template.
 
