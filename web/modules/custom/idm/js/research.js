@@ -253,17 +253,6 @@
           }
 
         }
-        // Lets see which card we landed on
-        // @todo BUG! The following never gets executed if the last card is hit
-        // var cardText = currentCard.find("h4").text();
-        // data = cardClicked.find('h4').data("node-url");
-        // console.log( "is this it? " + cardText);
-        // currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
-        // // $( ".insert" ).load( "/malaria .research-content");
-        // console.log(data);
-        // console.log(">>> attempt to insert...");
-        // $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
-
       }
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");
