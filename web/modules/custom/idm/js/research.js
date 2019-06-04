@@ -222,26 +222,20 @@
       console.log("@@@ Next Card is: " + nextCard.length);
 
       // Check for last element
-      if ( nextCard.length === 0 ) {
-        endOfLoop = true;
-        // We hit the end - currentCard is the last element
-        // data = currentCard.find('h4').data("node-url");
-        // console.log( 'We clicked the last one: ' + data);
-      }
-      else {
+      if (nextCard.length !== 0) {
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        console.log( "position - currant: " + positionCurrant);
-        console.log( "position - next: " + positionNext);
+        console.log("position - currant: " + positionCurrant);
+        console.log("position - next: " + positionNext);
 
-        while ( positionCurrant === positionNext && !endOfLoop) {
+        while (positionCurrant === positionNext && !endOfLoop) {
           // Loop till we hit the end of the row
           // data = data + ".research-content';
           currentCard = nextCard;
           console.log("@@@ Attempt to load next card: ");
           nextCard = currentCard.next();
-          if (nextCard.length === 0 ) {
+          if (nextCard.length === 0) {
             endOfLoop = true;
             console.log("End of LOOP " + nextCard.length);
           }
@@ -253,6 +247,12 @@
           }
 
         }
+      }
+      else {
+        endOfLoop = true;
+        // We hit the end - currentCard is the last element
+        // data = currentCard.find('h4').data("node-url");
+        // console.log( 'We clicked the last one: ' + data);
       }
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");

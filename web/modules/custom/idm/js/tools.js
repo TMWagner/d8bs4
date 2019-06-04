@@ -409,57 +409,48 @@
       var cardClicked = $(this);
       var currentCard = cardClicked;
       var nextCard = $(this).next();
+      var moreCards = true;
 
-
-      //@todo DEBUG next 4 lines
-      // var textCurrant = currentCard.find("h4").text();
-      // var textNext = nextCard.find("h4").text();
-      // console.log( "Before nextcard check. Currant card is: " + textCurrant);
-      // console.log( "Before nextcard check. Next Card is: " + textNext);
-      // // END DEbug
 
       // Check for last element
-      if ( nextCard.length === 0 ) {
-        // We hit the end - currentCard is the last element
-        // data = currentCard.find('h4').data("node-url");
-        console.log( 'We clicked the last one: ' + data);
-      }
-      else {
+      if (nextCard.length !== 0) {
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
         //@todo remove before flight
-        console.log( "Before Loop...position - currant: " + positionCurrant);
-        console.log( "Before Loop... position - next: " + positionNext);
+        console.log("Before Loop...position - currant: " + positionCurrant);
+        console.log("Before Loop... position - next: " + positionNext);
 
-        while ( positionCurrant === positionNext) {
+        while (positionCurrant === positionNext && moreCards) {
 
           var textCurrant = currentCard.find("h4").text();
           var textNext = nextCard.find("h4").text();
 
           //@todo Remove before flight
-          console.log( "In loop- Currant card is: " + textCurrant);
-          console.log( "In loop- Next Card is: " + textNext);
+          console.log("In loop- Currant card is: " + textCurrant);
+          console.log("In loop- Next Card is: " + textNext);
 
-
-          // Break out of the loop if we run past the end. If we don't
-          // then trying to access the empty array will force an error.
-          if (nextCard.length === 0) {
-            console.log("Next card length 0: Break out of loop");
-            break;
-          }
-
-          //@todo moved the next two lines below the if Statement
           currentCard = nextCard;
           nextCard = currentCard.next();
 
-          positionCurrant = currentCard.position().top;
-          positionNext = nextCard.position().top;
+          if (nextCard.length === 0) {
+            console.log("Next card length 0: Break out of loop");
+            moreCards = false;
+          }
+          else {
+            positionCurrant = currentCard.position().top;
+            positionNext = nextCard.position().top;
+            console.log("position(loop) - currant: " + positionCurrant);
+            console.log("position(loop) - next: " + positionNext);
+          }
 
-          //@todo remove before flight
-          console.log( "position(loop) - currant: " + positionCurrant);
-          console.log( "position(loop) - next: " + positionNext);
         }
+      }
+      else {
+        // We hit the end - currentCard is the last element
+        // data = currentCard.find('h4').data("node-url");
+        console.log('We clicked the last one: ' + data);
+        moreCards = false;
 
       }
 
