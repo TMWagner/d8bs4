@@ -15,7 +15,7 @@
   width: 100%;
 }
 .tools-wrapper.container {
-  width: 100%;
+  width: 720px;
 }
 
 @media (max-width: 768px) {
@@ -90,7 +90,7 @@
 #status-bar {
   height: 5px;
   background-color: lightgray;
-  margin: 0 .6em;
+  margin: 0;
 }
 // @todo width and position to be determined by jquery
 #status-bar-indicator {
