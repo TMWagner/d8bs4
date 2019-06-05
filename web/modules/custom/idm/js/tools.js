@@ -43,6 +43,7 @@
      * And call display card (if needed)
      */
     var cardClicked = $('.tools-card');
+    var contentClicked = $('.tools-content-wrapper');
 
     // Figure out what the calling URL is
     var toolParameter = null;
@@ -72,6 +73,10 @@
       $('.tools-filter-title').click(fnClickFilter);
       cardClicked.click(fnClickCard);
       if (toolParameter) fnShowCard(toolParameter);
+
+      //@todo Add handler for card content
+
+
 
       // // Add div(s) for tool highlight
       // $( "<div class='tool-highlight-topbar'></div>")
@@ -354,9 +359,6 @@
       left: '40%',
       width: '3em'
     });
-
-
-
   }
 
 
@@ -380,6 +382,30 @@
     $( ".insert" ).load(data + " .tools-card-text");
 
     $("#toolsModal").modal();
+
+  }
+
+
+  function fnCloseContent() {
+    console.log("#### inside fnCloseContent....");
+    var toolParameter = $(this).data("tool-content");
+    console.log("@@@@ Tools is: " + toolParameter);
+
+    //Get the target card using the tool parameter
+    var targetCard = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
+
+    // Turn off the "content"
+    $('.insert').remove();
+
+    if (targetCard.hasClass('card-selected')) {
+      // console.log("@@@@@ Card is selected");
+      // Turn off highlight
+      targetCard.toggleClass('card-selected');
+    }
+
+
+
+
 
   }
 
@@ -443,7 +469,6 @@
             console.log("position(loop) - currant: " + positionCurrant);
             console.log("position(loop) - next: " + positionNext);
           }
-
         }
       }
       else {
@@ -458,16 +483,27 @@
       var cardText = currentCard.find("h4").text();
 
       data = cardClicked.find('h4').data("node-url");
+      //Grab data-tool attribute
+      var dataTool = cardClicked.find('h4').data("tool");
+
+      console.log(">>> Data tool is: " + dataTool);
       console.log( "is this it? " + cardText);
       // @todo add class d-none... then swap display property AFTER load
       currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
       // $( ".insert" ).load( "/malaria .research-content");
-      // console.log("data is: " + data);
-      $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
+      console.log(">>> Inserting card - data is: " + data);
+
+      //Toggle class and add data-tool-content attribute (so we can link to card)
+      $( ".insert" ).load(data + " .tools-content").toggleClass("d-none").attr("data-tool-content", dataTool);
+
+      //@todo attach handler here for content??
+      /**
+       * Maybe?
+       */
+      //@todo remove duplicated selector
+      $(".insert").click(fnCloseContent);
 
 
-
-      // Turn off all other active cards
       $(".tools-card.card-selected").toggleClass("card-selected");
       $("#tool-display").remove();
 
