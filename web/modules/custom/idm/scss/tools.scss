@@ -184,7 +184,13 @@
   }
 }
 
-
+.tools-content > .modal-header {
+  border: none;
+  padding: 0;
+}
+.tools-content > .modal-header .close {
+  padding: 0 .5rem 1rem;
+}
 
 @media (min-width: 576px) {
   .tools-card {

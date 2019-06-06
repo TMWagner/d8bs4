@@ -388,7 +388,7 @@
 
   function fnCloseContent() {
     console.log("#### inside fnCloseContent....");
-    var toolParameter = $(this).data("tool-content");
+    var toolParameter = $('.insert').attr("data-tool-content");
     console.log("@@@@ Tools is: " + toolParameter);
 
     //Get the target card using the tool parameter
@@ -398,14 +398,10 @@
     $('.insert').remove();
 
     if (targetCard.hasClass('card-selected')) {
-      // console.log("@@@@@ Card is selected");
+      console.log("@@@@@ Card is selected");
       // Turn off highlight
       targetCard.toggleClass('card-selected');
     }
-
-
-
-
 
   }
 
@@ -494,14 +490,15 @@
       console.log(">>> Inserting card - data is: " + data);
 
       //Toggle class and add data-tool-content attribute (so we can link to card)
-      $( ".insert" ).load(data + " .tools-content").toggleClass("d-none").attr("data-tool-content", dataTool);
+      $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none").attr("data-tool-content", dataTool);
 
       //@todo attach handler here for content??
       /**
        * Maybe?
        */
       //@todo remove duplicated selector
-      $(".insert").click(fnCloseContent);
+      // $(".insert").click(fnCloseContent);
+      // // $('button[data-dismiss=modal]').click(fnCloseContent);
 
 
       $(".tools-card.card-selected").toggleClass("card-selected");
@@ -514,6 +511,18 @@
     }
     // End of Desktop/tablet
   }
+
+  /**
+   * Post load function
+   * Handle post load from fnClickCard
+   */
+  function loadComplete() {
+    console.log('%%%%% in loadComplete');
+    $('button[data-dismiss=modal]').click(fnCloseContent);
+  }
+
+
+
 
 
   // Is mobile test code
