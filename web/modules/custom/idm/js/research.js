@@ -254,14 +254,22 @@
         // data = currentCard.find('h4').data("node-url");
         // console.log( 'We clicked the last one: ' + data);
       }
+
+      //@todo CardText has already advanced in the loop...
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");
       console.log( "is this it? " + cardText);
+
+
+
+      //@todo I could have just used the text instead of data attribute.
+      var dataResearch = cardClicked.find('h4').data("research");
+      console.log(">>> Research tool is: " + dataResearch);
       currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
       // $( ".insert" ).load( "/malaria .research-content");
       console.log(data);
       console.log(">>> attempt to insert...");
-      $( ".insert" ).load(data + " .rlp-detail-more", loadComplete);
+      $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
 
 
@@ -298,6 +306,8 @@
     // End of Desktop/tablet
   }
 
+
+
   /**
    * Post load function
    */
@@ -314,7 +324,11 @@
       $(".research-team-member-group").removeClass(".d-flex");
     }
 
+    //Attach handler for desktop Modal close function
+    console.log('%%%%% in loadComplete');
+    $('button[data-dismiss=modal]').click(fnCloseContent);
 
+    //@todo Why did I hardcode this????
     if (true) {
       console.log(">>> Load slick from research...");
       //attach handler for carousel
@@ -353,13 +367,36 @@
           }
         ]
       });
-
-
     }
 
+  }
 
+  /**
+   * FnCloseContent
+   * Close the via the "X" close button
+   */
+  function fnCloseContent() {
+    console.log("#### inside fnCloseContent....");
+    var researchParameter = $('.insert').attr("data-research-content");
+    console.log("@@@@ Resarch  is: " + researchParameter);
+
+    //Get the target card using the tool parameter
+    var targetCard = $('h4[data-research=' + researchParameter +']').closest('.research-card');
+
+    // Turn off the "content"
+    $('.insert').remove();
+
+    if (targetCard.hasClass('card-selected')) {
+      console.log("@@@@@ Card is selected");
+      // Turn off highlight
+      targetCard.toggleClass('card-selected');
+    }
 
   }
+
+
+
+
 
   // Is mobile test code
   //@todo Verify this code - What screen size should it be

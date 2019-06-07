@@ -125,6 +125,26 @@
 }
 
 
+.rlp.modal-header {
+  border: none;
+  padding: 0 .5rem 1rem;
+}
+
+
+
+.close.tool-content-close {
+  color: #ff6315;
+  opacity: 1;
+  font-weight: lighter;
+  font-size: 2em;
+  text-shadow: none;
+}
+
+.close.tool-content-close:hover {
+  color: white;
+}
+
+
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 3em;
