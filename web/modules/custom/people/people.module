@@ -8,7 +8,6 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 
-
 /**
  * Implements hook_help().
  */
@@ -36,7 +35,7 @@ function people_theme() {
   return [
     'people_profile' => [
       'variables' => [
-        'content' => ''
+        'content' => '',
       ],
     ],
   ];
@@ -56,7 +55,7 @@ function people_preprocess_container(&$variables) {
 
       if ($variables["element"]["#name"] == 'publications_listings') {
         // Adding the preprocess var "profile_swap" is redundant;
-        $variables['attributes']['class'][0]  = 'auto-col';
+        $variables['attributes']['class'][0] = 'auto-col';
         $variables['attributes']['class'][] = 'profile-swap';
         //@todo This item (I think) is showing up in the list of classes as "1"
         $variables['no_swap'] = FALSE;

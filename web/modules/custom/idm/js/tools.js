@@ -38,6 +38,7 @@
       $("#filter-intro").html($(".filter-description:first").html());
     }
 
+
     /**
      * Attach click handlers
      * And call display card (if needed)
@@ -83,7 +84,6 @@
       //     .prependTo( ".views-field.views-field-nothing");
 
     }
-
 
     /**
      * Setup Tools Mobile display (if present)
@@ -212,6 +212,10 @@
 
   /**
    * fnShowCardMobile
+   * Logic:
+   *  1. Determine which card / URL to fetch content for
+   *  2. Build out the template
+   *  3. Display with Bootstrap Modal
    */
   function fnShowCardMobile(toolParameter) {
 
