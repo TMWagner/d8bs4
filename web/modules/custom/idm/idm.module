@@ -53,42 +53,6 @@ function idm_theme() {
 }
 
 
-/**
- * Implements hook_views_post_render
- * @param \Drupal\views\ViewExecutable $view
- * @param $output
- * @param \CachePluginBase $cache
- *
- */
-//function idm_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
-//
-//  $temp1 = 'bogus';
-//  $temp1 = $view;
-//
-//  $toutput = $output;
-//
-//  $temp2 = 'stop here';
-//
-//}
-
-
-/**
- * Implemements hook_views_data_alter
- */
-
-/**
- * Implements hook_views_data_alter().
- *
- * Does not seem to get fired here...5/17/2019
- */
-//function idm_views_data_alter(array &$data) {
-//
-//  $debug = null;
-//  $debug = $data;
-//
-//
-//}
-
 
 
 /**
