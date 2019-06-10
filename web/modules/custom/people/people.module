@@ -28,6 +28,7 @@ function people_help($route_name, RouteMatchInterface $route_match) {
 
 /**
  * Implements hook_theme().
+ * Declare a new theme
  */
 function people_theme() {
 
@@ -38,8 +39,16 @@ function people_theme() {
         'content' => '',
       ],
     ],
+    'people_profile_mobile' => [
+      'variables' => [
+        'content' => '',
+        'attributes' => array(),
+      ],
+    ],
   ];
 }
+
+
 
 /**
  * @param $variables

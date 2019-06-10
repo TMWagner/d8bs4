@@ -80,6 +80,7 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     );
 
+    //@todo why is this hardcoded?
     $nid = 169;
     $entity_type = 'node';
     $view_mode = 'teaser';
@@ -116,6 +117,8 @@ class PeopleController extends ControllerBase {
   }
 
   /**
+   * Profile:
+   * Builds the profile page for the desktop/tablet modal
    * @param $uid
    *
    * @return mixed
@@ -126,7 +129,7 @@ class PeopleController extends ControllerBase {
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
 
-    // Load view object
+    // Load View object
     // Need graceful recovery if View doesn't exist
     $view = \Drupal\views\Views::getView($profile_id);
     $view->setDisplay('user_profile_desktop');
@@ -250,19 +253,81 @@ class PeopleController extends ControllerBase {
     ];
 
 
-//    /**
-//     * Dev: Temporary Footer
-//     * @todo Remove before production
-//     */
-//    $render_array['dev_footer'] = [
-//      '#type' => 'markup',
-//      '#markup' => $this->t('footer'),
-//      '#prefix' => '<div><h2>',
-//      '#suffix' => '</h2></div>',
-//    ];
 
     return $render_array;
   }
+
+  /**
+   * Display user profile on Mobile device
+   * @param $uid
+   *
+   * @return mixed
+   */
+  public function profileMobile($uid) {
+
+    $output = array();
+
+    // This won't help
+    // Too High Level
+//    $output['page'] = [
+//      '#type' => 'page',
+//      '#prefix' => '<div class="tempwrapper">',
+//      '#suffix' => '</div',
+//
+//    ];
+
+    // A simple string item as render array.
+    $output['header'] = [
+      '#markup' => '<h1>Mobile Profile DEV</h1>',
+
+    ];
+
+
+    $output['author'] = array(
+      '#type' => 'details',
+      '#title' => $this
+        ->t('Author'),
+    );
+    $output['author']['name'] = array(
+      '#type' => 'textfield',
+      '#title' => $this
+        ->t('Name'),
+    );
+
+    // Set view arguments
+    $profile_id = 'profile_basic_content';
+    $display_id = 'user_profile_desktop';
+
+
+    // Load View object
+    // Need graceful recovery if View doesn't exist
+    $view = \Drupal\views\Views::getView($profile_id);
+    $view->setDisplay('user_profile_desktop');
+    $view->setArguments(array($uid));
+    $view->execute();
+    $variables['content'] = $view->buildRenderable($display_id);
+
+    //  Build the basic profile display
+    //  Added "Row" to sibling DIV with "container.html.twig"
+    $output['profile'] = array (
+      '#type' => 'container',
+      '#prefix' => '<div class="profile-bio-link-wrap container controller">',
+      '#suffix' => '</div>',
+    );
+
+    $output['profile']['profile_static'] = [
+      '#theme' => 'people_profile_mobile',
+      '#content' => $variables,
+      '#prefix' => '<div class="profile_bio_static col-4">',
+      '#suffix' => '</div>',
+    ];
+
+    return $output;
+
+
+  }
+
+
 
   /**
    * This function pulls the user bio from the user profile object
@@ -319,9 +384,6 @@ class PeopleController extends ControllerBase {
     $build = $view_builder->view($node);
     $variables = render($build);
 
-
-
-
     return $variables;
   }
 
@@ -340,7 +402,6 @@ class PeopleController extends ControllerBase {
     if ($nojs == 'ajax') {
 
       //Decide which bio option we are going to load
-
       switch ($option) {
 
         case "bio":

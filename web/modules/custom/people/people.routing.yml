@@ -8,10 +8,20 @@ people.noargs:
   requirements:
     _permission: 'access content'
 
+
 people.profile:
   path: '/profile/{uid}'
   defaults:
     _controller: '\Drupal\people\Controller\PeopleController::profile'
+  requirements:
+    _permission: 'access content'
+
+# Generate the User profile for mobile
+#
+people.profile.mobile:
+  path: '/profile/{uid}/mobile'
+  defaults:
+    _controller: '\Drupal\people\Controller\PeopleController::profileMobile'
   requirements:
     _permission: 'access content'
 
