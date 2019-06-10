@@ -52,6 +52,7 @@ function people_theme() {
 
 /**
  * @param $variables
+ * @todo Why did we add no_swap?
  */
 function people_preprocess_container(&$variables) {
 
