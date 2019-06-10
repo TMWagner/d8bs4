@@ -27,9 +27,16 @@
  * - dom_id: Unique id for every view being printed to give unique class for
  *   Javascript.
  *
+ * 2019/06/10(tmw) Added Flag (people_profile_mobile_flag)
+ *  -people_profile_mobile_flag
+ *
  * @see template_preprocess_views_view()
  */
 #}
+
+{#{{ dump(_context|keys) }}#}
+
+
 {%
   set classes = [
     'view',
@@ -37,8 +44,10 @@
     'view-id-' ~ id,
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'test-class',
   ]
 %}
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if title %}
@@ -62,9 +71,12 @@
   {% endif %}
 
   {% if rows %}
+
     <div class="view-content  d-flex justify-content-center flex-wrap">
       {{ rows }}
     </div>
+
+
   {% elseif empty %}
     <div class="view-empty">
       {{ empty }}

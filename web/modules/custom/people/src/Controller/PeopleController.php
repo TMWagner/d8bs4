@@ -267,27 +267,19 @@ class PeopleController extends ControllerBase {
 
     $output = array();
 
-    // This won't help
-    // Too High Level
-//    $output['page'] = [
-//      '#type' => 'page',
-//      '#prefix' => '<div class="tempwrapper">',
-//      '#suffix' => '</div',
-//
-//    ];
-
     // A simple string item as render array.
+    //@todo remove before production
     $output['header'] = [
       '#markup' => '<h1>Mobile Profile DEV</h1>',
 
     ];
 
 
-    $output['author'] = array(
+    $output['author'] = [
       '#type' => 'details',
       '#title' => $this
         ->t('Author'),
-    );
+    ];
     $output['author']['name'] = array(
       '#type' => 'textfield',
       '#title' => $this
@@ -318,7 +310,7 @@ class PeopleController extends ControllerBase {
     $output['profile']['profile_static'] = [
       '#theme' => 'people_profile_mobile',
       '#content' => $variables,
-      '#prefix' => '<div class="profile_bio_static col-4">',
+      '#prefix' => '<div class="modal-content profile-mobile-content">',
       '#suffix' => '</div>',
     ];
 

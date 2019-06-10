@@ -27,6 +27,50 @@ use Drupal\user\Entity\User;
 
 
 
+/**
+ * @param $variables
+ *
+ *
+ */
+function barrio_custom_preprocess_container(&$variables) {
+
+
+  // Get the current path:
+  $path = $current_path = \Drupal::service('path.current')->getPath();
+
+  // Expecting /profile/nnn/mobile
+  $urlparts = explode('/', $path);
+  if (isset($urlparts[3])) {
+    if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
+      $variables["no_swap"] = FALSE;
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK
+ * @param $variables
+ */
+function barrio_custom_preprocess_views_view__people(&$variables) {
+  $debug1 = $variables;
+  $debug1 = false;
+  //If called from Mobile implementation, add class to identify that
+  //Get the path
+  $path = $current_path = \Drupal::service('path.current')->getPath();
+  // Expecting /profile/nnn/mobile
+  $urlparts = explode('/', $path);
+  $variables['people_profile_mobile_flag'] = false;
+
+//  @todo should check all three perhaps
+  if (isset($urlparts[3])) {
+    if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
+      $variables['people_profile_mobile_flag'] = TRUE;
+    }
+  }
+
+}
+
 
 /**
  * @param $variables
