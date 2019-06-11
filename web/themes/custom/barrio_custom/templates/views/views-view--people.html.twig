@@ -27,7 +27,10 @@
  * - dom_id: Unique id for every view being printed to give unique class for
  *   Javascript.
  *
- * 2019/06/10(tmw) Added Flag (people_profile_mobile_flag)
+ * 2019/06/10(tmw)
+ *  Added Flag (people_profile_mobile_flag)
+ *  Added logic for rows output
+
  *  -people_profile_mobile_flag
  *
  * @see template_preprocess_views_view()
@@ -44,7 +47,6 @@
     'view-id-' ~ id,
     'view-display-id-' ~ display_id,
     dom_id ? 'js-view-dom-id-' ~ dom_id,
-    'test-class',
   ]
 %}
 
@@ -71,12 +73,15 @@
   {% endif %}
 
   {% if rows %}
-
-    <div class="view-content  d-flex justify-content-center flex-wrap">
-      {{ rows }}
-    </div>
-
-
+    {% if people_profile_mobile_flag == true %}
+      <div class="modal-body mobile view-content  d-flex justify-content-center">
+        {{ rows }}
+      </div>
+    {% else %}
+      <div class="view-content  d-flex justify-content-center flex-wrap">
+        {{ rows }}
+      </div>
+    {% endif %}
   {% elseif empty %}
     <div class="view-empty">
       {{ empty }}

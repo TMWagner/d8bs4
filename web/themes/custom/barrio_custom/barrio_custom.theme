@@ -34,7 +34,7 @@ use Drupal\user\Entity\User;
  */
 function barrio_custom_preprocess_container(&$variables) {
 
-
+  $variables['people_profile_mobile_flag'] = false;
   // Get the current path:
   $path = $current_path = \Drupal::service('path.current')->getPath();
 
@@ -42,7 +42,8 @@ function barrio_custom_preprocess_container(&$variables) {
   $urlparts = explode('/', $path);
   if (isset($urlparts[3])) {
     if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
-      $variables["no_swap"] = FALSE;
+      $variables["no_swap"] = false;
+      $variables['people_profile_mobile_flag'] = true;
     }
   }
 

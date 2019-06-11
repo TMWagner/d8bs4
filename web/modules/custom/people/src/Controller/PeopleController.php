@@ -271,7 +271,6 @@ class PeopleController extends ControllerBase {
     //@todo remove before production
     $output['header'] = [
       '#markup' => '<h1>Mobile Profile DEV</h1>',
-
     ];
 
 
@@ -303,7 +302,7 @@ class PeopleController extends ControllerBase {
     //  Added "Row" to sibling DIV with "container.html.twig"
     $output['profile'] = array (
       '#type' => 'container',
-      '#prefix' => '<div class="profile-bio-link-wrap container controller">',
+      '#prefix' => '<div class="modal fade profile-bio-link-wrap" id="profilemodal">',
       '#suffix' => '</div>',
     );
 

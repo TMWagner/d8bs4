@@ -11,6 +11,8 @@ idm:
       css/mega_style.css: {}
   js:
 #    js/jquery.colorbox-min.js: {minified: true}
+#    ../../../libraries/bootstrap/js/bootstrap.min.js {}
+    /libraries/bootstrap/js/bootstrap.min.js: {}
     js/idm.js: {}
 #    js/mega.js: {}
     js/megamenu.js: {}
@@ -125,3 +127,19 @@ slick:
     js/slick-init.js: {}
   dependencies:
     - core/jquery
+
+#BOOTSTRAP parts
+#bootstrap:
+#  version: 4.3.1
+##  css:
+##    layout:
+##      css/mega_style.css: {}
+##      css/ionicons.min.css: {}
+##    theme:
+##      #      css/colorbox.css: {}
+##      #      css/mega.css: {}
+##      css/mega_style.css: {}
+#  js:
+#    /libraries/bootstrap/js/bootstrap.min.js: {}
+#  dependencies:
+#    - core/jquery

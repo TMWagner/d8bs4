@@ -182,6 +182,12 @@ function idm_page_attachments(array &$attachments) {
   if (fnmatch("/tools/*", $path)) {
     $attachments['#attached']['library'][] = 'idm/tools';
   }
+  $urlparts = explode('/', $path);
+//  if (isset($urlparts[3])) {
+  ////    if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
+  ////      $attachments['#attached']['library'][] = 'idm/bootstrap';
+  ////    }
+  ////  }
 
 
 
