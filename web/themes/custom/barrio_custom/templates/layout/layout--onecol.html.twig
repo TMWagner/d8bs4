@@ -8,11 +8,15 @@
  * - attributes: HTML attributes for the layout <div>.
  * - research_content: true/false flag to indicate research node
  * @todo hard coded research-content for the testing....
+ * 2019/06/11(tmw) Added logic for user_team_card
+ *  inject UID for on for team cards
  *
  * @ingroup themeable
  *
  */
 #}
+
+{#{{ dump(_context|keys) }}#}
 {%
   set classes = [
     'layout',
@@ -20,11 +24,27 @@
     research_content ? 'rlp-detail-more',
   ]
 %}
+
+{%
+  set subclasses = [
+    'layout__region',
+    'layout__region--content',
+  ]
+%}
+
 {% if content %}
   <div{{ attributes.addClass(classes) }}>
-    <div {{ region_attributes.content.addClass('layout__region', 'layout__region--content') }}>
+
+    {% if research_team == true %}
+      <div {{ region_attributes.content.addClass(subclasses) }} data-uid="{{ team_member_uid }}" >
+        {{ content.content }}
+      </div>
+    {% else %}
+    <div {{ region_attributes.content.addClass(subclasses) }} >
       {{ content.content }}
     </div>
+    {% endif %}
+
   </div>
 {% endif %}
 

@@ -132,17 +132,16 @@
     $("#rlpModal").modal();
 
     $('#rlpModal').on('shown.bs.modal', function (e) {
-      // do something...
       console.log("**** Modal has fired and should be visible");
 
       //Clean up the Dom
       //@todo removed d-flex from parent wrapper for mobile (to stack two sections)
-      $(".research-team").wrapAll("<div class='container-flex team-card-thumbnail-wrap  jqsource'></div>");
-      $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
+      $(".research-team").wrapAll("<div class='container-flex team-card-thumbnail-wrap  research-js'></div>");
+      $(".research-team-member").wrapAll("<div class='research-team-member-group  research-js'></div>");
       $(".research-team-member-group").removeClass(".d-flex");
 
 
-      //init the carousel
+      //init the carousel for team members display
       $('.research-team-member-group').slick({
         infinite: true,
         slidesToShow: 3,

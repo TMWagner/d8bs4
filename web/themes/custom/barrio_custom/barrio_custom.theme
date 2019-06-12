@@ -73,6 +73,7 @@ function barrio_custom_preprocess_views_view__people(&$variables) {
 }
 
 
+
 /**
  * @param $variables
  */
@@ -102,14 +103,16 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
     $parm2 = $pathpieces[2];
 
   }
+  //$variables["content"]["field_user_title"]["#object"]->values["uid"]["x-default"]
+  //$variables["content"]["#view_mode"]
 
 
   $user = User::load(\Drupal::currentUser()->id());
   $uid = $user->get('uid');
 
-
+  $variables['research_team'] = false;
+  $variables['team_member_uid'] = null;
   if ($viewmode == 'user_team_card') {
-
     //do some work
     $variables['research_team'] = TRUE;
 
@@ -121,6 +124,8 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
     $user = $variables["content"]["#user"];
     $uid = $user->get('uid')->getValue();
     $uidValue = $uid[0]["value"];
+    //Create a variable for the user with the UID inserted.
+    $variables['team_member_uid'] = $uid[0]["value"];
 
 
     //@todo this just returns null

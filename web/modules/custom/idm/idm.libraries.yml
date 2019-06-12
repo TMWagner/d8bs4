@@ -128,6 +128,7 @@ slick:
   dependencies:
     - core/jquery
 
+# @todo This library was intended for the profile details (mobile and otherwise) Maybe need to attach a CSS file as well
 #BOOTSTRAP parts
 #bootstrap:
 #  version: 4.3.1
