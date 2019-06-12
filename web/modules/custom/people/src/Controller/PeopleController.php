@@ -306,12 +306,14 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     );
 
+    //Build out the picture/title
     $output['profile']['profile_static'] = [
       '#theme' => 'people_profile_mobile',
       '#content' => $variables,
       '#prefix' => '<div class="modal-content profile-mobile-content">',
       '#suffix' => '</div>',
     ];
+
 
     return $output;
 
