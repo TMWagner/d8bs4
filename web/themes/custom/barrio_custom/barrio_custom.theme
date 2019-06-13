@@ -42,6 +42,8 @@ function barrio_custom_preprocess_container(&$variables) {
   $urlparts = explode('/', $path);
   if (isset($urlparts[3])) {
     if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
+      //@todo we need to differentiate between containers
+
       $variables["no_swap"] = false;
       $variables['people_profile_mobile_flag'] = true;
     }

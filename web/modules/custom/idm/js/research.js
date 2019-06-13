@@ -140,6 +140,20 @@
       $(".research-team-member").wrapAll("<div class='research-team-member-group  research-js'></div>");
       $(".research-team-member-group").removeClass(".d-flex");
 
+      //Wrap each thumbnail...
+      // var thumbnails = $('team-profile-thumbnail');
+      // // $(".team-profile-thumbnail").css( "background-color", "blue" );
+
+      var uid = null;
+      //Loop through thumbnails
+      $(".team-profile-thumbnail").each(function( index ) {
+        //do some work
+        uid = $( this ).data("uid");
+        //@todo figuring out this string is much easier pasting from an html file.
+        $(this).wrapAll("<a  href=\"\\profile/" + uid + "/mobile\"></a>");
+        console.log( index + ": " + uid );
+      });
+
 
       //init the carousel for team members display
       $('.research-team-member-group').slick({

@@ -1,0 +1,15 @@
+//Custom CSS for Profile page(s)
+
+@import "../../../../themes/custom/barrio_custom/scss/variables";
+
+
+
+//CSS for mobile card
+#people-profile-mobile h5 {
+  color: $idm_black;
+  margin-bottom: 0px;
+}
+
+#people-profile-mobile p {
+  color: black;
+}

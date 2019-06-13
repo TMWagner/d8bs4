@@ -17,6 +17,7 @@ people.profile:
     _permission: 'access content'
 
 # Generate the User profile for mobile
+# @todo can this be adaptable for modal/non-modal display?
 #
 people.profile.mobile:
   path: '/profile/{uid}/mobile'

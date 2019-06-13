@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAOA,yBAA0B;EACxB,KAAK,ECYK,OAAO;EDXjB,aAAa,EAAE,GAAG;;AAGpB,wBAAyB;EACvB,KAAK,EAAE,KAAK",
+"sources": ["../scss/profile.scss","../../../../themes/custom/barrio_custom/scss/_variables.scss"],
+"names": [],
+"file": "profile.css"
+}

@@ -183,6 +183,19 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/tools';
   }
 
+  /**
+   * Attach Library for Profile related pages
+   *
+   */
+
+  // Expecting /profile/nnn/mobile
+  $urlparts = explode('/', $path);
+  if (isset($urlparts[3])) {
+    if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
+      $attachments['#attached']['library'][] = 'idm/profile';
+    }
+  }
+
 
 }
 

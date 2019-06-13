@@ -157,6 +157,7 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div class="people_bio_dynamic col-8">',
       '#suffix' => '</div>',
     ];
+
     //  Build the initial bio - This will be replaced
     $render_array['profile']['profile_dynamic']['swap_content'] = [
       '#type' => 'markup',
@@ -262,6 +263,8 @@ class PeopleController extends ControllerBase {
    * @param $uid
    *
    * @return mixed
+   *
+   * Notes: would be nice to have this be adaptable for either modal implementation or page
    */
   public function profileMobile($uid) {
 
@@ -274,16 +277,16 @@ class PeopleController extends ControllerBase {
     ];
 
 
-    $output['author'] = [
-      '#type' => 'details',
-      '#title' => $this
-        ->t('Author'),
-    ];
-    $output['author']['name'] = array(
-      '#type' => 'textfield',
-      '#title' => $this
-        ->t('Name'),
-    );
+//    $output['author'] = [
+//      '#type' => 'details',
+//      '#title' => $this
+//        ->t('Author'),
+//    ];
+//    $output['author']['name'] = array(
+//      '#type' => 'textfield',
+//      '#title' => $this
+//        ->t('Name'),
+//    );
 
     // Set view arguments
     $profile_id = 'profile_basic_content';
@@ -302,7 +305,8 @@ class PeopleController extends ControllerBase {
     //  Added "Row" to sibling DIV with "container.html.twig"
     $output['profile'] = array (
       '#type' => 'container',
-      '#prefix' => '<div class="modal fade profile-bio-link-wrap" id="profilemodal">',
+//      '#prefix' => '<div class="modal fade profile-bio-link-wrap" id="profilemodal">',
+      '#prefix' => '<div class="profile-bio-link-wrap" id="profilemodal">',
       '#suffix' => '</div>',
     );
 
@@ -310,9 +314,51 @@ class PeopleController extends ControllerBase {
     $output['profile']['profile_static'] = [
       '#theme' => 'people_profile_mobile',
       '#content' => $variables,
-      '#prefix' => '<div class="modal-content profile-mobile-content">',
+//      '#prefix' => '<div class="modal-content profile-mobile-content">',
+      '#prefix' => '<div class="profile-mobile-content">',
       '#suffix' => '</div>',
     ];
+
+    //Build wrapper for accordion group
+    $output['profile']['dynamic'] = array (
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => [
+          'accordion',
+        ],
+        'id' => 'profile-accordion',
+      ],
+//      '#prefix' => '<div class="accordion-wrap">',
+//      '#suffix' => '</div>',
+    );
+
+
+    //Accordion Group Items
+    $output['profile']['dynamic']['bio'] = array (
+      '#type' => 'container',
+            '#prefix' => '<div class="card"><div class="card-header" id="profile-bio">',
+            '#suffix' => '</div></div>',
+    );
+
+//
+//    Build the button group
+    //@todo We are going to have to build a custom theme for this
+    $output['profile']['dynamic']['bio']['button'] = array (
+      '#type' => 'markup',
+      '#markup' => '<p>Bio</p>',
+      '#prefix' => '<div class="button-dev">',
+      '#suffix' => '</div>',
+    );
+
+
+
+    $output['profile']['dynamic']['publications'] = array (
+      '#type' => 'markup',
+      '#markup' => '<h2>Item one</h2><p>Publications</p>',
+      '#prefix' => '<div class="Publications">',
+      '#suffix' => '</div>',
+
+    );
 
 
     return $output;

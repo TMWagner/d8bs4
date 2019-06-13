@@ -96,6 +96,12 @@
 .close.tool-content-close:hover {
   color: white; }
 
+#people-profile-mobile h5 {
+  color: #0B1F2C; }
+
+#exampleModalLabel {
+  color: red; }
+
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 3em;
