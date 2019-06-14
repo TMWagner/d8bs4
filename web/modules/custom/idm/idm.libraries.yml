@@ -12,7 +12,7 @@ idm:
   js:
 #    js/jquery.colorbox-min.js: {minified: true}
 #    ../../../libraries/bootstrap/js/bootstrap.min.js {}
-    /libraries/bootstrap/js/bootstrap.min.js: {}
+    /libraries/bootstrap/js/bootstrap.bundle.js: {}
     js/idm.js: {}
 #    js/mega.js: {}
     js/megamenu.js: {}
