@@ -292,6 +292,9 @@ a.publication-link-external:hover {
   bottom: .2em;
   margin-right: .2em; }
 
+@media (max-width: 768px) {
+  .leading-dash {
+    display: none; } }
 .tools-banner-l2 h5 {
   font-weight: lighter; }
 
