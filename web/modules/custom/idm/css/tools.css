@@ -42,7 +42,7 @@
     width: 75%; } }
 @media (max-width: 450px) {
   .carousel-mobile-filter {
-    width: 325px; } }
+    width: 310px; } }
 .tools-filter-title > p {
   font-size: .7rem;
   text-transform: uppercase;
