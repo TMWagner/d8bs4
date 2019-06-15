@@ -14,6 +14,17 @@
 @media (max-width: 992px) {
   .tools-wrapper.container {
     width: 100%; } }
+.carousel-mobile-filter {
+  margin-left: auto;
+  margin-right: auto; }
+
+.carousel-item-mobile {
+  height: 90px;
+  background-color: #7abaff; }
+
+.tools-filter-mobile {
+  background-color: #e3e1e1; }
+
 .tools-filter-title > p {
   font-size: .7rem;
   text-transform: uppercase;
@@ -23,7 +34,7 @@
   max-width: 14.2%; }
 
 .carousel-inner.tools-filter-wrapper {
-  background-color: lightgrey; }
+  background-color: rgba(0, 0, 0, 0.125); }
 
 .tool-filter-content h4 {
   font-weight: lighter;
