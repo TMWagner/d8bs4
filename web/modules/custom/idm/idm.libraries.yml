@@ -6,8 +6,6 @@ idm:
       css/mega_style.css: {}
       css/ionicons.min.css: {}
     theme:
-#      css/colorbox.css: {}
-#      css/mega.css: {}
       css/mega_style.css: {}
   js:
 #    js/jquery.colorbox-min.js: {minified: true}
