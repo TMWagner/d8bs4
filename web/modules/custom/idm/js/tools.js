@@ -87,14 +87,22 @@
 
     /**
      * Setup Tools Mobile display (if present)
+     * @todo refactor for new carousel
      */
     // Set first card active
-    $('.carousel').carousel();
+    // $('.carousel').carousel();
+    //@todo this does nothing with new code?
     $(".carousel-item.text-center.tools-filter-title.tools-filter-mobile:first").addClass("active");
+    //
+    //
+    // Turn on the highlight functionality
+    //@todo Does nothing  - Refactor to trap on new format
+    //Event that fires AFTER event.
+    // $('#toolsUIindicators').on('slid.bs.carousel', highlightMobileCard);
 
-
-    // Turn off autoscroll
-    $('#toolsUIindicators').on('slid.bs.carousel', highlightMobileCard);
+    console.log(">>>> (tools.js) init swipe...");
+    //@todo event for slick post slide
+    $('.carousel-mobile-filter').on('afterChange', highlightMobileCard)
 
 
   });
@@ -105,11 +113,11 @@
    * highlightMobileCard
    */
   function highlightMobileCard() {
-    console.log('>>> process mobile filter');
-    $(".carousel").carousel('pause');
+    console.log('>>>(tools.js) process mobile filter');
+    // $(".carousel").carousel('pause');
 
     // Get card
-    var activeSlide = $(".carousel-item.active");
+    var activeSlide = $(".slick-active");
     var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
     console.log(">>> target is: " + targetClass);
 

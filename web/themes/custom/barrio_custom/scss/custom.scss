@@ -679,6 +679,23 @@ p.vertical-text {
   float: left;
 }
 
+//------------------
+//Common Card page formatting
+//
+//2019/2/7
+//@todo remove/move to tools SCSS
+//
+//------------------
+.carousel-item-mobile {
+  height: 90px;
+  background-color: #7abaff;
+}
+
+// @todo add media query here / or make this a percentage width
+.carousel-mobile-filter {
+  //width: 75%;
+  width: 300px;
+}
 
 
 

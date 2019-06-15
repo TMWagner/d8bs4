@@ -49,6 +49,19 @@
       ]
     });
 
+
+    /**
+     * Initialize slick(idm) carousel for mobile
+     * Used in Tools
+     */
+    $('.carousel-mobile-filter').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+      arrows: true,
+
+    });
+
   });
 
 

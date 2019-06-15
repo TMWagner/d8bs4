@@ -180,7 +180,9 @@ function idm_page_attachments(array &$attachments) {
   };
 
   if (fnmatch("/tools/*", $path)) {
+    $attachments['#attached']['library'][] = 'idm/slick';
     $attachments['#attached']['library'][] = 'idm/tools';
+
   }
 
   /**

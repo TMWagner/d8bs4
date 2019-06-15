@@ -480,4 +480,11 @@ p.vertical-text {
   display: block;
   float: left; }
 
+.carousel-item-mobile {
+  height: 90px;
+  background-color: #7abaff; }
+
+.carousel-mobile-filter {
+  width: 300px; }
+
 /*# sourceMappingURL=custom.css.map */

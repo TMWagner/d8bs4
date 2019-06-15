@@ -48,10 +48,6 @@
   });
 
 
-  // $('#profilemodal').modal();
-  // $('#profileMobile').addClass("bogus-class");
-
-
 
 
 
