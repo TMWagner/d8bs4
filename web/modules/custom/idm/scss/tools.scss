@@ -34,17 +34,34 @@
 //
 //------------------
 
-.carousel-mobile-filter {
-  margin-left: auto;
-  margin-right: auto;
-}
+
 .carousel-item-mobile {
   height: 90px;
   background-color: #7abaff;
 }
 .tools-filter-mobile {
-  background-color: #e3e1e1;
+  background-color: $idm_light_grey;
 }
+
+.slick-dots {
+  bottom: 0;
+}
+
+.carousel-mobile-filter {
+  margin-left: auto;
+  margin-right: auto;
+  .slick-prev::before, .slick-next::before {
+    font-family: "slick";
+    font-size: 20px;
+    line-height: 1;
+    color: $idm_base_blue;
+  }
+
+  .slick-dots {
+    bottom: 0;
+  }
+}
+
 
 //End mobile carousel code
 

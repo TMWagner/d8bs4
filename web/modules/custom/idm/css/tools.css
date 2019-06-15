@@ -14,16 +14,26 @@
 @media (max-width: 992px) {
   .tools-wrapper.container {
     width: 100%; } }
-.carousel-mobile-filter {
-  margin-left: auto;
-  margin-right: auto; }
-
 .carousel-item-mobile {
   height: 90px;
   background-color: #7abaff; }
 
 .tools-filter-mobile {
-  background-color: #e3e1e1; }
+  background-color: rgba(0, 0, 0, 0.125); }
+
+.slick-dots {
+  bottom: 0; }
+
+.carousel-mobile-filter {
+  margin-left: auto;
+  margin-right: auto; }
+  .carousel-mobile-filter .slick-prev::before, .carousel-mobile-filter .slick-next::before {
+    font-family: "slick";
+    font-size: 20px;
+    line-height: 1;
+    color: #0076A9; }
+  .carousel-mobile-filter .slick-dots {
+    bottom: 0; }
 
 .tools-filter-title > p {
   font-size: .7rem;
