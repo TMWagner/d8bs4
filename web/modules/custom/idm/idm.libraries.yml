@@ -133,7 +133,7 @@ profile:
   css:
     base:
       css/profile.css: {}
-  js:
-#    js/rvtab.js: {}
+#  js:
+##    js/rvtab.js: {}
   dependencies:
     - core/jquery
