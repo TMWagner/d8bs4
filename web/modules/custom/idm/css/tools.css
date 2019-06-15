@@ -30,7 +30,7 @@
   .carousel-mobile-filter .slick-prev::before, .carousel-mobile-filter .slick-next::before {
     font-family: "slick";
     font-size: 20px;
-    line-height: 3;
+    line-height: 1;
     color: #0076A9; }
   .carousel-mobile-filter .slick-dots {
     bottom: -20px; }
