@@ -53,14 +53,38 @@
   .slick-prev::before, .slick-next::before {
     font-family: "slick";
     font-size: 20px;
-    line-height: 1;
+
+    //Adjust vertcial posistion of l/r
+    line-height: 3;
     color: $idm_base_blue;
   }
 
   .slick-dots {
-    bottom: 0;
+    bottom: -20px;
+  }
+  .slick-slide {
+    margin: 0px 10px;
   }
 }
+
+@media (max-width: 768px) {
+  .carousel-mobile-filter {
+    width: 75%;
+  }
+}
+@media (max-width: 450px) {
+  .carousel-mobile-filter {
+    width: 325px;
+  }
+
+}
+
+//// @todo add media query here / or make this a percentage width
+//.carousel-mobile-filter {
+//  //width: 75%;
+//  width: 300px;
+//}
+
 
 
 //End mobile carousel code
