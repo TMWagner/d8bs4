@@ -10,23 +10,20 @@
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-  //Begin paste/functions
-
 
   //Determine Window size and set global var.
+  //@todo Is this fired outside of document ready?
   var windowType = checkMod();
-  console.log("window type set at: " + windowType);
+  // console.log("window type set at: " + windowType);
 
 
   // Shorthand for $( document ).ready()
   $(function() {
-    console.log( "ready!" );
-
+    // console.log( "ready!" );
 
     /**
      * Initialize tablet/Desktop windows
      */
-
     //@todo Clean this up... should only check window size once...
     if ( windowType !== "small" ) {
       $( "<div id='status-bar'><div id='status-bar-indicator'></div></div>")
@@ -62,26 +59,16 @@
 
     // Attach handler for mobile or Desktop
     if (windowType === 'small') {
-      console.log('attach Handler for small');
+      // console.log('attach Handler for small');
       cardClicked.click(fnClickCardMobile);
       if (toolParameter) fnShowCardMobile(toolParameter);
-
-
     } else {
-      console.log("attach handler for standard window...");
+      // console.log("attach handler for standard window...");
 
       //we are loading both the desktop filter and the card handler
       $('.tools-filter-title').click(fnClickFilter);
       cardClicked.click(fnClickCard);
       if (toolParameter) fnShowCard(toolParameter);
-
-      //@todo Add handler for card content
-
-
-
-      // // Add div(s) for tool highlight
-      // $( "<div class='tool-highlight-topbar'></div>")
-      //     .prependTo( ".views-field.views-field-nothing");
 
     }
 
@@ -90,17 +77,12 @@
      * @todo refactor for new carousel
      */
     // Set first card active
-    // $('.carousel').carousel();
     //@todo this does nothing with new code?
     $(".carousel-item.text-center.tools-filter-title.tools-filter-mobile:first").addClass("active");
-    //
-    //
-    // Turn on the highlight functionality
-    //@todo Does nothing  - Refactor to trap on new format
-    //Event that fires AFTER event.
-    // $('#toolsUIindicators').on('slid.bs.carousel', highlightMobileCard);
 
-    console.log(">>>> (tools.js) init swipe...");
+    // Turn on the highlight functionality
+    //Event that fires AFTER event.
+
     //@todo event for slick post slide
     $('.carousel-mobile-filter').on('afterChange', highlightMobileCard)
 
@@ -119,7 +101,7 @@
     // Get card
     var activeSlide = $(".slick-active");
     var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
-    console.log(">>> target is: " + targetClass);
+    // console.log(">>> target is: " + targetClass);
 
     // Remove highlight from all cards first
     $('.tool-highlight-topbar').removeClass("show-tool");
@@ -153,10 +135,8 @@
     var cardClicked = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
 
     // First find the end of the row
-    // @todo the match has to be againt the KEY not the title.
-
     cardText = cardClicked.find('h4').html();
-    console.log("cardClicked is: " + cardText);
+    // console.log("cardClicked is: " + cardText);
     //@todo verify that we received a valid parameter (how?)
 
     var currentCard = cardClicked;
@@ -168,8 +148,7 @@
 
     // Check for last element
     if ( nextCard.length === 0 ) {
-
-      console.log("**** We hit the end of the row (apparently)...");
+      // console.log("**** We hit the end of the row (apparently)...");
 
       // We hit the end - currentCard is the last element
       // data = currentCard.find('h4').data("node-url");
@@ -178,9 +157,8 @@
     else {
       positionCurrant = currentCard.position().top;
       positionNext = nextCard.position().top;
-
-      console.log( "position - currant: " + positionCurrant);
-      console.log( "position - next: " + positionNext);
+      // console.log( "position - currant: " + positionCurrant);
+      // console.log( "position - next: " + positionNext);
 
       while ( positionCurrant === positionNext) {
         // Loop till we hit the end of the row
@@ -190,18 +168,23 @@
         //
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
-        console.log( "position(loop) - currant: " + positionCurrant);
-        console.log( "position(loop) - next: " + positionNext);
+        // console.log( "position(loop) - currant: " + positionCurrant);
+        // console.log( "position(loop) - next: " + positionNext);
       }
-      // @todo Lets see which card we landed on
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");
       // console.log( "is this it? " + cardText);
       // @todo add class d-none... then swap display property AFTER load
       currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
       // $( ".insert" ).load( "/malaria .research-content");
-      console.log("data is: " + data);
-      $( ".insert" ).load(data + " .tools-content").toggleClass("d-none");
+      // console.log("data is: " + data);
+      $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none");
+
+
+      //Toggle class and add data-tool-content attribute (so we can link to card)
+      // $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none").attr("data-tool-content", dataTool);
+
+
     }
 
     // Turn off all other active cards (shouldn't matter but... )
@@ -227,20 +210,18 @@
    */
   function fnShowCardMobile(toolParameter) {
 
-    console.log(">>> Begin fnShowCardMobile: ");
-    console.log("Did we get the parm?? Should be: " + toolParameter);
+    // console.log(">>> Begin fnShowCardMobile: ");
+    // console.log("Did we get the parm?? Should be: " + toolParameter);
 
     if (toolParameter !== 'all') {
 
-      // $('h4[data-tool=' + toolParameter +']').closest('.tools-card').addClass('bogus2');
       // @todo carried cardClicked over from last function - should refactor it.
       var cardClicked = $('h4[data-tool=' + toolParameter + ']').closest('.tools-card');
       var data = cardClicked.find('h4').data("node-url");
 
-      console.log("title is: " + cardClicked.find('h4').html());
+      // console.log("title is: " + cardClicked.find('h4').html());
 
       //build out the template.
-
       //title
       $("#ModalTitle").text(cardClicked.find('h4').html());
 
@@ -267,11 +248,7 @@
     console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
 
     if (windowType !== oldWindowType) {
-      console.log("resetting window type - now is: " + windowType);
-      // location.reload(true);
-
-      //@todo Reload not working
-      // window.location.reload(true);
+      // console.log("resetting window type - now is: " + windowType);
 
       //small to medium
       if ((oldWindowType === "small") && (windowType === "medium")) {
@@ -285,8 +262,6 @@
       if ((oldWindowType === 'medium') && (windowType === "small")) {
         cardClicked.off("click");
         cardClicked.click(fnClickCardMobile);
-        //@todo Reload not working
-
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -297,8 +272,6 @@
 
       //medium to large - nothing to do
       if ((oldWindowType === 'medium') && (windowType === "large")) {
-        // cardClicked.off("click");
-        // cardClicked.click(fnClickCard);
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -308,8 +281,6 @@
       }
       //large to medium - nothing to do
       if ((oldWindowType === 'large') && (windowType === "medium")) {
-        // cardClicked.off("click");
-        // cardClicked.click(fnClickCard);
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -418,11 +389,14 @@
     // Turn off the "content"
     $('.insert').remove();
 
-    if (targetCard.hasClass('card-selected')) {
-      console.log("@@@@@ Card is selected");
-      // Turn off highlight
-      targetCard.toggleClass('card-selected');
-    }
+    // if (targetCard.hasClass('card-selected')) {
+    //   console.log("@@@@@ Card is selected");
+    //   // Turn off highlight
+    //   targetCard.toggleClass('card-selected');
+    // }
+    //
+    //@todo Might as well just hit all the cards and clean up
+    $(".tools-card").removeClass("card-selected");
 
   }
 
@@ -539,6 +513,7 @@
    */
   function loadComplete() {
     console.log('%%%%% in loadComplete');
+    // Attach modal close function
     $('button[data-dismiss=modal]').click(fnCloseContent);
   }
 
