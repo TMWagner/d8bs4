@@ -245,7 +245,10 @@
       $("#ModalTitle").text(cardClicked.find('h4').html());
 
       // Grab just the body text
-      $(".insert").load(data + " .tools-card-text");
+      $( ".insertbody" ).load(data + " .tools-card-text");
+
+      // Add buttons
+      $(".insertbuttons").load(data + " #tool-sublink-buttons");
 
       $("#toolsModal").modal()
     }
