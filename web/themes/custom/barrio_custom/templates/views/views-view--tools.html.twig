@@ -83,12 +83,9 @@
 
       {% if display_id == "tool_filter_block_mobile" %}
         {# @todo this is ugly - but might be the best option #}
-
-          <div class="carousel-mobile-filter debug-slick rounded-sm">
-            {{ rows }}
-          </div>
-
-
+        <div class="carousel-mobile-filter debug-slick rounded-sm">
+          {{ rows }}
+        </div>
       {% else  %}
         <div class="view-content-tools-wrapper">
           <div class="view-content row justify-content-between">
@@ -96,8 +93,6 @@
           </div>
         </div>
       {% endif %}
-
-
 
     {% endif %}
   {% elseif empty %}

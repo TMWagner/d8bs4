@@ -67,6 +67,7 @@
   }
 }
 
+
 @media (max-width: 768px) {
   .carousel-mobile-filter {
     width: 75%;
@@ -79,18 +80,8 @@
 
 }
 
-//// @todo add media query here / or make this a percentage width
-//.carousel-mobile-filter {
-//  //width: 75%;
-//  width: 300px;
-//}
-
-
 
 //End mobile carousel code
-
-
-
 
 
 .tools-filter-title > p {
@@ -121,6 +112,7 @@
 
 
 // @todo Not a fan of this-  Replace with different symbols?
+// @todo Delete
 .carousel-control-next,
 .carousel-control-prev {
 
@@ -492,6 +484,13 @@ span.button-filter {
 .slide-body {
   height: 5em;
 }
+
+
+#addbutton {
+  margin-left: 1em;
+}
+
+
 
 //.End Tools Mobile
 ////////////////////

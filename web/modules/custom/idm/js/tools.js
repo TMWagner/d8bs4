@@ -377,6 +377,9 @@
 
   /**
    * fnClickCardMobile
+   * @todo first .load doesn't work if window is resized. 2nd one does- hmm
+   * @todo Can we do just one load and pick apart the object?
+   *
    */
   function fnClickCardMobile() {
 
@@ -392,6 +395,10 @@
 
     // Grab just the body text
     $( ".insert" ).load(data + " .tools-card-text");
+
+
+    // Add buttons
+    $(".insertbuttons").load(data + " #tool-sublink-buttons");
 
     $("#toolsModal").modal();
 
