@@ -303,6 +303,9 @@ span.button-filter {
   border-color: #61B4E4;
   margin-right: .5em; }
 
+.view-content-tools-wrapper .tools-card {
+  cursor: pointer !important; }
+
 #tools-filter .carousel-indicators li {
   background-color: #19BAFF; }
 
