@@ -124,8 +124,8 @@
    * (2019/04/17: tmw)
    */
   function fnShowCard(toolParameter) {
-    console.log(">>> Begin fnShowCard: ");
-    console.log("Did we get the parm?? Should be: " + toolParameter);
+    console.log(">>> Begin fnShowCard <<<<");
+    console.log("(fnShowCard) Did we get the parm?? Should be: " + toolParameter);
 
     var positionCurrant;
     var positionNext;
@@ -136,7 +136,7 @@
 
     // First find the end of the row
     cardText = cardClicked.find('h4').html();
-    // console.log("cardClicked is: " + cardText);
+    console.log("cardClicked is: " + cardText);
     //@todo verify that we received a valid parameter (how?)
 
     var currentCard = cardClicked;
@@ -173,16 +173,13 @@
       }
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");
-      // console.log( "is this it? " + cardText);
+      console.log( "#### (fnShowCard) is this it? " + cardText);
       // @todo add class d-none... then swap display property AFTER load
       currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
       // $( ".insert" ).load( "/malaria .research-content");
       // console.log("data is: " + data);
       $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none");
 
-
-      //Toggle class and add data-tool-content attribute (so we can link to card)
-      // $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none").attr("data-tool-content", dataTool);
 
 
     }
