@@ -142,47 +142,59 @@
     var currentCard = cardClicked;
     var nextCard = $(this).next();
     var nextCard = currentCard.next();
+    var moreCards = true;
 
     var cardTextNext = nextCard.find('h4').html();
     console.log("cardTextNext  is: " + cardTextNext);
 
     // Check for last element
-    if ( nextCard.length === 0 ) {
-      // console.log("**** We hit the end of the row (apparently)...");
-
-      // We hit the end - currentCard is the last element
-      // data = currentCard.find('h4').data("node-url");
-      // console.log( 'We clicked the last one: ' + data);
-    }
-    else {
+    if (nextCard.length !== 0) {
       positionCurrant = currentCard.position().top;
       positionNext = nextCard.position().top;
-      // console.log( "position - currant: " + positionCurrant);
-      // console.log( "position - next: " + positionNext);
 
-      while ( positionCurrant === positionNext) {
-        // Loop till we hit the end of the row
-        // data = data + ".research-content';
+      while (positionCurrant === positionNext && moreCards) {
+
+        //@todo next 2 lines are for dev.. remove
+        var textCurrant = currentCard.find("h4").text();
+        var textNext = nextCard.find("h4").text();
+
+        //@todo Remove before flight
+        console.log("In loop- Currant card is: " + textCurrant);
+        console.log("In loop- Next Card is: " + textNext);
+
         currentCard = nextCard;
         nextCard = currentCard.next();
-        //
-        positionCurrant = currentCard.position().top;
-        positionNext = nextCard.position().top;
-        // console.log( "position(loop) - currant: " + positionCurrant);
-        // console.log( "position(loop) - next: " + positionNext);
-      }
-      var cardText = currentCard.find("h4").text();
-      data = cardClicked.find('h4').data("node-url");
-      console.log( "#### (fnShowCard) is this it? " + cardText);
-      // @todo add class d-none... then swap display property AFTER load
-      currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
-      // $( ".insert" ).load( "/malaria .research-content");
-      // console.log("data is: " + data);
-      $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none");
 
-
+        if (nextCard.length === 0) {
+          console.log("Next card length 0: Break out of loop");
+          moreCards = false;
+        }
+        else {
+          positionCurrant = currentCard.position().top;
+          positionNext = nextCard.position().top;
+          console.log("position(loop) - currant: " + positionCurrant);
+          console.log("position(loop) - next: " + positionNext);
+        }
+      } // end While
+    } // End if
+    else {
+      // We hit the end - currentCard is the last element
+      // data = currentCard.find('h4').data("node-url");
+      console.log('We clicked the last one: ' + data);
 
     }
+
+    var cardText = currentCard.find("h4").text();
+    data = cardClicked.find('h4').data("node-url");
+    console.log("#### (fnShowCard) is this it? " + cardText);
+    // @todo add class d-none... then swap display property AFTER load
+    currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
+    // $( ".insert" ).load( "/malaria .research-content");
+    // console.log("data is: " + data);
+    $(".insert").load(data + " .tools-content", loadComplete).toggleClass("d-none");
+
+
+
 
     // Turn off all other active cards (shouldn't matter but... )
     $(".tools-card.card-selected").toggleClass("card-selected");
@@ -457,8 +469,8 @@
             console.log("position(loop) - currant: " + positionCurrant);
             console.log("position(loop) - next: " + positionNext);
           }
-        }
-      }
+        } //End While
+      } // End If
       else {
         // We hit the end - currentCard is the last element
         // data = currentCard.find('h4').data("node-url");
