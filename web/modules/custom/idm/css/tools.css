@@ -307,7 +307,10 @@ span.button-filter {
   cursor: pointer !important; }
 
 .tools-banner-l3 {
-  font-size: .9rem; }
+  font-size: .9rem;
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto; }
 
 #tools-filter .carousel-indicators li {
   background-color: #19BAFF; }
