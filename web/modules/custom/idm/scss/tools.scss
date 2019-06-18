@@ -321,7 +321,7 @@
   margin: 0 .5em;
 }
 .tools-banner-l2 {
-  color: #bfc3c6;
+  color: $background_grey;
 }
 
 div.tool-highlight footer {
@@ -436,6 +436,13 @@ span.button-filter {
 
 .view-content-tools-wrapper .tools-card {
   cursor: pointer !important;
+}
+
+.tools-banner-l3 {
+  font-size: smaller;
+  //width: 100%;
+  //margin-left: auto;
+  //margin-right: auto;
 }
 
 //////////////////////
