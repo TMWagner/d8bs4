@@ -494,6 +494,13 @@ span.button-filter {
   margin-left: 1em;
 }
 
+summary#tools {
+  display: list-item;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
 
 
 //.End Tools Mobile
