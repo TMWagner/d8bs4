@@ -27,12 +27,14 @@
   .carousel-mobile-filter .slick-prev::before, .carousel-mobile-filter .slick-next::before {
     font-family: "slick";
     font-size: 20px;
-    line-height: 3;
+    line-height: 1;
     color: #0076A9; }
   .carousel-mobile-filter .slick-dots {
     bottom: -20px; }
   .carousel-mobile-filter .slick-slide {
     margin: 0px 10px; }
+  .carousel-mobile-filter .slick-prev, .carousel-mobile-filter .slick-next {
+    top: 50%; }
 
 @media (max-width: 768px) {
   .carousel-mobile-filter {

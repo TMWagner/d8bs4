@@ -53,7 +53,7 @@
 
     //@todo line height not correct use of placement
     //Adjust vertcial posistion of L/R
-    line-height: 3;
+    line-height: 1;
     color: $idm_base_blue;
   }
 
@@ -64,6 +64,11 @@
   .slick-slide {
     margin: 0px 10px;
   }
+  .slick-prev, .slick-next {
+    top: 50%;
+  }
+
+
 }
 
 
