@@ -65,7 +65,7 @@
     margin: 0px 10px;
   }
   .slick-prev, .slick-next {
-    top: 50%;
+    top: 45%;
   }
 
 
@@ -247,6 +247,12 @@
   left: 50%;
 }
 
+.tools-banner-l3 p {
+  color: $background_grey;
+}
+#tools ~ p {
+  color: $background_grey;
+}
 
 
 
