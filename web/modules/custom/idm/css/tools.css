@@ -45,6 +45,9 @@
 @media (max-width: 450px) {
   .carousel-mobile-filter {
     width: 310px; } }
+@media (max-width: 365px) {
+  .carousel-mobile-filter {
+    width: 300px; } }
 .tools-filter-title > p {
   font-size: .7rem;
   text-transform: uppercase;
