@@ -180,6 +180,20 @@
   background-color: lightgray;
   margin: 0;
 }
+
+.tools-filter-title > p {
+  color: #0a7bc1;
+}
+.col-2.text-center.tools-filter-title.highlight-filter {
+  color: $idm_charcoal;
+  font-weight: bolder;
+}.col-2.text-center.tools-filter-title {
+  color: $navbar_background;
+}
+
+//.tool-filter-content > p {
+//  color: $idm_charcoal;
+//}
 // @todo width and position to be determined by jquery
 #status-bar-indicator {
   height: inherit;

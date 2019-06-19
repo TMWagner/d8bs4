@@ -91,6 +91,16 @@
   background-color: lightgray;
   margin: 0; }
 
+.tools-filter-title > p {
+  color: #0a7bc1; }
+
+.col-2.text-center.tools-filter-title.highlight-filter {
+  color: #333333;
+  font-weight: bolder; }
+
+.col-2.text-center.tools-filter-title {
+  color: #898989; }
+
 #status-bar-indicator {
   height: inherit;
   background-color: #19BAFF;

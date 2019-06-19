@@ -67,6 +67,10 @@
 
       //we are loading both the desktop filter and the card handler
       $('.tools-filter-title').click(fnClickFilter);
+
+      //Initalize filter
+      $('.tools-filter-title:first').addClass('highlight-filter');
+
       cardClicked.click(fnClickCard);
       if (toolParameter) fnShowCard(toolParameter);
 
@@ -312,9 +316,17 @@
     var positionStart = $('.tools-filter-title:first').offset().left;
     var position = filterClicked.offset().left;
 
+    console.log(">>>> clickfilter");
+
 
     var functionTitle = filterClicked.find('p:first').html();
     var filterDescription = filterClicked.find('.filter-description').html();
+
+    //Clear highlighting
+    $('.tools-filter-title').removeClass('highlight-filter');
+
+    //Set highlight class
+    $(this).addClass('highlight-filter');
 
     //Reset highlight bar on cards @todo animate this?
     //Reset CSS for show tool
