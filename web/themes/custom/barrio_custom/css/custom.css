@@ -1,3 +1,7 @@
+.grab {
+  cursor: -webkit-grab;
+  cursor: grab; }
+
 .navbar-default {
   background-color: #898989; }
 

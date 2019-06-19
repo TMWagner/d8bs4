@@ -191,6 +191,8 @@
   color: $navbar_background;
 }
 
+
+
 //.tool-filter-content > p {
 //  color: $idm_charcoal;
 //}
@@ -243,6 +245,11 @@
 
 .close.tool-content-close:hover {
   color: white;
+}
+
+.col-2.text-center.tools-filter-title.highlight-filter {
+  color: #333333;
+  font-weight: bolder;
 }
 
 //@todo This could be done dynamically... or with a media query

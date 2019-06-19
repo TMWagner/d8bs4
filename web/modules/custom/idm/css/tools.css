@@ -140,6 +140,10 @@
 .close.tool-content-close:hover {
   color: white; }
 
+.col-2.text-center.tools-filter-title.highlight-filter {
+  color: #333333;
+  font-weight: bolder; }
+
 .tools-content {
   color: white;
   background-color: #0B1F2C;
