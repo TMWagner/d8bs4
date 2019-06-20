@@ -100,7 +100,6 @@
    */
   function highlightMobileCard() {
     console.log('>>>(tools.js) process mobile filter');
-    // $(".carousel").carousel('pause');
 
     // Get card
     var activeSlide = $(".slick-active");
@@ -170,7 +169,7 @@
         nextCard = currentCard.next();
 
         if (nextCard.length === 0) {
-          console.log("Next card length 0: Break out of loop");
+          // console.log("Next card length 0: Break out of loop");
           moreCards = false;
         }
         else {
@@ -208,6 +207,7 @@
     // Turn off any "display content"
     // Toggle selected on this card.
     cardClicked.toggleClass('card-selected');
+
 
   }
   // End of fnShowCard
@@ -278,9 +278,10 @@
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
-
         // Turn off the "content"
         $('.insert').remove();
+        // Turn off 'X'
+        $('.xclosebox').remove();
       }
 
       //medium to large - nothing to do
@@ -288,18 +289,20 @@
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
-
         // Turn off the "content"
         $('.insert').remove();
+        // Turn off 'X'
+        $('.xclosebox').remove();
       }
       //large to medium - nothing to do
       if ((oldWindowType === 'large') && (windowType === "medium")) {
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
-
         // Turn off the "content"
         $('.insert').remove();
+        // Turn off 'X'
+        $('.xclosebox').remove();
       }
     }
   });
@@ -435,6 +438,7 @@
 
     // One of the cards was clicked - we need to turn off inserted content regardless
     $('.insert').remove();
+    $('.xclosebox').remove();
 
     if ($(this).hasClass('card-selected')) {
 
@@ -517,7 +521,11 @@
       // // $('button[data-dismiss=modal]').click(fnCloseContent);
 
 
+
       $(".tools-card.card-selected").toggleClass("card-selected");
+      //@todo turn on X
+
+
       $("#tool-display").remove();
 
       // Turn off any "display content"
@@ -536,10 +544,36 @@
     console.log('%%%%% in loadComplete');
     // Attach modal close function
     $('button[data-dismiss=modal]').click(fnCloseContent);
+
+    //@todo turn on X
+    $('.tools-card.card-selected')
+        .prepend('<div class="xclosebox top right"><span class="xclose fas fa-times"></span></div>');
+
+    //@todo Add animation to class swap
+    $('.card-selected').hover(cardOver, cardOut);
+
   }
 
+  /**
+   * Add Call for X highlight
+   */
+  function cardOver() {
+    // User jQuery UI addClass
+    // http://api.jqueryui.com/addClass/
+    $( this ).addClass( "xclose-over", 1000);
+  }
 
+  /**
+   * Remove Class
+   */
+  function cardOut() {
+    //Remove Class
+    //http://api.jqueryui.com/removeClass/
+    $( this ).removeClass( "xclose-over", 1000 );
+  }
 
+  // var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
+  //
 
 
   // Is mobile test code

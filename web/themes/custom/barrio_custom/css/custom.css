@@ -488,4 +488,39 @@ p.vertical-text {
   height: 90px;
   background-color: #7abaff; }
 
+.xclosebox {
+  border: none;
+  position: absolute;
+  width: 20px;
+  height: 20px; }
+
+.top {
+  top: 0; }
+
+.middle {
+  top: 50%;
+  margin-top: -10px;
+  /*half of the .box height*/ }
+
+.bottom {
+  bottom: 0; }
+
+.left {
+  left: 0; }
+
+.center {
+  left: 50%;
+  margin-left: -10px;
+  /*half of the .box width*/ }
+
+.right {
+  right: 0; }
+
+.card-selected .xclose {
+  color: rgba(255, 150, 13, 0.58);
+  opacity: 80%; }
+
+.card-selected.xclose-over .xclose {
+  color: #ff6315; }
+
 /*# sourceMappingURL=custom.css.map */
