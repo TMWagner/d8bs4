@@ -554,13 +554,16 @@
 
   }
 
+
+
+
   /**
    * Add Call for X highlight
    */
   function cardOver() {
     // User jQuery UI addClass
     // http://api.jqueryui.com/addClass/
-    $( this ).addClass( "xclose-over", 1000);
+    $( this ).addClass( "xclose-over", 800, "linear");
   }
 
   /**
@@ -569,7 +572,7 @@
   function cardOut() {
     //Remove Class
     //http://api.jqueryui.com/removeClass/
-    $( this ).removeClass( "xclose-over", 1000 );
+    $( this ).removeClass( "xclose-over", 400 );
   }
 
   // var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");

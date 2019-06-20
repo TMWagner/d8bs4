@@ -712,11 +712,10 @@ p.vertical-text {
 .right{right:0;}
 
 .card-selected .xclose {
-  color: rgba(255, 150, 13, 0.58);
-  opacity: 80%
+  color: $idm_orange;
 }
 .card-selected.xclose-over .xclose {
-  color: $idm-orange;
+  color: $idm_light_orange;
 }
 
 //End X CSS
