@@ -129,12 +129,17 @@ function idm_page_attachments(array &$attachments) {
   $pathpieces = explode("/", $path);
   if ($pathpieces[1] === 'node') {
     //load the node and check for bundle
-    $bundle = Drupal\node\Entity\Node::load($pathpieces[2])->bundle();
 
-    if($bundle === 'research') {
-      $attachments['#attached']['library'][] = 'idm/research';
-      $attachments['#attached']['library'][] = 'idm/slick';
+    if ($pathpieces[2] !== 'add') {
+      $bundle = Drupal\node\Entity\Node::load($pathpieces[2])->bundle();
+
+      if($bundle === 'research') {
+        $attachments['#attached']['library'][] = 'idm/research';
+        $attachments['#attached']['library'][] = 'idm/slick';
+      }
+
     }
+
   }
 
 
