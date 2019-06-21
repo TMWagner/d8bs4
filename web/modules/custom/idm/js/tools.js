@@ -503,26 +503,18 @@
       var dataTool = cardClicked.find('h4').data("tool");
 
       console.log(">>> Data tool is: " + dataTool);
-      console.log( "is this it? " + cardText);
-      // @todo add class d-none... then swap display property AFTER load
+      // We've created the wrapper with Class="d-none" Make sure its loaded before turning
+      // on. Otherwise, we'll get a "jump".
       currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
       // $( ".insert" ).load( "/malaria .research-content");
       console.log(">>> Inserting card - data is: " + data);
 
       //Toggle class and add data-tool-content attribute (so we can link to card)
-      $( ".insert" ).load(data + " .tools-content", loadComplete).toggleClass("d-none").attr("data-tool-content", dataTool);
-
-      //@todo attach handler here for content??
-      /**
-       * Maybe?
-       */
-      //@todo remove duplicated selector
-      // $(".insert").click(fnCloseContent);
-      // // $('button[data-dismiss=modal]').click(fnCloseContent);
+      $( ".insert" ).load(data + " .tools-content", loadComplete).attr("data-tool-content", dataTool);
 
 
 
-      $(".tools-card.card-selected").toggleClass("card-selected");
+      $(".tools-card.card-selected").removeClass("card-selected");
       //@todo turn on X
 
 
@@ -541,11 +533,16 @@
    * Handle post load from fnClickCard
    */
   function loadComplete() {
+
+    //@todo remove before production
     console.log('%%%%% in loadComplete');
+
+    // Turn on inserted content.
+    $('.tools-content-wrapper').removeClass("d-none");
     // Attach modal close function
     $('button[data-dismiss=modal]').click(fnCloseContent);
 
-    //@todo turn on X
+    //Turn on X
     $('.tools-card.card-selected')
         .prepend('<div class="xclosebox top right"><span class="xclose fas fa-times"></span></div>');
 
