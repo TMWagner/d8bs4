@@ -206,13 +206,6 @@
     var positionNext;
     var data;
 
-    // //@todo test code to load external data...
-    // $( "#test-swap").load( "/malaria ");
-    //
-
-    // var curCard = $(this);
-    // var data = $(this).find('h4').data();
-    // console.log("card is: " + curCard.text);
 
     // One of the cards was clicked - we need to turn off inserted content regardless
     $('.insert').remove();
@@ -227,12 +220,10 @@
       // First find the end of the row
       var cardClicked = $(this);
       var currentCard = cardClicked;
-
-      console.log("@@@ Checking for next card...");
       var nextCard = $(this).next();
-      var endOfLoop = false;
+      var moreCards = true;
 
-      console.log("@@@ Next Card is: " + nextCard.length);
+      // console.log("@@@ Next Card is: " + nextCard.length);
 
       // Check for last element
       if (nextCard.length !== 0) {
@@ -242,15 +233,18 @@
         console.log("position - currant: " + positionCurrant);
         console.log("position - next: " + positionNext);
 
-        while (positionCurrant === positionNext && !endOfLoop) {
-          // Loop till we hit the end of the row
-          // data = data + ".research-content';
+        while (positionCurrant === positionNext && moreCards) {
+
+          //@todo Remove before flight
+          console.log("In loop- Currant card is: ");
+          console.log("In loop- Next Card is: ");
+
           currentCard = nextCard;
-          console.log("@@@ Attempt to load next card: ");
           nextCard = currentCard.next();
+
           if (nextCard.length === 0) {
-            endOfLoop = true;
             console.log("End of LOOP " + nextCard.length);
+            moreCards = false;
           }
           else {
             positionCurrant = currentCard.position().top;
@@ -259,18 +253,21 @@
             console.log("position(loop) - next: " + positionNext);
           }
 
-        }
-      }
+        } //End While
+      } //End IF
       else {
-        endOfLoop = true;
+
         // We hit the end - currentCard is the last element
         // data = currentCard.find('h4').data("node-url");
         // console.log( 'We clicked the last one: ' + data);
+        console.log('We clicked the last one: ');
+        moreCards = false;
       }
 
-      //@todo CardText has already advanced in the loop...
+
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");
+
       console.log( "is this it? " + cardText);
 
 
@@ -278,19 +275,17 @@
       //@todo I could have just used the text instead of data attribute.
       var dataResearch = cardClicked.find('h4').data("research");
       console.log(">>> Research tool is: " + dataResearch);
-      currentCard.after("<div class='insert research-content research-content-wrapper mx-sm-1 jquery'> </div>");
-      // $( ".insert" ).load( "/malaria .research-content");
+      // We've created the wrapper with Class="d-none"
+      // Make sure its loaded before turning
+      // on. Otherwise, we'll get a "jump".
+      currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
       console.log(data);
-      console.log(">>> attempt to insert...");
+      console.log(">>> attempt to insert..." + data);
       $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
 
 
 
-
-      // var data = $(this).find('h4').data("node-url");
-      //
-      // console.log( "card is: " + data);
       //@todo grab this next div.
       // $(this).next().css( "background-color", "red" );
 
@@ -327,6 +322,9 @@
   function loadComplete() {
     // Content loaded:
     // Wrap the entire group in div for flex
+    // Turn on inserted content.
+    console.log('%%%%% in loadComplete');
+    $('.research-content-wrapper').removeClass("d-none");
     // @todo Team lead as well?
     $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
     $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
