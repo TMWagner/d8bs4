@@ -259,7 +259,6 @@ class PeopleController extends ControllerBase {
   }
 
   /**
-   * Display user profile on Mobile device
    * @param $uid
    *
    * @return mixed
@@ -280,19 +279,25 @@ class PeopleController extends ControllerBase {
 //    $output['author'] = [
 //      '#type' => 'details',
 //      '#title' => $this
-//        ->t('Author'),
+//        ->t('EXPLORE IDM’S OPEN-SOURCE SOFTWARE RESOURCES'),
 //    ];
+//    $output['author']['name'] = array(
+//      '#markup' => '<p>IDM provides innovative disease modeling tools freely to the research community to aid in reaching our goal of disease eradication</p>',
+//    );
+
+
 //    $output['author']['name'] = array(
 //      '#type' => 'textfield',
 //      '#title' => $this
 //        ->t('Name'),
 //    );
 
+
     // Set view arguments
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
 
-
+    // @todo https://api.drupal.org/api/drupal/core%21modules%21views%21src%21Element%21View.php/class/View/8.7.x
     // Load View object
     // Need graceful recovery if View doesn't exist
     $view = \Drupal\views\Views::getView($profile_id);
@@ -305,7 +310,6 @@ class PeopleController extends ControllerBase {
     //  Added "Row" to sibling DIV with "container.html.twig"
     $output['profile'] = array (
       '#type' => 'container',
-//      '#prefix' => '<div class="modal fade profile-bio-link-wrap" id="profilemodal">',
       '#prefix' => '<div class="profile-bio-link-wrap" id="profilemodal">',
       '#suffix' => '</div>',
     );
@@ -328,11 +332,10 @@ class PeopleController extends ControllerBase {
         ],
         'id' => 'profile-accordion',
       ],
-//      '#prefix' => '<div class="accordion-wrap">',
-//      '#suffix' => '</div>',
     );
 
-
+    // https://jqueryui.com/accordion/
+    // @todo See sandbox http://sandbox/research/jq.html
     //Accordion Group Items
     $output['profile']['dynamic']['bio'] = array (
       '#type' => 'container',
@@ -341,7 +344,8 @@ class PeopleController extends ControllerBase {
     );
 
 //
-//    Build the button group
+    // Build the button group
+    // use theme to build wrapper around content
     //@todo We are going to have to build a custom theme for this
     $output['profile']['dynamic']['bio']['button'] = array (
       '#type' => 'markup',

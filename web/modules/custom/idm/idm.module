@@ -130,6 +130,7 @@ function idm_page_attachments(array &$attachments) {
   if ($pathpieces[1] === 'node') {
     //load the node and check for bundle
 
+    //@todo Check this condition. Issue trying to correct is error caused by Node Load
     if ($pathpieces[2] !== 'add') {
       $bundle = Drupal\node\Entity\Node::load($pathpieces[2])->bundle();
 
@@ -137,11 +138,8 @@ function idm_page_attachments(array &$attachments) {
         $attachments['#attached']['library'][] = 'idm/research';
         $attachments['#attached']['library'][] = 'idm/slick';
       }
-
     }
-
   }
-
 
 
 
@@ -179,7 +177,6 @@ function idm_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
 
-  //@todo drop this check and just use the fnmatch case?
   if ($path == '/tools') {
     $attachments['#attached']['library'][] = 'idm/tools';
   };
@@ -187,22 +184,19 @@ function idm_page_attachments(array &$attachments) {
   if (fnmatch("/tools/*", $path)) {
     $attachments['#attached']['library'][] = 'idm/slick';
     $attachments['#attached']['library'][] = 'idm/tools';
-
   }
 
   /**
    * Attach Library for Profile related pages
+   * Expected: /Profile/nnn/mobile
    *
    */
-
-  // Expecting /profile/nnn/mobile
   $urlparts = explode('/', $path);
   if (isset($urlparts[3])) {
     if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
       $attachments['#attached']['library'][] = 'idm/profile';
     }
   }
-
 
 }
 
