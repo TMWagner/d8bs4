@@ -7,28 +7,60 @@
 
 (function ($, Drupal) {
 
+
   'use strict';
   /* CODE GOES HERE  - Code Wrap*/
 
-  console.log(">>> starting research.js...");
 
+  console.log(">>> starting research.js...");
+  var windowType = checkMod();
+
+  // Shorthand for $( document ).ready()
+  $(function() {
+
+
+
+    // Attach the handler for filter
+    $('.btn-filter-selector').click(fnClickFilter);
+
+    var cardClicked = $('.research-card');
+
+    // Attach handler for mobile or Desktop
+    if (windowType === 'small') {
+      cardClicked.click(fnClickCardMobile);
+
+    }
+    else {
+      cardClicked.click(fnClickCard);
+    }
+
+
+  });
+  // End Document ready
+
+
+
+
+  //@todo no idea how this is working...
   //Wrap thumbnails
   $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery'></div>");
   $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jquery'></div>");
+  //End thumbnail wrap
 
 
 
   /**
    * This add a class to the team lead image on the footer of the Research card
    * @todo This will add a line on multiple images (I think) Not good
+   *
+   * @todo This may not even be in the DOM yet!
    */
   $(".field--name-field-team-lead").find(".field--name-user-picture").addClass('team-lead-img');
 
 
-
-  var windowType = checkMod();
-  console.log("window type set at: " + windowType);
-
+  /**
+   * Resize Function
+   */
   $(window).resize(function() {
     var oldWindowType = windowType;
     var cardClicked = $( ".research-card" );
@@ -38,11 +70,8 @@
     console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
 
     if (windowType !== oldWindowType) {
-      console.log("resetting window type - now is: " + windowType);
-      // location.reload(true);
+      // console.log("resetting window type - now is: " + windowType);
 
-      //@todo Reload not working
-      // window.location.reload(true);
 
       //small to medium
       if ((oldWindowType === "small") && (windowType === "medium")) {
@@ -50,14 +79,12 @@
         cardClicked.click(fnClickCard);
 
         // Remove any left over modals
-        $("#toolsModal").modal("hide");
+        $("#research-modal").modal("hide");
       }
       //medium to small
       if ((oldWindowType === 'medium') && (windowType === "small")) {
         cardClicked.off("click");
         cardClicked.click(fnClickCardMobile);
-        //@todo Reload not working
-
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
@@ -68,23 +95,20 @@
 
       //medium to large - nothing to do
       if ((oldWindowType === 'medium') && (windowType === "large")) {
-        // cardClicked.off("click");
-        // cardClicked.click(fnClickCard);
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
-
         // Turn off the "content"
         $('.insert').remove();
+        // @todo turn off
+        // Turn off 'X'
+
       }
       //large to medium - nothing to do
       if ((oldWindowType === 'large') && (windowType === "medium")) {
-        // cardClicked.off("click");
-        // cardClicked.click(fnClickCard);
 
         // Turn off Card selected
         cardClicked.removeClass('card-selected');
-
         // Turn off the "content"
         $('.insert').remove();
       }
@@ -92,19 +116,6 @@
   });
 
 
-
-  // Attach the handler for filter
-  $('.btn-filter-selector').click(fnClickFilter);
-
-  var cardClicked = $('.research-card');
-
-  // Attach handler for mobile or Desktop
-  if (windowType === 'small') {
-    cardClicked.click(fnClickCardMobile);
-
-  } else {
-    cardClicked.click(fnClickCard);
-  }
 
 
   /**
@@ -206,12 +217,11 @@
     var positionNext;
     var data;
 
-
     // One of the cards was clicked - we need to turn off inserted content regardless
     $('.insert').remove();
+    //@todo handle "X" cleanup (see tools)
 
     if ($(this).hasClass('card-selected')) {
-
       // Turn off Card selected
       $(this).toggleClass('card-selected');
 
@@ -223,7 +233,6 @@
       var nextCard = $(this).next();
       var moreCards = true;
 
-      // console.log("@@@ Next Card is: " + nextCard.length);
 
       // Check for last element
       if (nextCard.length !== 0) {
@@ -255,13 +264,15 @@
 
         } //End While
       } //End IF
+
+      //@todo There is no Else - Nothing to do...
       else {
 
         // We hit the end - currentCard is the last element
         // data = currentCard.find('h4').data("node-url");
         // console.log( 'We clicked the last one: ' + data);
-        console.log('We clicked the last one: ');
-        moreCards = false;
+        console.log('^*^*^*^*We clicked the last one: &*&*&*&*& ');
+
       }
 
 
@@ -284,19 +295,14 @@
       $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
 
-
-
       //@todo grab this next div.
       // $(this).next().css( "background-color", "red" );
 
 
 
-
-
       //Calculate position for detail content
       var positionClick = $(this).position().top;
-      // var objHeight = $(this).height();
-      // var rePosition = positionClick + objHeight;
+
 
 
 
