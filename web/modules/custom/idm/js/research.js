@@ -133,25 +133,21 @@
     //build out the template.
     // Check to make sure we have a target (class='insert')
     if(!$(".insert").length){
-      //Element is not present... add back in
+      //Element is not present... add back in.(Original content source view)
       $('#modal-body-template').append( "<p class='insert'>Dynamic content</p>" );
     }
 
 
     //title
-    // var nodeContent = $.get(data + " .research-content");
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
     // Load the node and insert...
-    // @todo need to fire modal AFTER the load is complete (see below)
-    //$( ".insert" ).load(data + " .tools-content", loadComplete).attr("data-tool-content", dataTool);
-    $( ".insert" ).load(data + " .rlp-detail-more" ,loadMobileModal());
+    $( ".insert" ).load(data + " .rlp-detail-more");
 
-    // // @todo Load carousel AFTER modal is fired.
-    // $("#rlpModal").modal();
+    $("#rlpModal").modal();
 
     $('#rlpModal').on('shown.bs.modal', function (e) {
-      console.log("**** Modal has fired and should be visible");
+      console.log("**** (fnClickCardMobile) Modal has fired and should be visible");
 
       //Clean up the Dom
       //@todo removed d-flex from parent wrapper for mobile (to stack two sections)
@@ -159,9 +155,6 @@
       $(".research-team-member").wrapAll("<div class='research-team-member-group  research-js'></div>");
       $(".research-team-member-group").removeClass(".d-flex");
 
-      //Wrap each thumbnail...
-      // var thumbnails = $('team-profile-thumbnail');
-      // // $(".team-profile-thumbnail").css( "background-color", "blue" );
 
       var uid = null;
       //Loop through thumbnails
@@ -214,14 +207,7 @@
 
   }
   // End Function
-
-
-  function loadMobileModal() {
-    // @todo Load carousel AFTER modal is fired.
-    console.log(">>>> fire modal in function....");
-    $("#rlpModal").modal();
-  }
-
+  
 
   /**
    * fnClickCard
