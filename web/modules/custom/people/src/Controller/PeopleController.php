@@ -141,7 +141,7 @@ class PeopleController extends ControllerBase {
     //  Added "Row" to sibling DIV with "container.html.twig"
     $render_array['profile'] = array (
       '#type' => 'container',
-      '#prefix' => '<div class="profile-bio-link-wrap not-mobile-display container">',
+      '#prefix' => '<div class="profile-bio-link-wrap not-mobile-display container" id="profile-content">',
       '#suffix' => '</div>',
     );
 
