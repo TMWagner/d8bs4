@@ -156,15 +156,18 @@
       $(".research-team-member-group").removeClass(".d-flex");
 
 
-      var uid = null;
-      //Loop through thumbnails
-      $(".team-profile-thumbnail").each(function( index ) {
-        //do some work
-        uid = $( this ).data("uid");
-        //@todo figuring out this string is much easier pasting from an html file.
-        $(this).wrapAll("<a  href=\"\\profile/" + uid + "/mobile\"></a>");
-        console.log( index + ": " + uid );
-      });
+      // var uid = null;
+      //Loop through thumbnails ( This is all of them lead and team)
+      //Add appropriate link to each.
+      // $(".team-profile-thumbnail").each(function( index ) {
+      //   //do some work
+      //   uid = $( this ).data("uid");
+      //   //@todo figuring out this string is much easier pasting from an html file.
+      //   $(this).wrapAll("<a  href=\"\\profile/" + uid + "/mobile\"></a>");
+      //   console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
+      // });
+
+
 
 
       //init the carousel for team members display
@@ -207,7 +210,34 @@
 
   }
   // End Function
-  
+
+  /**
+   * fnShowProfileD
+   * Handler to display user profile in Bootstrap Modal
+   */
+  function fnShowProfileD() {
+    // alert("thumbnail clicked");
+    console.log("(fnShowProfile): show modal for profile");
+    //Do some work
+    // 1. Fill out the modal for profile
+    // 2. Display
+
+    //title
+    // $("#ModalTitle").text(cardClicked.find('h4').html());
+
+    //find the target profile
+    //@todo Hardcode link
+    //@todo NOPE:  Need to wrap this in a link like PEOPLE
+    var data = '/profile/133';
+
+
+    // Load the node and insert...
+    // $( ".insert" ).load(data + " .rlp-detail-more");//
+    $( ".insertprofile" ).load(data + " #profile-content");
+
+    $("#rlpProfile").modal();
+  }
+
 
   /**
    * fnClickCard
@@ -281,6 +311,7 @@
       data = cardClicked.find('h4').data("node-url");
 
       console.log( "is this it? " + cardText);
+      console.log( ">>>> Data is: " + data);
 
 
 
@@ -348,9 +379,29 @@
     console.log('%%%%% in loadComplete');
     $('button[data-dismiss=modal]').click(fnCloseContent);
 
-    //@todo Why did I hardcode this????
+
+
+    // var uid = null;
+    // // //Loop through thumbnails ( This is all of them lead and team)
+    // // //Add appropriate link to each.
+    // console.log('loop through the thumbnails....');
+    // $(".team-profile-thumbnail").each(function( index ) {
+    //   uid = $( this ).data("uid");
+    //   // //@todo figuring out this string is much easier pasting from an html file.
+    //   // $(this).wrapAll("<a  href=\"\\profile/" + uid + "/mobile\"></a>");
+    //   console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
+    //
+    //   //@todo this is getting wiped out with slick...
+    //   // $( this ).click(fnShowProfileD);
+    //
+    // });
+
+
+
+
+    //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {
-      console.log(">>> Load slick from research...");
+      console.log(">>> Load slick from research for DESKTOP...");
       //attach handler for carousel
       $('.research-team-member-group').slick({
         infinite: true,
@@ -388,6 +439,9 @@
         ]
       });
     }
+    // Attach handler for Display profile (Desktop) notice that we have to do this
+    // AFTER the Carousel runs
+    $(".team-profile-thumbnail").click(fnShowProfileD);
 
   }
 
