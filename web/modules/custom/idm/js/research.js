@@ -131,16 +131,24 @@
     $("#rlpModal").off();
 
     //build out the template.
+    // Check to make sure we have a target (class='insert')
+    if(!$(".insert").length){
+      //Element is not present... add back in
+      $('#modal-body-template').append( "<p class='insert'>Dynamic content</p>" );
+    }
+
 
     //title
     // var nodeContent = $.get(data + " .research-content");
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
     // Load the node and insert...
-    $( ".insert" ).load(data + " .rlp-detail-more");
+    // @todo need to fire modal AFTER the load is complete (see below)
+    //$( ".insert" ).load(data + " .tools-content", loadComplete).attr("data-tool-content", dataTool);
+    $( ".insert" ).load(data + " .rlp-detail-more" ,loadMobileModal());
 
-    // @todo Load carousel AFTER modal is fired.
-    $("#rlpModal").modal();
+    // // @todo Load carousel AFTER modal is fired.
+    // $("#rlpModal").modal();
 
     $('#rlpModal').on('shown.bs.modal', function (e) {
       console.log("**** Modal has fired and should be visible");
@@ -206,6 +214,13 @@
 
   }
   // End Function
+
+
+  function loadMobileModal() {
+    // @todo Load carousel AFTER modal is fired.
+    console.log(">>>> fire modal in function....");
+    $("#rlpModal").modal();
+  }
 
 
   /**
@@ -292,6 +307,8 @@
       currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
       console.log(data);
       console.log(">>> attempt to insert..." + data);
+
+
       $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
 
