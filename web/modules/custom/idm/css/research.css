@@ -1,6 +1,28 @@
 .research-card {
   border: rgba(0, 0, 0, 0.125) thin solid; }
 
+/*
+ * CSS for RLP
+*/
+ul.rlp-links {
+  list-style: none; }
+
+.modal-header.rlp {
+  border: none;
+  float: right; }
+
+.rlp-body {
+  clear: both; }
+
+li.vl::before {
+  content: "\25AE";
+  color: #f1815e; }
+
+.vl a {
+  color: white;
+  font-size: smaller;
+  text-transform: uppercase; }
+
 .research-card {
   display: flex;
   height: 5em;

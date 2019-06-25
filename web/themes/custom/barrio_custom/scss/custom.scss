@@ -299,9 +299,7 @@ a.publication-link-external:hover {
 }
 
 .col.profile-link-item {
-  border-color: white;
-  border-style: solid;
-  border-width: 1px 1px 0 1px;
+  border: none;
   flex-grow: 0;
   text-align: center;
 }
@@ -335,9 +333,14 @@ a.publication-link-external:hover {
 
 
 .profile_bio_static.col-4 {
-  background-color: $background_grey;
+  background-color: $background_dark_grey;
   //$todo Why do we have to do this????
   float: left;
+}
+
+#profile-content {
+  color: white;
+  font-size: .8em;
 }
 
 
@@ -345,15 +348,34 @@ a.publication-link-external:hover {
   color: white;
 }
 .people_bio_dynamic {
-  background-color: $background_grey;
+  background-color: $background_dark_grey;
   //overflow-y: scroll;
   //max-height: 35em;
 }
 
 .profile-swap {
   overflow-y: scroll;
-  max-height: 20em;
+  max-height: 25em;
   margin-bottom: 2em;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ui-widget-content {
+  border: none;
+  background: $background_dark_grey;
+  color: #333333;
+}
+
+.ui-widget.ui-widget-content {
+  border: none;
+}
+.ui-widget-header {
+  border: none;
+  background: $background_dark_grey;
+  color: #333333;
+  //font-weight: bold;
 }
 
 .people-card {
@@ -663,6 +685,10 @@ p.vertical-text {
 #col4 div:nth-child(2) {
   margin-left: 8px;
 }
+#col5 div:nth-child(2) {
+  margin-left: 6px;
+}
+
 
 //End footer hack
 #footer-footer-mobile {

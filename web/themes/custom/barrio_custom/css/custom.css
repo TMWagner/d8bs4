@@ -235,9 +235,7 @@ a.publication-link-external:hover {
   bottom: 0; }
 
 .col.profile-link-item {
-  border-color: white;
-  border-style: solid;
-  border-width: 1px 1px 0 1px;
+  border: none;
   flex-grow: 0;
   text-align: center; }
 
@@ -257,19 +255,39 @@ a.publication-link-external:hover {
   background-color: #6f6f6f; }
 
 .profile_bio_static.col-4 {
-  background-color: #6f6f6f;
+  background-color: #292929;
   float: left; }
+
+#profile-content {
+  color: white;
+  font-size: .8em; }
 
 .view-profile-basic-content {
   color: white; }
 
 .people_bio_dynamic {
-  background-color: #6f6f6f; }
+  background-color: #292929; }
 
 .profile-swap {
   overflow-y: scroll;
-  max-height: 20em;
-  margin-bottom: 2em; }
+  max-height: 25em;
+  margin-bottom: 2em;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto; }
+
+.ui-widget-content {
+  border: none;
+  background: #292929;
+  color: #333333; }
+
+.ui-widget.ui-widget-content {
+  border: none; }
+
+.ui-widget-header {
+  border: none;
+  background: #292929;
+  color: #333333; }
 
 .people-card {
   width: 15rem;
@@ -466,6 +484,9 @@ p.vertical-text {
 
 #col4 div:nth-child(2) {
   margin-left: 8px; }
+
+#col5 div:nth-child(2) {
+  margin-left: 6px; }
 
 #footer-footer-mobile {
   margin-left: 1em; }

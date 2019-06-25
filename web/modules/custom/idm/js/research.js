@@ -328,16 +328,11 @@
 
       $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
-
       //@todo grab this next div.
       // $(this).next().css( "background-color", "red" );
 
-
-
       //Calculate position for detail content
       var positionClick = $(this).position().top;
-
-
 
 
       // Turn off all other active cards
@@ -392,10 +387,13 @@
     $(".team-profile-thumbnail").each(function( index ) {
       uid = $( this ).data("uid");
 
-      //@todo and this is how to create a string with mix of variables and literals
-      $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' href='/profile/" + uid + "'></a>");
+      // Wrap create a string with mix of variables and literals
+      $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
+          "data-dialog-options='{&quot;width&quot;:900}'  " +
+          "href='/profile/" + uid + "'></a>");
 
-      console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
+
+      // console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
 
       //@todo this is getting wiped out with slick...
       // $( this ).click(fnShowProfileD);
