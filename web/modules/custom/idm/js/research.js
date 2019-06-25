@@ -395,15 +395,12 @@
       //@todo and this is how to create a string with mix of variables and literals
       $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' href='/profile/" + uid + "'></a>");
 
-
-
       console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
 
       //@todo this is getting wiped out with slick...
       // $( this ).click(fnShowProfileD);
 
     });
-
 
 
 
@@ -447,11 +444,9 @@
         ]
       });
     }
-    // Attach handler for Display profile (Desktop) notice that we have to do this
-    // AFTER the Carousel runs
-    // $(".team-profile-thumbnail").click(fnShowProfileD);
 
-    // @todo Reload DrupalattachBehaviors
+    // @todo Reload DrupalattachBehaviors. I don't like this. Would prefer to use an alternative to .load
+    // Which is what is killing the behaviors
     $(Drupal.attachBehaviors());
 
   }
