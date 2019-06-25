@@ -2,6 +2,9 @@
   cursor: -webkit-grab;
   cursor: grab; }
 
+.pointer {
+  cursor: pointer !important; }
+
 .navbar-default {
   background-color: #898989; }
 
