@@ -356,6 +356,10 @@
 
 
 
+
+
+
+
   /**
    * Post load function
    */
@@ -381,20 +385,24 @@
 
 
 
-    // var uid = null;
-    // // //Loop through thumbnails ( This is all of them lead and team)
-    // // //Add appropriate link to each.
-    // console.log('loop through the thumbnails....');
-    // $(".team-profile-thumbnail").each(function( index ) {
-    //   uid = $( this ).data("uid");
-    //   // //@todo figuring out this string is much easier pasting from an html file.
-    //   // $(this).wrapAll("<a  href=\"\\profile/" + uid + "/mobile\"></a>");
-    //   console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
-    //
-    //   //@todo this is getting wiped out with slick...
-    //   // $( this ).click(fnShowProfileD);
-    //
-    // });
+    var uid = null;
+    // //Loop through thumbnails ( This is all of them lead and team)
+    // //Add appropriate link to each.
+    console.log('loop through the thumbnails....');
+    $(".team-profile-thumbnail").each(function( index ) {
+      uid = $( this ).data("uid");
+
+      //@todo and this is how to create a string with mix of variables and literals
+      $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' href='/profile/" + uid + "'></a>");
+
+
+
+      console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
+
+      //@todo this is getting wiped out with slick...
+      // $( this ).click(fnShowProfileD);
+
+    });
 
 
 
@@ -441,7 +449,10 @@
     }
     // Attach handler for Display profile (Desktop) notice that we have to do this
     // AFTER the Carousel runs
-    $(".team-profile-thumbnail").click(fnShowProfileD);
+    // $(".team-profile-thumbnail").click(fnShowProfileD);
+
+    // @todo Reload DrupalattachBehaviors
+    $(Drupal.attachBehaviors());
 
   }
 
