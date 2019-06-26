@@ -239,6 +239,19 @@ a.publication-link-external:hover {
   flex-grow: 0;
   text-align: center; }
 
+.profile_bio_static .modal-body {
+  padding: 0; }
+
+.name-group {
+  display: block;
+  width: 100%; }
+
+.name-group-name {
+  text-align: center; }
+
+.name-group-title {
+  text-align: center; }
+
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
   max-width: 50rem; }
