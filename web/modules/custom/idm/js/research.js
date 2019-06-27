@@ -18,8 +18,6 @@
   // Shorthand for $( document ).ready()
   $(function() {
 
-
-
     // Attach the handler for filter
     $('.btn-filter-selector').click(fnClickFilter);
 
@@ -35,10 +33,26 @@
     }
 
 
+
+
+
+    $( "div" ).on( "click", ".name-group-name", function(evt) {
+      console.log("**** Delegated click *****");
+      alert('Click handler attached');
+      evt.stopPropagation();
+    });
+
+    // End debug code
+
+
   });
   // End Document ready
 
 
+
+  // jQuery( "#drupal-modal" ).dialog({
+  //   height: 'auto'
+  // });
 
 
   //@todo no idea how this is working...
@@ -391,13 +405,6 @@
       $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
           "data-dialog-options='{&quot;width&quot;:900}'  " +
           "href='/profile/" + uid + "'></a>");
-
-
-      // console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
-
-      //@todo this is getting wiped out with slick...
-      // $( this ).click(fnShowProfileD);
-
     });
 
 
@@ -446,6 +453,8 @@
     // @todo Reload DrupalattachBehaviors. I don't like this. Would prefer to use an alternative to .load
     // Which is what is killing the behaviors
     $(Drupal.attachBehaviors());
+    // $('.name-group').dialog('close');
+
 
   }
 
