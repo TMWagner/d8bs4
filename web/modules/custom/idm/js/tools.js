@@ -125,6 +125,7 @@
    * This function is called directly from a url. For example:
    * Expected parameter is a text string with the title of the research node
    * (2019/04/17: tmw)
+   * @todo position window to called card
    */
   function fnShowCard(toolParameter) {
     console.log(">>> Begin fnShowCard <<<<");
@@ -261,7 +262,6 @@
     console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
 
     if (windowType !== oldWindowType) {
-      // console.log("resetting window type - now is: " + windowType);
 
       //small to medium
       if ((oldWindowType === "small") && (windowType === "medium")) {
@@ -459,7 +459,6 @@
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        //@todo remove before flight
         console.log("Before Loop...position - currant: " + positionCurrant);
         console.log("Before Loop... position - next: " + positionNext);
 
@@ -503,13 +502,14 @@
       var dataTool = cardClicked.find('h4').data("tool");
 
       console.log(">>> Data tool is: " + dataTool);
-      // We've created the wrapper with Class="d-none" Make sure its loaded before turning
+      // We've created the wrapper with Class="d-none"
+      // Make sure its loaded before turning
       // on. Otherwise, we'll get a "jump".
       currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
-      // $( ".insert" ).load( "/malaria .research-content");
       console.log(">>> Inserting card - data is: " + data);
 
-      //Toggle class and add data-tool-content attribute (so we can link to card)
+      //Toggle class and add data-tool-content attribute
+      // (so we can link to card)
       $( ".insert" ).load(data + " .tools-content", loadComplete).attr("data-tool-content", dataTool);
 
 
