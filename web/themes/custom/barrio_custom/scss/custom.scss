@@ -383,22 +383,6 @@ a.publication-link-external:hover {
 }
 
 
-.ui-widget-content {
-  border: none;
-  background: $background_dark_grey;
-  color: #333333;
-}
-
-.ui-widget.ui-widget-content {
-  border: none;
-}
-.ui-widget-header {
-  border: none;
-  background: $background_dark_grey;
-  color: #333333;
-  //font-weight: bold;
-}
-
 .people-card {
   width: 15rem;
   margin: .2rem;
@@ -769,6 +753,23 @@ p.vertical-text {
 .center{left:50%;margin-left:-10px;/*half of the .box width*/}
 .right{right:0;}
 
+
+.ui-widget-content {
+  border: none;
+  background: $background_dark_grey;
+  color: #333333;
+}
+
+.ui-widget.ui-widget-content {
+  border: none;
+}
+.ui-widget-header {
+  border: none;
+  background: $background_dark_grey;
+  color: #333333;
+  //font-weight: bold;
+}
+
 .card-selected .xclose {
   color: $idm_orange;
 }
@@ -781,10 +782,11 @@ p.vertical-text {
   font-size: 1em;
 }
 
+//@todo Background needs to be more exact... IDM variable
 button {
   display: none;
-  color: #cc6029;
-  background-color: #292929;
+  color: $idm_orange;
+  background-color: $background_dark_grey;
   border: none;
 }
 

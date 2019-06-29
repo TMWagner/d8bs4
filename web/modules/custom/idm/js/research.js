@@ -33,20 +33,17 @@
     }
 
 
-
-
-
-    $( "div" ).on( "click", ".name-group-name", function(evt) {
-      console.log("**** Delegated click *****");
-      alert('Click handler attached');
-      evt.stopPropagation();
-    });
-
     // End debug code
 
 
   });
   // End Document ready
+
+  // catch dialog if opened within a viewport smaller than the dialog width
+  $(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+    // Do work inside the dialog
+    $('.ui-dialog-titlebar-close').addClass("jq-dialog-x fas fa-times").removeClass('ui-dialog-titlebar-close');
+  });
 
 
 
@@ -408,6 +405,7 @@
     });
 
 
+  // <a href="/admin/config/development/sync/diff/block.block.bartik.search" class="use-ajax" data-accepts="application/vnd.drupal-modal" data-dialog-options="{"width":500}" >Show me a 500px wide modal</a>
 
     //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {
@@ -454,6 +452,36 @@
     // Which is what is killing the behaviors
     $(Drupal.attachBehaviors());
     // $('.name-group').dialog('close');
+
+    /**
+     * Debug code
+     */
+
+
+    //@todo WORKING - sort of.
+    //@todo CLose to working - problem still is that it only works once (because doc ready only fires once)
+    // Maybe move it?
+    $( "div" ).on( "click", ".name-group-name", function(evt) {
+      console.log("**** Delegated click *****");
+
+      // $('.name-group-name').on('click', function(){
+      //   dialog('close');
+      // });
+
+
+      //@todo Now attach this... really doesn't do anything for us...
+      $('.name-group-name').on('click', function(){
+        console.log('Previously attached');
+      });
+      evt.stopPropagation();
+    });
+
+
+    //Try this
+    $( window ).dialogopen(function() {
+      console.log(">>>>>> Resizing dialog?");
+    });
+    //End try
 
 
   }

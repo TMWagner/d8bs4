@@ -292,19 +292,6 @@ a.publication-link-external:hover {
 .profile-swap p {
   margin-right: 10px; }
 
-.ui-widget-content {
-  border: none;
-  background: #292929;
-  color: #333333; }
-
-.ui-widget.ui-widget-content {
-  border: none; }
-
-.ui-widget-header {
-  border: none;
-  background: #292929;
-  color: #333333; }
-
 .people-card {
   width: 15rem;
   margin: .2rem;
@@ -562,6 +549,19 @@ p.vertical-text {
 .right {
   right: 0; }
 
+.ui-widget-content {
+  border: none;
+  background: #292929;
+  color: #333333; }
+
+.ui-widget.ui-widget-content {
+  border: none; }
+
+.ui-widget-header {
+  border: none;
+  background: #292929;
+  color: #333333; }
+
 .card-selected .xclose {
   color: #f1815e; }
 
@@ -574,7 +574,7 @@ p.vertical-text {
 
 button {
   display: none;
-  color: #cc6029;
+  color: #f1815e;
   background-color: #292929;
   border: none; }
 
