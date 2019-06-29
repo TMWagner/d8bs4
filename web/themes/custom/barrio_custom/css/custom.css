@@ -568,4 +568,19 @@ p.vertical-text {
 .card-selected.xclose-over .xclose {
   color: #F09B57; }
 
+.ui-widget button {
+  font-family: 'Font Awesome 5 Free';
+  font-size: 1em; }
+
+button {
+  display: none;
+  color: #cc6029;
+  background-color: #292929;
+  border: none; }
+
+.jq-dialog-x .fas .fa-times {
+  position: absolute;
+  top: 5px;
+  right: 5px; }
+
 /*# sourceMappingURL=custom.css.map */
