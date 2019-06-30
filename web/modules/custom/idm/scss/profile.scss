@@ -4,12 +4,23 @@
 
 
 
-//CSS for mobile card
+//CSS for mobile profile
 #people-profile-mobile h5 {
   color: $idm_black;
   margin-bottom: 0px;
 }
 
-#people-profile-mobile p {
-  color: black;
+
+
+.profile-bio-link-wrap {
+  background-color: $idm_blue_black;
+}
+
+#people-profile-mobile {
+  .view-profile-basic-content {
+    color: white;
+  }
+  .name-group-title {
+    color: white;
+  }
 }
