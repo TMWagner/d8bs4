@@ -107,7 +107,6 @@ jqcollapse:
 #    theme:
 #      css/quicklinks.css: {}
   js:
-#    js/jquery-collapsible-fieldset.js: {}
     js/tab.js: {}
   dependencies:
     - core/jquery
@@ -127,7 +126,7 @@ slick:
     - core/jquery
 
 
-# Profile pages  (for how we work)
+# Profile pages (all profile related pages)
 profile:
   version: 1.x
   css:
@@ -137,3 +136,4 @@ profile:
     js/people.js: {}
   dependencies:
     - core/jquery
+    - core/jquery.ui.accordion

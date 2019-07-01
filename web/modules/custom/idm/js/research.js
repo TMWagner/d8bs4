@@ -453,14 +453,9 @@
     $(Drupal.attachBehaviors());
     // $('.name-group').dialog('close');
 
-    /**
-     * Debug code
-     */
 
 
-    //@todo WORKING - sort of.
-    //@todo CLose to working - problem still is that it only works once (because doc ready only fires once)
-    // Maybe move it?
+
     $( "div" ).on( "click", ".name-group-name", function(evt) {
       console.log("**** Delegated click *****");
 

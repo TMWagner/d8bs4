@@ -189,7 +189,6 @@ function idm_page_attachments(array &$attachments) {
   /**
    * Attach Library for Profile related pages
    * Expected: /Profile/nnn/mobile
-   *
    */
   $urlparts = explode('/', $path);
   if (isset($urlparts[3])) {

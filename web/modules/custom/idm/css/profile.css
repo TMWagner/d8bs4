@@ -5,9 +5,48 @@
 .profile-bio-link-wrap {
   background-color: #09212E; }
 
+#profile-accordion {
+  padding-bottom: 2em; }
+
+.ui-accordion .ui-accordion-header {
+  margin-bottom: 1em; }
+
+h3.ui-accordion-header {
+  color: #0076A9; }
+
 #people-profile-mobile .view-profile-basic-content {
   color: white; }
 #people-profile-mobile .name-group-title {
   color: white; }
+
+#profile-accordion .ui-accordion-header-collapsed {
+  margin-bottom: .9em; }
+
+.ui-accordion-content.ui-accordion-content-active {
+  background-color: #09212E;
+  color: white; }
+
+#profile-accordion .ui-state-active {
+  background: white; }
+
+.profile.btn-primary {
+  background-color: #f1815e;
+  border: none;
+  display: block;
+  width: 10em;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+  font-size: smaller; }
+
+a.profile:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none; }
+
+.profile.btn-primary:hover, .profile.btn-primary:focus {
+  background-color: #f1815e; }
+
+.profile-button-wrap {
+  padding-bottom: 1em; }
 
 /*# sourceMappingURL=profile.css.map */

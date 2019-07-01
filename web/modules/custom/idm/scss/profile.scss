@@ -15,6 +15,17 @@
 .profile-bio-link-wrap {
   background-color: $idm_blue_black;
 }
+#profile-accordion {
+  padding-bottom: 2em;
+}
+
+.ui-accordion .ui-accordion-header {
+  margin-bottom: 1em;
+}
+
+h3.ui-accordion-header {
+  color: $idm_base_blue;
+}
 
 #people-profile-mobile {
   .view-profile-basic-content {
@@ -23,4 +34,42 @@
   .name-group-title {
     color: white;
   }
+}
+
+#profile-accordion .ui-accordion-header-collapsed {
+  margin-bottom: .9em;
+}
+
+.ui-accordion-content.ui-accordion-content-active {
+  background-color: $idm_blue_black;
+  color: white;
+}
+
+#profile-accordion .ui-state-active {
+  background: white;
+}
+
+.profile.btn-primary {
+  background-color: $idm_orange;
+  border: none;
+  display: block;
+  width: 10em;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+  font-size: smaller;
+
+}
+
+a.profile:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none;
+}
+
+.profile.btn-primary:hover, .profile.btn-primary:focus {
+  background-color: $idm_orange;
+}
+
+.profile-button-wrap {
+  padding-bottom: 1em;
 }

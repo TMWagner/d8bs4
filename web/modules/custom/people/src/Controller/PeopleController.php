@@ -276,22 +276,6 @@ class PeopleController extends ControllerBase {
     ];
 
 
-//    $output['author'] = [
-//      '#type' => 'details',
-//      '#title' => $this
-//        ->t('EXPLORE IDM’S OPEN-SOURCE SOFTWARE RESOURCES'),
-//    ];
-//    $output['author']['name'] = array(
-//      '#markup' => '<p>IDM provides innovative disease modeling tools freely to the research community to aid in reaching our goal of disease eradication</p>',
-//    );
-
-
-//    $output['author']['name'] = array(
-//      '#type' => 'textfield',
-//      '#title' => $this
-//        ->t('Name'),
-//    );
-
 
     // Set view arguments
     $profile_id = 'profile_basic_content';
@@ -308,9 +292,11 @@ class PeopleController extends ControllerBase {
 
     //  Build the basic profile display
     //  Added "Row" to sibling DIV with "container.html.twig"
+    //@todo This is the outer wrap from the whole page
+
     $output['profile'] = array (
       '#type' => 'container',
-      '#prefix' => '<div class="profile-bio-link-wrap" id="profilemodal">',
+      '#prefix' => '<div class="profile-bio-link-wrap">',
       '#suffix' => '</div>',
     );
 
@@ -323,46 +309,99 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     ];
 
+    //@todo wasted div?  I think we can get rid of this and save a layer on the array?
+    // Eh - maybe not... we need an overall accordion wrapper
     //Build wrapper for accordion group
     $output['profile']['dynamic'] = array (
       '#type' => 'container',
       '#attributes' => [
         'class' => [
-          'accordion',
+          'profile-accordion container-fluid',
         ],
+        //@todo Trigger for accordion
         'id' => 'profile-accordion',
       ],
     );
 
-    // https://jqueryui.com/accordion/
-    // @todo See sandbox http://sandbox/research/jq.html
-    //Accordion Group Items
-    $output['profile']['dynamic']['bio'] = array (
-      '#type' => 'container',
-            '#prefix' => '<div class="card"><div class="card-header" id="profile-bio">',
-            '#suffix' => '</div></div>',
+
+
+    $output['profile']['dynamic']['bio']['header'] = array (
+      '#type' => 'markup',
+      '#markup' => '<h3>Biography</h3>',
+    );
+    //@todo we may need to make this a container div
+    $output['profile']['dynamic']['bio']['content'] = array (
+      '#type' => 'markup',
+      '#markup' => '<p>Bio Content</p>',
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
     );
 
+    /*
+     * ITEM (Publications)
+     */
+    //Accordion Group Items (BIO Group)
+    $output['profile']['dynamic']['pubs']['header'] = array (
+      '#type' => 'markup',
+      '#markup' => '<h3>Publications</h3>',
+    );
+    $output['profile']['dynamic']['pubs']['content'] = array (
+      '#type' => 'markup',
+      '#markup' => '<p>Publications Content</p>',
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    );
+
+    /*
+     * ITEM (Projects)
+     */
+    //Accordion Group Items (BIO Group)
+    $output['profile']['dynamic']['proj']['header'] = array (
+      '#type' => 'markup',
+      '#markup' => '<h3>Projects</h3>',
+    );
+    $output['profile']['dynamic']['proj']['content'] = array (
+      '#type' => 'markup',
+      '#markup' => '<p>Projects content</p>',
+      '#prefix' => '<div>',
+      '#suffix' => '</div>',
+    );
+
+
+    /*
+     * Close Button
+     */
+    //Accordion Group Items (BIO Group)
+    $output['profile']['close'] = array (
+      '#type' => 'markup',
+      '#markup' => 'Close Profile',
+      '#prefix' => '<div class="profile-button-wrap"> <a class="profile btn btn-primary">',
+      '#suffix' => '</a></div>',
+    );
+
+
+
+//    <a class="btn btn-primary" href="#" role="button">Link</a>
+    //
+//    // Build the button group
+//    // use theme to build wrapper around content
+//    //@todo We are going to have to build a custom theme for this
+//    $output['profile']['dynamic']['bio']['button'] = array (
+//      '#type' => 'markup',
+//      '#markup' => '<p>Bio</p>',
+//      '#prefix' => '<div class="button-dev">',
+//      '#suffix' => '</div>',
+//    );
+
+
+
+//    $output['profile']['dynamic']['publications'] = array (
+//      '#type' => 'markup',
+//      '#markup' => '<h2>Item one</h2><p>Publications</p>',
+//      '#prefix' => '<div class="Publications">',
+//      '#suffix' => '</div>',
 //
-    // Build the button group
-    // use theme to build wrapper around content
-    //@todo We are going to have to build a custom theme for this
-    $output['profile']['dynamic']['bio']['button'] = array (
-      '#type' => 'markup',
-      '#markup' => '<p>Bio</p>',
-      '#prefix' => '<div class="button-dev">',
-      '#suffix' => '</div>',
-    );
-
-
-
-    $output['profile']['dynamic']['publications'] = array (
-      '#type' => 'markup',
-      '#markup' => '<h2>Item one</h2><p>Publications</p>',
-      '#prefix' => '<div class="Publications">',
-      '#suffix' => '</div>',
-
-    );
+//    );
 
 
     return $output;

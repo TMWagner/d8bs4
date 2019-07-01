@@ -14,9 +14,10 @@
     //@todo Remove for production
     console.log(">>> starting research.js...");
 
-    $( "#profile-accordion-dev" ).accordion({
+    $( "#profile-accordion" ).accordion({
       animate: 200,
-      active: true
+      active: true,
+      collapsible: true
     });
 
 
