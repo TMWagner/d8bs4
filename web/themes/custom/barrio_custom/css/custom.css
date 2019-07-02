@@ -267,31 +267,6 @@ a.publication-link-external:hover {
   margin-bottom: .1rem;
   background-color: #6f6f6f; }
 
-.profile_bio_static.col-4 {
-  background-color: #292929;
-  float: left; }
-
-#profile-content {
-  color: white;
-  font-size: .8em; }
-
-.view-profile-basic-content {
-  color: white; }
-
-.people_bio_dynamic {
-  background-color: #292929; }
-
-.profile-swap {
-  overflow-y: scroll;
-  max-height: 25em;
-  margin-bottom: 2em;
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto; }
-
-.profile-swap p {
-  margin-right: 10px; }
-
 .people-card {
   width: 15rem;
   margin: .2rem;
@@ -527,6 +502,10 @@ p.vertical-text {
   width: 20px;
   height: 20px; }
 
+.jq-dialog-x.fa-times::before {
+  content: "\f00d";
+  font-size: 20px; }
+
 .top {
   top: 0; }
 
@@ -555,7 +534,8 @@ p.vertical-text {
   color: #333333; }
 
 .ui-widget.ui-widget-content {
-  border: none; }
+  border: none;
+  padding: 0; }
 
 .ui-widget-header {
   border: none;
@@ -575,12 +555,62 @@ p.vertical-text {
 button {
   display: none;
   color: #f1815e;
-  background-color: #292929;
+  background-color: transparent;
   border: none; }
 
 .jq-dialog-x .fas .fa-times {
   position: absolute;
   top: 5px;
   right: 5px; }
+
+/**
+/Migrate Code
+//This all goes to profile.scss
+ */
+.ui-widget-content {
+  color: #333333; }
+
+.view-profile-basic-content {
+  color: white; }
+
+.people_bio_dynamic {
+  background-color: white; }
+
+.profile-swap {
+  overflow-y: scroll;
+  max-height: 25em;
+  margin-bottom: 2em;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto; }
+
+.profile-swap p {
+  margin-right: 10px; }
+
+#drupal-modal {
+  padding: 0; }
+
+#drupal-modal > #profile-content {
+  margin: 0px;
+  padding: 0px; }
+
+#profile-content {
+  color: black;
+  font-size: .8em;
+  padding: 0px; }
+
+.profile_bio_static.col-4 {
+  background-color: #292929;
+  float: left; }
+
+.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
+  background-color: transparent; }
+
+#drupal-modal {
+  z-index: 5;
+  position: relative; }
+
+.jq-dialog-x.fas.fa-times {
+  position: relative; }
 
 /*# sourceMappingURL=custom.css.map */

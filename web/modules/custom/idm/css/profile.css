@@ -49,4 +49,9 @@ a.profile:not([href]):not([tabindex]) {
 .profile-button-wrap {
   padding-bottom: 1em; }
 
+#profile-bio {
+  overflow: scroll;
+  height: 200px;
+  font-size: smaller; }
+
 /*# sourceMappingURL=profile.css.map */

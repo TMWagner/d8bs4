@@ -4,6 +4,10 @@
 
 
 
+//SCSS for Desktop (Dialog)
+
+
+
 //CSS for mobile profile
 #people-profile-mobile h5 {
   color: $idm_black;
@@ -73,3 +77,24 @@ a.profile:not([href]):not([tabindex]) {
 .profile-button-wrap {
   padding-bottom: 1em;
 }
+
+#profile-bio {
+  overflow:scroll;
+  height:200px;
+  font-size: smaller;
+}
+
+
+
+//body::-webkit-scrollbar {
+//  width: 1em;
+//}
+//
+//body::-webkit-scrollbar-track {
+//  -webkit-box-shadow: inset 0 0 6px rgba(57, 180, 94, 0.3);
+//}
+//
+//body::-webkit-scrollbar-thumb {
+//  background-color: #ffeb3b;
+//  outline: 1px solid #ff6315;
+//}

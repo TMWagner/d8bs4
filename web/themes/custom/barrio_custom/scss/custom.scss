@@ -348,40 +348,6 @@ a.publication-link-external:hover {
 }
 
 
-.profile_bio_static.col-4 {
-  background-color: $background_dark_grey;
-  //$todo Why do we have to do this????
-  float: left;
-}
-
-#profile-content {
-  color: white;
-  font-size: .8em;
-}
-
-
-.view-profile-basic-content {
-  color: white;
-}
-.people_bio_dynamic {
-  background-color: $background_dark_grey;
-  //overflow-y: scroll;
-  //max-height: 35em;
-}
-
-.profile-swap {
-  overflow-y: scroll;
-  max-height: 25em;
-  margin-bottom: 2em;
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.profile-swap  p {
-  margin-right: 10px;
-}
-
 
 .people-card {
   width: 15rem;
@@ -745,6 +711,12 @@ p.vertical-text {
   width:20px;
   height:20px;
 }
+
+.jq-dialog-x.fa-times::before {
+  content: "\f00d";
+  font-size: 20px;
+}
+
 .top{top:0}
 .middle{top:50%;margin-top:-10px;/*half of the .box height*/}
 .bottom{bottom:0}
@@ -762,6 +734,7 @@ p.vertical-text {
 
 .ui-widget.ui-widget-content {
   border: none;
+  padding:0;
 }
 .ui-widget-header {
   border: none;
@@ -786,7 +759,7 @@ p.vertical-text {
 button {
   display: none;
   color: $idm_orange;
-  background-color: $background_dark_grey;
+  background-color: transparent;
   border: none;
 }
 
@@ -796,6 +769,87 @@ button {
   right: 5px;
 }
 //End X CSS
+
+
+
+
+
+/**
+/Migrate Code
+//This all goes to profile.scss
+ */
+//@todo remove (dev purpose only
+.ui-widget-content {
+  color: #333333;
+}
+
+
+
+.view-profile-basic-content {
+  color: white;
+}
+.people_bio_dynamic {
+  background-color: white;
+  //overflow-y: scroll;
+  //max-height: 35em;
+}
+
+.profile-swap {
+  overflow-y: scroll;
+  max-height: 25em;
+  margin-bottom: 2em;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profile-swap  p {
+  margin-right: 10px;
+}
+
+
+#drupal-modal {
+  padding: 0;
+}
+
+#drupal-modal > #profile-content {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+#profile-content {
+  color: black;
+  font-size: .8em;
+  padding: 0px
+}
+
+.profile_bio_static.col-4 {
+  background-color: $background_dark_grey;
+  //$todo Why do we have to do this????
+  float: left;
+}
+
+//This is to position the X close button
+//Add position attribute
+//Add Z index
+
+.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
+  background-color: transparent;
+}
+
+#drupal-modal {
+  z-index: 5;
+  position: relative;
+}
+//and the X
+//@todo really ugly hack!
+.jq-dialog-x.fas.fa-times {
+  position: relative;
+}
+
+//End Migrate code
+
 
 
 
