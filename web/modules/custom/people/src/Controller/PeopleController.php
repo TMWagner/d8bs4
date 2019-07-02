@@ -332,8 +332,8 @@ class PeopleController extends ControllerBase {
     //@todo we may need to make this a container div
     $output['profile']['dynamic']['bio']['content'] = array (
       '#type' => 'markup',
-      '#markup' => '<p>Bio Content</p>',
-      '#prefix' => '<div>',
+      '#markup' => $this->people_bio($uid),
+      '#prefix' => '<div id="profile-bio">',
       '#suffix' => '</div>',
     );
 
