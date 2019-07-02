@@ -43,6 +43,9 @@
   $(document).on("dialogopen", ".ui-dialog", function (event, ui) {
     // Do work inside the dialog
     $('.ui-dialog-titlebar-close').addClass("jq-dialog-x fas fa-times").removeClass('ui-dialog-titlebar-close');
+    // $('.people_bio_dynamic > .row').before("<h2>test</h2>");
+    $('.people_bio_dynamic > .row').before( $(".ui-dialog-titlebar") );
+
   });
 
 
@@ -52,7 +55,6 @@
   // });
 
 
-  //@todo no idea how this is working...
   //Wrap thumbnails
   $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jquery'></div>");
   $(".research-team-member").wrapAll("<div class='research-team-member-group d-flex jquery'></div>");
@@ -400,9 +402,9 @@
 
       // Wrap create a string with mix of variables and literals
       $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
-          "data-dialog-options='{&quot;width&quot;:900}'  " +
+          "data-dialog-options='{&quot;width&quot;:800}'  " +
           "href='/profile/" + uid + "'></a>");
-    });
+      });
 
 
   // <a href="/admin/config/development/sync/diff/block.block.bartik.search" class="use-ajax" data-accepts="application/vnd.drupal-modal" data-dialog-options="{"width":500}" >Show me a 500px wide modal</a>
@@ -472,11 +474,11 @@
     });
 
 
-    //Try this
-    $( window ).dialogopen(function() {
-      console.log(">>>>>> Resizing dialog?");
-    });
-    //End try
+    // //Try this
+    // $( window ).dialogopen(function() {
+    //   console.log(">>>>>> Resizing dialog?");
+    // });
+    // //End try
 
 
   }
