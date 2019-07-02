@@ -26,14 +26,11 @@
     has_parent ? 'form-group',
     has_parent ? 'has-parent-class',
     no_swap ? 'row',
-    people_profile_mobile_flag ? 'modal-dialog',
     'container-html-twig',
   ]
 %}
 {#{{ dump(_context|keys) }}#}
-{% if people_profile_mobile_flag == true %}
-  <div{{ attributes.addClass(classes) }} role="document">{{ children }}</div>
-{% else %}
+
   <div{{ attributes.addClass(classes) }}>{{ children }}</div>
-{% endif %}
+
 

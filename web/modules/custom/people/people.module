@@ -31,8 +31,7 @@ function people_help($route_name, RouteMatchInterface $route_match) {
  * Declare a new theme
  */
 function people_theme() {
-
-  // No idea if this really does anything
+  //@todo needed anymore?
   return [
     'people_profile' => [
       'variables' => [
