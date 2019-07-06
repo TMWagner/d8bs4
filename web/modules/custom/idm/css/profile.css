@@ -23,7 +23,7 @@ h3.ui-accordion-header {
   margin-bottom: .9em; }
 
 .ui-accordion-content.ui-accordion-content-active {
-  background-color: #09212E;
+  background-color: #09354D;
   color: white; }
 
 #profile-accordion .ui-state-active {
@@ -43,9 +43,6 @@ a.profile:not([href]):not([tabindex]) {
   color: white;
   text-decoration: none; }
 
-.profile.btn-primary:hover, .profile.btn-primary:focus {
-  background-color: #f1815e; }
-
 .profile-button-wrap {
   padding-bottom: 1em; }
 
@@ -53,5 +50,14 @@ a.profile:not([href]):not([tabindex]) {
   overflow: scroll;
   height: 200px;
   font-size: smaller; }
+
+.container.container-profile-mobile {
+  padding: 0; }
+
+.modal-header.people-profile-mobile-html {
+  border-bottom: none; }
+
+.profile.btn-primary:hover, .profile.btn-primary:focus {
+  background-color: #f1815e; }
 
 /*# sourceMappingURL=profile.css.map */
