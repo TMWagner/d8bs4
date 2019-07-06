@@ -268,74 +268,11 @@
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
     // Load the node and insert...
-    $( ".insert" ).load(data + " .rlp-detail-more");
-
-    $("#rlpModal").modal();
-
-    $('#rlpModal').on('shown.bs.modal', function (e) {
-      console.log("**** (fnClickCardMobile) Modal has fired and should be visible");
-
-      //Clean up the Dom
-      //@todo removed d-flex from parent wrapper for mobile (to stack two sections)
-      $(".research-team").wrapAll("<div class='container-flex team-card-thumbnail-wrap  research-js'></div>");
-      $(".research-team-member").wrapAll("<div class='research-team-member-group  research-js'></div>");
-      $(".research-team-member-group").removeClass(".d-flex");
+    $( ".insert" ).load(data + " .rlp-detail-more", loadCompleteMobile);
 
 
-      var uid = null;
-      // //Loop through thumbnails ( This is all of them lead and team)
-      // //Add appropriate link to each.
-      console.log('loop through the thumbnails....');
-      $(".team-profile-thumbnail").each(function( index ) {
-        uid = $( this ).data("uid");
-
-        // Wrap create a string with mix of variables and literals (Desktop /dialog version)
-        // $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
-        //     "data-dialog-options='{&quot;width&quot;:800}'  " +
-        //     "href='/profile/" + uid + "'></a>");
-
-        $(this).wrapAll("<a class='mobile-profile'  " + "href='/profile/" + uid + "/mobile'></a>");
-      });
 
 
-      //init the carousel for team members display
-      console.log("(fnClickCard: fire Slick init....");
-      $('.research-team-member-group').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        responsive: [
-          {
-            breakpoint: 992,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 700,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 650,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 500,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          }
-        ]
-      });
-    })
 
   }
   // End Function
@@ -625,7 +562,80 @@
     // End of Desktop/tablet
   }
 
+  /**
+   * Post load (mobile)
+   */
+  function loadCompleteMobile() {
+    //Finish post load mobile
+    console.log("(loadCompleteMobile: start post load...");
+    $("#rlpModal").modal();
 
+    $('#rlpModal').on('shown.bs.modal', function (e) {
+      console.log("**** (fnClickCardMobile) Modal has fired and should be visible");
+
+      //Clean up the Dom
+      //@todo removed d-flex from parent wrapper for mobile (to stack two sections)
+      $(".research-team").wrapAll("<div class='container-flex team-card-thumbnail-wrap  research-js'></div>");
+      $(".research-team-member").wrapAll("<div class='research-team-member-group  research-js'></div>");
+      $(".research-team-member-group").removeClass(".d-flex");
+
+
+      var uid = null;
+      // //Loop through thumbnails ( This is all of them lead and team)
+      // //Add appropriate link to each.
+      console.log('loop through the thumbnails....');
+      $(".team-profile-thumbnail").each(function( index ) {
+        uid = $( this ).data("uid");
+
+        // Wrap create a string with mix of variables and literals (Desktop /dialog version)
+        // $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
+        //     "data-dialog-options='{&quot;width&quot;:800}'  " +
+        //     "href='/profile/" + uid + "'></a>");
+
+        $(this).wrapAll("<a class='mobile-profile'  " + "href='/profile/" + uid + "/mobile'></a>");
+      });
+
+
+      //init the carousel for team members display
+      console.log("(fnClickCard: fire Slick init....");
+      $('.research-team-member-group').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 700,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 650,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          }
+        ]
+      });
+    })
+
+  }
 
 
 
@@ -738,13 +748,6 @@
       });
       evt.stopPropagation();
     });
-
-
-    // //Try this
-    // $( window ).dialogopen(function() {
-    //   console.log(">>>>>> Resizing dialog?");
-    // });
-    // //End try
 
 
   }
