@@ -12,47 +12,55 @@
   /* CODE GOES HERE  - Code Wrap*/
 
 
-  console.log(">>> starting research.js...");
   var windowType = checkMod();
 
-  // Shorthand for $( document ).ready()
   $(function() {
 
-    // Attach the handler for filter
-    $('.btn-filter-selector').click(fnClickFilter);
+    //@todo refactored
+    // // Attach the handler for filter
+    // $('.btn-filter-selector').click(fnClickFilter);
 
     var cardClicked = $('.research-card');
 
+    // Figure out what the calling URL is
+    var urlParameter = null;
+    var urlString = $(location).attr('pathname').split("/");
+    if (urlString.length == 3) {
+      urlParameter = urlString[2];
+      console.log(">>> Incoming parameter is: " + urlParameter);
+    }
+
+
     // Attach handler for mobile or Desktop
     if (windowType === 'small') {
+      //@todo call either click function or url driven
       cardClicked.click(fnClickCardMobile);
+      //@todo Add call to show
+      // if (urlParameter) fnShowCardMobile(urlParameter);
 
     }
     else {
       cardClicked.click(fnClickCard);
+      if (urlParameter && (urlParameter !== 'all'))
+        console.log(">>> Calling urlParameter with " + urlParameter);
+        fnShowCard(urlParameter);
     }
-
-
-    // End debug code
 
 
   });
   // End Document ready
 
-  // catch dialog if opened within a viewport smaller than the dialog width
-  $(document).on("dialogopen", ".ui-dialog", function (event, ui) {
-    // Do work inside the dialog
-    $('.ui-dialog-titlebar-close').addClass("jq-dialog-x fas fa-times").removeClass('ui-dialog-titlebar-close');
-    // $('.people_bio_dynamic > .row').before("<h2>test</h2>");
-    $('.people_bio_dynamic > .row').before( $(".ui-dialog-titlebar") );
 
+
+
+
+
+  //Trigger dialog open (for jQuery dialog)
+  $(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+    $('.ui-dialog-titlebar-close').addClass("jq-dialog-x fas fa-times").removeClass('ui-dialog-titlebar-close');
+    $('.people_bio_dynamic > .row').before( $(".ui-dialog-titlebar") );
   });
 
-
-
-  // jQuery( "#drupal-modal" ).dialog({
-  //   height: 'auto'
-  // });
 
 
   //Wrap thumbnails
@@ -84,6 +92,7 @@
 
     if (windowType !== oldWindowType) {
       // console.log("resetting window type - now is: " + windowType);
+      $('.xclosebox').remove();
 
 
       //small to medium
@@ -130,6 +139,120 @@
 
 
 
+  /**
+   * fnShowCard
+   * This function is called directly from a url. For example:
+   * Expected parameter is a text string with the title of the research node
+   * (2019/04/17: tmw)
+   * @todo position window to called card
+   *
+   */
+  function fnShowCard(urlParameter) {
+    console.log(">>> Begin fnShowCard <<<<");
+    console.log("(fnShowCard) Did we get the parm?? Should be: " + urlParameter);
+
+    var positionCurrant;
+    var positionNext;
+    var data;
+
+    // @todo carried cardClicked over from last function - should refactor it.
+    var cardClicked = $('h4[data-research=' + urlParameter +']').closest('.research-card');
+
+    // First find the end of the row
+    cardText = cardClicked.find('h4').html();
+    console.log("cardClicked is: " + cardText);
+    //@todo verify that we received a valid parameter (how?)
+
+    var currentCard = cardClicked;
+    var nextCard = $(this).next();
+    var nextCard = currentCard.next();
+    var moreCards = true;
+
+    var cardTextNext = nextCard.find('h4').html();
+    console.log("cardTextNext  is: " + cardTextNext);
+
+    // Check for last element
+    if (nextCard.length !== 0) {
+      positionCurrant = currentCard.position().top;
+      positionNext = nextCard.position().top;
+
+      while (positionCurrant === positionNext && moreCards) {
+
+        //@todo next 2 lines are for dev.. remove
+        var textCurrant = currentCard.find("h4").text();
+        var textNext = nextCard.find("h4").text();
+
+        //@todo Remove before flight
+        console.log("In loop- Currant card is: " + textCurrant);
+        console.log("In loop- Next Card is: " + textNext);
+
+        currentCard = nextCard;
+        nextCard = currentCard.next();
+
+        if (nextCard.length === 0) {
+          // console.log("Next card length 0: Break out of loop");
+          moreCards = false;
+        }
+        else {
+          positionCurrant = currentCard.position().top;
+          positionNext = nextCard.position().top;
+          console.log("position(loop) - currant: " + positionCurrant);
+          console.log("position(loop) - next: " + positionNext);
+        }
+      } // end While
+    } // End if
+    else {
+      // We hit the end - currentCard is the last element
+      // data = currentCard.find('h4').data("node-url");
+      console.log('^*^*^*^*We clicked the last one: &*&*&*&*& ');
+
+    }
+
+    var cardText = currentCard.find("h4").text();
+    data = cardClicked.find('h4').data("node-url");
+
+    console.log( "is this it? " + cardText);
+    console.log( ">>>> Data is: " + data);
+
+
+    //@todo I could have just used the text instead of data attribute.
+    var dataResearch = cardClicked.find('h4').data("research");
+    console.log("1. >>> Research tool is: " + dataResearch);
+    // We've created the wrapper with Class="d-none"
+    // Make sure its loaded before turning
+    // on. Otherwise, we'll get a "jump".
+    currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
+    console.log(data);
+    console.log("2. >>> attempt to insert..." + data);
+
+    $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
+
+
+
+    // Turn off all other active cards (shouldn't matter but... )
+    $(".tools-card.card-selected").toggleClass("card-selected");
+    $("#tool-display").remove();
+
+
+    // Turn off any "display content"
+    // Toggle selected on this card.
+    cardClicked.toggleClass('card-selected');
+
+
+  }
+  // End of fnShowCard
+
+
+
+  // End fnShowCardMobile
+
+  //
+  //END new code
+
+
+
+
+
 
   /**
    * fnClickCardMobile
@@ -139,7 +262,8 @@
     var cardClicked = $(this);
     var data = cardClicked.find('h4').data("node-url");
 
-    console.log("title is: " + cardClicked.find('h4').html());
+    // console.log("title is: " + cardClicked.find('h4').html());
+    // console.log("url is: " + data);
     //@todo make sure event is not already bound
     $("#rlpModal").off();
 
@@ -251,8 +375,159 @@
     $("#rlpProfile").modal();
   }
 
+  /**
+   * fnShowCard
+   * This function is called directly from a url. For example:
+   * Expected parameter is a text string with the title of the research node
+   */
+  function fnShowCard(urlParameter) {
+    console.log(">>> Begin fnShowCard <<<<");
+    console.log("(fnShowCard) Did we get the parm?? Should be: " + urlParameter);
+
+    var positionCurrant;
+    var positionNext;
+    var data;
+
+    // @todo carried cardClicked over from last function - should refactor it.
+    var cardClicked = $('h4[data-research=' + urlParameter +']').closest('.research-card');
+
+    // One of the cards was clicked - we need to turn off inserted content regardless
+    $('.insert').remove();
+    //@todo handle "X" cleanup (see tools)
+
+
+    // First find the end of the row
+    var currentCard = cardClicked;
+    var nextCard = currentCard.next();
+    var moreCards = true;
+
+
+    // Check for last element
+    if (nextCard.length !== 0) {
+      positionCurrant = currentCard.position().top;
+      positionNext = nextCard.position().top;
+
+      console.log("position - currant: " + positionCurrant);
+      console.log("position - next: " + positionNext);
+
+      while (positionCurrant === positionNext && moreCards) {
+
+        //@todo Remove before flight
+        console.log("In loop- Currant card is: ");
+        console.log("In loop- Next Card is: ");
+
+        currentCard = nextCard;
+        nextCard = currentCard.next();
+
+        if (nextCard.length === 0) {
+          console.log("End of LOOP " + nextCard.length);
+          moreCards = false;
+        }
+        else {
+          positionCurrant = currentCard.position().top;
+          positionNext = nextCard.position().top;
+          console.log("position(loop) - currant: " + positionCurrant);
+          console.log("position(loop) - next: " + positionNext);
+        }
+
+      } //End While
+    } //End IF
+
+    //@todo There is no Else - Nothing to do...
+    else {
+
+      // We hit the end - currentCard is the last element
+      // data = currentCard.find('h4').data("node-url");
+      // console.log( 'We clicked the last one: ' + data);
+      console.log('^*^*^*^*We clicked the last one: &*&*&*&*& ');
+
+    }
+
+
+    var cardText = currentCard.find("h4").text();
+    data = cardClicked.find('h4').data("node-url");
+
+    console.log( "is this it? " + cardText);
+    console.log( ">>>> Data is: " + data);
+
+
+    //@todo I could have just used the text instead of data attribute.
+    var dataResearch = cardClicked.find('h4').data("research");
+    console.log(">>> Research tool is: " + dataResearch);
+    // We've created the wrapper with Class="d-none"
+    // Make sure its loaded before turning
+    // on. Otherwise, we'll get a "jump".
+    currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
+    console.log(data);
+    console.log(">>> attempt to insert..." + data);
+
+
+    $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
+
+
+
+    //Calculate position for detail content
+    //@todo not used - remove
+    // var positionClick = $(this).position().top;
+
+
+    // Turn off all other active cards
+    $(".research-card.card-selected").toggleClass("card-selected");
+    $("#tool-display").remove();
+
+
+    // Toggle selected on this card.
+    cardClicked.toggleClass('card-selected');
+
+
+
+    // End of Desktop/tablet
+
+    // End insert
+
+  }
+  //End FnShowCard
 
   /**
+   * fnShowCardMobile
+   * Logic:
+   *  1. Determine which card / URL to fetch content for
+   *  2. Build out the template
+   *  3. Display with Bootstrap Modal
+   */
+  function fnShowCardMobile(urlParameter) {
+
+    // console.log(">>> Begin fnShowCardMobile: ");
+    // console.log("Did we get the parm?? Should be: " + toolParameter);
+
+    if (urlParameter !== 'all') {
+
+      // @todo carried cardClicked over from last function - should refactor it.
+      var cardClicked = $('h4[data-tool=' + urlParameter + ']').closest('.tools-card');
+      var data = cardClicked.find('h4').data("node-url");
+
+      // console.log("title is: " + cardClicked.find('h4').html());
+
+      //build out the template.
+      //title
+      $("#ModalTitle").text(cardClicked.find('h4').html());
+
+      // Load the node and insert...
+      $( ".insert" ).load(data + " .rlp-detail-more");
+
+      $("#rlpModal").modal();
+
+      //@todo clean up DOM? Or good to go?
+    }
+  }
+
+
+
+
+
+
+
+    /**
    * fnClickCard
    */
   function fnClickCard() {
@@ -263,7 +538,8 @@
 
     // One of the cards was clicked - we need to turn off inserted content regardless
     $('.insert').remove();
-    //@todo handle "X" cleanup (see tools)
+    $('.xclosebox').remove();
+
 
     if ($(this).hasClass('card-selected')) {
       // Turn off Card selected
@@ -327,7 +603,6 @@
       console.log( ">>>> Data is: " + data);
 
 
-
       //@todo I could have just used the text instead of data attribute.
       var dataResearch = cardClicked.find('h4').data("research");
       console.log(">>> Research tool is: " + dataResearch);
@@ -341,11 +616,11 @@
 
       $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
-      //@todo grab this next div.
-      // $(this).next().css( "background-color", "red" );
+
 
       //Calculate position for detail content
-      var positionClick = $(this).position().top;
+      //@todo not used - remove
+      // var positionClick = $(this).position().top;
 
 
       // Turn off all other active cards
@@ -375,11 +650,15 @@
     // Content loaded:
     // Wrap the entire group in div for flex
     // Turn on inserted content.
-    console.log('%%%%% in loadComplete');
+    console.log('*************  In function loadComplete ******************');
     $('.research-content-wrapper').removeClass("d-none");
     // @todo Team lead as well?
     $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
     $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
+
+    //Turn on X
+    $('.research-card.card-selected')
+        .prepend('<div class="xclosebox top right"><span class="xclose fas fa-times"></span></div>');
 
     // windowType = checkMod();
     if (windowType === 'small') {
@@ -407,7 +686,6 @@
       });
 
 
-  // <a href="/admin/config/development/sync/diff/block.block.bartik.search" class="use-ajax" data-accepts="application/vnd.drupal-modal" data-dialog-options="{"width":500}" >Show me a 500px wide modal</a>
 
     //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {

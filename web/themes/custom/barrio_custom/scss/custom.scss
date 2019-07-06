@@ -230,7 +230,35 @@ h3.how-panel {
   box-shadow: none;
 }
 
+/**
+  * General formatting
+ */
+
+.btn.btn-outline-primary.idm-button-main {
+  color: #f1815e;
+  background: white;
+  border-color: #f1815e;
+  margin: 0 .5em 1em;
+}
+.button-hr hr {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  background-color: $idm_orange;
+  opacity: 0.9;
+  height: .5px;
+}
+
+//@todo this was created for research Desktop modal... might be a little too broad
+.team-card-thumbnail-wrap .field--type-entity-reference {
+  margin: 0 0 1.2em;
+  margin-bottom: 1.2em;
+  margin-bottom: 0px;
+}
+
 //Publications
+//@todo this should move to publications when that is isolated
 
 .clearfix {
   clear: both;

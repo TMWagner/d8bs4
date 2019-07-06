@@ -12,14 +12,9 @@
 
 
   //Determine Window size and set global var.
-  //@todo Is this fired outside of document ready?
   var windowType = checkMod();
-  // console.log("window type set at: " + windowType);
 
-
-  // Shorthand for $( document ).ready()
   $(function() {
-    // console.log( "ready!" );
 
     /**
      * Initialize tablet/Desktop windows
@@ -63,7 +58,6 @@
       cardClicked.click(fnClickCardMobile);
       if (toolParameter) fnShowCardMobile(toolParameter);
     } else {
-      // console.log("attach handler for standard window...");
 
       //we are loading both the desktop filter and the card handler
       $('.tools-filter-title').click(fnClickFilter);
@@ -93,6 +87,12 @@
 
   });
   // End Document ready
+
+
+
+
+
+
 
 
   /**
@@ -161,10 +161,6 @@
         //@todo next 2 lines are for dev.. remove
         var textCurrant = currentCard.find("h4").text();
         var textNext = nextCard.find("h4").text();
-
-        //@todo Remove before flight
-        console.log("In loop- Currant card is: " + textCurrant);
-        console.log("In loop- Next Card is: " + textNext);
 
         currentCard = nextCard;
         nextCard = currentCard.next();
@@ -318,8 +314,6 @@
     var filterClicked = $(this);
     var positionStart = $('.tools-filter-title:first').offset().left;
     var position = filterClicked.offset().left;
-
-    console.log(">>>> clickfilter");
 
 
     var functionTitle = filterClicked.find('p:first').html();
@@ -515,7 +509,6 @@
 
 
       $(".tools-card.card-selected").removeClass("card-selected");
-      //@todo turn on X
 
 
       $("#tool-display").remove();
