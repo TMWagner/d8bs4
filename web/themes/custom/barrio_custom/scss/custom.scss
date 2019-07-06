@@ -240,6 +240,12 @@ h3.how-panel {
   border-color: #f1815e;
   margin: 0 .5em 1em;
 }
+
+.close.idm-button-close {
+  color: $idm_orange;
+  text-shadow: none;
+  opacity: 1;
+}
 .button-hr hr {
   width: 100%;
   margin-left: auto;

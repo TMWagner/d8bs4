@@ -44,8 +44,9 @@ h3.ui-accordion-header {
   margin-bottom: .9em;
 }
 
+
 .ui-accordion-content.ui-accordion-content-active {
-  background-color: $idm_blue_black;
+  background-color: #09354D;
   color: white;
 }
 
@@ -65,14 +66,12 @@ h3.ui-accordion-header {
 
 }
 
+
 a.profile:not([href]):not([tabindex]) {
   color: white;
   text-decoration: none;
 }
 
-.profile.btn-primary:hover, .profile.btn-primary:focus {
-  background-color: $idm_orange;
-}
 
 .profile-button-wrap {
   padding-bottom: 1em;
@@ -83,6 +82,23 @@ a.profile:not([href]):not([tabindex]) {
   height:200px;
   font-size: smaller;
 }
+
+
+//CSS for mobile
+
+.container.container-profile-mobile {
+  padding: 0;
+}
+
+.modal-header.people-profile-mobile-html {
+  border-bottom: none;
+}
+.profile.btn-primary:hover, .profile.btn-primary:focus {
+  background-color: $idm_orange;
+}
+
+
+
 
 
 
