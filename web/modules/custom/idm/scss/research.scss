@@ -192,6 +192,12 @@ li.vl::before {
   color: white;
 }
 
+a.mobile-profile:hover,
+a.mobile-profile:active
+{
+  color: transparent;
+}
+
 .close.tool-content-close:hover {
   color: white;
 }
