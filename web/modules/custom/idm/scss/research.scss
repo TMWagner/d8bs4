@@ -102,11 +102,23 @@ li.vl::before {
 }
 
 .research-team a {
-  color: $idm-light_blue;
+  color: white;
 }
 .research-team a:hover{
   color: $idm_orange;
 }
+
+//@todo Should this be global?
+.research-team-member-group  .slick-prev::before, .slick-next::before {
+  color: $idm_orange;
+  opacity: 0.9;
+}
+
+.research-team-member-group .slick-next::before {
+  content: "→";
+  color: $idm_orange;
+}
+
 
 .field--type-image img, .field--name-field-user-picture img {
   margin: 0 !important;
@@ -149,14 +161,35 @@ li.vl::before {
   padding: 0 .5rem 1rem;
 }
 
+#rlpModal .modal-content {
+  background-color: $idm_blue_black;
+}
 
+
+#modal-body-template #research-modal {
+  color: white;
+  font-size: smaller;
+}
+
+#rlpModal .modal-header {
+  color: $idm_orange;
+  border-bottom: none;
+}
 
 .close.tool-content-close {
-  color: #ff6315;
+  color: $idm_orange;
   opacity: 1;
   font-weight: lighter;
   font-size: 2em;
   text-shadow: none;
+}
+#tools-modal {
+  color: $idm_orange;
+  opacity: 1;
+  text-shadow: none;
+}
+.team-profile-thumbnail {
+  color: white;
 }
 
 .close.tool-content-close:hover {

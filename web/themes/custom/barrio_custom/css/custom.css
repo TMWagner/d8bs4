@@ -181,6 +181,29 @@ h3.how-panel {
   border: 0;
   box-shadow: none; }
 
+/**
+  * General formatting
+ */
+.btn.btn-outline-primary.idm-button-main {
+  color: #f1815e;
+  background: white;
+  border-color: #f1815e;
+  margin: 0 .5em 1em; }
+
+.button-hr hr {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  background-color: #f1815e;
+  opacity: 0.9;
+  height: .5px; }
+
+.team-card-thumbnail-wrap .field--type-entity-reference {
+  margin: 0 0 1.2em;
+  margin-bottom: 1.2em;
+  margin-bottom: 0px; }
+
 .clearfix {
   clear: both; }
 
