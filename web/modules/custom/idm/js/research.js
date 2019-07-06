@@ -240,17 +240,6 @@
 
 
   }
-  // End of fnShowCard
-
-
-
-  // End fnShowCardMobile
-
-  //
-  //END new code
-
-
-
 
 
 
@@ -293,21 +282,24 @@
       $(".research-team-member-group").removeClass(".d-flex");
 
 
-      // var uid = null;
-      //Loop through thumbnails ( This is all of them lead and team)
-      //Add appropriate link to each.
-      // $(".team-profile-thumbnail").each(function( index ) {
-      //   //do some work
-      //   uid = $( this ).data("uid");
-      //   //@todo figuring out this string is much easier pasting from an html file.
-      //   $(this).wrapAll("<a  href=\"\\profile/" + uid + "/mobile\"></a>");
-      //   console.log(">>> Looping through team thumbnails: " + index + ": " + uid );
-      // });
+      var uid = null;
+      // //Loop through thumbnails ( This is all of them lead and team)
+      // //Add appropriate link to each.
+      console.log('loop through the thumbnails....');
+      $(".team-profile-thumbnail").each(function( index ) {
+        uid = $( this ).data("uid");
 
+        // Wrap create a string with mix of variables and literals (Desktop /dialog version)
+        // $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
+        //     "data-dialog-options='{&quot;width&quot;:800}'  " +
+        //     "href='/profile/" + uid + "'></a>");
 
+        $(this).wrapAll("<a class='mobile-profile'  " + "href='/profile/" + uid + "/mobile'></a>");
+      });
 
 
       //init the carousel for team members display
+      console.log("(fnClickCard: fire Slick init....");
       $('.research-team-member-group').slick({
         infinite: true,
         slidesToShow: 3,
@@ -520,10 +512,6 @@
       //@todo clean up DOM? Or good to go?
     }
   }
-
-
-
-
 
 
 

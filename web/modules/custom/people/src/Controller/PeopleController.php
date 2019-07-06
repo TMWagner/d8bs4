@@ -270,10 +270,10 @@ class PeopleController extends ControllerBase {
     $output = array();
 
     // A simple string item as render array.
-    //@todo remove before production
-    $output['header'] = [
-      '#markup' => '<h1>Mobile Profile DEV</h1>',
-    ];
+//    //@todo remove before production
+//    $output['header'] = [
+//      '#markup' => '<h1>Mobile Profile DEV</h1>',
+//    ];
 
 
 
@@ -375,7 +375,8 @@ class PeopleController extends ControllerBase {
     $output['profile']['close'] = array (
       '#type' => 'markup',
       '#markup' => 'Close Profile',
-      '#prefix' => '<div class="profile-button-wrap"> <a class="profile btn btn-primary">',
+      '#prefix' => '<div class="profile-button-wrap"> 
+                    <a class="profile btn btn-primary">',
       '#suffix' => '</a></div>',
     );
 
