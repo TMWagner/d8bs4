@@ -12,7 +12,9 @@
   $(function() {
     // do work here on document ready.
     //@todo Remove for production
-    console.log(">>> starting research.js...");
+    console.log(">>> starting research.js...!!");
+
+    $("a.btn-primary").click(windowBack);
 
     $( "#profile-accordion" ).accordion({
       animate: 200,
@@ -20,7 +22,9 @@
       collapsible: true
     });
 
-
+    function windowBack() {
+      window.history.go(-1);
+    }
 
   });
 
