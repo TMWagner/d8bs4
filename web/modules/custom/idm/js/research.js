@@ -92,6 +92,7 @@
 
     if (windowType !== oldWindowType) {
       // console.log("resetting window type - now is: " + windowType);
+      $('.xclosebox').remove();
 
 
       //small to medium
@@ -261,7 +262,8 @@
     var cardClicked = $(this);
     var data = cardClicked.find('h4').data("node-url");
 
-    console.log("title is: " + cardClicked.find('h4').html());
+    // console.log("title is: " + cardClicked.find('h4').html());
+    // console.log("url is: " + data);
     //@todo make sure event is not already bound
     $("#rlpModal").off();
 
@@ -474,9 +476,8 @@
     $("#tool-display").remove();
 
 
-    // Turn off any "display content"
     // Toggle selected on this card.
-    $(this).toggleClass('card-selected');
+    cardClicked.toggleClass('card-selected');
 
 
 
@@ -486,6 +487,39 @@
 
   }
   //End FnShowCard
+
+  /**
+   * fnShowCardMobile
+   * Logic:
+   *  1. Determine which card / URL to fetch content for
+   *  2. Build out the template
+   *  3. Display with Bootstrap Modal
+   */
+  function fnShowCardMobile(urlParameter) {
+
+    // console.log(">>> Begin fnShowCardMobile: ");
+    // console.log("Did we get the parm?? Should be: " + toolParameter);
+
+    if (urlParameter !== 'all') {
+
+      // @todo carried cardClicked over from last function - should refactor it.
+      var cardClicked = $('h4[data-tool=' + urlParameter + ']').closest('.tools-card');
+      var data = cardClicked.find('h4').data("node-url");
+
+      // console.log("title is: " + cardClicked.find('h4').html());
+
+      //build out the template.
+      //title
+      $("#ModalTitle").text(cardClicked.find('h4').html());
+
+      // Load the node and insert...
+      $( ".insert" ).load(data + " .rlp-detail-more");
+
+      $("#rlpModal").modal();
+
+      //@todo clean up DOM? Or good to go?
+    }
+  }
 
 
 
@@ -504,7 +538,8 @@
 
     // One of the cards was clicked - we need to turn off inserted content regardless
     $('.insert').remove();
-    //@todo handle "X" cleanup (see tools)
+    $('.xclosebox').remove();
+
 
     if ($(this).hasClass('card-selected')) {
       // Turn off Card selected
@@ -621,6 +656,10 @@
     $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
     $(".research-team-member").wrapAll("<div class='research-team-member-group  jqsource'></div>");
 
+    //Turn on X
+    $('.research-card.card-selected')
+        .prepend('<div class="xclosebox top right"><span class="xclose fas fa-times"></span></div>');
+
     // windowType = checkMod();
     if (windowType === 'small') {
       console.log(">>> Remove d-flex from research-team-member-group");
@@ -647,7 +686,6 @@
       });
 
 
-  // <a href="/admin/config/development/sync/diff/block.block.bartik.search" class="use-ajax" data-accepts="application/vnd.drupal-modal" data-dialog-options="{"width":500}" >Show me a 500px wide modal</a>
 
     //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {
