@@ -595,6 +595,9 @@
         $(this).wrapAll("<a class='mobile-profile'  " + "href='/profile/" + uid + "/mobile'></a>");
       });
 
+      $("#rlp-detail-mobile-footer-links").append($("#rlp-footer-link-source"));
+
+
 
       //init the carousel for team members display
       console.log("(fnClickCard: fire Slick init....");
