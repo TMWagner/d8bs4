@@ -220,10 +220,6 @@ a.publication-link-external:hover {
   text-decoration: none;
   text-align: center; }
 
-.profile-link-item a {
-  color: white;
-  font-size: smaller; }
-
 .profile-link-item a:hover {
   color: #f1815e;
   text-decoration: none; }
@@ -245,6 +241,9 @@ a.publication-link-external:hover {
 /**
 * Format People Model
 */
+#people-profile-content .row {
+  margin: 0; }
+
 .path-people .ui-dialog {
   background-color: #6f6f6f; }
 
@@ -260,9 +259,27 @@ a.publication-link-external:hover {
   bottom: 0; }
 
 .col.profile-link-item {
-  border: none;
+  border: thin solid;
   flex-grow: 0;
-  text-align: center; }
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  background: white;
+  margin: 0 2px; }
+
+.profile-link-item a {
+  background: white;
+  color: #0076A9;
+  font-size: smaller;
+  text-transform: uppercase; }
+
+#profile-content .profile-link-item a {
+  color: #0076A9;
+  background: white;
+  font-size: 12px; }
+
+.profile-dynamic-wrap-links .row {
+  padding-top: 10px; }
 
 .profile_bio_static .modal-body {
   padding: 0; }
@@ -279,7 +296,7 @@ a.publication-link-external:hover {
 
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
-  max-width: 50rem; }
+  max-width: 80rem; }
 
 .profile-contact {
   background-color: #6f6f6f; }

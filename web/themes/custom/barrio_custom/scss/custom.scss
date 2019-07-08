@@ -279,10 +279,6 @@ a.publication-link-external:hover {
   text-align: center;
 }
 
-.profile-link-item a {
-  color: white;
-  font-size: smaller;
-}
 .profile-link-item a:hover {
   color: $idm_orange;
   text-decoration: none;
@@ -309,6 +305,10 @@ a.publication-link-external:hover {
 * Format People Model
 */
 
+//Take margin off photo
+#people-profile-content .row {
+  margin: 0;
+}
 
 .path-people .ui-dialog {
   background-color: $background_grey;
@@ -330,10 +330,30 @@ a.publication-link-external:hover {
 }
 
 .col.profile-link-item {
-  border: none;
+  border: thin solid;
   flex-grow: 0;
   text-align: center;
+  border-radius: 5px;
+  color: white;
+  background: white;
+  margin: 0 2px;
 }
+.profile-link-item a {
+  background: white;
+  color: $idm_base_blue;
+  font-size: smaller;
+  text-transform: uppercase;
+}
+
+#profile-content .profile-link-item a {
+  color: $idm_base_blue;
+  background: white;
+  font-size: 12px;
+}
+.profile-dynamic-wrap-links .row {
+  padding-top: 10px;
+}
+
 
 .profile_bio_static .modal-body {
   padding: 0;
@@ -362,7 +382,7 @@ a.publication-link-external:hover {
 //All profile stuff
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
-  max-width: 50rem;
+  max-width: 80rem;
 }
 
 .profile-contact {
