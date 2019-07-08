@@ -202,7 +202,7 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="col col-3 profile-link-item">',
+      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
       '#suffix' => '</div>',
     ];
 
@@ -229,7 +229,7 @@ class PeopleController extends ControllerBase {
           'uid' => $uid,
           'nojs' => 'ajax'
         ]),
-        '#prefix' => '<div class="col col-3 profile-link-item">',
+        '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
         '#suffix' => '</div>',
       ];
     }
@@ -249,7 +249,7 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="col col-3 profile-link-item">',
+      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
       '#suffix' => '</div>',
     ];
 
