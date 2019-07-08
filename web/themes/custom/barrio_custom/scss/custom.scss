@@ -318,10 +318,7 @@ a.publication-link-external:hover {
   background: none;
   border: none;
 }
-.profile-dynamic-wrap-links {
-  width: 100%;
-  //background-color: gray;
-}
+
 //Get rid of the margin on links
 .profile-dynamic-wrap-links .container-html-twig {
   margin: 0;
@@ -816,30 +813,48 @@ button {
 .ui-widget-content {
   color: #333333;
 }
-
-
-
 .view-profile-basic-content {
   color: white;
 }
+.profile_bio_static .name-group {
+  margin-top: 2em;
+}
+
+.profile_bio_static.col-4 {
+  background-color: $background_dark_grey;
+  //float: left;
+}
+
+
+//Style Desktop/Tablet Profile
 .people_bio_dynamic {
   background-color: white;
-  //overflow-y: scroll;
-  //max-height: 35em;
 }
+
 
 .profile-swap {
   overflow-y: scroll;
-  max-height: 25em;
+  height: 300px;
   margin-bottom: 2em;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
 
+.profile-dynamic-wrap-links {
+  width: 100%;
+  position: unset;
+  height: 50px;
+  background: $background_dark_grey;
+}
+
 .profile-swap  p {
   margin-right: 10px;
 }
+
+
+
+
 
 
 #drupal-modal {
@@ -858,11 +873,7 @@ button {
   padding: 0px
 }
 
-.profile_bio_static.col-4 {
-  background-color: $background_dark_grey;
-  //$todo Why do we have to do this????
-  float: left;
-}
+
 
 //This is to position the X close button
 //Add position attribute

@@ -252,9 +252,6 @@ a.publication-link-external:hover {
   background: none;
   border: none; }
 
-.profile-dynamic-wrap-links {
-  width: 100%; }
-
 .profile-dynamic-wrap-links .container-html-twig {
   margin: 0; }
 
@@ -600,16 +597,28 @@ button {
 .view-profile-basic-content {
   color: white; }
 
+.profile_bio_static .name-group {
+  margin-top: 2em; }
+
+.profile_bio_static.col-4 {
+  background-color: #292929; }
+
 .people_bio_dynamic {
   background-color: white; }
 
 .profile-swap {
   overflow-y: scroll;
-  max-height: 25em;
+  height: 300px;
   margin-bottom: 2em;
   width: 80%;
   margin-right: auto;
   margin-left: auto; }
+
+.profile-dynamic-wrap-links {
+  width: 100%;
+  position: unset;
+  height: 50px;
+  background: #292929; }
 
 .profile-swap p {
   margin-right: 10px; }
@@ -625,10 +634,6 @@ button {
   color: black;
   font-size: .8em;
   padding: 0px; }
-
-.profile_bio_static.col-4 {
-  background-color: #292929;
-  float: left; }
 
 .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
   background-color: transparent; }
