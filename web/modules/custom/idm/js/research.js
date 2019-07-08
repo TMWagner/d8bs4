@@ -682,7 +682,7 @@
 
       // Wrap create a string with mix of variables and literals
       $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
-          "data-dialog-options='{&quot;width&quot;:800}'  " +
+          "data-dialog-options='{&quot;width&quot;:825}'  " +
           "href='/profile/" + uid + "'></a>");
       });
 
