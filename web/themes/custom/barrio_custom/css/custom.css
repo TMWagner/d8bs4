@@ -220,10 +220,6 @@ a.publication-link-external:hover {
   text-decoration: none;
   text-align: center; }
 
-.profile-link-item a {
-  color: white;
-  font-size: smaller; }
-
 .profile-link-item a:hover {
   color: #f1815e;
   text-decoration: none; }
@@ -245,15 +241,15 @@ a.publication-link-external:hover {
 /**
 * Format People Model
 */
+#people-profile-content .row {
+  margin: 0; }
+
 .path-people .ui-dialog {
   background-color: #6f6f6f; }
 
 .path-people .ui-widget-header {
   background: none;
   border: none; }
-
-.profile-dynamic-wrap-links {
-  width: 100%; }
 
 .profile-dynamic-wrap-links .container-html-twig {
   margin: 0; }
@@ -263,9 +259,27 @@ a.publication-link-external:hover {
   bottom: 0; }
 
 .col.profile-link-item {
-  border: none;
+  border: thin solid;
   flex-grow: 0;
-  text-align: center; }
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  background: white;
+  margin: 0 2px; }
+
+.profile-link-item a {
+  background: white;
+  color: #0076A9;
+  font-size: smaller;
+  text-transform: uppercase; }
+
+#profile-content .profile-link-item a {
+  color: #0076A9;
+  background: white;
+  font-size: 12px; }
+
+.profile-dynamic-wrap-links .row {
+  padding-top: 10px; }
 
 .profile_bio_static .modal-body {
   padding: 0; }
@@ -280,9 +294,12 @@ a.publication-link-external:hover {
 .name-group-title {
   text-align: center; }
 
+.people_bio_dynamic.profile-contact {
+  width: 90%; }
+
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
-  max-width: 50rem; }
+  max-width: 80rem; }
 
 .profile-contact {
   background-color: #6f6f6f; }
@@ -600,19 +617,34 @@ button {
 .view-profile-basic-content {
   color: white; }
 
+.profile_bio_static .name-group {
+  margin-top: 2em; }
+
+.profile_bio_static.col-4 {
+  background-color: #292929; }
+
 .people_bio_dynamic {
   background-color: white; }
 
 .profile-swap {
   overflow-y: scroll;
-  max-height: 25em;
+  height: 325px;
   margin-bottom: 2em;
   width: 80%;
   margin-right: auto;
   margin-left: auto; }
 
+.profile-dynamic-wrap-links {
+  width: 100%;
+  position: unset;
+  height: 50px;
+  background: #292929; }
+
 .profile-swap p {
   margin-right: 10px; }
+
+webform-button--submit {
+  margin: 2px auto; }
 
 #drupal-modal {
   padding: 0; }
@@ -625,10 +657,6 @@ button {
   color: black;
   font-size: .8em;
   padding: 0px; }
-
-.profile_bio_static.col-4 {
-  background-color: #292929;
-  float: left; }
 
 .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
   background-color: transparent; }

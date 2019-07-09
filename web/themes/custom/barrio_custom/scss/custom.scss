@@ -279,10 +279,6 @@ a.publication-link-external:hover {
   text-align: center;
 }
 
-.profile-link-item a {
-  color: white;
-  font-size: smaller;
-}
 .profile-link-item a:hover {
   color: $idm_orange;
   text-decoration: none;
@@ -309,6 +305,10 @@ a.publication-link-external:hover {
 * Format People Model
 */
 
+//Take margin off photo
+#people-profile-content .row {
+  margin: 0;
+}
 
 .path-people .ui-dialog {
   background-color: $background_grey;
@@ -318,10 +318,7 @@ a.publication-link-external:hover {
   background: none;
   border: none;
 }
-.profile-dynamic-wrap-links {
-  width: 100%;
-  //background-color: gray;
-}
+
 //Get rid of the margin on links
 .profile-dynamic-wrap-links .container-html-twig {
   margin: 0;
@@ -333,10 +330,30 @@ a.publication-link-external:hover {
 }
 
 .col.profile-link-item {
-  border: none;
+  border: thin solid;
   flex-grow: 0;
   text-align: center;
+  border-radius: 5px;
+  color: white;
+  background: white;
+  margin: 0 2px;
 }
+.profile-link-item a {
+  background: white;
+  color: $idm_base_blue;
+  font-size: smaller;
+  text-transform: uppercase;
+}
+
+#profile-content .profile-link-item a {
+  color: $idm_base_blue;
+  background: white;
+  font-size: 12px;
+}
+.profile-dynamic-wrap-links .row {
+  padding-top: 10px;
+}
+
 
 .profile_bio_static .modal-body {
   padding: 0;
@@ -353,6 +370,9 @@ a.publication-link-external:hover {
   text-align: center;
 }
 
+.people_bio_dynamic.profile-contact {
+  width: 90%;
+}
 
 //------------------
 //Temporary Formatting
@@ -365,7 +385,7 @@ a.publication-link-external:hover {
 //All profile stuff
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
-  max-width: 50rem;
+  max-width: 80rem;
 }
 
 .profile-contact {
@@ -816,29 +836,48 @@ button {
 .ui-widget-content {
   color: #333333;
 }
-
-
-
 .view-profile-basic-content {
   color: white;
 }
+.profile_bio_static .name-group {
+  margin-top: 2em;
+}
+
+.profile_bio_static.col-4 {
+  background-color: $background_dark_grey;
+  //float: left;
+}
+
+
+//Style Desktop/Tablet Profile
 .people_bio_dynamic {
   background-color: white;
-  //overflow-y: scroll;
-  //max-height: 35em;
 }
+
 
 .profile-swap {
   overflow-y: scroll;
-  max-height: 25em;
+  height: 325px;
   margin-bottom: 2em;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
 
+.profile-dynamic-wrap-links {
+  width: 100%;
+  position: unset;
+  height: 50px;
+  background: $background_dark_grey;
+}
+
 .profile-swap  p {
   margin-right: 10px;
+}
+
+// Style the submit button
+webform-button--submit {
+  margin: 2px auto;
 }
 
 
@@ -858,11 +897,7 @@ button {
   padding: 0px
 }
 
-.profile_bio_static.col-4 {
-  background-color: $background_dark_grey;
-  //$todo Why do we have to do this????
-  float: left;
-}
+
 
 //This is to position the X close button
 //Add position attribute
