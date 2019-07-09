@@ -15,6 +15,12 @@
   cursor: pointer !important;
 }
 
+.dropshadow {
+  -webkit-box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+  -moz-box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+  box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+}
+
 //Navbar
 .navbar-default {
   background-color: $navbar_background;
@@ -350,6 +356,11 @@ a.publication-link-external:hover {
   background: white;
   font-size: 12px;
 }
+#profile-content .profile-link-item a:hover {
+  color: $idm_orange;
+}
+
+
 .profile-dynamic-wrap-links .row {
   padding-top: 10px;
 }
@@ -373,6 +384,22 @@ a.publication-link-external:hover {
 .people_bio_dynamic.profile-contact {
   width: 90%;
 }
+
+.profile_bio_static.link {
+
+  margin: 0 auto;
+  position: relative;
+  bottom: .5em;
+  height: 0px;
+  font-size: 20px;
+}
+
+.profile_bio_static.link a:hover {
+  color: $idm_orange;
+  text-decoration: none;
+}
+
+
 
 //------------------
 //Temporary Formatting

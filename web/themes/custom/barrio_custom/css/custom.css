@@ -5,6 +5,11 @@
 .pointer {
   cursor: pointer !important; }
 
+.dropshadow {
+  -webkit-box-shadow: 4px 7px 13px -8px #474647;
+  -moz-box-shadow: 4px 7px 13px -8px #474647;
+  box-shadow: 4px 7px 13px -8px #474647; }
+
 .navbar-default {
   background-color: #898989; }
 
@@ -278,6 +283,9 @@ a.publication-link-external:hover {
   background: white;
   font-size: 12px; }
 
+#profile-content .profile-link-item a:hover {
+  color: #f1815e; }
+
 .profile-dynamic-wrap-links .row {
   padding-top: 10px; }
 
@@ -296,6 +304,17 @@ a.publication-link-external:hover {
 
 .people_bio_dynamic.profile-contact {
   width: 90%; }
+
+.profile_bio_static.link {
+  margin: 0 auto;
+  position: relative;
+  bottom: .5em;
+  height: 0px;
+  font-size: 20px; }
+
+.profile_bio_static.link a:hover {
+  color: #f1815e;
+  text-decoration: none; }
 
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
