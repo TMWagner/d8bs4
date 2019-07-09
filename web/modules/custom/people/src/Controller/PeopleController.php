@@ -162,7 +162,7 @@ class PeopleController extends ControllerBase {
     $render_array['profile']['profile_dynamic']['swap_content'] = [
       '#type' => 'markup',
       '#markup' => $this->people_bio($uid),
-      '#prefix' => '<div class="profile-swap">',
+      '#prefix' => '<div class="profile-swap initial">',
       '#suffix' => '</div>',
     ];
 
@@ -252,6 +252,39 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
       '#suffix' => '</div>',
     ];
+
+    // *** DEV1
+    $render_array['profile']['profile_dynamic']['link_wrap']['link4'] = [
+      '#type' => 'link',
+      '#title' => $this->t('DEV'),
+      // We have to ensure that Drupal's Ajax system is loaded.
+      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
+      '#attributes' => ['class' => ['use-ajax']],
+      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+        'option' => 'contact',
+        'uid' => $uid,
+        'nojs' => 'ajax'
+      ]),
+      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
+      '#suffix' => '</div>',
+    ];
+
+    // *** DEV2
+    $render_array['profile']['profile_dynamic']['link_wrap']['link5'] = [
+      '#type' => 'link',
+      '#title' => $this->t('DEV2'),
+      // We have to ensure that Drupal's Ajax system is loaded.
+      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
+      '#attributes' => ['class' => ['use-ajax']],
+      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+        'option' => 'contact',
+        'uid' => $uid,
+        'nojs' => 'ajax'
+      ]),
+      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
+      '#suffix' => '</div>',
+    ];
+
 
 
 
@@ -494,7 +527,7 @@ class PeopleController extends ControllerBase {
           $output = $render_array['profile']['basic_profile_dynamic'] = [
             '#type' => 'markup',
             '#markup' => $this->people_bio($uid),
-            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap">',
+            '#prefix' => '<div class="people_bio_dynamic"><div class="profile-swap profile-swap-bio">',
             '#suffix' => '</div></div>',
           ];
           break;
@@ -511,7 +544,7 @@ class PeopleController extends ControllerBase {
           $output = $render_array['profile']['basic_profile_contact'] = [
             '#type' => 'markup',
             '#markup' => $this->people_contact($uid),
-            '#prefix' => '<div class="people_bio_dynamic profile-contact"><div class="profile-swap">',
+            '#prefix' => '<div class="people_bio_dynamic profile-contact"><div class="profile-swap profile-swap-contact">',
             '#suffix' => '</div></div>',
           ];
           break;

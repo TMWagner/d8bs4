@@ -370,6 +370,9 @@ a.publication-link-external:hover {
   text-align: center;
 }
 
+.people_bio_dynamic.profile-contact {
+  width: 90%;
+}
 
 //------------------
 //Temporary Formatting
@@ -854,7 +857,7 @@ button {
 
 .profile-swap {
   overflow-y: scroll;
-  height: 300px;
+  height: 325px;
   margin-bottom: 2em;
   width: 80%;
   margin-right: auto;
@@ -872,9 +875,10 @@ button {
   margin-right: 10px;
 }
 
-
-
-
+// Style the submit button
+webform-button--submit {
+  margin: 2px auto;
+}
 
 
 #drupal-modal {
