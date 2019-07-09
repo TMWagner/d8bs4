@@ -11,6 +11,28 @@
   margin-left: auto;
   margin-right: auto; }
 
+.research-banner-l4 {
+  clear: both; }
+
+.research-banner-l4 a {
+  text-transform: uppercase;
+  text-decoration: none; }
+
+.research-banner-l4 a:hover {
+  color: #f1815e;
+  text-decoration: none; }
+
+.rlp-button-text {
+  font-size: smaller;
+  color: #f1815e; }
+
+.research-banner-l4.row.mx-auto.d-flex.justify-content-center {
+  width: 75%;
+  -webkit-box-shadow: 4px 7px 13px -8px #474647;
+  -moz-box-shadow: 4px 7px 13px -8px #474647;
+  box-shadow: 4px 7px 13px -8px #474647;
+  margin-bottom: 2em; }
+
 ul.rlp-links {
   list-style: none; }
 
@@ -49,7 +71,6 @@ li.vl::before {
 .research-card div h4 {
   font-size: 1.3em;
   font-weight: 300;
-  text-transform: uppercase;
   color: #0076A9; }
 
 .research-card.card-selected div h4 {
@@ -61,8 +82,12 @@ li.vl::before {
 
 @media (min-width: 300px) {
   .research-card div h4 {
-    font-size: .9em;
-    font-weight: 400; } }
+    font-size: 1.2em;
+    font-weight: 500; }
+
+  .rlp-content-wrapper {
+    max-width: 100%;
+    margin: auto; } }
 @media (min-width: 576px) {
   .research-card {
     min-width: 12rem; }
@@ -75,7 +100,11 @@ li.vl::before {
 
   .research-card div h4 {
     font-size: 1.3em;
-    font-weight: 300; } }
+    font-weight: 500; }
+
+  .rlp-content-wrapper {
+    max-width: 80%;
+    margin: auto; } }
 .research-team-member {
   max-width: 120px;
   text-align: center; }
