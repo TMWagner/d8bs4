@@ -176,9 +176,6 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     ];
 
-//    Email Icon
-//    <i class="far fa-envelope"></i>
-
     //END contact link
 
 
@@ -357,7 +354,6 @@ class PeopleController extends ControllerBase {
     $output['profile']['profile_static'] = [
       '#theme' => 'people_profile_mobile',
       '#content' => $variables,
-//      '#prefix' => '<div class="modal-content profile-mobile-content">',
       '#prefix' => '<div class="profile-mobile-content">',
       '#suffix' => '</div>',
     ];
@@ -392,6 +388,7 @@ class PeopleController extends ControllerBase {
 
     /*
      * ITEM (Publications)
+     * (Conditional)
      */
     //Accordion Group Items (BIO Group)
     $output['profile']['dynamic']['pubs']['header'] = array (
@@ -407,6 +404,7 @@ class PeopleController extends ControllerBase {
 
     /*
      * ITEM (Projects)
+     * (Conditional)
      */
     //Accordion Group Items (BIO Group)
     $output['profile']['dynamic']['proj']['header'] = array (
@@ -419,6 +417,22 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div>',
       '#suffix' => '</div>',
     );
+
+    /*
+     * Contact Pane
+     *
+     */
+    $output['profile']['dynamic']['contact']['header'] = array (
+      '#type' => 'markup',
+      '#markup' => '<h3>Contact</h3>',
+    );
+    $output['profile']['dynamic']['contact']['content'] = array (
+      '#type' => 'markup',
+      '#markup' => $this->people_contact($uid),
+      '#prefix' => '<div class="people_bio_dynamic profile-contact"><div class="profile-swap profile-swap-contact profile-accordion">',
+      '#suffix' => '</div></div>',
+    );
+
 
 
     /*
