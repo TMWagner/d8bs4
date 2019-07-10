@@ -114,6 +114,10 @@ li.vl::before {
     max-width: 100%;
     margin: auto;
   }
+  .research-banner-l4 {
+    margin: 2em 0;
+    width: 75%;
+  }
 }
 
 @media (min-width: 576px) {
@@ -122,6 +126,10 @@ li.vl::before {
   }
   .research-card div h4 {
     font-size: 1.1em;
+  }
+  .research-banner-l4 {
+    margin: 2em 0;
+    width: 75%;
   }
 }
 
@@ -136,6 +144,10 @@ li.vl::before {
   .rlp-content-wrapper {
     max-width: 80%;
     margin: auto;
+  }
+  .research-banner-l4 {
+    margin: 1em 0;
+    width: 80%;
   }
 
 }
