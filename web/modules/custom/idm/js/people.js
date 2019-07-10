@@ -14,6 +14,9 @@
     //@todo Remove for production
     console.log(">>> starting people.js...!!");
 
+    //Wire up the X button
+    $("#people-profile-mobile-close").click(windowBack);
+
     $("a.btn-primary").click(windowBack);
 
     $( "#profile-accordion" ).accordion({
