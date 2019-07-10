@@ -891,6 +891,7 @@ button {
   margin-left: auto;
 }
 
+
 .profile-dynamic-wrap-links {
   width: 100%;
   position: unset;
@@ -923,6 +924,15 @@ webform-button--submit {
   font-size: .8em;
   padding: 0px
 }
+
+.profile-swap.profile-swap-contact.profile-accordion {
+  height: 400px;
+  width: 100%;
+}
+.people_bio_dynamic.profile-contact.ui-accordion-content {
+  width: 100%;
+}
+
 
 
 
