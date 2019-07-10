@@ -12,7 +12,7 @@
   $(function() {
     // do work here on document ready.
     //@todo Remove for production
-    console.log(">>> starting research.js...!!");
+    console.log(">>> starting people.js...!!");
 
     $("a.btn-primary").click(windowBack);
 
