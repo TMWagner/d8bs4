@@ -245,6 +245,16 @@ h3.how-panel {
   background: white;
   border-color: #f1815e;
   margin: 0 .5em 1em;
+  min-width: 6em;
+}
+
+// Change color for Mobile (no idea why)
+#rlp-footer-link-source .btn.btn-outline-primary.idm-button-main {
+  color: $idm_light_blue;
+  background: $idm_blue_black;
+  border-color: #707070;
+  margin: 0 .5em 1em;
+  min-width: 6em;
 }
 
 .close.idm-button-close {

@@ -193,7 +193,15 @@ h3.how-panel {
   color: #f1815e;
   background: white;
   border-color: #f1815e;
-  margin: 0 .5em 1em; }
+  margin: 0 .5em 1em;
+  min-width: 6em; }
+
+#rlp-footer-link-source .btn.btn-outline-primary.idm-button-main {
+  color: #19BAFF;
+  background: #09212E;
+  border-color: #707070;
+  margin: 0 .5em 1em;
+  min-width: 6em; }
 
 .close.idm-button-close {
   color: #f1815e;
