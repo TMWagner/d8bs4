@@ -35,12 +35,5 @@
 
 
 
-
-
-
-
-
-
-
   /* END Code Wrap */
 })(jQuery, Drupal);
