@@ -80,6 +80,10 @@ li.vl::before {
   max-width: 80%;
   margin: auto; }
 
+.field.field--name-user-picture.field--type-image {
+  width: 100px;
+  height: 100px; }
+
 @media (min-width: 300px) {
   .research-card div h4 {
     font-size: 1.2em;
