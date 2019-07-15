@@ -1,14 +1,13 @@
 .grab {
-  cursor: -webkit-grab;
   cursor: grab; }
 
 .pointer {
   cursor: pointer !important; }
 
 .dropshadow {
-  -webkit-box-shadow: 4px 7px 13px -8px #474647;
-  -moz-box-shadow: 4px 7px 13px -8px #474647;
-  box-shadow: 4px 7px 13px -8px #474647; }
+  -webkit-box-shadow: 4px 5px 4px -3px #969696;
+  -moz-box-shadow: 4px 5px 4px -3px #969696;
+  box-shadow: 4px 5px 4px -3px #969696; }
 
 .navbar-default {
   background-color: #898989; }
@@ -427,7 +426,7 @@ a.publication-link-external:hover {
 
 .idm-footer-mobile h3 {
   background-color: black;
-  color: whitesmoke;
+  color: #19BAFF;
   border: none;
   text-transform: uppercase;
   -webkit-backface-visibility: hidden; }

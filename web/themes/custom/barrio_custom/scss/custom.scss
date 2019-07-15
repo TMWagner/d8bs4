@@ -8,7 +8,7 @@
 
 //General
 .grab {
-  cursor: -webkit-grab;
+
   cursor: grab;
 }
 .pointer {
@@ -16,9 +16,9 @@
 }
 
 .dropshadow {
-  -webkit-box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
-  -moz-box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
-  box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+  -webkit-box-shadow: 4px 5px 4px -3px rgba(150,150,150,1);
+  -moz-box-shadow: 4px 5px 4px -3px rgba(150,150,150,1);
+  box-shadow: 4px 5px 4px -3px rgba(150,150,150,1);
 }
 
 //Navbar
@@ -619,7 +619,7 @@ a.publication-link-external:hover {
 }
 .idm-footer-mobile h3 {
   background-color: black;
-  color: whitesmoke;
+  color: $idm_light_blue;
   border: none;
   text-transform: uppercase;
   -webkit-backface-visibility: hidden;
@@ -650,6 +650,12 @@ a.publication-link-external:hover {
   color: $idm_orange;
   outline:none;
 }
+
+#ui-id-1 .ui-icon {
+
+}
+
+
 .idm-footer-mobile h3:active {
   border: none;
   outline: none;
