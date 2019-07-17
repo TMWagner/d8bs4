@@ -188,6 +188,12 @@ h3.how-panel {
 /**
   * General formatting
  */
+.research-card,
+.tools-card {
+  -webkit-box-shadow: 6px 6px 10px -11px rgba(0, 0, 0, 0.68);
+  -moz-box-shadow: 6px 6px 10px -11px rgba(0, 0, 0, 0.68);
+  box-shadow: 6px 6px 10px -11px rgba(0, 0, 0, 0.68); }
+
 .btn.btn-outline-primary.idm-button-main {
   color: #f1815e;
   background: white;

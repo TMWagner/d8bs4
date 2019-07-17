@@ -211,10 +211,13 @@ a.mobile-profile:focus {
 #people-profile-mobile h5 {
   color: #0B1F2C; }
 
+.research-team-lead:nth-child(2) {
+  margin-left: 1em; }
+
 @media (max-width: 990px) {
   .research-team-member-group {
-    margin-left: 3em;
-    width: 275px; } }
+    margin-left: 2.5em;
+    width: 260px; } }
 @media (max-width: 700px) {
   .research-team-member-group {
     margin-left: auto;

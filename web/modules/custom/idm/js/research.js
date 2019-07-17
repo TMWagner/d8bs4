@@ -689,8 +689,6 @@
           "href='/profile/" + uid + "'></a>");
       });
 
-
-
     //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {
       console.log(">>> Load slick from research for DESKTOP...");

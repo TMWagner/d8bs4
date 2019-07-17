@@ -282,11 +282,16 @@ a.mobile-profile:focus {
   color: $idm_deep_blue;
 }
 
+.research-team-lead:nth-child(2) {
+  margin-left: 1em;
+}
+
+
 
 @media (max-width: 990px) {
   .research-team-member-group {
-    margin-left: 3em;
-    width: 275px;
+    margin-left: 2.5em;
+    width: 260px;
     //color: red;
   }
 }
