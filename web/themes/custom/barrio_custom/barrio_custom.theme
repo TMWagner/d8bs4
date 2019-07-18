@@ -15,6 +15,11 @@ use Drupal\taxonomy\Entity\Term;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
+use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Symfony\Component\HttpFoundation\Response;
+
 
 
 /**
@@ -32,31 +37,31 @@ function barrio_custom_preprocess_field(&$variables) {
 //  Expecting the field 'field_misc_footer'
 //  We will send an array of our own to the a custom template that outputs only our data
   // @todo Test for empty field name?
-  if ($variables["element"]["#field_name"] == 'field_misc_footer') {
-
-    $output['button'] = array (
-      '#type' => 'markup',
-      '#markup' => 'Close Profile',
-      '#prefix' => '<div class="profile-button-wrap"> 
-                    <a class="profile btn btn-primary">',
-      '#suffix' => '</a></div>',
-    );
-    $variables['buttons'] = $output;
-
-    /**
-     * Check for Publications for this research group
-     */
-
-
-    /**
-     * Check for Projects for this research group
-     */
-
-    /**
-     * Check for Videos for this research group
-     */
-
-  }
+//  if ($variables["element"]["#field_name"] == 'field_misc_footer') {
+//
+//    $output['button'] = array (
+//      '#type' => 'markup',
+//      '#markup' => 'Close Profile',
+//      '#prefix' => '<div class="profile-button-wrap">
+//                    <a class="profile btn btn-primary">',
+//      '#suffix' => '</a></div>',
+//    );
+//    $variables['buttons'] = $output;
+//
+//    /**
+//     * Check for Publications for this research group
+//     */
+//
+//
+//    /**
+//     * Check for Projects for this research group
+//     */
+//
+//    /**
+//     * Check for Videos for this research group
+//     */
+//
+//  }
 }
 
 
