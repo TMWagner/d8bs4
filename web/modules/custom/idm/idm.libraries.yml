@@ -128,7 +128,7 @@ slick:
 
 # Profile pages (all profile related pages)
 profile:
-  version: 1.x
+  version: 1.0
   css:
     base:
       css/profile.css: {}
