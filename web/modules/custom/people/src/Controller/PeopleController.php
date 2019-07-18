@@ -146,11 +146,42 @@ class PeopleController extends ControllerBase {
     );
 
     $render_array['profile']['profile_static'] = [
-      '#theme' => 'people_profile',
-      '#content' => $variables,
-      '#prefix' => '<div class="profile_bio_static col-4">',
+      '#type' => 'container',
+      '#prefix' => '<div class="profile-bio-wrap col-4">',
       '#suffix' => '</div>',
     ];
+
+    $render_array['profile']['profile_static']['bio'] = [
+      '#theme' => 'people_profile',
+      '#content' => $variables,
+      '#prefix' => '<div class="profile_bio_static bio">',
+      '#suffix' => '</div>',
+    ];
+
+
+
+
+    $render_array['profile']['profile_static']['contact_link'] = [
+      '#type' => 'link',
+      '#title' => $this->t(''),
+      // We have to ensure that Drupal's Ajax system is loaded.
+      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
+      '#attributes' => ['class' => ['use-ajax fa fa-envelope']],
+      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+        'option' => 'contact',
+        'uid' => $uid,
+        'nojs' => 'ajax'
+      ]),
+      '#prefix' => '<div class="profile_bio_static link">',
+      '#suffix' => '</div>',
+    ];
+
+    //END contact link
+
+
+
+
+
     //  Build dynamic wrapper
     $render_array['profile']['profile_dynamic'] = [
       '#type' => 'container',
@@ -202,7 +233,7 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
+      '#prefix' => '<div class="col col-2 p-1 mx-1 profile-link-item">',
       '#suffix' => '</div>',
     ];
 
@@ -229,18 +260,18 @@ class PeopleController extends ControllerBase {
           'uid' => $uid,
           'nojs' => 'ajax'
         ]),
-        '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
+        '#prefix' => '<div class="col col-2 p-1 mx-1 profile-link-item">',
         '#suffix' => '</div>',
       ];
     }
-    // *** CONDITIONAL Video link
-    // @todo Conditional VIDIO
+    // *** CONDITIONAL Projects
+    // @todo Conditional Projects
     // End Video
 
     // *** Contact link
-    $render_array['profile']['profile_dynamic']['link_wrap']['link3'] = [
+    $render_array['profile']['profile_dynamic']['link_wrap']['projects'] = [
       '#type' => 'link',
-      '#title' => $this->t('Contact'),
+      '#title' => $this->t('Projects'),
       // We have to ensure that Drupal's Ajax system is loaded.
       '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
       '#attributes' => ['class' => ['use-ajax']],
@@ -249,14 +280,15 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
+      '#prefix' => '<div class="col col-2 p-1 mx-1 profile-link-item">',
       '#suffix' => '</div>',
     ];
 
-    // *** DEV1
-    $render_array['profile']['profile_dynamic']['link_wrap']['link4'] = [
+    // *** CONDITIONAL Videos
+    // @todo Conditional Projects
+    $render_array['profile']['profile_dynamic']['link_wrap']['videos'] = [
       '#type' => 'link',
-      '#title' => $this->t('DEV'),
+      '#title' => $this->t('Videos'),
       // We have to ensure that Drupal's Ajax system is loaded.
       '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
       '#attributes' => ['class' => ['use-ajax']],
@@ -265,25 +297,10 @@ class PeopleController extends ControllerBase {
         'uid' => $uid,
         'nojs' => 'ajax'
       ]),
-      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
+      '#prefix' => '<div class="col col-2 p-1 mx-1 profile-link-item">',
       '#suffix' => '</div>',
     ];
 
-    // *** DEV2
-    $render_array['profile']['profile_dynamic']['link_wrap']['link5'] = [
-      '#type' => 'link',
-      '#title' => $this->t('DEV2'),
-      // We have to ensure that Drupal's Ajax system is loaded.
-      '#attached' => ['library' => ['core/drupal.ajax', 'people/profile']],
-      '#attributes' => ['class' => ['use-ajax']],
-      '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
-        'option' => 'contact',
-        'uid' => $uid,
-        'nojs' => 'ajax'
-      ]),
-      '#prefix' => '<div class="col col-2 p-1 profile-link-item">',
-      '#suffix' => '</div>',
-    ];
 
 
 
@@ -337,7 +354,6 @@ class PeopleController extends ControllerBase {
     $output['profile']['profile_static'] = [
       '#theme' => 'people_profile_mobile',
       '#content' => $variables,
-//      '#prefix' => '<div class="modal-content profile-mobile-content">',
       '#prefix' => '<div class="profile-mobile-content">',
       '#suffix' => '</div>',
     ];
@@ -372,6 +388,7 @@ class PeopleController extends ControllerBase {
 
     /*
      * ITEM (Publications)
+     * (Conditional)
      */
     //Accordion Group Items (BIO Group)
     $output['profile']['dynamic']['pubs']['header'] = array (
@@ -387,6 +404,7 @@ class PeopleController extends ControllerBase {
 
     /*
      * ITEM (Projects)
+     * (Conditional)
      */
     //Accordion Group Items (BIO Group)
     $output['profile']['dynamic']['proj']['header'] = array (
@@ -399,6 +417,22 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div>',
       '#suffix' => '</div>',
     );
+
+    /*
+     * Contact Pane
+     *
+     */
+    $output['profile']['dynamic']['contact']['header'] = array (
+      '#type' => 'markup',
+      '#markup' => '<h3>Contact</h3>',
+    );
+    $output['profile']['dynamic']['contact']['content'] = array (
+      '#type' => 'markup',
+      '#markup' => $this->people_contact($uid),
+      '#prefix' => '<div class="people_bio_dynamic profile-contact"><div class="profile-swap profile-swap-contact profile-accordion">',
+      '#suffix' => '</div></div>',
+    );
+
 
 
     /*

@@ -1,9 +1,13 @@
 .grab {
-  cursor: -webkit-grab;
   cursor: grab; }
 
 .pointer {
   cursor: pointer !important; }
+
+.dropshadow {
+  -webkit-box-shadow: 4px 5px 4px -3px #969696;
+  -moz-box-shadow: 4px 5px 4px -3px #969696;
+  box-shadow: 4px 5px 4px -3px #969696; }
 
 .navbar-default {
   background-color: #898989; }
@@ -184,11 +188,25 @@ h3.how-panel {
 /**
   * General formatting
  */
+.research-card,
+.tools-card {
+  -webkit-box-shadow: 6px 6px 10px -11px rgba(0, 0, 0, 0.68);
+  -moz-box-shadow: 6px 6px 10px -11px rgba(0, 0, 0, 0.68);
+  box-shadow: 6px 6px 10px -11px rgba(0, 0, 0, 0.68); }
+
 .btn.btn-outline-primary.idm-button-main {
   color: #f1815e;
   background: white;
   border-color: #f1815e;
-  margin: 0 .5em 1em; }
+  margin: 0 .5em 1em;
+  min-width: 6em; }
+
+#rlp-footer-link-source .btn.btn-outline-primary.idm-button-main {
+  color: #19BAFF;
+  background: #09212E;
+  border-color: #707070;
+  margin: 0 .5em 1em;
+  min-width: 6em; }
 
 .close.idm-button-close {
   color: #f1815e;
@@ -278,6 +296,9 @@ a.publication-link-external:hover {
   background: white;
   font-size: 12px; }
 
+#profile-content .profile-link-item a:hover {
+  color: #f1815e; }
+
 .profile-dynamic-wrap-links .row {
   padding-top: 10px; }
 
@@ -296,6 +317,17 @@ a.publication-link-external:hover {
 
 .people_bio_dynamic.profile-contact {
   width: 90%; }
+
+.profile_bio_static.link {
+  margin: 0 auto;
+  position: relative;
+  bottom: .5em;
+  height: 0px;
+  font-size: 20px; }
+
+.profile_bio_static.link a:hover {
+  color: #f1815e;
+  text-decoration: none; }
 
 .profile-bio-link-wrap.not-mobile-display {
   overflow: hidden;
@@ -400,7 +432,7 @@ a.publication-link-external:hover {
 
 .idm-footer-mobile h3 {
   background-color: black;
-  color: whitesmoke;
+  color: #19BAFF;
   border: none;
   text-transform: uppercase;
   -webkit-backface-visibility: hidden; }
@@ -657,6 +689,13 @@ webform-button--submit {
   color: black;
   font-size: .8em;
   padding: 0px; }
+
+.profile-swap.profile-swap-contact.profile-accordion {
+  height: 400px;
+  width: 100%; }
+
+.people_bio_dynamic.profile-contact.ui-accordion-content {
+  width: 100%; }
 
 .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
   background-color: transparent; }

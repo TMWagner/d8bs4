@@ -595,6 +595,9 @@
         $(this).wrapAll("<a class='mobile-profile'  " + "href='/profile/" + uid + "/mobile'></a>");
       });
 
+      //Clean up the dom before appending anything
+      $("#rlp-detail-mobile-footer-links").children().remove();
+      // Now append
       $("#rlp-detail-mobile-footer-links").append($("#rlp-footer-link-source"));
 
 
@@ -685,8 +688,6 @@
           "data-dialog-options='{&quot;width&quot;:800}'  " +
           "href='/profile/" + uid + "'></a>");
       });
-
-
 
     //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {

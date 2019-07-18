@@ -12,7 +12,10 @@
   $(function() {
     // do work here on document ready.
     //@todo Remove for production
-    console.log(">>> starting research.js...!!");
+    console.log(">>> starting people.js...!!");
+
+    //Wire up the X button
+    $("#people-profile-mobile-close").click(windowBack);
 
     $("a.btn-primary").click(windowBack);
 
@@ -27,13 +30,6 @@
     }
 
   });
-
-
-
-
-
-
-
 
 
 

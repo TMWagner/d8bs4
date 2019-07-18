@@ -18,6 +18,35 @@
   margin-right: auto;
 }
 
+.research-banner-l4 {
+  clear: both;
+}
+
+.research-banner-l4 a {
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.research-banner-l4 a:hover {
+  color: $idm_orange;
+  text-decoration: none;
+}
+
+.rlp-button-text {
+  font-size: smaller;
+  color: $idm_orange
+}
+
+//@todo dropshadow box
+
+.research-banner-l4.row.mx-auto.d-flex.justify-content-center {
+  width: 75%;
+  -webkit-box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+  -moz-box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+  box-shadow: 4px 7px 13px -8px rgba(71,70,71,1);
+  margin-bottom: 2em;
+}
+
+
 ul.rlp-links {
   list-style: none;
 }
@@ -63,7 +92,7 @@ li.vl::before {
 .research-card div h4 {
   font-size: 1.3em;
   font-weight: 300;
-  text-transform: uppercase;
+  //text-transform: uppercase;
   color: $idm_base_blue;
 }
 
@@ -74,12 +103,25 @@ li.vl::before {
 .rlp-content-wrapper {
   max-width: 80%;
   margin: auto;
-
 }
+
+.field.field--name-user-picture.field--type-image {
+  width: 100px;
+  height: 100px;
+}
+
 @media (min-width: 300px) {
   .research-card div h4 {
-    font-size: .9em;
-    font-weight: 400;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  .rlp-content-wrapper {
+    max-width: 100%;
+    margin: auto;
+  }
+  .research-banner-l4 {
+    margin: 2em 0;
+    width: 75%;
   }
 }
 
@@ -90,6 +132,10 @@ li.vl::before {
   .research-card div h4 {
     font-size: 1.1em;
   }
+  .research-banner-l4 {
+    margin: 2em 0;
+    width: 75%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -98,7 +144,15 @@ li.vl::before {
   }
   .research-card div h4 {
     font-size: 1.3em;
-    font-weight: 300;
+    font-weight: 500;
+  }
+  .rlp-content-wrapper {
+    max-width: 80%;
+    margin: auto;
+  }
+  .research-banner-l4 {
+    margin: 1em 0;
+    width: 80%;
   }
 
 }
@@ -228,11 +282,16 @@ a.mobile-profile:focus {
   color: $idm_deep_blue;
 }
 
+.research-team-lead:nth-child(2) {
+  margin-left: 1em;
+}
+
+
 
 @media (max-width: 990px) {
   .research-team-member-group {
-    margin-left: 3em;
-    width: 275px;
+    margin-left: 2.5em;
+    width: 260px;
     //color: red;
   }
 }

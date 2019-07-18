@@ -15,22 +15,59 @@ use Drupal\taxonomy\Entity\Term;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
-
-//
-//function barrio_custom_preprocess_field(&$variables) {
-//
-//  $viewmode = $variables["content"]["#view_mode"];
-//  $debug = 2;
-//  $debug = $variables;
-//
-//}
+use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Symfony\Component\HttpFoundation\Response;
 
 
 
 /**
  * @param $variables
+ * Implements function template_preprocess_field
+ * T. Wagner
+ *
+ * Dynamically add buttons to RLP page
  *
  *
+ */
+function barrio_custom_preprocess_field(&$variables) {
+
+
+//  Expecting the field 'field_misc_footer'
+//  We will send an array of our own to the a custom template that outputs only our data
+  // @todo Test for empty field name?
+//  if ($variables["element"]["#field_name"] == 'field_misc_footer') {
+//
+//    $output['button'] = array (
+//      '#type' => 'markup',
+//      '#markup' => 'Close Profile',
+//      '#prefix' => '<div class="profile-button-wrap">
+//                    <a class="profile btn btn-primary">',
+//      '#suffix' => '</a></div>',
+//    );
+//    $variables['buttons'] = $output;
+//
+//    /**
+//     * Check for Publications for this research group
+//     */
+//
+//
+//    /**
+//     * Check for Projects for this research group
+//     */
+//
+//    /**
+//     * Check for Videos for this research group
+//     */
+//
+//  }
+}
+
+
+
+/**
+ * @param $variables
  */
 function barrio_custom_preprocess_container(&$variables) {
 
@@ -56,8 +93,7 @@ function barrio_custom_preprocess_container(&$variables) {
  * @param $variables
  */
 function barrio_custom_preprocess_views_view__people(&$variables) {
-  $debug1 = $variables;
-  $debug1 = false;
+
   //If called from Mobile implementation, add class to identify that
   //Get the path
   $path = $current_path = \Drupal::service('path.current')->getPath();
@@ -84,8 +120,6 @@ function barrio_custom_preprocess_layout__onecol(&$variables) {
   // This example is from rdf_preprocess_image(). It adds an RDF attribute
   // to the image hook's variables.
   $viewmode = $variables["content"]["#view_mode"];
-  $debug = 2;
-  $debug = $variables;
   $variables['research_content'] = FALSE;
 
 

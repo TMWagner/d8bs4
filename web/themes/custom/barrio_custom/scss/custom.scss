@@ -8,11 +8,17 @@
 
 //General
 .grab {
-  cursor: -webkit-grab;
+
   cursor: grab;
 }
 .pointer {
   cursor: pointer !important;
+}
+
+.dropshadow {
+  -webkit-box-shadow: 4px 5px 4px -3px rgba(150,150,150,1);
+  -moz-box-shadow: 4px 5px 4px -3px rgba(150,150,150,1);
+  box-shadow: 4px 5px 4px -3px rgba(150,150,150,1);
 }
 
 //Navbar
@@ -234,11 +240,32 @@ h3.how-panel {
   * General formatting
  */
 
+
+//Card formatting (tools, Research, projects)
+//Box shadow for cards
+.research-card,
+.tools-card {
+  -webkit-box-shadow: 6px 6px 10px -11px rgba(0,0,0,0.68);
+  -moz-box-shadow: 6px 6px 10px -11px rgba(0,0,0,0.68);
+  box-shadow: 6px 6px 10px -11px rgba(0,0,0,0.68);
+}
+
+
 .btn.btn-outline-primary.idm-button-main {
   color: #f1815e;
   background: white;
   border-color: #f1815e;
   margin: 0 .5em 1em;
+  min-width: 6em;
+}
+
+// Change color for Mobile (no idea why)
+#rlp-footer-link-source .btn.btn-outline-primary.idm-button-main {
+  color: $idm_light_blue;
+  background: $idm_blue_black;
+  border-color: #707070;
+  margin: 0 .5em 1em;
+  min-width: 6em;
 }
 
 .close.idm-button-close {
@@ -350,6 +377,11 @@ a.publication-link-external:hover {
   background: white;
   font-size: 12px;
 }
+#profile-content .profile-link-item a:hover {
+  color: $idm_orange;
+}
+
+
 .profile-dynamic-wrap-links .row {
   padding-top: 10px;
 }
@@ -373,6 +405,22 @@ a.publication-link-external:hover {
 .people_bio_dynamic.profile-contact {
   width: 90%;
 }
+
+.profile_bio_static.link {
+
+  margin: 0 auto;
+  position: relative;
+  bottom: .5em;
+  height: 0px;
+  font-size: 20px;
+}
+
+.profile_bio_static.link a:hover {
+  color: $idm_orange;
+  text-decoration: none;
+}
+
+
 
 //------------------
 //Temporary Formatting
@@ -582,7 +630,7 @@ a.publication-link-external:hover {
 }
 .idm-footer-mobile h3 {
   background-color: black;
-  color: whitesmoke;
+  color: $idm_light_blue;
   border: none;
   text-transform: uppercase;
   -webkit-backface-visibility: hidden;
@@ -613,6 +661,12 @@ a.publication-link-external:hover {
   color: $idm_orange;
   outline:none;
 }
+
+#ui-id-1 .ui-icon {
+
+}
+
+
 .idm-footer-mobile h3:active {
   border: none;
   outline: none;
@@ -864,6 +918,7 @@ button {
   margin-left: auto;
 }
 
+
 .profile-dynamic-wrap-links {
   width: 100%;
   position: unset;
@@ -896,6 +951,15 @@ webform-button--submit {
   font-size: .8em;
   padding: 0px
 }
+
+.profile-swap.profile-swap-contact.profile-accordion {
+  height: 400px;
+  width: 100%;
+}
+.people_bio_dynamic.profile-contact.ui-accordion-content {
+  width: 100%;
+}
+
 
 
 
