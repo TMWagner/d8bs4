@@ -15,10 +15,7 @@ use Drupal\taxonomy\Entity\Term;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\Entity\User;
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\ReplaceCommand;
-use Symfony\Component\HttpFoundation\Response;
+
 
 
 
@@ -33,24 +30,117 @@ use Symfony\Component\HttpFoundation\Response;
  */
 function barrio_custom_preprocess_field(&$variables) {
 
-
+  $debug = $variables;
 //  Expecting the field 'field_misc_footer'
 //  We will send an array of our own to the a custom template that outputs only our data
 //   @todo Test for empty field name?
   if ($variables["element"]["#field_name"] == 'field_misc_footer') {
 
-    $output['button'] = array (
-      '#type' => 'markup',
-      '#markup' => 'Close Profile',
-      '#prefix' => '<div class="profile-button-wrap">
-                    <a class="profile btn btn-primary">',
-      '#suffix' => '</a></div>',
-    );
-    $variables['buttons'] = $output;
+    $button_links = false;
 
     /**
-     * Check for Publications for this research group
+     * Get the Groups
+     * Parameter is the Taxonomy ID
+     * (e.g., HIV = 9)
+     * @todo There will often be multiple values.
+     * Just grab the array.
+     *
      */
+
+    // Check to see if there are any groups specified. If not, there is nothing to do
+    // No groups - no buttons
+    $groups = $variables["element"]["#object"]->get("field_group")->getString();
+    if (!empty($groups)) {
+      $button_links = true;
+      $groups = str_replace(' ', '', $groups);
+      // We have groups specified - build the links if there is content
+
+
+      /**
+       * Check for Publications for this research group
+       */
+      // Set view arguments
+      $profile_id = 'publications_listings';
+      //Group is the Taxonomy term we pass as an argument to the query
+      //@todo remove hardcoded and use parameter ($groups)
+      // 9 = HIV
+      $group = 9;
+
+      // Load View object
+      // Need graceful recovery if View doesn't exist
+      $view = \Drupal\views\Views::getView($profile_id);
+      $view->setDisplay('research_group');
+      $view->setArguments(array($group));
+      $view->execute();
+
+
+      if (!empty($view->result)) {
+
+        $output = null;
+
+        //Build wrapper
+        $output['rlp-buttons'] = [
+          '#type' => 'container',
+          '#prefix' => '<div class="rlp-footer-wrap">',
+          '#suffix' => '</div>',
+        ];
+        //Build button
+        $output['rlp-buttons']['pubs'] = [
+          '#type' => 'link',
+          '#title' => 'Publications',
+          '#attributes' => ['class' => ['btn btn-outline-primary idm-button-main']],
+          '#url' => Url::fromRoute('view.publications_listings.research_group', [
+            'arg_0' => '9'
+          ]),
+//          '#prefix' => '<div class="profile_bio_static link">',
+//          '#suffix' => '</div>',
+        ];
+
+        //@todo test button two (remove after test
+
+        //Build button (test
+        $output['rlp-buttons']['test'] = [
+          '#type' => 'link',
+          '#title' => 'Projects',
+          '#attributes' => ['class' => ['btn btn-outline-primary idm-button-main']],
+          '#url' => Url::fromRoute('view.publications_listings.research_group', [
+            'arg_0' => '9'
+          ]),
+        ];
+
+
+
+        //End
+      }
+
+//
+//
+      /**
+       * $url = Url::fromRoute('entity.node.canonical', ['node' => 42], $options);
+
+       * entity.node.canonical                                 /node/{node}
+       * view.publications_listings.publications_uid           /publications_uid/{arg_0}
+       *
+       * people.profile_ajax_link_callback                     /profile/{option}/{uid}/{nojs}
+       * '#url' => Url::fromRoute('people.profile_ajax_link_callback', [
+              'option' => 'contact',
+              'uid' => $uid,
+              'nojs' => 'ajax'
+          ]),
+       */
+
+
+//      $output['button'] = array (
+//        '#type' => 'markup',
+//        '#markup' => 'Publications',
+//        '#prefix' => '<div class="profile-button-wrap">
+//                    <a class="profile btn btn-primary">',
+//        '#suffix' => '</a></div>',
+//      );
+      $variables['buttons'] = $output;
+
+    }
+
 
 
     /**
