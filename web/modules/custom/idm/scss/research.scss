@@ -287,6 +287,11 @@ a.mobile-profile:focus {
 }
 
 
+.rlp-footer-wrap {
+  border-top: thin solid $idm_orange;
+  margin-top: 1em;
+  padding: 1em 0;
+}
 
 @media (max-width: 990px) {
   .research-team-member-group {

@@ -214,6 +214,11 @@ a.mobile-profile:focus {
 .research-team-lead:nth-child(2) {
   margin-left: 1em; }
 
+.rlp-footer-wrap {
+  border-top: thin solid #f1815e;
+  margin-top: 1em;
+  padding: 1em 0; }
+
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 2.5em;
