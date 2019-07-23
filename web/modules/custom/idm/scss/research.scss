@@ -218,6 +218,7 @@ li.vl::before {
 }
 
 
+
 .rlp.modal-header {
   border: none;
   padding: 0 .5rem 1rem;
@@ -282,9 +283,16 @@ a.mobile-profile:focus {
   color: $idm_deep_blue;
 }
 
-.research-team-lead:nth-child(2) {
+.research-team-lead:nth-child(3) {
   margin-left: 1em;
 }
+
+.team-lead-heading,
+.team-member-heading{
+  color: $idm_orange;
+  width: 100%;
+}
+
 
 
 .rlp-footer-wrap {
@@ -297,8 +305,14 @@ a.mobile-profile:focus {
   .research-team-member-group {
     margin-left: 2.5em;
     width: 260px;
+    right: 20px;
     //color: red;
   }
+  //Left justify slick group
+  .research-team-member-group .slick-track {
+    margin-left: 0px;
+  }
+
 }
 @media (max-width: 700px) {
   .research-team-member-group {

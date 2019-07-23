@@ -211,8 +211,13 @@ a.mobile-profile:focus {
 #people-profile-mobile h5 {
   color: #0B1F2C; }
 
-.research-team-lead:nth-child(2) {
+.research-team-lead:nth-child(3) {
   margin-left: 1em; }
+
+.team-lead-heading,
+.team-member-heading {
+  color: #f1815e;
+  width: 100%; }
 
 .rlp-footer-wrap {
   border-top: thin solid #f1815e;
@@ -222,7 +227,11 @@ a.mobile-profile:focus {
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 2.5em;
-    width: 260px; } }
+    width: 260px;
+    right: 20px; }
+
+  .research-team-member-group .slick-track {
+    margin-left: 0px; } }
 @media (max-width: 700px) {
   .research-team-member-group {
     margin-left: auto;
