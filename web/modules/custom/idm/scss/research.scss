@@ -301,6 +301,10 @@ a.mobile-profile:focus {
   padding: 1em 0;
 }
 
+.research-team-member-group .slick-track {
+  margin-left: 0px;
+}
+
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 2.5em;
@@ -319,6 +323,9 @@ a.mobile-profile:focus {
     margin-right: auto;
     width: 275px;
   }
+  .research-team-member-group .slick-track {
+    margin-left: auto;
+  }
 }
 
 @media (max-width: 500px) {
@@ -326,6 +333,9 @@ a.mobile-profile:focus {
     margin-left: auto;
     margin-right: auto;
 
+  }
+  .research-team-member-group .slick-track {
+    margin-left: auto;
   }
 }
 

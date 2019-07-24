@@ -224,6 +224,9 @@ a.mobile-profile:focus {
   margin-top: 1em;
   padding: 1em 0; }
 
+.research-team-member-group .slick-track {
+  margin-left: 0px; }
+
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 2.5em;
@@ -236,10 +239,16 @@ a.mobile-profile:focus {
   .research-team-member-group {
     margin-left: auto;
     margin-right: auto;
-    width: 275px; } }
+    width: 275px; }
+
+  .research-team-member-group .slick-track {
+    margin-left: auto; } }
 @media (max-width: 500px) {
   .research-team-member-group {
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto; }
+
+  .research-team-member-group .slick-track {
+    margin-left: auto; } }
 
 /*# sourceMappingURL=research.css.map */
