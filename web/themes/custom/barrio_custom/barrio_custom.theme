@@ -125,14 +125,6 @@ function barrio_custom_preprocess_field(&$variables) {
           ]),
        */
 
-
-//      $output['button'] = array (
-//        '#type' => 'markup',
-//        '#markup' => 'Publications',
-//        '#prefix' => '<div class="profile-button-wrap">
-//                    <a class="profile btn btn-primary">',
-//        '#suffix' => '</a></div>',
-//      );
       $variables['buttons'] = $output;
 
     }
