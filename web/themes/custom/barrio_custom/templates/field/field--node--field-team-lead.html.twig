@@ -55,7 +55,7 @@
 
 {% if label_hidden %}
   {% if multiple %}
-    <div{{ attributes.addClass(classes, 'field__items', 'd-flex', 'flex-wrap') }}>
+    <div{{ attributes.addClass(classes, 'field__items', 'd-flex', 'justify-content-center', 'flex-wrap') }}>
       {% for item in items %}
         <div{{ item.attributes.addClass('field__item', 'research-team-lead') }}>{{ item.content }}</div>
       {% endfor %}
