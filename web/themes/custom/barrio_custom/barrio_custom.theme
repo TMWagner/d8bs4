@@ -61,16 +61,13 @@ function barrio_custom_preprocess_field(&$variables) {
        */
       // Set view arguments
       $profile_id = 'publications_listings';
-      //Group is the Taxonomy term we pass as an argument to the query
-      //@todo remove hardcoded and use parameter ($groups)
-      // 9 = HIV
-      $group = 9;
+
 
       // Load View object
       // Need graceful recovery if View doesn't exist
       $view = \Drupal\views\Views::getView($profile_id);
       $view->setDisplay('research_group');
-      $view->setArguments(array($group));
+      $view->setArguments(array($groups));
       $view->execute();
 
 
@@ -90,10 +87,9 @@ function barrio_custom_preprocess_field(&$variables) {
           '#title' => 'Publications',
           '#attributes' => ['class' => ['btn btn-outline-primary idm-button-main']],
           '#url' => Url::fromRoute('view.publications_listings.research_group', [
-            'arg_0' => '9'
+            'arg_0' => $groups
           ]),
-//          '#prefix' => '<div class="profile_bio_static link">',
-//          '#suffix' => '</div>',
+
         ];
 
         //@todo test button two (remove after test
@@ -175,7 +171,6 @@ function barrio_custom_preprocess_container(&$variables) {
       $variables['people_profile_mobile_flag'] = true;
     }
   }
-
 }
 
 /**
