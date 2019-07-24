@@ -47,6 +47,7 @@
     }
 
 
+
   });
   // End Document ready
 
@@ -426,8 +427,6 @@
    */
   function fnShowCardMobile(urlParameter) {
 
-    // console.log(">>> Begin fnShowCardMobile: ");
-    // console.log("Did we get the parm?? Should be: " + toolParameter);
 
     if (urlParameter !== 'all') {
 
@@ -435,9 +434,6 @@
       var cardClicked = $('h4[data-tool=' + urlParameter + ']').closest('.tools-card');
       var data = cardClicked.find('h4').data("node-url");
 
-      // console.log("title is: " + cardClicked.find('h4').html());
-
-      //build out the template.
       //title
       $("#ModalTitle").text(cardClicked.find('h4').html());
 
@@ -674,6 +670,15 @@
     console.log('%%%%% in loadComplete');
     $('button[data-dismiss=modal]').click(fnCloseContent);
 
+
+    // Add Title for thumbnails
+    //
+    //First count the number "Leads"
+
+    $('.field--name-field-team-lead div:first').before('<div class="team-lead-heading"><p>Team lead</p></div>');
+
+    //Add Title for members
+    $('.research-team-member-group').before('<div class="team-lead-heading"><p>Research team</p></div>');
 
 
     var uid = null;
