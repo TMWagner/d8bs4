@@ -675,10 +675,10 @@
     //
     //First count the number "Leads"
 
-    $('.field--name-field-team-lead div:first').before('<div class="team-lead-heading"><p>Team lead</p></div>');
+    $('.field--name-field-team-lead div:first').before('<div class="team-lead-heading"><p>Team Contact</p></div>');
 
     //Add Title for members
-    $('.research-team-member-group').before('<div class="team-lead-heading"><p>Research team</p></div>');
+    $('.research-team-member-group').before('<div class="team-lead-heading"><p>Research Team</p></div>');
 
 
     var uid = null;
