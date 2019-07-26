@@ -227,6 +227,11 @@ a.mobile-profile:focus {
 .research-team-member-group .slick-track {
   margin-left: 0px; }
 
+.col-12.text-center.rlp-button-text {
+  border-top: thin solid #00000017;
+  border-top-width: thin;
+  border-width: 3px; }
+
 @media (max-width: 990px) {
   .research-team-member-group {
     margin-left: 2.5em;
