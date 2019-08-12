@@ -212,19 +212,12 @@
     var cardText = currentCard.find("h4").text();
     data = cardClicked.find('h4').data("node-url");
 
-    console.log( "is this it? " + cardText);
-    console.log( ">>>> Data is: " + data);
-
-
-    //@todo I could have just used the text instead of data attribute.
     var dataResearch = cardClicked.find('h4').data("research");
     console.log("1. >>> Research tool is: " + dataResearch);
     // We've created the wrapper with Class="d-none"
     // Make sure its loaded before turning
     // on. Otherwise, we'll get a "jump".
     currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
-    console.log(data);
-    console.log("2. >>> attempt to insert..." + data);
 
     $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
@@ -239,7 +232,6 @@
     // Toggle selected on this card.
     cardClicked.toggleClass('card-selected');
 
-
   }
 
 
@@ -252,8 +244,6 @@
     var cardClicked = $(this);
     var data = cardClicked.find('h4').data("node-url");
 
-    // console.log("title is: " + cardClicked.find('h4').html());
-    // console.log("url is: " + data);
     //@todo make sure event is not already bound
     $("#rlpModal").off();
 
@@ -283,21 +273,6 @@
    * Handler to display user profile in Bootstrap Modal
    */
   function fnShowProfileD() {
-    // alert("thumbnail clicked");
-    console.log("(fnShowProfile): show modal for profile");
-    //Do some work
-    // 1. Fill out the modal for profile
-    // 2. Display
-
-    //title
-    // $("#ModalTitle").text(cardClicked.find('h4').html());
-
-    //find the target profile
-    //@todo Hardcode link
-    //@todo NOPE:  Need to wrap this in a link like PEOPLE
-    var data = '/profile/133';
-
-
     // Load the node and insert...
     // $( ".insert" ).load(data + " .rlp-detail-more");//
     $( ".insertprofile" ).load(data + " #profile-content");
@@ -311,9 +286,6 @@
    * Expected parameter is a text string with the title of the research node
    */
   function fnShowCard(urlParameter) {
-    console.log(">>> Begin fnShowCard <<<<");
-    console.log("(fnShowCard) Did we get the parm?? Should be: " + urlParameter);
-
     var positionCurrant;
     var positionNext;
     var data;
@@ -356,10 +328,7 @@
         else {
           positionCurrant = currentCard.position().top;
           positionNext = nextCard.position().top;
-          console.log("position(loop) - currant: " + positionCurrant);
-          console.log("position(loop) - next: " + positionNext);
         }
-
       } //End While
     } //End IF
 
@@ -373,24 +342,15 @@
 
     }
 
-
     var cardText = currentCard.find("h4").text();
     data = cardClicked.find('h4').data("node-url");
 
-    console.log( "is this it? " + cardText);
-    console.log( ">>>> Data is: " + data);
-
-
     //@todo I could have just used the text instead of data attribute.
     var dataResearch = cardClicked.find('h4').data("research");
-    console.log(">>> Research tool is: " + dataResearch);
     // We've created the wrapper with Class="d-none"
     // Make sure its loaded before turning
     // on. Otherwise, we'll get a "jump".
     currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
-    console.log(data);
-    console.log(">>> attempt to insert..." + data);
-
 
     $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
 
@@ -408,8 +368,6 @@
 
     // Toggle selected on this card.
     cardClicked.toggleClass('card-selected');
-
-
 
     // End of Desktop/tablet
 
@@ -442,7 +400,6 @@
 
       $("#rlpModal").modal();
 
-      //@todo clean up DOM? Or good to go?
     }
   }
 
@@ -480,27 +437,21 @@
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        console.log("position - currant: " + positionCurrant);
-        console.log("position - next: " + positionNext);
 
         while (positionCurrant === positionNext && moreCards) {
 
-          //@todo Remove before flight
-          console.log("In loop- Currant card is: ");
-          console.log("In loop- Next Card is: ");
 
           currentCard = nextCard;
           nextCard = currentCard.next();
 
           if (nextCard.length === 0) {
-            console.log("End of LOOP " + nextCard.length);
+
             moreCards = false;
           }
           else {
             positionCurrant = currentCard.position().top;
             positionNext = nextCard.position().top;
-            console.log("position(loop) - currant: " + positionCurrant);
-            console.log("position(loop) - next: " + positionNext);
+
           }
 
         } //End While
@@ -512,7 +463,7 @@
         // We hit the end - currentCard is the last element
         // data = currentCard.find('h4').data("node-url");
         // console.log( 'We clicked the last one: ' + data);
-        console.log('^*^*^*^*We clicked the last one: &*&*&*&*& ');
+
 
       }
 
@@ -520,24 +471,16 @@
       var cardText = currentCard.find("h4").text();
       data = cardClicked.find('h4').data("node-url");
 
-      console.log( "is this it? " + cardText);
-      console.log( ">>>> Data is: " + data);
-
 
       //@todo I could have just used the text instead of data attribute.
       var dataResearch = cardClicked.find('h4').data("research");
-      console.log(">>> Research tool is: " + dataResearch);
+
       // We've created the wrapper with Class="d-none"
       // Make sure its loaded before turning
       // on. Otherwise, we'll get a "jump".
       currentCard.after("<div class='insert d-none research-content research-content-wrapper mx-sm-1 jquery'> </div>");
-      console.log(data);
-      console.log(">>> attempt to insert..." + data);
-
 
       $( ".insert" ).load(data + " .rlp-detail-more", loadComplete).attr("data-research-content", dataResearch);
-
-
 
       //Calculate position for detail content
       //@todo not used - remove
@@ -563,11 +506,9 @@
    */
   function loadCompleteMobile() {
     //Finish post load mobile
-    console.log("(loadCompleteMobile: start post load...");
     $("#rlpModal").modal();
 
     $('#rlpModal').on('shown.bs.modal', function (e) {
-      console.log("**** (fnClickCardMobile) Modal has fired and should be visible");
 
       //Clean up the Dom
       //@todo removed d-flex from parent wrapper for mobile (to stack two sections)
@@ -579,14 +520,9 @@
       var uid = null;
       // //Loop through thumbnails ( This is all of them lead and team)
       // //Add appropriate link to each.
-      console.log('loop through the thumbnails....');
       $(".team-profile-thumbnail").each(function( index ) {
         uid = $( this ).data("uid");
 
-        // Wrap create a string with mix of variables and literals (Desktop /dialog version)
-        // $(this).wrapAll("<a class='use-ajax' data-dialog-type='modal' " +
-        //     "data-dialog-options='{&quot;width&quot;:800}'  " +
-        //     "href='/profile/" + uid + "'></a>");
 
         $(this).wrapAll("<a class='mobile-profile'  " + "href='/profile/" + uid + "/mobile'></a>");
       });
@@ -650,7 +586,6 @@
     // Content loaded:
     // Wrap the entire group in div for flex
     // Turn on inserted content.
-    console.log('*************  In function loadComplete ******************');
     $('.research-content-wrapper').removeClass("d-none");
     // @todo Team lead as well?
     $(".research-team").wrapAll("<div class='container team-card-thumbnail-wrap d-flex jqsource'></div>");
@@ -662,12 +597,10 @@
 
     // windowType = checkMod();
     if (windowType === 'small') {
-      console.log(">>> Remove d-flex from research-team-member-group");
       $(".research-team-member-group").removeClass(".d-flex");
     }
 
     //Attach handler for desktop Modal close function
-    console.log('%%%%% in loadComplete');
     $('button[data-dismiss=modal]').click(fnCloseContent);
 
 
@@ -684,7 +617,6 @@
     var uid = null;
     // //Loop through thumbnails ( This is all of them lead and team)
     // //Add appropriate link to each.
-    console.log('loop through the thumbnails....');
     $(".team-profile-thumbnail").each(function( index ) {
       uid = $( this ).data("uid");
 
@@ -694,7 +626,6 @@
           "href='/profile/" + uid + "'></a>");
       });
 
-    //@todo Why did I hardcode this???? (Kind of handy to turn off the carousel :)
     if (true) {
       console.log(">>> Load slick from research for DESKTOP...");
       //attach handler for carousel
@@ -744,16 +675,9 @@
 
 
     $( "div" ).on( "click", ".name-group-name", function(evt) {
-      console.log("**** Delegated click *****");
-
-      // $('.name-group-name').on('click', function(){
-      //   dialog('close');
-      // });
-
 
       //@todo Now attach this... really doesn't do anything for us...
       $('.name-group-name').on('click', function(){
-        console.log('Previously attached');
       });
       evt.stopPropagation();
     });
@@ -766,9 +690,7 @@
    * Close the via the "X" close button
    */
   function fnCloseContent() {
-    console.log("#### inside fnCloseContent....");
     var researchParameter = $('.insert').attr("data-research-content");
-    console.log("@@@@ Resarch  is: " + researchParameter);
 
     //Get the target card using the tool parameter
     var targetCard = $('h4[data-research=' + researchParameter +']').closest('.research-card');
@@ -777,7 +699,6 @@
     $('.insert').remove();
 
     if (targetCard.hasClass('card-selected')) {
-      console.log("@@@@@ Card is selected");
       // Turn off highlight
       targetCard.toggleClass('card-selected');
     }
@@ -816,24 +737,16 @@
 
   // Filter handler
   function fnClickFilter() {
-    //turn on active on currant button - turn off on all others.
-    // @todo Do we leave ALL selected if clicked?
-
 
     var selectorBtn = $(this).attr('id');
     //@todo: Replace for production
     var selectorBtnFooter = $('<p>Any little thing can be your friend if you let it be</p>');
 
-
     //first, remove all filters
     $('.tool-card').removeClass('tool-card-filtered');
 
 
-
   }
-
-
-  // End paste
 
 
   /* END Code Wrap */

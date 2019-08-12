@@ -2,11 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: thomaswagner
- * Date: 2019-01-27
- * Time: 10:10.
- *
- * Render properties:
- * https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21RenderElement.php/class/RenderElement/8.6.x
  */
 
 namespace Drupal\people\Controller;
@@ -16,7 +11,6 @@ use Drupal\Core\Url;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Symfony\Component\HttpFoundation\Response;
-
 
 
 
@@ -33,18 +27,17 @@ class PeopleController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function noargs() {
-    // Just dev/test content
+    //Test code
+    //@todo remove before flight
     $uid = '133';
     $profile_id = 'profile_basic_content';
     $display_id = 'user_profile_desktop';
-
 
     $view_output = views_embed_view($profile_id, $display_id, $uid);
 
     $page['profile']['group1'] = array (
       '#type' => 'markup',
       '#markup' => '<p>div 1</p>',
-
 
     );
     $page['profile']['group1']['subgroup'] = array(
@@ -60,16 +53,10 @@ class PeopleController extends ControllerBase {
 
     );
 
-
-
-
     $page['profile']['group3'] = array(
       '#type' => 'markup',
       '#markup' => '<p>div 3</p>',
-
     );
-
-
 
     $page['profile']['bio_mobile'] = array(
       '#type' => 'block',
@@ -80,7 +67,8 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     );
 
-    //@todo why is this hardcoded?
+    //Test code
+    //@todo remove before flight
     $nid = 169;
     $entity_type = 'node';
     $view_mode = 'teaser';
@@ -94,9 +82,6 @@ class PeopleController extends ControllerBase {
      * Dev block: Creates a renderable object from a block
      * Notes: Get the name of the profile by opening "configure block"
      * @todo Remove before production.  Also;  Should check to make sure block exists.
-     *
-     * Would like to be able to do this with a View!!!!!!
-     *
      */
 
     $block_id = 'searchform';
@@ -159,8 +144,6 @@ class PeopleController extends ControllerBase {
     ];
 
 
-
-
     $render_array['profile']['profile_static']['contact_link'] = [
       '#type' => 'link',
       '#title' => $this->t(''),
@@ -178,10 +161,6 @@ class PeopleController extends ControllerBase {
 
     //END contact link
 
-
-
-
-
     //  Build dynamic wrapper
     $render_array['profile']['profile_dynamic'] = [
       '#type' => 'container',
@@ -196,8 +175,6 @@ class PeopleController extends ControllerBase {
       '#prefix' => '<div class="profile-swap initial">',
       '#suffix' => '</div>',
     ];
-
-
 
     // Publications test
     $name = 'publications_listings';
@@ -301,31 +278,19 @@ class PeopleController extends ControllerBase {
       '#suffix' => '</div>',
     ];
 
-
-
-
-
     return $render_array;
   }
 
   /**
    * @param $uid
    *
-   * @return mixed
-   *
-   * Notes: would be nice to have this be adaptable for either modal implementation or page
+   * @return array
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function profileMobile($uid) {
 
     $output = array();
-
-    // A simple string item as render array.
-//    //@todo remove before production
-//    $output['header'] = [
-//      '#markup' => '<h1>Mobile Profile DEV</h1>',
-//    ];
-
-
 
     // Set view arguments
     $profile_id = 'profile_basic_content';
@@ -341,8 +306,8 @@ class PeopleController extends ControllerBase {
     $variables['content'] = $view->buildRenderable($display_id);
 
     //  Build the basic profile display
-    //  Added "Row" to sibling DIV with "container.html.twig"
-    //@todo This is the outer wrap from the whole page
+    //  @todo TWIG Task: Added "Row" to sibling DIV with "container.html.twig"
+    //  @todo This is the outer wrap from the whole page
 
     $output['profile'] = array (
       '#type' => 'container',
@@ -360,7 +325,7 @@ class PeopleController extends ControllerBase {
 
     //@todo wasted div?  I think we can get rid of this and save a layer on the array?
     // Eh - maybe not... we need an overall accordion wrapper
-    //Build wrapper for accordion group
+    // Build wrapper for accordion group
     $output['profile']['dynamic'] = array (
       '#type' => 'container',
       '#attributes' => [
@@ -420,7 +385,6 @@ class PeopleController extends ControllerBase {
 
     /*
      * Contact Pane
-     *
      */
     $output['profile']['dynamic']['contact']['header'] = array (
       '#type' => 'markup',
@@ -446,35 +410,7 @@ class PeopleController extends ControllerBase {
                     <a class="profile btn btn-primary">',
       '#suffix' => '</a></div>',
     );
-
-
-
-//    <a class="btn btn-primary" href="#" role="button">Link</a>
-    //
-//    // Build the button group
-//    // use theme to build wrapper around content
-//    //@todo We are going to have to build a custom theme for this
-//    $output['profile']['dynamic']['bio']['button'] = array (
-//      '#type' => 'markup',
-//      '#markup' => '<p>Bio</p>',
-//      '#prefix' => '<div class="button-dev">',
-//      '#suffix' => '</div>',
-//    );
-
-
-
-//    $output['profile']['dynamic']['publications'] = array (
-//      '#type' => 'markup',
-//      '#markup' => '<h2>Item one</h2><p>Publications</p>',
-//      '#prefix' => '<div class="Publications">',
-//      '#suffix' => '</div>',
-//
-//    );
-
-
     return $output;
-
-
   }
 
 

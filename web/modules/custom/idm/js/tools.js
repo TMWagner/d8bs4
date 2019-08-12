@@ -43,7 +43,6 @@
     var urlString = $(location).attr('pathname').split("/");
     if (urlString.length == 3) {
       toolParameter = urlString[2];
-      console.log(">>> Incoming parameter is: " + toolParameter);
     }
 
 
@@ -54,7 +53,6 @@
 
     // Attach handler for mobile or Desktop
     if (windowType === 'small') {
-      // console.log('attach Handler for small');
       cardClicked.click(fnClickCardMobile);
       if (toolParameter) fnShowCardMobile(toolParameter);
     } else {
@@ -89,22 +87,13 @@
   // End Document ready
 
 
-
-
-
-
-
-
   /**
    * highlightMobileCard
    */
   function highlightMobileCard() {
-    console.log('>>>(tools.js) process mobile filter');
-
     // Get card
     var activeSlide = $(".slick-active");
     var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
-    // console.log(">>> target is: " + targetClass);
 
     // Remove highlight from all cards first
     $('.tool-highlight-topbar').removeClass("show-tool");
@@ -128,9 +117,6 @@
    * @todo position window to called card
    */
   function fnShowCard(toolParameter) {
-    console.log(">>> Begin fnShowCard <<<<");
-    console.log("(fnShowCard) Did we get the parm?? Should be: " + toolParameter);
-
     var positionCurrant;
     var positionNext;
     var data;
@@ -140,16 +126,13 @@
 
     // First find the end of the row
     cardText = cardClicked.find('h4').html();
-    console.log("cardClicked is: " + cardText);
-    //@todo verify that we received a valid parameter (how?)
+    //@todo verify that we received a valid parameter
 
     var currentCard = cardClicked;
-    var nextCard = $(this).next();
     var nextCard = currentCard.next();
     var moreCards = true;
 
     var cardTextNext = nextCard.find('h4').html();
-    console.log("cardTextNext  is: " + cardTextNext);
 
     // Check for last element
     if (nextCard.length !== 0) {
@@ -166,21 +149,19 @@
         nextCard = currentCard.next();
 
         if (nextCard.length === 0) {
-          // console.log("Next card length 0: Break out of loop");
           moreCards = false;
         }
         else {
           positionCurrant = currentCard.position().top;
           positionNext = nextCard.position().top;
-          console.log("position(loop) - currant: " + positionCurrant);
-          console.log("position(loop) - next: " + positionNext);
         }
       } // end While
     } // End if
     else {
       // We hit the end - currentCard is the last element
       // data = currentCard.find('h4').data("node-url");
-      console.log('We clicked the last one: ' + data);
+      // @todo More processing?
+
 
     }
 
@@ -247,15 +228,13 @@
 
 
   /**
+  /**
    * Resize function
    */
   $(window).resize(function() {
     var oldWindowType = windowType;
     var cardClicked = $( ".tools-card" );
     windowType = checkMod();
-
-
-    console.log(">>>> resetting window size..." + oldWindowType + ' ' + windowType);
 
     if (windowType !== oldWindowType) {
 
@@ -337,7 +316,6 @@
 
 
     //Calculate position (to be able to move indicator
-    console.log("Filter clicked: " + functionTitle + ' ' + position + ' ' + positionStart);
     $("#status-bar-indicator").animate({left: position-positionStart});
 
     //Replace text with correct intro
@@ -351,7 +329,6 @@
     var filterData = $(this).find(".tool-filter-content").data("tool-class");
 
     //@todo debug
-    console.log(">>>>filter data is: " + filterData + "<<<<<");
 
     //Find card(s) with class = filterData and add class
     $('.' + filterData).find('.tool-highlight-topbar').addClass("show-tool");
@@ -378,10 +355,7 @@
     var cardClicked = $(this);
     var data = cardClicked.find('h4').data("node-url");
 
-    console.log("title is: " + cardClicked.find('h4').html());
-
     //build out the template.
-
     //title
     $("#ModalTitle").text(cardClicked.find('h4').html());
 
@@ -397,9 +371,7 @@
 
 
   function fnCloseContent() {
-    console.log("#### inside fnCloseContent....");
     var toolParameter = $('.insert').attr("data-tool-content");
-    console.log("@@@@ Tools is: " + toolParameter);
 
     //Get the target card using the tool parameter
     var targetCard = $('h4[data-tool=' + toolParameter +']').closest('.tools-card');
@@ -407,12 +379,7 @@
     // Turn off the "content"
     $('.insert').remove();
 
-    // if (targetCard.hasClass('card-selected')) {
-    //   console.log("@@@@@ Card is selected");
-    //   // Turn off highlight
-    //   targetCard.toggleClass('card-selected');
-    // }
-    //
+
     //@todo Might as well just hit all the cards and clean up
     $(".tools-card").removeClass("card-selected");
 
@@ -453,39 +420,26 @@
         positionCurrant = currentCard.position().top;
         positionNext = nextCard.position().top;
 
-        console.log("Before Loop...position - currant: " + positionCurrant);
-        console.log("Before Loop... position - next: " + positionNext);
 
         while (positionCurrant === positionNext && moreCards) {
 
           var textCurrant = currentCard.find("h4").text();
           var textNext = nextCard.find("h4").text();
 
-          //@todo Remove before flight
-          console.log("In loop- Currant card is: " + textCurrant);
-          console.log("In loop- Next Card is: " + textNext);
-
           currentCard = nextCard;
           nextCard = currentCard.next();
 
           if (nextCard.length === 0) {
-            console.log("Next card length 0: Break out of loop");
             moreCards = false;
           }
           else {
             positionCurrant = currentCard.position().top;
             positionNext = nextCard.position().top;
-            console.log("position(loop) - currant: " + positionCurrant);
-            console.log("position(loop) - next: " + positionNext);
           }
         } //End While
       } // End If
       else {
-        // We hit the end - currentCard is the last element
-        // data = currentCard.find('h4').data("node-url");
-        console.log('We clicked the last one: ' + data);
         moreCards = false;
-
       }
 
 
@@ -495,12 +449,10 @@
       //Grab data-tool attribute
       var dataTool = cardClicked.find('h4').data("tool");
 
-      console.log(">>> Data tool is: " + dataTool);
       // We've created the wrapper with Class="d-none"
       // Make sure its loaded before turning
       // on. Otherwise, we'll get a "jump".
       currentCard.after("<div class='insert d-none tools-content-wrapper mx-sm-1'> </div>");
-      console.log(">>> Inserting card - data is: " + data);
 
       //Toggle class and add data-tool-content attribute
       // (so we can link to card)
@@ -527,8 +479,6 @@
    */
   function loadComplete() {
 
-    //@todo remove before production
-    console.log('%%%%% in loadComplete');
 
     // Turn on inserted content.
     $('.tools-content-wrapper').removeClass("d-none");
@@ -564,9 +514,6 @@
     //http://api.jqueryui.com/removeClass/
     $( this ).removeClass( "xclose-over", 400 );
   }
-
-  // var targetClass = activeSlide.find('.tool-filter-content').data("tool-class");
-  //
 
 
   // Is mobile test code

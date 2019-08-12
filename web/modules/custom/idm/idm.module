@@ -6,21 +6,6 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\node\Entity\Node;
-use \Drupal\views\ViewExecutable;
-use Drupal\Component\Utility\UrlHelper;
-use Drupal\Component\Serialization\Json;
-use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
-use Drupal\Core\Template\Attribute;
-use Drupal\Core\Url;
-use Drupal\views\Form\ViewsForm;
-use Drupal\views\Plugin\views\cache\CachePluginBase;
-use Drupal\views\Plugin\views\query\QueryPluginBase;
-use Drupal\views\Plugin\views\query\Sql;
-
-
 
 
 /**
@@ -67,146 +52,124 @@ function idm_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $ent
 
 
   $entity_type = $entity->getEntityType()->id();
-  $debug = $entity;
-
-  if ($entity_type === 'node') {
-    //do some processing
-    $debug = "here we are";
-    $node_type = $entity->getType();
-    $debug = $view_mode;
-
-  }
-
-//  if ($entity->getEntityType()->id() === 'node') {
-//
-  ////    $build['awesome'] =  [
-  ////      '#markup' => '<marquee>IDM V4 amazing content</marquee>',
-  ////      '#allowed_tags' => ['marquee'],
-  ////    ];
-  ////    $build['moretext'] = [
-  ////      '#markup' => '<h2>IDM V4 amazing content</h2>',
-  ////      '#weight' => 99
-  ////    ];
-  ////  }
-
 }
 
 
-/**
- * @param array $info
- */
-function idm_element_info_alter(array &$info) {
+  /**
+   * @param array $info
+   */
+  function idm_element_info_alter(array &$info) {
 
-  // Decrease the default size of textfields.
-  if (isset($info['textfield']['#size'])) {
-    $info['textfield']['#size'] = 40;
+    // Decrease the default size of textfields.
+    if (isset($info['textfield']['#size'])) {
+      $info['textfield']['#size'] = 40;
+    }
   }
-}
 
-/**
- * @param array $attachments
- * Hook_page_attachements
- * Attach libraries
- */
-function idm_page_attachments(array &$attachments) {
+  /**
+   * @param array $attachments
+   * Hook_page_attachements
+   * Attach libraries
+   */
+  function idm_page_attachments(array &$attachments) {
 
-  // Unconditionally attach an asset to the page.
-  $attachments['#attached']['library'][] = 'core/domready';
-  $attachments['#attached']['library'][] = 'core/jquery';
-  $attachments['#attached']['library'][] = 'idm/jqueryui';
-  $attachments['#attached']['library'][] = 'idm/idm';
-  $attachments['#attached']['library'][] = 'idm/fontawesome';
-
-
-  //@todo Not sure we want this on ALL pages...
-  //20190222:tmw put this in to get modal working on non-admin pages
-  $attachments['#attached']['library'][] = 'core/drupal.dialog.ajax';
+    // Unconditionally attach an asset to the page.
+    $attachments['#attached']['library'][] = 'core/domready';
+    $attachments['#attached']['library'][] = 'core/jquery';
+    $attachments['#attached']['library'][] = 'idm/jqueryui';
+    $attachments['#attached']['library'][] = 'idm/idm';
+    $attachments['#attached']['library'][] = 'idm/fontawesome';
 
 
-  // Get the current path.
-  $path = $current_path = \Drupal::service('path.current')->getPath();
+    //@todo Not sure we want this on ALL pages...
+    //20190222:tmw put this in to get modal working on non-admin pages
+    $attachments['#attached']['library'][] = 'core/drupal.dialog.ajax';
 
-  $pathpieces = explode("/", $path);
-  if ($pathpieces[1] === 'node') {
-    //load the node and check for bundle
 
-    //@todo Check this condition. Issue trying to correct is error caused by Node Load
-    if ($pathpieces[2] !== 'add') {
-      $bundle = Drupal\node\Entity\Node::load($pathpieces[2])->bundle();
+    // Get the current path.
+    $path = $current_path = \Drupal::service('path.current')->getPath();
 
-      if($bundle === 'research') {
-        $attachments['#attached']['library'][] = 'idm/research';
-        $attachments['#attached']['library'][] = 'idm/slick';
+    $pathpieces = explode("/", $path);
+    if ($pathpieces[1] === 'node') {
+      //load the node and check for bundle
+
+      //@todo Check this condition. Issue trying to correct is error caused by Node Load
+      if ($pathpieces[2] !== 'add') {
+        $bundle = Drupal\node\Entity\Node::load($pathpieces[2])->bundle();
+
+        if ($bundle === 'research') {
+          $attachments['#attached']['library'][] = 'idm/research';
+          $attachments['#attached']['library'][] = 'idm/slick';
+        }
       }
     }
-  }
 
 
+    //We need to define a library specific to the home page (node 168)
+    // NavTab is being used for the "How we work" block"
+    if ($path == '/node/168') {
+      $attachments['#attached']['library'][] = 'idm/navtab';
+      $attachments['#attached']['library'][] = 'idm/rvtab';
+    };
 
-  //We need to define a library specific to the home page (node 168)
-  // NavTab is being used for the "How we work" block"
-  if ($path == '/node/168') {
-    $attachments['#attached']['library'][] = 'idm/navtab';
-    $attachments['#attached']['library'][] = 'idm/rvtab';
-  };
+    // Define library for RLP
+    if ($path == '/rlp') {
+      $attachments['#attached']['library'][] = 'idm/research';
+    };
 
-  // Define library for RLP
-  if ($path == '/rlp') {
-    $attachments['#attached']['library'][] = 'idm/research';
-  };
-
-  if (fnmatch("/rlp/*", $path)) {
-    $attachments['#attached']['library'][] = 'idm/research';
-    $attachments['#attached']['library'][] = 'idm/slick';
-  }
-
-  /**
-   * This is temp code: adding jquery collapse
-   * tmw: 2019/01/12
-   */
-  if ($path == '/node/169') {
-//    $attachments['#attached']['library'][] = 'idm/jqcollapse';
-    $attachments['#attached']['library'][] = 'idm/slick';
-  };
-
-  /**
-   * Attach library for Tools page(s)
-   * tmw: 2019/03/8
-   */
-  if ($path == '/node/170') {
-    $attachments['#attached']['library'][] = 'idm/tools';
-  };
-
-  if ($path == '/tools') {
-    $attachments['#attached']['library'][] = 'idm/tools';
-  };
-
-  if (fnmatch("/tools/*", $path)) {
-    $attachments['#attached']['library'][] = 'idm/slick';
-    $attachments['#attached']['library'][] = 'idm/tools';
-  }
-
-
-  $urlparts = explode('/', $path);
-  /**
-   * Attach Library
-   */
-  if (isset($urlparts[1])) {
-    if ($urlparts[1] === 'profile') {
-      $attachments['#attached']['library'][] = 'idm/profile';
+    if (fnmatch("/rlp/*", $path)) {
+      $attachments['#attached']['library'][] = 'idm/research';
+      $attachments['#attached']['library'][] = 'idm/slick';
     }
-  }
 
-  /**
-   * Attach Library for Profile related pages
-   * Expected: /Profile/nnn/mobile
-   */
-  if (isset($urlparts[3])) {
-    if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
-      $attachments['#attached']['library'][] = 'idm/profile';
+    /**
+     * This is temp code: adding jquery collapse
+     * tmw: 2019/01/12
+     */
+    if ($path == '/node/169') {
+      //    $attachments['#attached']['library'][] = 'idm/jqcollapse';
+      $attachments['#attached']['library'][] = 'idm/slick';
+    };
+
+    /**
+     * Attach library for Tools page(s)
+     * tmw: 2019/03/8
+     */
+    if ($path == '/node/170') {
+      $attachments['#attached']['library'][] = 'idm/tools';
+    };
+
+    if ($path == '/tools') {
+      $attachments['#attached']['library'][] = 'idm/tools';
+    };
+
+    if (fnmatch("/tools/*", $path)) {
+      $attachments['#attached']['library'][] = 'idm/slick';
+      $attachments['#attached']['library'][] = 'idm/tools';
     }
+
+
+    $urlparts = explode('/', $path);
+    /**
+     * Attach Library
+     */
+    if (isset($urlparts[1])) {
+      if ($urlparts[1] === 'profile') {
+        $attachments['#attached']['library'][] = 'idm/profile';
+      }
+    }
+
+    /**
+     * Attach Library for Profile related pages
+     * Expected: /Profile/nnn/mobile
+     */
+    if (isset($urlparts[3])) {
+      if ($urlparts[1] === 'profile' && $urlparts[3] === 'mobile') {
+        $attachments['#attached']['library'][] = 'idm/profile';
+      }
+    }
+
   }
 
-}
 
 
